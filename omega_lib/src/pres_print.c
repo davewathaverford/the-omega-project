@@ -500,6 +500,8 @@ void Rel_Body::print(FILE *output_file, bool printSym) {
   String s = print_variables_to_string(printSym);
   fprintf(output_file, (const char *) s);
 
+  fprintf(output_file, ": ");
+
   if(simplified_DNF==NULL) {
     Formula::print(output_file);
   } else {
