@@ -342,6 +342,7 @@ DNF* conj_and_not_dnf(Conjunct *positive_conjunct, DNF *neg_conjs, bool weak) {
   }
 
   if (simplify_conj(positive_conjunct, true, false, black) == false) {
+    delete positive_conjunct;
     positive_conjunct = NULL;
     goto ReturnDNF;
   }
@@ -366,6 +367,7 @@ DNF* conj_and_not_dnf(Conjunct *positive_conjunct, DNF *neg_conjs, bool weak) {
 	  Conjunct *cgist = merge_conjs(positive_conjunct, neg_conj, MERGE_GIST);
           if(simplify_conj(cgist, false, true, _red) == false) 
 	      {
+	      delete cgist;
 	      // C1 & ~FALSE = C1
 	      delete neg_conj;
 	      p.curr_set(NULL);
@@ -395,6 +397,7 @@ DNF* conj_and_not_dnf(Conjunct *positive_conjunct, DNF *neg_conjs, bool weak) {
 	              p.curr_set(NULL);
 	              if(!simplify_conj(positive_conjunct, false, false, black)) 
 			  {
+			  delete positive_conjunct;
 	                  positive_conjunct = NULL;
 	                  goto ReturnDNF;
 	                  }
@@ -836,6 +839,8 @@ DNF* F_And::DNFize()
 		    {
 		    if (simplify_conj((*nc), true, false, black) != false)
 			real_neg_conjs->add_conjunct(*nc);
+		    else
+			delete (*nc);
 		    (*nc) = 0;
 		    }
 		delete neg_conjs;
@@ -1272,6 +1277,7 @@ void DNF::make_level_carried_to(int level)
 #if ! defined NDEBUG
 			Conjunct *cpy = (*conj)->copy_conj_same_relation();
 			assert(!simplify_conj(cpy, true, 32767, 0));
+			delete cpy;
 #endif
 			}
 
@@ -1468,6 +1474,7 @@ void DNF::simplify() {
     pd.next();
     if(s_rdt_constrs >= 0 && !simplify_conj(conj, true, s_rdt_constrs, black)) {
       rm_conjunct(conj);
+      delete conj;
     }
   }
 }

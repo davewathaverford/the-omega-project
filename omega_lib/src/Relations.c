@@ -1286,7 +1286,8 @@ Relation GistSingleConjunct(NOT_CONST Relation &input_R1,
       } else {
 	new_dnf->add_conjunct(cgist);
       }
-    }
+    } else
+      delete cgist;
   }
   delete r1->simplified_DNF;
   r1->simplified_DNF = new_dnf;

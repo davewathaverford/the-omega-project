@@ -380,7 +380,7 @@ void Conjunct::assert_leading_info()
 	    g.update_const_during_simplify(-1);
 	    g.finalize();
 	    assert(!simplify_conj(test, true, 0, 0));
-	    // test was deleted by simplify_conj, as it was FALSE
+	    delete test;
 
 	    test = copy_conj_same_relation();
 	    test->problem->turnRedBlack();
@@ -390,7 +390,7 @@ void Conjunct::assert_leading_info()
 	    g.update_const_during_simplify(-1);
 	    g.finalize();
 	    assert(!simplify_conj(test, true, 0, 0));
-	    // test was deleted by simplify_conj, as it was FALSE
+	    delete test;
 
 	    skip_finalization_check--;
 	    }
@@ -422,7 +422,7 @@ void Conjunct::assert_leading_info()
 	    e.update_coef_during_simplify(out, 1);
 	    e.finalize();
 	    assert(!simplify_conj(test, true, 0, 0));
-	    // test was deleted by simplify_conj, as it was FALSE
+	    delete test;
 
 	    skip_finalization_check--;
 	    }
@@ -455,7 +455,7 @@ void Conjunct::assert_leading_info()
 	    g.finalize();
 
 	    assert(!simplify_conj(test, true, 0, 0));
-	    // test was deleted by simplify_conj, as it was FALSE
+	    delete test;
 
 	    skip_finalization_check--;
 	    }
@@ -1213,7 +1213,6 @@ int simplify_conj(Conjunct* conj, int ver_sim, int simplificationEffort, int col
   if(ret_code == 0) {
     if(pres_debug)
       fprintf(DebugFile, "] $$$ simplify_conj : false\n\n");
-    delete conj;
     use_ugly_names--;
     return(false);
   }
