@@ -142,6 +142,8 @@ void Problem:: substitute(eqn *sub, int i, coef_t c)
 	    if (SUBs[e].coef[i])
 			unsafeSub = true;
 	if (unsafeSub) {
+		if (!outputFile)
+		    setOutputFile(stderr);
 		fprintf(outputFile, "UNSAFE RED SUBSTITUTION\n");
 		fprintf(outputFile, "substituting using %s := ", variable(i));
 		printTerm(sub, -c);
