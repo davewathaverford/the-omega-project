@@ -1150,7 +1150,7 @@ dir_and_diff_info *d_info, unknowns * /*u_info*/)
 
 		for (int l = level; l<=(int)d_info->nest; l++)
 		    {
-		    int lb, ub;
+		    coef_t lb, ub;
 		    bool guaranteed;
 		    dddirection signs = 0;
 		    this_part.query_difference(output_var(l), input_var(l),

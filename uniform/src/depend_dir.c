@@ -137,7 +137,7 @@ dir_list *dir_list_union(dir_list *d1, dir_list *d2)
 static dir_list *split_levels(int stmt1, Relation &R, int level, 
                               dir_list *nn, int nest)
     {
-    int lb, ub;
+    coef_t lb, ub;
     bool guaranteed;
     ddudirection signs = 0;
     dir_list *big_list;

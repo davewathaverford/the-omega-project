@@ -22,11 +22,10 @@ extern int maxGEQs;
 extern int maxEQs;
 
 #if !defined LONG_LONG_COEF
-#define LONG_LONG_COEF 0
+#define LONG_LONG_COEF 1
 #endif
 
 #if LONG_LONG_COEF
-#error "using long long coefficients currently causes assertion failures"
 
 #if defined BOGUS_LONG_DOUBLE_COEF
 typedef long double coef_t;  // type of coefficients
@@ -79,10 +78,10 @@ typedef int EqnKey;
 class eqn {
 public:
     EqnKey  key;
-    coef_t  touched;  // see oc_simple.c
     int     color;
     int     essential;
     int     varCount;
+    coef_t  touched;  // see oc_simple.c
     coef_t  coef[maxVars + 1];
 };
 
@@ -98,9 +97,9 @@ extern char wildName[200][20];
 extern FILE *outputFile; /* printProblem writes its output to this file */
 #define doTrace (trace && TRACE)
 #define isRed(e) (desiredResult == SIMPLIFY && (e)->color)
-#define eqnncpy(e1,e2,s) {int *p00,*q00,*r00; p00 = (int *)(e1); q00 = (int *)(e2); r00 = &p00[headerWords+1+s]; while(p00 < r00) *p00++ = *q00++; }
+#define eqnncpy(e1,e2,s) { if (e1 != e2) memcpy(e1, e2, sizeof(int) * headerWords + sizeof(coef_t) * (1 + s)); }
 #define eqncpy(e1,e2) eqnncpy(e1,e2,nVars)
-#define eqnnzero(e,s) {int *p00,*r00; p00 = (int *)(e); r00 = &p00[headerWords+1+(s)]; while(p00 < r00) *p00++ = 0;}
+#define eqnnzero(e,s) { memset(e, 0, sizeof(int) * headerWords + sizeof(coef_t) * (1 + s)); }
 #define eqnzero(e) eqnnzero(e,nVars)
 
 extern int mayBeRed;

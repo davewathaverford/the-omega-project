@@ -188,7 +188,7 @@ static modinfo check_mod(Relation &R, int o, bool tightmod)
 		return badm;
 	      if (tcodegen_debug && (*gi).get_const() < m.modbase-1)
 		{
-		  fprintf(DebugFile, "%s%s%d%s%d\n", debug_mark_cp,
+		  fprintf(DebugFile, "%s%s"coef_fmt"%s%d\n", debug_mark_cp,
 			  "found \"tight\" mod constraint output < ",
 			  (*gi).get_const(),
 			  " rather than output < ",
