@@ -1447,7 +1447,8 @@ void Comp_Constraints::UncompressConstr(Eqn constrs, short &pn_constrs) {
 
 
 void Conjunct::convertEQstoGEQs() { 
-  simplify_conj(this,true,1,black);
+  bool sat = simplify_conj(this,true,1,black);
+  assert(sat);
   problem->convertEQstoGEQs();
 }
 
