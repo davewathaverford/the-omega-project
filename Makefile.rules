@@ -141,11 +141,13 @@ veryclean_self: clean
 
 install_all: install_basic 
 	@cd $(BASEDIR) ; \
-	for dirname in $(ALLDIRS) ; do\
+	for dirname in $(ALLDIRS) ; do \
 	  if test -d $$dirname/obj ; \
 	  then \
 	    echo "Installing in $$dirname:" ; \
-	    cd $$dirname/obj; $(SUBMAKE) install; \
+	    cd $$dirname/obj; \
+		$(SUBMAKE) install ; \
+                cd ../.. ; \
 	  else \
 	    if test $$dirname != "basic" ; then \
 	      echo "Warning: $$dirname not found, not installed." ;\
