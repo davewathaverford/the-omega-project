@@ -34,12 +34,12 @@ public:
     { len=strlen(t); s=new char[len+1]; strcpy(s, t); }
 
   inline ~String()
-    { delete s; }
+    { delete [] s; }
 
   void operator =  (const String& y)
-    { delete s; len=y.len; s=new char[len+1]; strcpy(s,y.s); }
+    { delete [] s; len=y.len; s=new char[len+1]; strcpy(s,y.s); }
   void operator =  (const char* y)
-    { delete s; len=strlen(y); s=new char[len+1]; strcpy(s,y); }
+    { delete [] s; len=strlen(y); s=new char[len+1]; strcpy(s,y); }
 
   inline const char &operator [] (int x) const
     { return s[x];
@@ -49,16 +49,16 @@ public:
     }
   void operator += (const String& y)
     { char *t=new char[len+y.len+1]; strcpy(t,s); strcpy(t+len,y.s); 
-      delete s; s=t; len+=y.len;
+      delete [] s; s=t; len+=y.len;
     }
   void operator += (const char* y)
     { int ylen=strlen(y); 
       char *t=new char[len+ylen+1]; strcpy(t,s); strcpy(t+len,y); 
-      delete s; s=t; len+=ylen;
+      delete [] s; s=t; len+=ylen;
     }
   inline friend String operator +(const String& x, const String& y)
     { String S;
-      delete S.s;
+      delete [] S.s;
       S.s=new char[x.len+y.len+1]; strcpy(S.s,x.s); strcpy(S.s+x.len,y.s); 
       S.len=x.len+y.len;
       return S;

@@ -4,8 +4,8 @@ namespace omega {
 
 Problem::~Problem()
     {
-    delete EQs;
-    delete GEQs;
+    delete [] EQs;
+    delete [] GEQs;
     }
 
 
@@ -101,12 +101,12 @@ Problem & Problem::operator=(const Problem & p2)
     {
     if (this != &p2) {
       if(allocEQs < p2.nEQs) {
-	  delete EQs;
+	  delete [] EQs;
 	  allocEQs = padEQs(p2.nEQs);
 	  EQs = new eqn[allocEQs];
       }
       if(allocGEQs < p2.nGEQs) {
-	  delete GEQs;
+	  delete [] GEQs;
 	  allocGEQs = padGEQs(p2.nGEQs);
 	  GEQs = new eqn[allocGEQs];
       }
@@ -155,7 +155,7 @@ int Problem::newGEQ() {
 	eqn * new_geqs = new eqn[allocGEQs];
 	for (int e = nGEQs - 2; e >= 0; e--)
 	    eqnncpy(&(new_geqs[e]), &(GEQs[e]), nVars);
-	delete GEQs; 
+	delete [] GEQs; 
 	GEQs = new_geqs;
     }
 //    problem->GEQs[nGEQs-1].color = black;
@@ -171,7 +171,7 @@ int Problem::newEQ(){
 	eqn * new_eqs = new eqn[allocEQs];
 	for (int e = nEQs - 2; e >= 0; e--)
 	    eqnncpy(&(new_eqs[e]), &(EQs[e]), nVars);
-	delete EQs; 
+	delete [] EQs; 
 	EQs = new_eqs;
     }
 // Could do this here, but some calls to newEQ do a copy instead of a zero;

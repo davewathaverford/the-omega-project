@@ -713,8 +713,8 @@ DNF* negate_conj(Conjunct* conj) {
     new_dnf->prefix_print(DebugFile);
   }
   delete true_part;
-  delete wildCard;
-  delete handleIt;
+  delete [] wildCard;
+  delete [] handleIt;
   return(new_dnf);
 }
 
