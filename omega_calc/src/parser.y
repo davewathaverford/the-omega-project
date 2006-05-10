@@ -652,12 +652,13 @@ relation : OPEN_BRACE
 		}
 	 | VAR {
 		Const_String s = $1;
-		free($1);
 		if (relationMap(s) == 0) {
 			fprintf(stderr,"Variable %s not declared\n",$1);
+			free($1);
 			YYERROR;
 			assert(0);
 			};
+		free($1);
 		$$ = new Relation(*relationMap(s));
 		}
 	 | '(' relation ')'	{$$ = $2;}
@@ -1147,11 +1148,12 @@ simpleExp :
 		{Variable_Ref *v;
 		 if ($4 == Input_Tuple) v = functionOfInput[$1];
 		 else v = functionOfOutput[$1];
-		 free($1);
 		 if (v == 0) {
 			fprintf(stderr,"Function %s(...) not declared\n",$1);
+			free($1);
 			YYERROR;
 			}
+		 free($1);
 		 $$ = new Exp(v);
 		}
 	| '(' exp ')'  { $$ = $2;}
