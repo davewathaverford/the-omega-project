@@ -133,7 +133,7 @@ void includeFile(char *s) {
 <LATEX>"\\join"	{ BUFFER;  return JOIN; }
 "\." 		{ BUFFER;  return JOIN; }
 "join"		{ BUFFER;  return JOIN; }
-"domain"	{ BUFFER;  return DOMAIN; }
+"domain"	{ BUFFER;  return OMEGA_DOMAIN; }
 "time"		{ BUFFER; return TIME; }
 "timeclosure"	{ BUFFER; return TIMECLOSURE; }
 "range"		{ BUFFER;  return RANGE; }
