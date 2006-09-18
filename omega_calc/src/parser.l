@@ -29,7 +29,6 @@ char scanBuf[1024];
 void initializeScanBuffer() {
 	scanBuf[0] = '\0';
 	};
-int yylineno = 1;
 void flushScanBuffer() {
 	fprintf(yyout,"# %s\n",scanBuf);
         if (omega_calc_debug) fprintf(DebugFile,"# %s\n",scanBuf);
