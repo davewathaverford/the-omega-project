@@ -12,7 +12,13 @@ M   generation of communication statements
 
 */
 
-#define hpp_yywrap()	1
+#ifdef __cplusplus
+extern "C" {
+#endif
+inline int hpp_yywrap() { return 1; }
+#ifdef __cplusplus
+}
+#endif
 
 #include <omega.h>
 #include <stdio.h>
