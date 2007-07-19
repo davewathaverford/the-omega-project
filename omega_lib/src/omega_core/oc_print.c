@@ -446,7 +446,7 @@ prettyPrintProblemToString() const
     int v1, v2, v3;
     int t, change;
     int stuffPrinted = 0;
-    char *connector = CONNECTOR;
+    const char *connector = CONNECTOR;
 
     typedef enum {
 	none, le, lt
@@ -733,7 +733,7 @@ Problem::
 prettyPrintRedEquations() const
     {
     int e, stuffPrinted = 0;
-    char * connector = CONNECTOR;
+    const char *connector = CONNECTOR;
 
 
     if (!variablesInitialized)

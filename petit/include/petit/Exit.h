@@ -54,7 +54,7 @@ int      Quit(int dummy );
 
 extern void out_of_memory();
 
-void      Write(char *);
+void      Write(const char *);
 
 }
 

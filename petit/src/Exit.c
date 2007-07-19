@@ -228,7 +228,7 @@ void out_of_memory(void)
 
 namespace omega {
 
-void Write(char *s) {
+void Write(const char *s) {
   static int fd = -1;
   int l;
   if(fd<0) {

@@ -16,7 +16,7 @@ extern int Block_Size;
 extern int Num_Procs;
 extern int code_gen_debug;
 
-static String replace_vars(char *my_stmt, Relation global_time)
+static String replace_vars(const char *my_stmt, Relation global_time)
     {
     String S = "";
     for (unsigned int i=0; i<strlen(my_stmt); i++)
@@ -99,7 +99,7 @@ class numbered_stmt_info : public spmd_stmt_info {
 public:
     numbered_stmt_info() :  stmt_num(-1) {}
     numbered_stmt_info(int arg, const Relation &in_time,
-                       const Relation &in_space, char *stmt):
+                       const Relation &in_space, const char *stmt):
         spmd_stmt_info(String("s") + itoS(arg),in_time,in_space),
         stmt_num(arg),
         my_stmt(stmt)
@@ -151,7 +151,7 @@ public:
 
 private:
     int stmt_num;
-    char *my_stmt;
+    const char *my_stmt;
 };
 
 } // end namespace omega

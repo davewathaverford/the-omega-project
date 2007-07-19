@@ -9,7 +9,7 @@
 
 namespace omega {
 
-void PresErrAssert(char *t);
+void PresErrAssert(const char *t);
 
 extern Rel_Body null_rel;
 

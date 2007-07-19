@@ -57,7 +57,7 @@ Tuple<stm_info> &Peel_One_IS(Tuple<stm_info> &info, int stm, int level, Relation
 
 
 void DoDebug2(char *message, const Tuple<stm_info> &info);
-void DoDebug(char * message, int effort, const Tuple<stm_info> &info, const Relation &known);
+void DoDebug(const char *message, int effort, const Tuple<stm_info> &info, const Relation &known);
 
 
 extern int code_gen_debug;

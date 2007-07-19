@@ -392,7 +392,7 @@ Tuple<stm_info> &Peel_One_IS(Tuple<stm_info> &info, int stm, int level, Relation
 
 
 /* useful from debugger */
-void DoDebug3(char *message, Relation &r)
+void DoDebug3(const char *message, Relation &r)
 {
   fprintf(DebugFile, "%s: ", message);
   copy(r).print_with_subs(DebugFile);
@@ -405,7 +405,7 @@ void DoDebug2(char *message, const Tuple<stm_info> &info)
   DoDebug(message, -1, info, Relation::True(0));
 }
 
-void DoDebug(char * message, int effort, const Tuple<stm_info> &info, const Relation &known)
+void DoDebug(const char *message, int effort, const Tuple<stm_info> &info, const Relation &known)
 {
    String result="";
    Tuple<stm_info> &noconst = (Tuple<stm_info> &)info;

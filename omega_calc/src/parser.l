@@ -35,7 +35,7 @@ void flushScanBuffer() {
 	initializeScanBuffer();
 	}
 #define BUFFER strcat(scanBuf,yytext)
-void yyerror(char *s) {
+void yyerror(const char *s) {
     fprintf(stderr,"%s\n",s);
     fprintf(stderr,"line %d, at end of \"%s\"\n",yylineno,scanBuf);
     }

@@ -28,7 +28,7 @@ template <class T, int d> class Dynamic_Array
 template <class T> class Dynamic_Array1 : public Dynamic_Array<T,1>
     {
     public:
-	Dynamic_Array1(char *s0 = 0);
+	Dynamic_Array1(const char *s0 = 0);
 	Dynamic_Array1(int d0);
 	void resize(int d0);
         T& operator[](int d);
@@ -43,7 +43,7 @@ template <class T> class Dynamic_Array1 : public Dynamic_Array<T,1>
 template <class T> class Dynamic_Array2 : public Dynamic_Array<T,2>
     {
     public:
-	Dynamic_Array2(char *s0 = 0, char *s1 = 0);
+	Dynamic_Array2(const char *s0 = 0, const char *s1 = 0);
 	Dynamic_Array2(int d0, int d1);
 	void resize(int d0, int d1);
   	Dynamic_Array1<T> operator[](int d);

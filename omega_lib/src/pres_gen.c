@@ -17,7 +17,7 @@ negation_control pres_legal_negations = any_negation;
 //
 // I/O utility functions.
 //
-void PresErrAssert(char *t) {
+void PresErrAssert(const char *t) {
   fprintf(stdout, "\nERROR: %s\n", t);
   if(pres_debug) {
     fprintf(DebugFile, "\nERROR: %s\n", t);

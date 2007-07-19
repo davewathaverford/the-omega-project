@@ -179,7 +179,7 @@ const char *Var_Decl::char_name() {
     if (a)
 	{
 	if (use_ugly_names) {
-		static char *arg_names[4] = { "???", "In", "Out", "In == Out" };
+		static const char *arg_names[4] = { "???", "In", "Out", "In == Out" };
 		sprintf(s, "(%s[1#%d])", arg_names[function_of()], a);
 		}
 	else {

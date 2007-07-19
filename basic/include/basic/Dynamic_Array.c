@@ -56,12 +56,12 @@ template<class T, int d> omega::Dynamic_Array<T,d>::Dynamic_Array()
     do_constr();
     }
 
-template<class T> omega::Dynamic_Array1<T>::Dynamic_Array1(char *)
+template<class T> omega::Dynamic_Array1<T>::Dynamic_Array1(const char *)
     {
     this->do_constr();
     }
 
-template<class T> omega::Dynamic_Array2<T>::Dynamic_Array2(char *,char *)
+template<class T> omega::Dynamic_Array2<T>::Dynamic_Array2(const char *, const char *)
     {
     this->do_constr();
     }
