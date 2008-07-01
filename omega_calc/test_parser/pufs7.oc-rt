@@ -1,0 +1,18 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n(1),m;
+# 
+# {[i] : n(i) >= 0}  union {[i] : n(i) <=0};
+
+{[i]: 0 <= n(i)} union
+ {[i]: n(i) <= 0}
+
+# 
+# 
+# {[i] : n(i) >= 1 && 1 <= i <= m} 
+# 	union {[i] : n(i) <1 && 1 <= i <= m};
+
+{[i]: 1 <= i <= m && 1 <= n(i)} union
+ {[i]: 1 <= i <= m && n(i) <= 0}
+
+# 
+# 

@@ -1,0 +1,53 @@
+/*
+   The original language interface used some naming conventions that
+   were more along the style used in lisp than C, and furthermore did
+   not use these conventions consistently.  Therefore we had a re-naming.
+   Anyone who was annoyed with the conventions should be happy.  To keep
+   those who already wrote code for the original lang-interf file from
+   becomming unhappy, we have provided this compatibility file.
+   Include this at the end of your lang-interf file for compatibility.
+ */
+
+#define access_sym		accesss_sym
+#define access_lineno		accesss_lineno
+#define access_depth		accesss_depth
+#define access_cover_depth	accesss_cover_depth
+#define access_terminator_depth	accesss_terminator_depth
+#define access_shared_depth	accesss_shared_depth
+
+#define access_private_var	access_private_var_p
+#define access_is_fetch		access_fetch_p
+#define access_is_store		access_store_p
+#define access_is_update	access_update_p
+#define access_are_same_update_type	access_same_update_type_p
+
+#define cont_i_cur_is_loop	cont_i_cur_loop_p
+#define cont_i_cur_is_if	cont_i_cur_if_p
+
+#define loop_has_step		loop_has_step_p
+#define loop_step		loops_step
+
+#define var_id_is_index		var_id_index_p
+#define var_id_is_const		var_id_const_p
+#define var_id_is_var		var_id_var_p
+
+#define var_id_loop		var_ids_loop
+#define var_id_loop_no		var_ids_loop_no
+#define var_id_tag		var_ids_tag
+#define var_id_name		var_ids_name
+#define var_id_def_node		var_ids_def_node
+
+#define dd_current_is_flow		dd_current_flow_p
+#define dd_current_is_output		dd_current_output_p
+#define dd_current_covers		dd_current_cover_p
+#define dd_current_terminates		dd_current_terminate_p
+#define dd_current_is_dead		dd_current_dead_p
+
+#define dd_i_i_cur_is_flow		dd_i_i_cur_flow_p
+#define dd_i_i_cur_is_output		dd_i_i_cur_output_p
+#define dd_i_i_cur_covers		dd_i_i_cur_cover_p
+#define dd_i_i_cur_is_dead		dd_i_i_cur_dead_p
+
+#define dd_o_i_cur_is_output		dd_o_i_cur_output_p
+#define dd_o_i_cur_terminates		dd_o_i_cur_terminate_p
+#define dd_o_i_cur_is_dead		dd_o_i_cur_dead_p

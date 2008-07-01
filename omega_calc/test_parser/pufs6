@@ -1,0 +1,19 @@
+Symbolic n, f(1), f_last, f_first;
+
+True := { [] : 1 = 1 };
+
+old_R1 := { [x] -> [] : (1 <= x <= n and f(x) > 0)};
+old_R2 := { [x] -> [] : (1 <= x <= n and f(x) <=0)};
+True - range old_R1 - range old_R2;
+
+R1 := { [x] -> [] : (3 <= x <= n-1 and f(x) > 0)
+		 or (1 <= n and f_last > 0)
+		 or (1 <= n and f_first > 0) };
+R2 := { [x] -> [] : (3 <= x <= n-1 and f(x) <=0)
+		 or (1 <= n and f_last <=0)
+		 or (1 <= n and f_first <=0) };
+True - range R1 - range R2;
+
+R1a := { [x] -> [] : (1 <= x <= n and (f(x) > 0 or f_first > 0 or f_last > 0)) };
+R2a := { [x] -> [] : (1 <= x <= n and (f(x) <=0 or f_first <=0 or f_last <=0)) };
+True - range R1a - range R2a;

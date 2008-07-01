@@ -1,0 +1,10 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# foo := {[In_1,In_2] -> [i,j] : Exists ( alpha : In_2+2i = 1 && 2In_1+In_2 = 3+4j && In_2+20alpha = 5+8j && -199 <= In_2 <= -2j-5 && 1 <= j)};
+# 
+# example foo;
+
+{[7,-7] -> [4,1] }
+
+# 
+# 
+# 

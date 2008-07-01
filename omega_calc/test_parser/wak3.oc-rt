@@ -1,0 +1,69 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# Symbolic a,b;
+# 
+# 
+# IS1 := {[i] : a <= i <= b };
+# 
+# IS2 := {[i] : a+10 <= i <= b+10 };
+# 
+# IS3 := {[i] : a+20 <= i <= b+20 };
+# 
+# 
+# T1 := {[i] -> [i,0]};
+# 
+# T2 := {[i] -> [i,1]};
+# 
+# T3 := {[i] -> [i,2]};
+# 
+# 
+# codegen T1:IS1,T2:IS2,T3:IS3;
+for(t1 = a; t1 <= min(b,a+9); t1++) {
+  s1(t1);
+}
+for(t1 = a+10; t1 <= min(b,a+19); t1++) {
+  s1(t1);
+  s2(t1);
+}
+for(t1 = a+20; t1 <= b; t1++) {
+  s1(t1);
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a+10,b+1); t1 <= min(b+10,a+19); t1++) {
+  s2(t1);
+}
+for(t1 = max(a+20,b+1); t1 <= b+10; t1++) {
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a+20,b+11); t1 <= b+20; t1++) {
+  s3(t1);
+}
+
+# 
+# codegen 1 T1:IS1,T2:IS2,T3:IS3;
+for(t1 = a; t1 <= min(b,a+9); t1++) {
+  s1(t1);
+}
+for(t1 = a+10; t1 <= min(b,a+19); t1++) {
+  s1(t1);
+  s2(t1);
+}
+for(t1 = a+20; t1 <= b; t1++) {
+  s1(t1);
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a+10,b+1); t1 <= min(b+10,a+19); t1++) {
+  s2(t1);
+}
+for(t1 = max(a+20,b+1); t1 <= b+10; t1++) {
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a+20,b+11); t1 <= b+20; t1++) {
+  s3(t1);
+}
+
+# 

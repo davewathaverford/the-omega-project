@@ -1,0 +1,30 @@
+#
+# Some examples from the documentation for the Omega Calculator
+# This is the input for figures 2 and 3.
+#
+
+R := { [i] -> [i'] : 1 <= i,i' <= 10 && i' = i+1 };
+R;
+inverse R;
+domain R;
+range R;
+R compose R;
+R+;             # closure of R = R union (R compose R) union (R compose R ...
+complement R;
+S := {[i] : 5 <= i <= 25};
+S;
+R(S);           # apply R to S
+R \ S;          # restrict domain of R to S
+R / S;          # restrict range of R to S
+(R\S) union (R/S);
+(R\S) intersection (R/S);
+(R/S) - (R\S);
+S*S;            # cross product 
+D := S - {[9:16:2]} - {[17:19]};
+D;
+T :=  { [i] : 1 <= i <= 11 & exists (a : i = 2a) };
+T;
+Hull T;
+Hull D;
+codegen D;
+codegen {[i,j] : 1 <= i+j,j <= 10};

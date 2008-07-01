@@ -1,0 +1,61 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# a2b:={[1]->[2]};
+# 
+# 
+# b2c1:={[i]->[i]};
+# 
+# b2c2:={[i]->[j]};
+# 
+# 
+# a2a:={[i]->[i]};
+# 
+# b2b:={[i]->[i]};
+# 
+# c2c:={[i]->[i]};
+# 
+# 
+# 
+# 
+# reachable (a,b,c){ a->b:a2b, b->c:b2c1, a->a:a2a, b->b:b2b, c->c:c2c,
+#           a:{[1]}};
+Node a: {[1]}
+Node b: {[2]}
+Node c: {[2]}
+# 
+# 
+# reachable (a,b,c) { a->b:a2b, b->c:b2c2, a->a:a2a, b->b:b2b, c->c:c2c,
+#           a:{[1]}};
+Node a: {[1]}
+Node b: {[2]}
+Node c: {[In_1]}
+# 
+# 
+# b2c3:={[i]->[i+1]};
+# 
+# b2b2:={[i]->[i+1]};
+# 
+# 
+# reachable (a,b,c){ a->b:a2b, b->c:b2c3, a->a:a2a, b->b:b2b2, c->c:c2c,
+#                    a:{[1]}};
+Node a: {[1]}
+Node b: {[2]} union
+ {[In_1]: 4 <= In_1} union
+ {[3]}
+Node c: {[i]: 4 <= i} union
+ {[3]}
+# 
+# 
+# b2c3:={[i]->[i]};
+# 
+# 
+# reachable (a,b,c){ a->b:a2b, b->c:b2c3, a->a:a2a, b->b:b2b2, c->c:c2c,
+#           a:{[1]}};
+Node a: {[1]}
+Node b: {[2]} union
+ {[In_1]: 4 <= In_1} union
+ {[3]}
+Node c: {[i]: 3 <= i} union
+ {[2]}
+# 
+# 

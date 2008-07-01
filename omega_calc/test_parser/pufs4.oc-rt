@@ -1,0 +1,26 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# # Calculate exposed reads for this code fragment
+# # for i := 1 to n do
+# #   for j := 1 to m do
+# #      if p(i,j) >= 0 then a(i,j) = 1
+# #      else a(i,j) = 0
+# #      .... a(i,j)
+# #
+# 
+# symbolic p(2), n, m;
+# 
+# R  := { [ir,jr] : 1 <= ir <= n && 1 <= jr <= m };
+# 
+# W1 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(iw,jw) >= 0 };
+# 
+# W2 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(iw,jw) <  0 };
+# 
+# 
+# Exposed := R-W1-W2;
+# 
+# 
+# Exposed;
+
+{[iw,jw]  : FALSE }
+
+# 

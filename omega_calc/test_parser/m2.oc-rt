@@ -1,0 +1,39 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R1:={[i,j]: 2 <= i,j <= 9};
+# 
+# R2:={[i,j]: 5 <= i <= 9 & 1 <= j <= 9};
+# 
+# codegen R1,R2;
+for(t1 = 2; t1 <= 9; t1++) {
+  if (t1 >= 5) {
+    s2(t1,1);
+  }
+  if (t1 <= 4) {
+    for(t2 = 2; t2 <= 9; t2++) {
+      s1(t1,t2);
+    }
+  }
+  if (t1 >= 5) {
+    for(t2 = 2; t2 <= 9; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+  }
+}
+
+# 
+# codegen 1 R1,R2;
+for(t1 = 2; t1 <= 4; t1++) {
+  for(t2 = 2; t2 <= 9; t2++) {
+    s1(t1,t2);
+  }
+}
+for(t1 = 5; t1 <= 9; t1++) {
+  s2(t1,1);
+  for(t2 = 2; t2 <= 9; t2++) {
+    s1(t1,t2);
+    s2(t1,t2);
+  }
+}
+
+# 

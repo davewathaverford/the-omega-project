@@ -1,0 +1,22 @@
+symbolic n(1);
+S :=  { [i] -> [j] : 1 <= i < j <= 100 && n(j) >= 0};
+R := domain S;
+S;
+R;
+upper_bound R;
+lower_bound R;
+
+R - {[1:50]};
+{[1:50]} - R;
+{[1:50]} - upper_bound R;
+{[1:50]} - lower_bound R;
+
+R union {[10:30]}  union {[25:100]} union {[1:10]};
+upper_bound (R union {[10:30]}  union {[25:100]} union {[1:10]});
+lower_bound (R union {[10:30]}  union {[25:100]} union {[1:10]});
+
+{[101:200]} - R;
+{[1:200]} - R;
+{[1:200]} - R - {[10:30]}  - {[25:100]};
+{[1:200]} - (R union {[10:30]}  union {[25:100]} union {[1:10]});
+{[1:200]} - R - {[10:30]}  - {[25:100]} - {[1:10]};

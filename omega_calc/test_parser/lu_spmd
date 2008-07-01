@@ -1,0 +1,19 @@
+symbolic n,lb,ub;
+I1 := {[k,i] : 1 <= k < i <= n && lb <= k <= ub};
+I2 := {[k,i,j] : 1 <= k <= i,j <= n && lb <= j <= ub};
+p := {[k,i] : 1, lb <= k <= ub < n && k < i <= n};
+w := {[k,i,j,k,i] : 1 <= k <= i,j <= n && k < lb = j <= ub};
+
+T1 := {[k,i] -> [k,i,0,0,0,0,0,0]};
+T2 := {[k,i,j] -> [k,i,1,j,0,0,0,0]};
+Tp := {[k,i] -> [k,i,0,0,1,0,0,0]};
+Tw := {[k,i,j,t1,t2] -> [k,i,1,j,-1,t1,t2,0]};
+
+known := {[*,*,*,*,*,*,*,*] : 1 <= lb && ub <= n};
+known2 := {[*,*,*,*,*,*,*,*] : 1 <= lb <= ub <= n};
+
+codegen -2 T1:I1,T2:I2,Tp:p,Tw:w given known;
+codegen 0 T1:I1,T2:I2,Tp:p,Tw:w given known;
+# codegen 1 T1:I1,T2:I2,Tp:p,Tw:w given known;
+# codegen 0 T1:I1,T2:I2,Tp:p,Tw:w given known2;
+# codegen 1 T1:I1,T2:I2,Tp:p,Tw:w given known2;

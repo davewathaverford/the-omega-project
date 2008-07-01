@@ -1,0 +1,145 @@
+#
+# Various tests of mmap utilities
+#
+symbolic N, M;
+
+IS1 := {[1,i,1,0,1]   : 0 <= i < N};
+MM1 := {[1,i,1,0,1]->[i]} restrictDomain IS1;
+
+IS2 := {[2,i,1,j,1] : 0 <= i < N and 0 <= j < M};
+MM2 := {[2,i,1,j,1] -> [i,j]} restrictDomain IS2;
+DF  := {[1,i,1,0,1] -> [2,i,1,j,1] : 0 <= i < N and 0 <= j < M};
+
+tcodegen
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Test transformation
+#
+
+Trans := {[2,i,1,j,1] -> [2,j,1,i,1]} union {[1,i,1,0,1] -> [1,i,1,5,1]};
+
+tcodegen
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+
+#
+# Test peeling - try peeling one IS one time
+# Ultimately, it would be nice if this didn't split up the 2nd loop.
+# Note that, when peeling, the computation runs faster if you don't
+#  "over-specify" the peel conditions - no unnecessary equality constraints
+#
+
+tcodegen
+	peel-is 1 2 {[a,i,c,d,e] : i <= 2}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Test peeling again - try peeling one IS twice
+#
+
+tcodegen
+	peel-is 2 3 {[a,ip,i,c,d,e] : 2 < i <= N-3}
+	peel-is 1 2 {[a,i,c,d,e] : i <= 2}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Test peeling again - try peeling one IS twice the easy way
+#
+
+tcodegen
+	peel-is 1 2 {[a,i,c,d,e] : i <= 2} , {[a,i,c,d,e] : i > 2,N-3}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Test peeling again - try peeling 2nd IS's outer loop
+# This produces two doubly-nested loops
+#
+
+tcodegen
+	peel-is 2 2 {[a,j,c,d,e] : j <= 5}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+
+#
+# Test peeling again - try peeling 2nd IS's inner loop
+# This produces two i loops both together inside the j loop
+#
+
+tcodegen
+	peel-is 2 4 {[a,b,c,i,e] : i <= 5}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Final peeling test - put it all together and see what happens
+#
+
+tcodegen
+	peel-is 5 6 {[a,no,no,b,c,i,e] : i <= 5}
+	peel-is 4 3 {[a,no,j,c,d,e] : j <= 5}
+	peel-is 1 2 {[a,i,c,d,e] : i <= 2} , {[a,i,c,d,e] : i > 2,N-3}
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};
+
+
+#
+# Test unrolling of inner loop
+#
+
+tcodegen
+	unroll-is 2 4 4
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7 and exists (n,m : N=4n and M=4m)};
+
+#
+# Test unrolling of outer loop
+#
+
+tcodegen
+	unroll-is 2 2 4
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7 and exists (n,m : N=4n and M=4m)};
+
+#
+# Test unrolling of inner loop in more general case
+#
+
+tcodegen
+	unroll-is 2 4 4
+	trans-is Trans
+	["w=0",  IS1, "x", MM1],
+	["w=r1", IS2, "y", MM2, [1, DF]]
+given {[] : N,M > 7};

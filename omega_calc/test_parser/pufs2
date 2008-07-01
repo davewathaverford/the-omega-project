@@ -1,0 +1,9 @@
+symbolic n(1);
+R := { [i] -> [j] : 1 <= i = j <= 100 && n(i) <= n(j)};
+S := { [i] -> [j] : 1 <= i <= j <= 100 && n(i) = n(j)};
+
+R;
+S;
+R intersection S;
+R union S;
+R intersection complement S;

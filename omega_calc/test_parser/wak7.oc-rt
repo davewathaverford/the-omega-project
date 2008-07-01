@@ -1,0 +1,11 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R :=  {[k,k+1,k+1]: 1 <= k <= 1022}
+# 	union {[k,i,j]: 2 <= k < i <= 1024 && k < j <= 1024};
+# 
+# 
+# Hull R;
+
+{[k,i,j]: k+1, 2 <= j <= 1024 && k < i <= 1024}
+
+# 
+# 

@@ -1,0 +1,38 @@
+
+			    COMPILING PETIT
+			    --------------
+
+
+
+To compile petit 0.97, you will need the following:
+
+ * A C++ compiler
+ * make
+ * The Omega Library version 0.97
+
+Recommended but not absolutely required:
+ * X11 and the Motif widget library (see below)
+
+Edit the file obj/Makefile, following the instructions there.  Then,
+make petit.
+
+Petit is written in C++, and has been compiled with GNU G++ versions
+2.5.8 and 2.6.3.  Version 2.6.3 is recommended, since its handling of
+templates produces smaller object files and executables.  Some attempt
+has been made to get Petit to compile under SunPro CC version 3.0.1,
+but it does not support the C++ features that Petit needs.  It may be
+possible to compile Petit with other commercial C++ compilers; petit
+does not depend on any features of the GNU libg++. 
+
+Petit requires flex and bison rather than lex and yacc.  The output from
+flex and bison is included, so you should be able to compile without
+them unless you make changes to the petit grammar.
+
+Petit requires X11 and Motif to compile the interactive version.  A
+batch-only petit can be built.  See the Makefile for details.  Use the
+flag -DBATCH_ONLY_PETIT=1 in the PETIT_FLAGS makefile variable.  A
+petit built in this way will only work with the -R option (see
+petit.ps for details.)
+
+Please let us know of any difficulty you encounter in building Petit
+so that we can correct the problems in future releases.

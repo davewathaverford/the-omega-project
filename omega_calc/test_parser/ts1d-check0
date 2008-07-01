@@ -1,0 +1,176 @@
+# This is the file facts.prew, which is prepended to the .prew files
+# for the particular code generation we want, defines things like the
+# iteration space and dependences.  Known facts are inserted by the
+# Makefile.
+#
+# If you're looking at a .w file instead of facts.prew, then you should
+# remember to edit the original .prew files, not the .w files.
+#
+# This facts.prew file describes the program
+#
+# for(i = 0; i <= N-1; i++) {
+#  cur[i]=...
+# }
+# for(t = 0; t < T; t++) {
+#   for(i = 0; i <= N-1; i++) {
+#     old[i]=cur[i];
+#   }
+#   for(i = 1; i <= N-2; i++) {
+#     cur[i] = (old[i-1]+old[i]+old[i]+old[i+1])*0.25;
+#   }
+# }
+
+
+
+# first, the spaces and memory maps
+
+symbolic T, N;
+
+IS_INIT := { [1,i,1,0,0]          :           0<=i<=N-1 };
+MM_INIT := { [1,i,1,0,0] -> [0,i] :           0<=i<=N-1 };
+
+IS_COPY := { [2,t,0,i,1]            : 0<=t<T && 0<=i<=N-1 };
+MM_COPY := { [2,t,0,i,1] -> [t+1,i] : 0<=t<T && 0<=i<=N-1 };
+
+IS_CALC := { [2,t,1,i,1]            : 0<=t<T && 0< i< N-1 };
+MM_CALC := { [2,t,1,i,1] -> [t+1,i] : 0<=t<T && 0< i< N-1 };
+
+RESULTS := { [3,0,0,0,0] };
+
+
+# memory-based Output and Flow/anti-dependences (among Assign (copy), and Calc)
+
+FWD5 := {[x,t,y,i,z] -> [x',t',y',i',z'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) };
+FWD7 := {[x,t,y,i,z,a,b] -> [x',t',y',i',z',a',b'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'>a) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'=a and b'>b) };
+BWD5 := inverse FWD5;
+BWD7 := inverse FWD7;
+EQi := {[x,t,y,i,z] -> [x',t',y',i',z'] : i'=i };
+
+# output deps
+
+OAA := (IS_COPY * IS_COPY) intersection FWD5 intersection EQi;
+OCC := (IS_CALC * IS_CALC) intersection FWD5 intersection EQi;
+
+# combined flow/anti deps
+
+FAC := (IS_COPY * IS_CALC) intersection FWD5 intersection {[2,t,0,i,1] -> [2,t',1,i',1]  : (i'-1<=i<=i'+1)};
+FCA := (IS_CALC * IS_COPY) intersection FWD5 intersection {[2,t,1,i,1] -> [2,t',0,i',1]  : (i-1<=i'<=i+1)};
+
+# total memory deps in the "core"
+
+COREMEMDEPS := OAA union OCC union FAC union FCA;
+
+
+
+# data flow for original code:
+
+DF_12p1 := ( IS_INIT * IS_COPY ) intersection {[1,i,1,0,0] -> [2,0,0,i,1] : 0<i<N-1 };
+DF_12p2 := ( IS_INIT * IS_COPY ) intersection {[1,0,1,0,0] -> [2,t,0,0,1] };
+DF_12p3 := ( IS_INIT * IS_COPY ) intersection {[1,i,1,0,0] -> [2,t,0,i,1] : i=N-1 && N>1 };
+DF_32   := ( IS_CALC * IS_COPY ) intersection {[2,t,1,i,1] -> [2,t+1,0,i,1]};
+
+DF_23a := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i+1,1] };
+DF_23b := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i,1] };
+DF_23c := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i-1,1] };
+
+
+# data flow for array expanded code,
+# after forward substitution of "old[i] = cur[i]"
+
+DF1Ia := { [1,i,1,0,0] -> [2,t,1,i+1,1] : t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF1Ib := { [1,i,1,0,0] -> [2,t,1,i+1,1] : t>0 && i=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF1C  := { [2,t,1,i,1] -> [2,t+1,1,i+1,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+DF2I  := { [1,i,1,0,0] -> [2,t,1,i,1] :   t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF2C  := { [2,t,1,i,1] -> [2,t+1,1,i+0,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+DF3Ia := { [1,i,1,0,0] -> [2,t,1,i-1,1] : t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF3Ib := { [1,i,1,0,0] -> [2,t,1,i-1,1] : t>0 && i=N-1 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF3C  := { [2,t,1,i,1] -> [2,t+1,1,i-1,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+
+# total data flow
+
+COREDATAFLOW := DF1C union DF2C union DF3C;
+
+
+# arity expansion relations
+ex_0_5v := {             [] -> [a,b,c,d,e]     };
+ex_0_7v := {             [] -> [a,b,c,d,e,f,g] };
+ex_3_5 := {         [a,b,c] -> [a,b,c,0,0]     };
+ex_3_7 := {         [a,b,c] -> [a,b,c,0,0,0,0] };
+ex_5_7 := {     [a,b,c,d,e] -> [a,b,c,d,e,0,0] };
+
+ex_5_3 := {     [a,b,c,0,0] -> [a,b,c]         };
+ex_7_3 := { [a,b,c,0,0,0,0] -> [a,b,c]         };
+ex_7_5 := { [a,b,c,d,e,0,0] -> [a,b,c,d,e]     };
+
+
+# stuff used in skew and tskew
+
+# Here is the description of time skewing from the current draft of the paper.
+IS_Trans := { [2,t,1,i,1] -> [2,tb,1,s,1,tt,1] :
+	0<=tt<1000 && s=i+1*t && t=1000*tb+tt };
+
+IS_Tinv := inverse IS_Trans;
+
+# We use it to transform the iteration spaces
+TS_IS_CALC := IS_CALC join IS_Trans;
+# for some reason OC refuses do to this "join" but will do the reverse:
+# TS_IS_INIT := ex_7_5 join IS_INIT;
+TS_IS_INIT := IS_INIT  join (inverse ex_7_5);
+
+# Now we can update the data flow relations to correspond to the new I.S.'s
+TS_DF1Ia := ex_7_5  join DF1Ia join IS_Trans;
+TS_DF1Ib := ex_7_5  join DF1Ib join IS_Trans;
+TS_DF1C  := IS_Tinv join DF1C  join IS_Trans;
+TS_DF2I  := ex_7_5  join DF2I  join IS_Trans;
+TS_DF2C  := IS_Tinv join DF2C  join IS_Trans;
+TS_DF3Ia := ex_7_5  join DF3Ia join IS_Trans;
+TS_DF3Ib := ex_7_5  join DF3Ib join IS_Trans;
+TS_DF3C  := IS_Tinv join DF3C  join IS_Trans;
+
+ 
+KNOWN := { [] : T >= 0 and N >= 4 };
+ 
+# Lets try to build up the equivalent of the time skewing transformation,
+# IS_Trans := { [2,t,1,i,1] -> [2,tb,1,x,1,y,1] :
+# 	1000*tb<=t-1<=1000*(tb+1)-1 && y=t-1000*tb && x=y+i };
+# for both statements together, right from the diagram in the new TOPLAS stuff.
+
+# original code without mmap
+#
+
+# First, look at it as a wider space
+
+WIDEN := { [2, t, s, i , 1] -> [2, 2t+s, 0, i, 1] : 0<=s<=1 };
+TSKEW := { [2, t, 0, i , 1] -> [2, tb, t+i, tt, 1] :
+		 1000*tb+tt = t and 0 <= tt < 1000 };
+
+TSKEW_2LOOPS := WIDEN join TSKEW;
+# print this for the paper
+
+# I think this should work but it blows up codegen:
+# codegen
+# 	IS_INIT, TSKEW_2LOOPS : IS_COPY, TSKEW_2LOOPS : IS_CALC
+# given	(KNOWN join ex_0_5v);
+
+# So we fake it as follows,
+# relying on the fact that neither "t" nor "s" is used in any statement
+
+WIDEN0 := { [2, t, 0, i , 1] -> [2, 2t, 0, i, 1] };
+WIDEN1 := { [2, t, 1, i , 1] -> [2, 2t+1, 0, i, 1] };
+
+codegen
+ 	IS_INIT, TSKEW : (IS_COPY join WIDEN0) , TSKEW : (IS_CALC join WIDEN1)
+given	(KNOWN join ex_0_5v);
+

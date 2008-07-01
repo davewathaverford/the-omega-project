@@ -1,0 +1,8 @@
+symbolic n,m;
+R1 := {[x,y] -> [x,y+1] : 1 <= x,y <= 10};
+R2 := {[x,y] -> [x+1,y] : 1 <= x <= 20 && 5 <= y <= 15};
+R12 := R1 union R2;
+R12c := R12+;
+R12c;
+(R12c compose R12c) - R12c;
+(R12c compose R12) - R12c;

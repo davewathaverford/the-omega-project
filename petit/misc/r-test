@@ -1,0 +1,4 @@
+#!/bin/csh -f
+# should work with sh or csh - start the real test with sh
+echo "Regression Testing $*"
+exec /bin/sh -c "${PETITHOME}/misc/r-test-sh ${PETITHOME}/obj/petit $*"

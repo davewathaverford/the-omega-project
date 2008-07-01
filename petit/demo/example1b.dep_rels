@@ -1,0 +1,34 @@
+flow     1: Entry           -->  14: a(L1)                           [ V]
+{[In_1] -> [In_1] : In_1-20, m-10 <= n <= In_1-11}
+flow     1: Entry           -->  14: a(L1)                           [ M]
+{[In_1] -> [In_1] : In_1-20, m-10 <= n <= In_1}
+output   1: Entry           -->   9: a(m)                            [ M]
+{[m] -> : m <= n+10}
+output   1: Entry           -->  11: a(L1)                           [ M]
+{[In_1] -> [In_1] : In_1-10, m-10 <= n <= In_1}
+flow     1: Entry           -->   9: b(n)                            [ MV]
+{[n] -> : m <= n+10}
+flow     1: Entry           -->  11: b(L1)                           [ MV]
+{[In_1] -> [In_1] : In_1-10, m-10 <= n <= In_1}
+output   1: Entry           -->  14: c(L1)                           [ M]
+{[In_1] -> [In_1] : In_1-20, m-10 <= n <= In_1}
+flow     1: Entry           -->   8: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->   9: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->  10: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->  10: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->  13: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->  13: n                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->   8: m                               [ MV]
+{ ->  m <= n+10}
+flow     1: Entry           -->   9: m                               [ MV]
+{ ->  m <= n+10}
+flow     9: a(m)            -->  15: Exit                            [ V]
+{ -> [Out_1] : m < n}
+flow     9: a(m)            -->  14: a(L1)                           [ MZ]
+{ -> [m] : m-10 <= n <= m}

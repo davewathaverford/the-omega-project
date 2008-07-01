@@ -1,0 +1,9 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n(1);
+# 
+# { [i] -> [j] : 1 <= i  <= j <= 100 && n(i) != n(j)};
+
+{[i] -> [j] : 1 <= i < j <= 100 && n(j) < n(i)} union
+ {[i] -> [j] : 1 <= i < j <= 100 && n(i) < n(j)}
+
+# 

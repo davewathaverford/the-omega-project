@@ -1,0 +1,11 @@
+Symbolic n,m;
+
+sym_example {[i] : 1 <= i <= n};
+
+sym_example {[i] : m <= i <= n};
+
+sym_example {[i] : m <= i <= n && exists (alpha : i = 2alpha)};
+example {[i] : m <= i <= n && exists (alpha : i = 2alpha)};
+example {[i] : m < i <= n && exists (alpha : i = 2alpha)};
+example {[i] : m < i < n};
+

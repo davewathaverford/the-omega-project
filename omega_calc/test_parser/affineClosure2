@@ -1,0 +1,55 @@
+symbolic n;
+symbolic c;
+# # Omega Calculator [v1.00, Mar 96]:
+# # 
+# # 
+# # 
+# # R := {[i,j] : 1 <= i <= 10 && 1 <= j <= n};
+# # 
+# # R;
+# 
+# {[i,j]: 1 <= i <= 10 && 1 <= j <= n}
+# 
+# # 
+# # ac := approximate {[i,j] : exists (lambda0, lambda1,lambda2,lambda3,lambda4 :
+# # 	0 <= lambda0, lambda1,lambda2,lambda3,lambda4
+# # 	&& c = lambda0-lambda1+ 10 lambda2 - lambda3
+# # 	&& i = lambda1-lambda2
+# # 	&& j = lambda3-lambda4
+# # 	&& n = lambda4)};
+# # 
+# # ac;
+# 
+# {[i,j]: 0 <= n && 0 <= n+c+i+j && 0 <= n+c+10i+j && 0 <= n+j}
+# 
+# # 
+# # 
+# # #ac intersection {[i,j] : i = 1 && c = -1}		;
+# # #ac intersection {[i,j] : i = -1 && c = 10}		;
+# # #ac intersection {[i,j] :  j = 1 && c = -1 }		;
+# # #ac intersection {[i,j] : j = -1 && n = 1}		;
+# # 	
+
+approximate {[i,j] : exists (lambda0, lambda1,lambda2,lambda3,lambda4 :
+	0 <= lambda0,lambda1,lambda2,lambda3,lambda4
+	&& n = lambda1+lambda2+lambda3+lambda4
+	&& i = lambda2+10lambda3
+	&& j = lambda2+lambda3+lambda4
+	&& c = lambda0+lambda2+lambda3
+	&& c = 1
+	)};
+approximate {[i,j] : exists (lambda0, lambda1,lambda2,lambda3,lambda4 :
+	0 <= lambda1,lambda2,lambda3,lambda4
+	&& n = lambda1+lambda2+lambda3+lambda4
+	&& i = lambda2+10lambda3
+	&& j = lambda2+lambda3+lambda4
+	&& c = lambda2+lambda3
+	&& c = 1
+	)};
+approximate {[i,j] : exists (lambda0, lambda1,lambda2,lambda3,lambda4 :
+	0 <= lambda1,lambda2,lambda3,lambda4
+	&& n = lambda1+lambda2+lambda3+lambda4
+	&& i = lambda2+10lambda3
+	&& j = lambda2+lambda3+lambda4
+	&& c = lambda2+lambda3
+	)};

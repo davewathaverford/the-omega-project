@@ -1,0 +1,6 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# approximate  {[i,j] : exists (a,b : a,b >= 0  && i = -201a-3b && j = 103a+200b)};
+
+{[i,j]: 200i+3j <= 0 && 0 <= 103i+201j}
+
+# 

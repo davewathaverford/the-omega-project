@@ -1,0 +1,101 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n,lb,ub;
+# 
+# I5 := {[k,j] : 1 <= k < j <= n};
+# 
+# I7 := {[k,j,i] : 1 <= k < j,i <= n};
+# 
+# T5 := {[k,j] -> [k,j,1,0]};
+# 
+# T7 := {[k,j,i] -> [i,j,0,k]};
+# 
+# D57 := {[k,j] -> [k,j,i] : 1 <= k < j,i <= n};
+# 
+# D75 := {[k,j,k+1] -> [k+1,j] : 1 <= k <= j-2 && j <= n} union
+# 	{[k,k+1,k+1] -> [k+1,j'] : 1 <= k <= j'-2 && j' <= n};
+# 
+# D77 := {[k,j,i] -> [k+1,j,i] : 1 <= k <= i-2, j-2 && j <= n && i <= n}
+# 	union
+# 	{[k,k+1,i] -> [k+1,j',i] : 1 <= k <= i-2, j'-2 && j' <= n && i <= n};
+# 
+# difference ( (inverse T5) join D57 join T7 );
+
+{[In_1,0,-1,In_4]: 1 <= In_4 && In_1+In_4 <= n && 1 <= In_1}
+
+# 
+# difference ( (inverse T7) join D75 join T5 );
+
+{[0,0,1,In_4]: -n+2 <= In_4 <= -1} union
+ {[0,In_2,1,In_4]: In_4 <= -1 && 1 <= In_2 && In_2 < n+In_4}
+
+# 
+# difference ( (inverse T7) join D77 join T7 );
+
+{[0,0,0,1]: 3 <= n} union
+ {[0,In_2,0,1]: 1 <= In_2 <= n-2}
+
+# 
+# codegen T5:I5,T7:I7;
+if (n >= 2) {
+  for(t1 = 1; t1 <= n; t1++) {
+    for(t2 = 2; t2 <= n; t2++) {
+      for(t4 = 1; t4 <= min(t2-1,t1-1); t4++) {
+        s2(t4,t2,t1);
+      }
+      if (t1 <= t2-1) {
+        s1(t1,t2);
+      }
+    }
+  }
+}
+
+# 
+# codegen 1 T5:I5,T7:I7;
+if (n >= 2) {
+  for(t1 = 1; t1 <= n; t1++) {
+    if (t1 <= 1) {
+      for(t2 = 2; t2 <= n; t2++) {
+        s1(1,t2);
+      }
+    }
+    for(t2 = 2; t2 <= t1; t2++) {
+      for(t4 = 1; t4 <= t2-1; t4++) {
+        s2(t4,t2,t1);
+      }
+    }
+    if (t1 >= 2) {
+      for(t2 = t1+1; t2 <= n; t2++) {
+        for(t4 = 1; t4 <= t1-1; t4++) {
+          s2(t4,t2,t1);
+        }
+        s1(t1,t2);
+      }
+    }
+  }
+}
+
+# 
+# codegen 2 T5:I5,T7:I7;
+for(t2 = 2; t2 <= n; t2++) {
+  s1(1,t2);
+}
+for(t1 = 2; t1 <= n-1; t1++) {
+  for(t2 = 2; t2 <= t1; t2++) {
+    for(t4 = 1; t4 <= t2-1; t4++) {
+      s2(t4,t2,t1);
+    }
+  }
+  for(t2 = t1+1; t2 <= n; t2++) {
+    for(t4 = 1; t4 <= t1-1; t4++) {
+      s2(t4,t2,t1);
+    }
+    s1(t1,t2);
+  }
+}
+for(t2 = 2; t2 <= n; t2++) {
+  for(t4 = 1; t4 <= t2-1; t4++) {
+    s2(t4,t2,n);
+  }
+}
+
+# 

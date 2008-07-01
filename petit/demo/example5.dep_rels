@@ -1,0 +1,23 @@
+output   1: Entry           -->  10: a(L2)                           [ M]
+{[In_1] -> [L1,In_1] : 1 <= L1 < In_1 <= m && L1 <= n}
+flow     1: Entry           -->  10: b(L1,L2)                        [ MV]
+{[In_1,In_2] -> [In_1,In_2] : 1 <= In_1 < In_2 <= m && In_1 <= n}
+flow     1: Entry           -->   8: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->   9: m                               [ MV]
+{ -> [L1] : 1 <= L1 <= n}
+anti    10: a(L2-1)         -->  10: a(L2)           (+,-1)          [ Mo]
+{[L1,L2] -> [L1',L2-1] : 1 <= L1 < L1' <= L2-2, n && L2 <= m}
+exact dd: {[In_1,-1]: 1 <= In_1}
+flow    10: a(L2)           -->  10: a(L2-1)         (1,*)           [ VO]
+{[L1,L1+1] -> [L1+1,L1+2] : 1 <= L1 <= n-1, m-2}
+may dd: {[1,1]}
+flow    10: a(L2)           -->  10: a(L2-1)         (0,1)           [ MVO]
+{[L1,L2] -> [L1,L2+1] : 1 <= L1 < L2 < m && L1 <= n}
+exact dd: {[0,1]}
+flow    10: a(L2)           -->  10: a(L2-1)         (+,1)           [ Mo]
+{[L1,L2] -> [L1',L2+1] : 1 <= L1 < L1' <= L2 < m && L1' <= n}
+exact dd: {[In_1,1]: 1 <= In_1}
+output  10: a(L2)           -->  10: a(L2)           (+,0)           [ Mo]
+{[L1,L2] -> [L1',L2] : 1 <= L1 < L1' < L2 <= m && L1' <= n}
+exact dd: {[In_1,0]: 1 <= In_1}

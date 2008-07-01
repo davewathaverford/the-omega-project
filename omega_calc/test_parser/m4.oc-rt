@@ -1,0 +1,41 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# T1:={[i,j]->[j,i,0]};
+# 
+# T2:={[i,j]->[j,i,1]};
+# 
+# IS:={[i,j]: 1 <= i,j <= 9};
+# 
+# 
+# newIS1 := T1 \ IS;
+# 
+# newIS1;
+
+{[i,j] -> [j,i,0] : 1 <= i <= 9 && 1 <= j <= 9}
+
+# 
+# newIS2 := T2 \ IS;
+# 
+# newIS2;
+
+{[i,j] -> [j,i,1] : 1 <= i <= 9 && 1 <= j <= 9}
+
+# 
+# 
+# codegen T1:IS,T2:IS;
+for(t1 = 1; t1 <= 9; t1++) {
+  for(t2 = 1; t2 <= 9; t2++) {
+    s1(t2,t1);
+    s2(t2,t1);
+  }
+}
+
+# 
+# codegen 1 T1:IS,T2:IS;
+for(t1 = 1; t1 <= 9; t1++) {
+  for(t2 = 1; t2 <= 9; t2++) {
+    s1(t2,t1);
+    s2(t2,t1);
+  }
+}
+
+# 

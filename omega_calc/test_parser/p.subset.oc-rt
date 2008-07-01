@@ -1,0 +1,10 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# { [i] -> [j] : 1 <= i <= 9 } subset { [i] -> [j] : 1 <= i <= 11 };
+
+True
+# 
+# 
+# { [i] -> [j] : 1 <= i <= 9 } subset { [i] -> [j] : 1 <= i <= 7 };
+
+False
+# 

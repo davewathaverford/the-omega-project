@@ -1,0 +1,12 @@
+symbolic n;
+I := {[i,j,k] : 1 <= i,j,k <= n};
+R1 := {[i,j,n] -> [i,j+1,1] : 1 <= i,j,j+1 <= n}
+	 union {[i,j,k] -> [i,j,k'] : 1 <= i,j,k,k' <= n && k' = k+1};
+R1;
+R1+;
+R1+ within I;
+R2 := {[i,n,n] -> [i+1,1,1] : 1 <= i,i+1 <= n}
+	union R1;
+R2;
+R2+;
+R2+ within I;

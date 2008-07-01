@@ -1,0 +1,1083 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# # This example shows the "time skewing" transformation, including
+# # the array remapping, for the code below:
+# #
+# # This facts.prew file describes the program
+# #
+# #   for(i = 0; i <= N-1; i++)
+# #     for(j = 0; j <= M-1; j++)
+# #       cur[i][j]=i*j+(i-j)+2.00001;
+# # 
+# #   for(t = 0; t < T; t++) {
+# #     for(i = 0; i <= N-1; i++)
+# #       for(j = 0; j <= M-1; j++)
+# # 	  old[i][j] = cur[i][j];
+# # 
+# #     for(i = 1; i <= N-2; i++)
+# #       for(j = 0; j <= M-1; j++)
+# # 	  cur[i][j] = (old[i-1][j]+old[i][j-1]+4*old[i][j]+old[i][j+1]+old[i+1][j])*0.125;
+# # 
+# #   }
+# 
+# 
+# # first, the spaces and memory maps
+# 
+# symbolic T, N, M;
+# 
+# 
+# IS_INIT := { [1,i,1,j,1,0,0]            :            0<=i<=N-1 and 0<=j<=M-1 };
+# 
+# MM_INIT := { [1,i,1,j,1,0,0] -> [0,i,j] :            0<=i<=N-1 and 0<=j<=M-1 };
+# 
+# 
+# IS_COPY := { [2,t,0,i,1,j,1]            : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+# 
+# MM_COPY := { [2,t,0,i,1,j,1] -> [t,i,j] : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+# 
+# 
+# IS_CALC := { [2,t,1,i,1,j,1]            : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+# 
+# MM_CALC := { [2,t,1,i,1,j,1] -> [t,i,j] : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+# 
+# 
+# 
+# 
+# # data flow for original code:
+# 
+# DF_12p1 := ( IS_INIT * IS_COPY ) intersection
+# 	{[1,i,1,j,1,0,0] -> [2,0,0,i,1,j,1] : 0<i<N-1 and 0<j<M-1 };
+# 
+# DF_12p2 := ( IS_INIT * IS_COPY ) intersection
+# 	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=0 };
+# 
+# DF_12p3 := ( IS_INIT * IS_COPY ) intersection
+# 	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=N-1 and N>1 };
+# 
+# DF_12p4 := ( IS_INIT * IS_COPY ) intersection
+# 	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=0 and 0<i<N-1 };
+# 
+# DF_12p5 := ( IS_INIT * IS_COPY ) intersection
+# 	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=M-1 and M>1 and 0<i<N-1 };
+# 
+# 
+# DF_32   := ( IS_CALC  * IS_COPY ) intersection
+# 	{[2,t,1,i,1,j,1] -> [2,t+1,0,i,1,j,1]};
+# 
+# 
+# DF_23a  := ( IS_COPY * IS_CALC ) intersection
+# 	{[2,t,0,i,1,j,1] -> [2,t,1,i+1,1,j,1] };
+# 
+# DF_23b  := ( IS_COPY * IS_CALC ) intersection
+# 	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j+1,1] };
+# 
+# DF_23c  := ( IS_COPY * IS_CALC ) intersection
+# 	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j,1] };
+# 
+# DF_23d  := ( IS_COPY * IS_CALC ) intersection
+# 	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j-1,1] };
+# 
+# DF_23e  := ( IS_COPY * IS_CALC ) intersection
+# 	{[2,t,0,i,1,j,1] -> [2,t,1,i-1,1,j,1] };
+# 
+# 
+# 
+# 
+# # data flow for array expanded code,
+# # after forward substitution of "old[i] = cur[i]"
+# # the ones that are not there are unsatisifiable
+# 
+# DF13ap1 := DF_12p1 join DF_23a;
+# 
+# DF13ap2 := DF_12p2 join DF_23a;
+# 
+# 
+# DF13bp1 := DF_12p1 join DF_23b;
+# 
+# DF13bp4 := DF_12p4 join DF_23b;
+# 
+#         
+# DF13cp1 := DF_12p1 join DF_23c;
+# 
+# 
+# DF13dp1 := DF_12p1 join DF_23d;
+# 
+# DF13dp5 := DF_12p5 join DF_23d;
+# 
+# 
+# DF13ep1 := DF_12p1 join DF_23e;
+# 
+# DF13ep3 := DF_12p3 join DF_23e;
+# 
+# 
+# DF33a   := DF_32 join DF_23a;
+# 
+# DF33b   := DF_32 join DF_23b;
+# 
+# DF33c   := DF_32 join DF_23c;
+# 
+# DF33d   := DF_32 join DF_23d;
+# 
+# DF33e   := DF_32 join DF_23e;
+# 
+# 
+# 
+# # stuff used in skew and tskew
+# 
+# # Here is the description of time skewing from the current draft of the paper.
+# #
+# IS_Trans := { [2,t,1,i,1,j,1] -> [2,tb,1,xb,1,s,1,xx,1,tt,1] :
+# 	0<=tt,xx<8 and s=j+1*t and t=8*tb+tt and
+# 	i+1*t = 8*xb+xx };
+# 
+# 
+# IS_Tinv := inverse IS_Trans;
+# 
+# 
+# 
+# 
+# # THE FOLLOWING UPDATES REQUIRE A FEW SIMPLE RELATIONS.
+# # IN THE FUTURE, THEY MAY BE DONE AUTOMATICALLY WITHIN TCODEGEN
+# # IF THE ORIGINAL IS AND TRANSFORMATION ARE GIVEN
+# 
+# # We use IS_Trans to transform the calculation iteration space
+# TS_IS_CALC := IS_CALC join IS_Trans;
+# 
+# 
+# # We then expand the init iteration space to be compatible
+# ex_11_7:= { [a,b,c,d,e,f,g,0,0,0,0] -> [a,b,c,d,e,f,g]     };
+# 
+# 
+# # for some reason OC refuses do to this "join" but will do the reverse:
+# # TS_IS_INIT := ex_11_7 join IS_INIT;
+# TS_IS_INIT := IS_INIT  join (inverse ex_11_7);
+# 
+# 
+# 
+# # Now we can update the data flow relations to correspond to the new I.S.'s
+# 
+# TS_DF13ap1 := ex_11_7 join DF13ap1 join IS_Trans;
+# 
+# TS_DF13ap2 := ex_11_7 join DF13ap2 join IS_Trans;
+# 
+# 
+# TS_DF13bp1 := ex_11_7 join DF13bp1 join IS_Trans;
+# 
+# TS_DF13bp4 := ex_11_7 join DF13bp4 join IS_Trans;
+# 
+#         
+# TS_DF13cp1 := ex_11_7 join DF13cp1 join IS_Trans;
+# 
+# 
+# TS_DF13dp1 := ex_11_7 join DF13dp1 join IS_Trans;
+# 
+# TS_DF13dp5 := ex_11_7 join DF13dp5 join IS_Trans;
+# 
+#        
+# TS_DF13ep1 := ex_11_7 join DF13ep1 join IS_Trans;
+# 
+# TS_DF13ep3 := ex_11_7 join DF13ep3 join IS_Trans;
+# 
+# 
+# 
+#         
+# TS_DF33a   := IS_Tinv join DF33a  join IS_Trans;
+# 
+# TS_DF33b   := IS_Tinv join DF33b  join IS_Trans;
+# 
+# TS_DF33c   := IS_Tinv join DF33c  join IS_Trans;
+# 
+# TS_DF33d   := IS_Tinv join DF33d  join IS_Trans;
+# 
+# TS_DF33e   := IS_Tinv join DF33e  join IS_Trans;
+# 
+#  
+# 
+# # Finally, here are the memory maps for the arrays we write to,
+# # straight out of the current draft of the paper.
+# 
+# # For the initialization, just do as we did in "orig", but from 11-dim. space:
+# NO_T := { [t,i,j] -> [i,j] };
+# 
+# TS_MM_init  :=  ((ex_11_7 join MM_INIT) join NO_T);
+# 
+# 
+# 
+# # The memory maps for the calculation, from the draft paper
+# TS_MM_main  := IS_Tinv join { [2,t,1,i,1,j,1] -> [i,j] }
+#                 restrictDomain { [2,tb,1,xb,1,s,1,xx,1,tt,1] : tt=8-1 }
+#                 restrictDomain TS_IS_CALC;
+# 
+# TS_MM_tide  := { [2,tb,1,xb,1,s,1,xx,1,tt,1]->[xbmod2,s,xx+1-(8-1),tt]:
+#                  exists (xbdiv2 : 2*xbdiv2+xbmod2 = xb && 0<=xbmod2<2) and
+#                          xx+1>=8-1 and tt<8-1 }
+#                 restrictDomain TS_IS_CALC;
+# 
+# TS_MM_cache :=  { [2,tb,1,xb,1,s,1,xx,1,tt,1] -> [smod4, xx, tt] :
+#                   exists (sdiv4 : 4*sdiv4+smod4 = s && 0<=smod4<4) and
+#                   xx+1<8-1 and tt<8-1 }
+#                 restrictDomain TS_IS_CALC;
+# 
+# 
+# 
+# 
+# # Some simple relations used for checks.
+# # these checks will be done within tcodegen at some point.
+# 
+# FWD11:= {[a,b,c,d,e,f,g,h,i,j,k] -> [a',b',c',d',e',f',g',h',i',j',k'] :
+# 	(a'>a) or
+# 	(a'=a and b'>b) or
+# 	(a'=a and b'=b and c'>c) or
+# 	(a'=a and b'=b and c'=c and d'>d) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'>e) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'>f) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'>g) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'>h) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'>i) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'>j) or
+# 	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'=j and k'>k) };
+# 
+# 
+# ALL11:= { [a,b,c,d,e,f,g,h,i,j,k] };
+# 
+# 
+# 
+# # HOW DO WE CHECK TO SEE IF A SET OF MEMORY MAPS MESSES US UP?
+# # 1) We can easily check the array bounds.
+# #    The following relations show all iterations writing to all legal elements
+# 
+# maindims  := {[i, j] : 0<=i<=N and 0<=j<=M};
+# 
+# tidedims  := {[xbmod2, s, xxend, tt] : 0<=xbmod2<2 and 0<=s<M+T-1 and
+# 				0<=xxend<3 and 0<=tt<8};
+# 
+# cachedims := {[smod4, xx, tt] : 0<=smod4<4 and 0<=xx<8 and 0<=tt<8};
+# 
+# 
+# # ... so here are the iterations that write out-of-bounds elements:
+# 
+# assertUnsatisfiable (range TS_MM_main  - maindims);
+
+{[i,j]  : FALSE }
+
+# 
+# assertUnsatisfiable (range TS_MM_tide  - tidedims);
+
+{[xbmod2,s,xxend,tt]  : FALSE }
+
+# 
+# assertUnsatisfiable (range TS_MM_cache - cachedims);
+
+{[smod4,xx,tt]  : FALSE }
+
+# 
+# 
+# 
+# # 2) We can also check for reading an element that's been killed:
+# 
+# # First look for problems with "cache" being overwritten.
+# # This can only happen in successive executions of the CALC stmt
+# 
+# samecachefwd33 := (TS_MM_cache join inverse TS_MM_cache) intersection FWD11;
+# 
+# 
+# # Here are the sets of elements that are killed before being read in each read:
+# assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33a);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33b);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33c);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33d);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33e);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# 
+# # Now look for problems with "tide" being overwritten.
+# # This can only happen in successive executions of the CALC stmt
+# 
+# sametidefwd33 := (TS_MM_tide join inverse TS_MM_tide) intersection FWD11;
+# 
+# 
+# # Here are the sets of elements that are killed before being read in each read:
+# assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33a);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33b);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33c);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33d);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33e);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# 
+# # Finally, look for problems with main array being overwritten.
+# # This can happen in successive executions of the CALC stmt
+# # or when the array is written in INIT and then CALC
+# 
+# samemainfwd33 := (TS_MM_main join inverse TS_MM_main) intersection FWD11;
+# 
+# 
+# # Here are the sets of elements that are killed before being read in each read:
+# assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33a);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33b);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33c);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33d);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33e);
+
+{[a,tb,c,xb,e,s,g,xx,i,tt,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# 
+# # for writes in INIT and CALC, I'm only considering when INIT happens first...
+# 
+# samemainfwd13 := (TS_MM_init join inverse TS_MM_main) intersection FWD11;
+# 
+# 
+# # Here are the sets of elements that are killed before being read in each read:
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ap1);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ap2);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13bp1);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13bp4);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13cp1);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13dp1);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13dp5);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ep1);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ep3);
+
+{[a,b,c,d,e,f,g,h,i,j,k] -> [a',Out_2,c',Out_4,e',Out_6,g',Out_8,i',Out_10,k']  : FALSE }
+
+# 
+# 
+# 
+# 
+# # If we are always in bounds, and never kill a value that we need,
+# # and the final values are always in the final array,
+# # then the mmap is good.  I'm not sure how to check that last one.
+# # We'd probably need to specify what constitutes the "result".
+# 
+# tcodegen
+# 	["w=t2*t4+(t2-t4)+2.00001",	 TS_IS_INIT,
+# 	  "cur",   TS_MM_init],
+# 	["w=0.125*(r1+r2+(4*r3)+r4+r5)", TS_IS_CALC,
+# 	  "cur",   TS_MM_main,
+# 	  "tide",  TS_MM_tide,
+# 	  "cache", TS_MM_cache,
+# 		[1, TS_DF13ap1, 1, TS_DF13ap2,	2, TS_DF33a],
+# 		[1, TS_DF13bp1, 1, TS_DF13bp4,	2, TS_DF33b],
+# 		[1, TS_DF13cp1, 		2, TS_DF33c],
+# 		[1, TS_DF13dp1, 1, TS_DF13dp5,	2, TS_DF33d],
+# 		[1, TS_DF13ep1, 1, TS_DF13ep3,	2, TS_DF33e]
+# 	]
+# given	{ [a,b,c,d,e,f,g,h,i,j,k] : T, N, M > 3 };
+#define s1(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	w=t2*t4+(t2-t4)+2.00001
+#define s2(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	cur[(t2)][(t4)] = w
+#define s3(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r1 = cur[8*(t4)+(t8)-1][(t6)]
+#define s4(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r1 = cur[0][(t6)-(t8)-8*(t4)+1]
+#define s5(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r1 = cur[(t8)-8*(t2)+8*(t4)-1][(t6)-8*(t2)]
+#define s6(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r1 = tide[(intMod)(-1*(t4)+1,2)][(t6)-1][(t8)][(t10)-1]
+#define s7(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r1 = cache[(intMod)(1*(t6)+-1,4)][(t8)-2][(t10)-1]
+#define s8(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r2 = cur[8*(t4)+(t8)][(t6)-1]
+#define s9(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r2 = cur[(t8)-(t6)+8*(t4)+1][0]
+#define s10(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r2 = cur[(t8)-8*(t2)+8*(t4)][(t6)-8*(t2)-1]
+#define s11(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r2 = tide[(intDiv)((intMod)(8*(intDiv)((t8)-8*(t4)+-7,8),16),8)][(t6)-2][(intMod)((t8)-8*(t4)+-7,8)][(t10)-1]
+#define s12(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r2 = cache[(intMod)(1*(t6)+-2,4)][(t8)-1][(t10)-1]
+#define s13(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r3 = cur[8*(t4)+(t8)][(t6)]
+#define s14(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r3 = cur[(t8)-8*(t2)+8*(t4)][(t6)-8*(t2)]
+#define s15(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r3 = tide[(intDiv)((intMod)(8*(intDiv)((t8)-8*(t4)+-7,8),16),8)][(t6)-1][(intMod)((t8)-8*(t4)+-7,8)][(t10)-1]
+#define s16(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r3 = cache[(intMod)(1*(t6)+-1,4)][(t8)-1][(t10)-1]
+#define s17(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r4 = cur[8*(t4)+(t8)][(t6)+1]
+#define s18(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r4 = cur[(M)+(t8)-(t6)+8*(t4)-2][(M)-1]
+#define s19(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r4 = cur[(t8)-8*(t2)+8*(t4)][(t6)-8*(t2)+1]
+#define s20(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r4 = tide[(intDiv)((intMod)(8*(intDiv)((t8)-8*(t4)+-7,8),16),8)][(t6)][(intMod)((t8)-8*(t4)+-7,8)][(t10)-1]
+#define s21(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r4 = cache[(intMod)(1*(t6)+0,4)][(t8)-1][(t10)-1]
+#define s22(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r5 = cur[8*(t4)+(t8)+1][(t6)]
+#define s23(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r5 = cur[(N)-1][(N)-(t8)+(t6)-8*(t4)-2]
+#define s24(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r5 = cur[(t8)-8*(t2)+8*(t4)+1][(t6)-8*(t2)]
+#define s25(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r5 = tide[(intMod)(-1*(t4)+0,2)][(t6)-1][(t8)-6][(t10)-1]
+#define s26(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	r5 = cache[(intMod)(1*(t6)+-1,4)][(t8)][(t10)-1]
+#define s27(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	w=0.125*(r1+r2+(4*r3)+r4+r5)
+#define s28(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	cur[(t8)-8*(t2)+8*(t4)-7][(t6)-8*(t2)-7] = w
+#define s29(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	tide[(intMod)(-1*(t4)+0,2)][(t6)][(t8)-6][(t10)] = w
+#define s30(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)	cache[(intMod)(1*(t6)+0,4)][(t8)][(t10)] = w
+for(t2 = 0; t2 <= N-1; t2++) {
+  for(t4 = 0; t4 <= M-1; t4++) {
+    s1(1,t2,1,t4,1,0,0,0,0,0,0);
+    s2(1,t2,1,t4,1,0,0,0,0,0,0);
+  }
+}
+for(t2 = 0; t2 <= intDiv(T-1,8); t2++) {
+  for(t4 = t2; t4 <= min(intDiv(8*t2+N+5,8),intDiv(T+N-3,8)); t4++) {
+    for(t6 = max(8*t2+1,8*t4-N+3); t6 <= min(8*t4+M+4,T+M-3,8*t2+M+5); t6++) {
+      for(t8 = max(-8*t4+8*t2+1,-8*t4+t6-M+3,0); t8 <= min(T-8*t4+N-3,-8*t4+N+t6-3,-8*t4+8*t2+N+5,7); t8++) {
+        if (t2 <= 0 && 8*t4 <= -t8+N-2 && t6 <= M-2 && 8*t4 >= -t8+2) {
+          s3(2,0,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t8 == 1 && t4 <= t2) {
+          s4(2,t2,1,t2,1,t6,1,1,1,0,1);
+        }
+        if (t2 >= 1 && 8*t4 >= -t8+8*t2+2 && 8*t4 <= -t8+N+8*t2-2 && t6 <= M+8*t2-2) {
+          s5(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 >= 2 && 8*t4 <= -t8+N-2 && t6 <= M-2 && t2 <= 0) {
+          s8(2,0,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (8*t2 >= t6-1) {
+          s9(2,t2,1,t4,1,8*t2+1,1,t8,1,0,1);
+        }
+        if (t2 >= 1 && t6 >= 8*t2+2 && 8*t4 <= -t8+N+8*t2-2 && t6 <= M+8*t2-2) {
+          s10(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M-2 && t2 <= 0 && 8*t4 <= -t8+N-2) {
+          s13(2,0,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t2 >= 1 && 8*t4 <= -t8+N+8*t2-2 && t6 <= M+8*t2-2) {
+          s14(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M-3 && t2 <= 0 && 8*t4 <= -t8+N-2) {
+          s17(2,0,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 == 8*t2+M-2 && 8*t4 <= -t8+N+8*t2-2) {
+          s18(2,t2,1,t4,1,M+8*t2-2,1,t8,1,0,1);
+        }
+        if (t2 >= 1 && 8*t4 <= -t8+N+8*t2-2 && t6 <= M+8*t2-3) {
+          s19(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M-2 && t2 <= 0 && 8*t4 <= -t8+N-3) {
+          s22(2,0,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (8*t4 == -t8+8*t2+N-2 && 8*t2 >= t6-M+2) {
+          s23(2,t2,1,t4,1,t6,1,N+-8*t4+8*t2-2,1,0,1);
+        }
+        if (t2 >= 1 && 8*t4 <= -t8+N+8*t2-3 && t6 <= M+8*t2-2) {
+          s24(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M+8*t2-2 && 8*t4 <= -t8+N+8*t2-2) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M+8*t2-2 && t8 >= 6 && 8*t4 <= -t8+N+8*t2-2) {
+          s29(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t6 <= M+8*t2-2 && t8 <= 5 && 8*t4 <= -t8+N+8*t2-2) {
+          s30(2,t2,1,t4,1,t6,1,t8,1,0,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6-M+4 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M) {
+          s6(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6-M+4 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M) {
+          s11(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6-M+4 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M) {
+          s15(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t2 <= t6-M+1 && 8*t4 >= t6-M+4 && 8*t4 <= N+t6-M && t8 <= 0) {
+          s18(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 == N+t6-M && 8*t4 >= 8*t2+N-1 && t8 <= 0) {
+          s23(2,t2,1,t4,1,M-N+8*t4,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6-M+4 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-1) {
+          s26(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6-M+4 && 8*t4 <= N+t6-M && 8*t2 <= t6-M+1) {
+          s27(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 0 && t4 >= t2+2 && 8*t2 <= t6-M-5) {
+          s28(2,t2,1,t4,1,M+8*t2+5,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t8 <= 0 && 8*t4 <= N+t6-M && 8*t2 <= t6-M+1) {
+          s30(2,t2,1,t4,1,t6,1,0,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 <= N+t6-4 && 8*t4 >= 8*t2+N-1 && 8*t4 >= N+t6-M+1) {
+          s6(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (8*t4 >= 8*t2+N-1 && 8*t4 <= N+t6-4 && t8 <= 0 && 8*t4 >= N+t6-M+1) {
+          s11(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (8*t4 >= 8*t2+N-1 && 8*t4 <= N+t6-4 && t8 <= 0 && 8*t4 >= N+t6-M+1) {
+          s15(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (8*t4 >= 8*t2+N-1 && 8*t4 <= N+t6-4 && t8 <= 0 && 8*t4 >= N+t6-M+1) {
+          s20(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 <= N+t6-4 && 8*t4 >= 8*t2+N-1 && 8*t4 >= N+t6-M+1) {
+          s23(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (t8 <= 0 && 8*t4 <= N+t6-4 && 8*t4 >= N+t6-M+1 && 8*t4 >= 8*t2+N-1) {
+          s27(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (8*t4 >= 8*t2+N+5 && 8*t2 <= t6-9 && 8*t2 >= -M+t6-4 && t8 <= 0) {
+          s28(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t4 <= 8*t2+N+4 && 8*t4 >= N+t6-M+1 && t8 <= 0 && 8*t4 >= 8*t2+N-1 && 8*t4 <= N+t6-4) {
+          s30(2,t2,1,t4,1,t6,1,0,1,8*t4-N+-8*t2+2,1);
+        }
+        if (t8 <= 0) {
+          for(t10 = max(-8*t2+t6-M+3,8*t4-8*t2-N+3,1); t10 <= min(T-8*t2-1,-8*t2+t6-2,6); t10++) {
+            s6(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s11(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s15(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s20(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s26(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s27(2,t2,1,t4,1,t6,1,0,1,t10,1);
+            s30(2,t2,1,t4,1,t6,1,0,1,t10,1);
+          }
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && t8 <= 0 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s6(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && t8 <= 0 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s11(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && t8 <= 0 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s15(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && t8 <= 0 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s20(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && t8 <= 0 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s26(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && T >= 8*t2+8 && t8 <= 0 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s27(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+2 && T >= 8*t2+8 && t8 <= 0 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N+4) {
+          s28(2,t2,1,t4,1,t6,1,0,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-1 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1) {
+          s6(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-1 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1) {
+          s12(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-1 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1) {
+          s16(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-1 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1) {
+          s18(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 == N+t6-M-1 && t8 == 1 && 8*t4 >= 8*t2+N-2) {
+          s23(2,t2,1,t4,1,M-N+8*t4+1,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-2 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1) {
+          s26(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t2 <= t6-M+1 && 8*t4 >= t6-M+3 && 8*t4 <= N+t6-M-1) {
+          s27(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t2 <= t6-M-5) {
+          s28(2,t2,1,t4,1,M+8*t2+5,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= N+t6-M-1 && 8*t4 >= t6-M+3 && 8*t2 <= t6-M+1 && 8*t2 >= t6-M-4) {
+          s30(2,t2,1,t4,1,t6,1,1,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 1 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5 && 8*t4 >= 8*t2+N-2) {
+          s6(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5 && 8*t4 >= 8*t2+N-2) {
+          s12(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5 && 8*t4 >= 8*t2+N-2) {
+          s16(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5 && 8*t4 >= 8*t2+N-2) {
+          s21(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5 && 8*t4 >= 8*t2+N-2) {
+          s23(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= 8*t2+N-2 && 8*t4 <= N+t6-5 && 8*t4 >= N+t6-M) {
+          s27(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && 8*t4 >= 8*t2+N+4 && 8*t2 >= -M+t6-4 && 8*t2 <= t6-9) {
+          s28(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 >= 8*t2+N-2 && 8*t4 <= 8*t2+N+3 && 8*t4 >= N+t6-M && 8*t4 <= N+t6-5) {
+          s30(2,t2,1,t4,1,t6,1,1,1,8*t4-N+-8*t2+3,1);
+        }
+        if (t8 == 1 && t4 >= t2+1) {
+          for(t10 = max(-8*t2+t6-M+3,8*t4-8*t2-N+4,1); t10 <= min(T-8*t2-1,-8*t2+t6-2,6); t10++) {
+            s6(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s12(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s16(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s21(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s26(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s27(2,t2,1,t4,1,t6,1,1,1,t10,1);
+            s30(2,t2,1,t4,1,t6,1,1,1,t10,1);
+          }
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s6(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s12(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s16(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s21(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s26(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s27(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 == 1 && 8*t4 <= 8*t2+N+3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s28(2,t2,1,t4,1,t6,1,1,1,7,1);
+        }
+        if (t8 <= 1 && t6 <= 8*t2+8 && t6 >= 8*t2+2 && T >= t6 && 8*t4 >= -t8+t6+1) {
+          s6(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 1 && t6 <= 8*t2+8 && t6 >= 8*t2+2 && T >= t6 && 8*t4 >= -t8+t6+1) {
+          s9(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6+1 && 8*t2 <= t6-2 && T >= t6 && 8*t2 >= t6-8) {
+          s15(2,t2,1,t4,1,t6,1,0,1,t6+-8*t2-1,1);
+        }
+        if (t8 == 1 && 8*t2 >= t6-8 && T >= t6 && 8*t4 >= t6 && 8*t2 <= t6-2) {
+          s16(2,t2,1,t4,1,t6,1,1,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 0 && 8*t4 >= t6+1 && 8*t2 <= t6-2 && T >= t6 && 8*t2 >= t6-8) {
+          s20(2,t2,1,t4,1,t6,1,0,1,t6+-8*t2-1,1);
+        }
+        if (t8 == 1 && 8*t2 >= t6-8 && T >= t6 && 8*t4 >= t6 && 8*t2 <= t6-2) {
+          s21(2,t2,1,t4,1,t6,1,1,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 1 && 8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-3) {
+          s23(2,t2,1,t4,1,t6,1,N+-8*t4+t6-3,1,t6+-8*t2-1,1);
+        }
+        if (t6 <= 8*t2+8 && T >= t6 && 8*t4 <= -t8+N+t6-4 && t8 <= 1 && t6 >= 8*t2+2 && 8*t4 >= -t8+t6+1) {
+          s26(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 1 && 8*t4 >= -t8+t6+1 && t6 >= 8*t2+2 && T >= t6 && t6 <= 8*t2+8) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (8*t2 == t6-8 && t8 <= 1 && T >= 8*t2+8 && 8*t4 >= -t8+8*t2+9) {
+          s28(2,t2,1,t4,1,8*t2+8,1,t8,1,7,1);
+        }
+        if (t8 <= 1 && T >= t6 && t6 >= 8*t2+2 && t6 <= 8*t2+7 && 8*t4 >= -t8+t6+1) {
+          s30(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 <= 6 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M) {
+          s7(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 6 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M) {
+          s12(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 6 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M) {
+          s16(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 6 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M) {
+          s18(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 == -t8+N+t6-M && t8 <= 6 && t8 >= 2 && 8*t4 >= -t8+N+8*t2-1) {
+          s23(2,t2,1,t4,1,t6,1,N-M+-8*t4+t6,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 == 6 && 8*t4 <= N+t6-M-7 && 8*t4 >= t6-M-2 && 8*t2 <= t6-M+1) {
+          s25(2,t2,1,t4,1,t6,1,6,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 5 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M-1) {
+          s26(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 <= 6 && 8*t4 >= -t8+t6-M+4 && t6 >= M+8*t2-1 && t8 >= 2 && 8*t4 <= -t8+N+t6-M) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (t6 >= 8*t2+M+5 && t8 <= 6 && t8 >= 2) {
+          s28(2,t2,1,t4,1,M+8*t2+5,1,t8,1,7,1);
+        }
+        if (t8 == 6 && 8*t2 >= t6-M-4 && 8*t4 >= t6-M-2 && 8*t4 <= N+t6-M-6 && 8*t2 <= t6-M+1) {
+          s29(2,t2,1,t4,1,t6,1,6,1,t6-M+-8*t2+2,1);
+        }
+        if (t6 <= M+8*t2+4 && 8*t4 >= -t8+t6-M+4 && t8 >= 2 && 8*t4 <= -t8+N+t6-M && t8 <= 5 && t6 >= M+8*t2-1) {
+          s30(2,t2,1,t4,1,t6,1,t8,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s7(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s12(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s16(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s21(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s23(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 6) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (8*t4 >= -t8+8*t2+N+5 && 8*t2 >= t6-M-4 && t8 >= 2 && 8*t2 <= t6-9 && t8 <= 6) {
+          s28(2,t2,1,t4,1,t6,1,N+-8*t4+8*t2+5,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 >= 8*t2+N-7 && 8*t4 <= 8*t2+N-2 && 8*t4 >= N+t6-M-5 && 8*t4 <= N+t6-10) {
+          s29(2,t2,1,t4,1,t6,1,6,1,8*t4-N+-8*t2+8,1);
+        }
+        if (8*t4 >= -t8+N+t6-M+1 && t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 5 && 8*t4 >= -t8+N+8*t2-1 && 8*t4 <= -t8+N+8*t2+4) {
+          s30(2,t2,1,t4,1,t6,1,t8,1,t8-N+-8*t2+8*t4+2,1);
+        }
+        if (t8 >= 2 && t8 <= 5) {
+          for(t10 = max(8*t4+t8-N-8*t2+3,t6-M-8*t2+3,1); t10 <= min(T-8*t2-1,8*t4+t8-8*t2-2,t6-8*t2-2,6); t10++) {
+            s7(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s12(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s16(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s21(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s26(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s27(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+            s30(2,t2,1,t4,1,t6,1,t8,1,t10,1);
+          }
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s7(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s12(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s16(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s21(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s26(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && 8*t4 >= -t8+8*t2+9 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 >= 2 && T >= 8*t2+8 && t8 <= 5 && t6 >= 8*t2+9 && t4 >= t2+1 && 8*t4 <= -t8+N+8*t2+4 && t6 <= M+8*t2+4) {
+          s28(2,t2,1,t4,1,t6,1,t8,1,7,1);
+        }
+        if (t8 == 6) {
+          for(t10 = max(-8*t2+t6-M+3,8*t4-8*t2-N+9,1); t10 <= min(T-8*t2-1,-8*t2+t6-2,8*t4-8*t2+4,6); t10++) {
+            s7(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s12(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s16(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s21(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s25(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s27(2,t2,1,t4,1,t6,1,6,1,t10,1);
+            s29(2,t2,1,t4,1,t6,1,6,1,t10,1);
+          }
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s7(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s12(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s16(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s21(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s25(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s27(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 == 6 && 8*t4 <= 8*t2+N-2 && 8*t2 >= t6-M-4 && 8*t2 <= t6-9 && t4 >= t2+1 && T >= 8*t2+8) {
+          s28(2,t2,1,t4,1,t6,1,6,1,7,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-7) {
+          s7(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-7) {
+          s11(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-7) {
+          s15(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t2 <= t6-M+1 && 8*t4 >= t6-M-3 && 8*t4 <= N+t6-M-7 && t8 >= 7) {
+          s18(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 == N+t6-M-7 && 8*t4 >= 8*t2+N-8 && t8 >= 7) {
+          s23(2,t2,1,t4,1,M-N+8*t4+7,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-8) {
+          s25(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t4 <= N+t6-M-7 && 8*t2 <= t6-M+1) {
+          s27(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t2 <= t6-M-5 && t8 >= 7) {
+          s28(2,t2,1,t4,1,M+8*t2+5,1,7,1,7,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-M-3 && 8*t2 >= t6-M-4 && 8*t2 <= t6-M+1 && 8*t4 <= N+t6-M-7) {
+          s29(2,t2,1,t4,1,t6,1,7,1,t6-M+-8*t2+2,1);
+        }
+        if (t8 >= 7 && 8*t4 <= N+t6-11 && 8*t4 >= 8*t2+N-8 && 8*t4 >= N+t6-M-6) {
+          s7(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (8*t4 >= 8*t2+N-8 && 8*t4 <= N+t6-11 && t8 >= 7 && 8*t4 >= N+t6-M-6) {
+          s11(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (8*t4 >= 8*t2+N-8 && 8*t4 <= N+t6-11 && t8 >= 7 && 8*t4 >= N+t6-M-6) {
+          s15(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (8*t4 >= 8*t2+N-8 && 8*t4 <= N+t6-11 && t8 >= 7 && 8*t4 >= N+t6-M-6) {
+          s20(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (t8 >= 7 && 8*t4 <= N+t6-11 && 8*t4 >= 8*t2+N-8 && 8*t4 >= N+t6-M-6) {
+          s23(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (t8 >= 7 && 8*t4 <= N+t6-11 && 8*t4 >= N+t6-M-6 && 8*t4 >= 8*t2+N-8) {
+          s27(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (8*t4 >= 8*t2+N-2 && 8*t2 <= t6-9 && 8*t2 >= -M+t6-4 && t8 >= 7) {
+          s28(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t4 <= 8*t2+N-3 && 8*t4 >= N+t6-M-6 && t8 >= 7 && 8*t4 >= 8*t2+N-8 && 8*t4 <= N+t6-11) {
+          s29(2,t2,1,t4,1,t6,1,7,1,8*t4-N+-8*t2+9,1);
+        }
+        if (t8 >= 7) {
+          for(t10 = max(-8*t2+t6-M+3,8*t4-8*t2-N+10,1); t10 <= min(-8*t2+t6-2,8*t4-8*t2+5,T-8*t2-1,6); t10++) {
+            s7(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s11(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s15(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s20(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s25(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s27(2,t2,1,t4,1,t6,1,7,1,t10,1);
+            s29(2,t2,1,t4,1,t6,1,7,1,t10,1);
+          }
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && t8 >= 7 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s7(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && t8 >= 7 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s11(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && t8 >= 7 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s15(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && t8 >= 7 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s20(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && t8 >= 7 && T >= 8*t2+8 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s25(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && T >= 8*t2+8 && t8 >= 7 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s27(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (8*t2 >= t6-M-4 && t4 >= t2+1 && T >= 8*t2+8 && t8 >= 7 && 8*t2 <= t6-9 && 8*t4 <= 8*t2+N-3) {
+          s28(2,t2,1,t4,1,t6,1,7,1,7,1);
+        }
+        if (t6 >= 8*t2+2 && t6 <= 8*t2+8 && t8 >= 2 && T >= t6 && 8*t4 >= -t8+t6+1) {
+          s7(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t6 >= 8*t2+2 && t6 <= 8*t2+8 && t8 >= 2 && T >= t6 && 8*t4 >= -t8+t6+1) {
+          s9(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-6 && 8*t2 <= t6-2 && T >= t6 && 8*t2 >= t6-8) {
+          s15(2,t2,1,t4,1,t6,1,7,1,t6+-8*t2-1,1);
+        }
+        if (t6 <= 8*t2+8 && t8 >= 2 && 8*t4 >= -t8+t6+1 && T >= t6 && t8 <= 6 && t6 >= 8*t2+2) {
+          s16(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 >= 7 && 8*t4 >= t6-6 && 8*t2 <= t6-2 && T >= t6 && 8*t2 >= t6-8) {
+          s20(2,t2,1,t4,1,t6,1,7,1,t6+-8*t2-1,1);
+        }
+        if (t6 <= 8*t2+8 && t8 >= 2 && 8*t4 >= -t8+t6+1 && T >= t6 && t8 <= 6 && t6 >= 8*t2+2) {
+          s21(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 >= 2 && 8*t4 >= -t8+N+8*t2-1 && 8*t4 >= -t8+N+t6-3) {
+          s23(2,t2,1,t4,1,t6,1,N+-8*t4+t6-3,1,t6+-8*t2-1,1);
+        }
+        if (t6 <= 8*t2+8 && t8 >= 6 && 8*t4 <= -t8+N+t6-4 && T >= t6 && t6 >= 8*t2+2 && 8*t4 >= -t8+t6+1) {
+          s25(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t8 >= 2 && 8*t4 <= -t8+N+t6-4 && t8 <= 5 && t6 >= 8*t2+2 && 8*t4 >= -t8+t6+1 && T >= t6 && t6 <= 8*t2+8) {
+          s26(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (t6 >= 8*t2+2 && 8*t4 >= -t8+t6+1 && t8 >= 2 && T >= t6 && t6 <= 8*t2+8) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (8*t2 == t6-8 && 8*t4 >= -t8+8*t2+9 && t8 >= 2 && T >= 8*t2+8) {
+          s28(2,t2,1,t4,1,8*t2+8,1,t8,1,7,1);
+        }
+        if (t6 >= 8*t2+2 && T >= t6 && t8 >= 6 && t6 <= 8*t2+7 && 8*t4 >= -t8+t6+1) {
+          s29(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (T >= t6 && t8 >= 2 && 8*t4 >= -t8+t6+1 && t6 <= 8*t2+7 && t8 <= 5 && t6 >= 8*t2+2) {
+          s30(2,t2,1,t4,1,t6,1,t8,1,t6+-8*t2-1,1);
+        }
+        if (8*t4 <= -t8+8*t2+8 && 8*t4 >= -t8+8*t2+2 && 8*t4 <= -t8+t6 && T >= 8*t4+t8) {
+          s4(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 == -t8+t6 && 8*t4 <= -t8+8*t2+8 && T >= 8*t4+t8 && 8*t4 >= -t8+8*t2+2) {
+          s9(2,t2,1,t4,1,t6,1,t6+-8*t4,1,t6+-8*t2-1,1);
+        }
+        if (8*t4 <= -t8+8*t2+8 && 8*t4 >= -t8+8*t2+7 && 8*t4 <= -t8+t6-1 && T >= 8*t4+t8) {
+          s11(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 <= -t8+t6-1 && t8 <= 6 && T >= 8*t4+t8 && t4 <= t2 && t8 >= 2) {
+          s12(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+        if (8*t4 <= -t8+8*t2+8 && 8*t4 >= -t8+8*t2+7 && 8*t4 <= -t8+t6 && T >= 8*t4+t8) {
+          s15(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 <= -t8+t6 && t8 <= 6 && T >= 8*t4+t8 && t4 <= t2 && t8 >= 2) {
+          s16(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+        if (8*t4 >= -t8+8*t2+2 && 8*t4 <= -t8+t6-M+3) {
+          s18(2,t2,1,t4,1,t6,1,t6-M+-8*t4+3,1,t6-M+-8*t2+2,1);
+        }
+        if (8*t4 <= -t8+8*t2+8 && 8*t4 >= -t8+t6-M+4 && 8*t4 <= -t8+t6 && 8*t4 >= -t8+8*t2+7 && T >= 8*t4+t8) {
+          s20(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 <= -t8+t6 && 8*t4 >= -t8+t6-M+4 && t8 >= 2 && t4 <= t2 && t8 <= 6 && T >= 8*t4+t8) {
+          s21(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+        if (t8 >= 6 && 8*t4 <= -t8+t6 && T >= 8*t4+t8 && t4 <= t2) {
+          s25(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+        if (8*t4 <= -t8+t6 && 8*t4 >= -t8+8*t2+2 && 8*t4 <= -t8+8*t2+8 && T >= 8*t4+t8 && t8 <= 5) {
+          s26(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 <= -t8+t6 && 8*t4 >= -t8+8*t2+2 && 8*t4 <= -t8+8*t2+8 && T >= 8*t4+t8) {
+          s27(2,t2,1,t4,1,t6,1,t8,1,t8+-8*t2+8*t4-1,1);
+        }
+        if (8*t4 <= t6 && T >= 8*t4 && t8 <= 0 && t4 <= t2+1) {
+          s28(2,t2,1,t2+1,1,t6,1,0,1,7,1);
+        }
+        if (t8 >= 6 && 8*t4 <= -t8+t6 && T >= 8*t4+t8 && t4 <= t2) {
+          s29(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+        if (8*t4 <= -t8+t6 && t8 <= 5 && T >= 8*t4+t8 && t4 <= t2 && t8 >= 2) {
+          s30(2,t2,1,t2,1,t6,1,t8,1,t8-1,1);
+        }
+      }
+    }
+  }
+}
+
+# 
+# 
+# #
+# # Now, an example where the memory map is bad:
+# #
+# 
+# TS_MM_tideBad  := { [2,tb,1,xb,1,s,1,xx,1,tt,1]->[s,xx+1-(8-1),tt]:
+#                          xx+1>=8-1 and tt<8-1 }
+#                 restrictDomain TS_IS_CALC;
+# 
+# 
+# tcodegen
+# 	["w=t2*t4+(t2-t4)+2.00001",	 TS_IS_INIT,
+# 	  "cur",   TS_MM_init],
+# 	["w=0.125*(r1+r2+(4*r3)+r4+r5)", TS_IS_CALC,
+# 	  "cur",   TS_MM_main,
+# 	  "tide",  TS_MM_tideBad,
+# 	  "cache", TS_MM_cache,
+# 		[1, TS_DF13ap1, 1, TS_DF13ap2,	2, TS_DF33a],
+# 		[1, TS_DF13bp1, 1, TS_DF13bp4,	2, TS_DF33b],
+# 		[1, TS_DF13cp1, 		2, TS_DF33c],
+# 		[1, TS_DF13dp1, 1, TS_DF13dp5,	2, TS_DF33d],
+# 		[1, TS_DF13ep1, 1, TS_DF13ep3,	2, TS_DF33e]
+# 	]
+# given	{ [a,b,c,d,e,f,g,h,i,j,k] : T, N, M > 3 };
+for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+1,1,xx-8xb'+8xb+2,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 2+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 5+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 3+xx+8xb <= N+8tb+tt && 8tb+tt < s && 2+s <= M+8tb+tt}
+  in statement 2, in read 1, in partial read 3
+  the memory map is invalid for the Array "tide".
+  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,6,1,6,1,5,1] -> [2,0,1,1,1,7,1,0,1,6,1] : N = 11 && M = 3 && T = 7}
+
+  that address is written, via memory map 2, in iterations {[2,0,1,xb,1,6,1,6,1,5,1]: T = 7 && N = 11 && M = 3 && 0 <= xb <= 1}
+
+for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+2,1,xx-8xb'+8xb+1,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 1+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 6+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 2+xx+8xb <= N+8tb+tt && 8tb+tt < s && 3+s <= M+8tb+tt}
+  in statement 2, in read 2, in partial read 3
+  the memory map is invalid for the Array "tide".
+  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,7,1,7,1,6,1] -> [2,0,1,1,1,9,1,0,1,7,1] : N = 11 && M = 4 && T = 8}
+
+  that address is written, via memory map 2, in iterations {[2,0,1,xb,1,7,1,7,1,6,1]: T = 8 && N = 11 && M = 4 && 0 <= xb <= 1}
+
+for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+1,1,xx-8xb'+8xb+1,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 1+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 6+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 2+xx+8xb <= N+8tb+tt && 8tb+tt < s && 2+s <= M+8tb+tt}
+  in statement 2, in read 3, in partial read 2
+  the memory map is invalid for the Array "tide".
+  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,7,1,7,1,6,1] -> [2,0,1,1,1,8,1,0,1,7,1] : N = 11 && M = 3 && T = 8}
+
+  that address is written, via memory map 2, in iterations {[2,0,1,xb,1,7,1,7,1,6,1]: T = 8 && N = 11 && M = 3 && 0 <= xb <= 1}
+
+
+# 

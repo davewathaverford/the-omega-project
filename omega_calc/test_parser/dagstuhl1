@@ -1,0 +1,7 @@
+T := {[i,j] -> [i+10j]};
+I := {[0:9,0:9]};
+# Version 1.0.0 incorrectly generates references to i and j
+codegen T:I;
+
+# Version 1.0.0 doesn't generate an assignment for t2
+codegen {[p,i,j] : 0 <= i,j <= 9 && p = i+10j};

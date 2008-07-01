@@ -1,0 +1,23 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# approximate {[a,b,c,d,e,f] : (
+# 	   a+b+2c+2d+e+2f >= 1
+# 	&& 2a-3b-2f >= 1
+# 	&& 3a-2b >= 1
+# 	&& a-3c >= 1
+# 	&& -b-3c+2e-2f>=1
+# 	&& -a-2e >= 1
+# 	&& b-2d-3f >= 1
+# 	&& 3a+b-e >= 1
+# 
+# 	&& a = 0
+# 	&& b = -1
+# 	&& c = -1
+# 	&& e = -2
+# 	&& d = 11
+# 	)
+# 	};
+
+{[0,-1,-1,11,-2,-8]}
+
+# 
+# 		

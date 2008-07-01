@@ -1,0 +1,4 @@
+R := {[i,j] -> [i+3,j]} union {[i,j] -> [i+2,j-1]} union {[i,j] -> [i+1,j+1]};
+R+;
+R+ compose R;
+R - (R+ compose R);

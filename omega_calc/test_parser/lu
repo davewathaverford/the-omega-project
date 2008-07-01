@@ -1,0 +1,21 @@
+T10 := {[k,i] -> [t1,t2,k,k,i]:
+exists (alpha,beta: t1 = 64beta+1 && k-1 = alpha + 64 beta &&
+                    alpha >= 0 && alpha <= 63)
+&& exists (gamma,delta: t2 = 64delta && i = gamma +64delta &&
+		    gamma >= 0 && gamma <= 63)};
+
+T20 := {[k,i,j] -> [t1,t2,j,k,i]:
+exists (alpha,beta: t1 = 64beta+1 && k-1 = alpha + 64 beta &&
+                    alpha >= 0 && alpha <= 63)
+&& exists (gamma,delta: t2 = 64delta && i = gamma +64delta &&
+		    gamma >= 0 && gamma <= 63)};
+
+T10;
+T20;
+
+Symbolic n;
+IS10 := {[k,i] : 1 <= k <= n && k+1 <= i <= n};
+IS20 := {[k,i,j] : 1 <= k <= n && k+1 <= i <= n && k+1 <= j <= n};
+
+codegen 2 T10:IS10,T20:IS20;
+codegen 1 T10:IS10,T20:IS20;

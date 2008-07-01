@@ -1,0 +1,8 @@
+symbolic n;
+{[iw] -> [ir]  : 
+	1 <= iw, ir <= 2n and iw=ir 
+	and ! exists ( ik,jk : 1 <= ik <= 2n && 1 <= jk < n and
+			iw <= ik = ir and 2jk = ir )
+	and ! exists ( ik,jk : 1 <= ik <= 2n && 1 <= jk < n and
+			iw <= ik = ir and 2jk+1 = ir )
+	};

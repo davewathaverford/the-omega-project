@@ -1,0 +1,33 @@
+
+Omega Project Source Release, version 1.1
+
+This is verions 1.1 of the Omega Project software, including:
+    * The Omega library, a set of routines for manipulating linear constraints
+	    over integer variables,  Presburger formulas, and Integer tuple
+	    relations and sets.
+    * The code generation library, a set of routines for generating code to
+	    scan the points in the union of a number of convex sets. 
+    * The Omega calculator, a text-based interface to the Omega library
+    * Petit, a educational/research tool for analyzing array data dependences
+    * The Uniform library, a source to source parallelizing transformation 
+      system, described in Wayne Kelly's Ph.D. dissertation.
+
+Some new or recent features:
+    * The Uniform library
+    * An exact convex hull computation
+    * An improved system for handling inexact relations, including taking
+      upper and lower bounds, checking for subsets, and checking tautologies
+    * Better handling of existentially quantified variables: we can now
+      negate and generate code for sets like:
+	    {[i] : 1 <= i <= n && exists (alpha :  i <= 10 alpha <= i+k)};
+    * An Example operator, that gives a sample solution to set or relation.
+
+
+Users with code that uses previous versions of the Omega library may
+need to make some changes to their code in order to comply with the new
+functions for checking subsets, satisfiability, and tautologies.
+
+As usual, the Omega Project is located at
+	http://www.cs.umd.edu/projects/omega
+	mailto:omega@cs.umd.edu
+	ftp://ftp.cs.umd.edu/pub/omega

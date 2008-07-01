@@ -1,0 +1,36 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# R := {[t,s] -> [t+1,s] } union
+#  {[t,s] -> [t,s] } union
+#  {[t,s] -> [t,s+1] };
+# 
+# 
+# R;
+
+{[t,s] -> [t+1,s] } union
+ {[t,s] -> [t,s] } union
+ {[t,s] -> [t,s+1] }
+
+# 
+# R+;
+
+{[t,s] -> [t,s'] : s <= s'} union
+ {[t,s] -> [t',s'] : t < t' && s <= s'}
+
+# 
+# 
+# S := {[t,s] -> [t+1,s] } union {[t,s] -> [t,s+1] };
+# 
+# 
+# S;
+
+{[t,s] -> [t+1,s] } union
+ {[t,s] -> [t,s+1] }
+
+# 
+# S+;
+
+{[t,s] -> [t,s'] : s < s'} union
+ {[t,s] -> [t',s'] : t < t' && s <= s'}
+
+# 

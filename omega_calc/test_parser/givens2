@@ -1,0 +1,15 @@
+#
+# an example from a slightly defective dependence relation for givens2.t
+#
+
+Symbolic n, line6exp(2) ;
+
+{ [i,j,k] -> [i',j',k'] :
+       1 <=  i <= n &&
+       1 <= i' <= n &&
+  i+1 <=  j <= n &&
+ i'+1 <= j' <= n &&
+    i <=  k <= n &&
+   i' <= k' <= n  and
+ ( 1 <= line6exp(i,j) or line6exp(i,j) <= -1 ) and
+ ( 1 <= line6exp(i',j') or line6exp(i',j') <= -1 ) };

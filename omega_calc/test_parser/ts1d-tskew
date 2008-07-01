@@ -1,0 +1,199 @@
+# This is the file facts.prew, which is prepended to the .prew files
+# for the particular code generation we want, defines things like the
+# iteration space and dependences.  Known facts are inserted by the
+# Makefile.
+#
+# If you're looking at a .w file instead of facts.prew, then you should
+# remember to edit the original .prew files, not the .w files.
+#
+# This facts.prew file describes the program
+#
+# for(i = 0; i <= N-1; i++) {
+#  cur[i]=...
+# }
+# for(t = 0; t < T; t++) {
+#   for(i = 0; i <= N-1; i++) {
+#     old[i]=cur[i];
+#   }
+#   for(i = 1; i <= N-2; i++) {
+#     cur[i] = (old[i-1]+old[i]+old[i]+old[i+1])*0.25;
+#   }
+# }
+
+
+
+# first, the spaces and memory maps
+
+symbolic T, N;
+
+IS_INIT := { [1,i,1,0,0]          :           0<=i<=N-1 };
+MM_INIT := { [1,i,1,0,0] -> [0,i] :           0<=i<=N-1 };
+
+IS_COPY := { [2,t,0,i,1]            : 0<=t<T && 0<=i<=N-1 };
+MM_COPY := { [2,t,0,i,1] -> [t+1,i] : 0<=t<T && 0<=i<=N-1 };
+
+IS_CALC := { [2,t,1,i,1]            : 0<=t<T && 0< i< N-1 };
+MM_CALC := { [2,t,1,i,1] -> [t+1,i] : 0<=t<T && 0< i< N-1 };
+
+RESULTS := { [3,0,0,0,0] };
+
+
+# memory-based Output and Flow/anti-dependences (among Assign (copy), and Calc)
+
+FWD5 := {[x,t,y,i,z] -> [x',t',y',i',z'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) };
+FWD7 := {[x,t,y,i,z,a,b] -> [x',t',y',i',z',a',b'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'>a) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'=a and b'>b) };
+BWD5 := inverse FWD5;
+BWD7 := inverse FWD7;
+EQi := {[x,t,y,i,z] -> [x',t',y',i',z'] : i'=i };
+
+# output deps
+
+OAA := (IS_COPY * IS_COPY) intersection FWD5 intersection EQi;
+OCC := (IS_CALC * IS_CALC) intersection FWD5 intersection EQi;
+
+# combined flow/anti deps
+
+FAC := (IS_COPY * IS_CALC) intersection FWD5 intersection {[2,t,0,i,1] -> [2,t',1,i',1]  : (i'-1<=i<=i'+1)};
+FCA := (IS_CALC * IS_COPY) intersection FWD5 intersection {[2,t,1,i,1] -> [2,t',0,i',1]  : (i-1<=i'<=i+1)};
+
+# total memory deps in the "core"
+
+COREMEMDEPS := OAA union OCC union FAC union FCA;
+
+
+
+# data flow for original code:
+
+DF_12p1 := ( IS_INIT * IS_COPY ) intersection {[1,i,1,0,0] -> [2,0,0,i,1] : 0<i<N-1 };
+DF_12p2 := ( IS_INIT * IS_COPY ) intersection {[1,0,1,0,0] -> [2,t,0,0,1] };
+DF_12p3 := ( IS_INIT * IS_COPY ) intersection {[1,i,1,0,0] -> [2,t,0,i,1] : i=N-1 && N>1 };
+DF_32   := ( IS_CALC * IS_COPY ) intersection {[2,t,1,i,1] -> [2,t+1,0,i,1]};
+
+DF_23a := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i+1,1] };
+DF_23b := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i,1] };
+DF_23c := ( IS_COPY * IS_CALC ) intersection {[2,t,0,i,1] -> [2,t,1,i-1,1] };
+
+
+# data flow for array expanded code,
+# after forward substitution of "old[i] = cur[i]"
+
+DF1Ia := { [1,i,1,0,0] -> [2,t,1,i+1,1] : t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF1Ib := { [1,i,1,0,0] -> [2,t,1,i+1,1] : t>0 && i=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF1C  := { [2,t,1,i,1] -> [2,t+1,1,i+1,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+DF2I  := { [1,i,1,0,0] -> [2,t,1,i,1] :   t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF2C  := { [2,t,1,i,1] -> [2,t+1,1,i+0,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+DF3Ia := { [1,i,1,0,0] -> [2,t,1,i-1,1] : t=0 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF3Ib := { [1,i,1,0,0] -> [2,t,1,i-1,1] : t>0 && i=N-1 } restrictDomain IS_INIT restrictRange IS_CALC;
+DF3C  := { [2,t,1,i,1] -> [2,t+1,1,i-1,1] } restrictDomain IS_CALC restrictRange IS_CALC;
+
+# total data flow
+
+COREDATAFLOW := DF1C union DF2C union DF3C;
+
+
+# arity expansion relations
+ex_0_5v := {             [] -> [a,b,c,d,e]     };
+ex_0_7v := {             [] -> [a,b,c,d,e,f,g] };
+ex_3_5 := {         [a,b,c] -> [a,b,c,0,0]     };
+ex_3_7 := {         [a,b,c] -> [a,b,c,0,0,0,0] };
+ex_5_7 := {     [a,b,c,d,e] -> [a,b,c,d,e,0,0] };
+
+ex_5_3 := {     [a,b,c,0,0] -> [a,b,c]         };
+ex_7_3 := { [a,b,c,0,0,0,0] -> [a,b,c]         };
+ex_7_5 := { [a,b,c,d,e,0,0] -> [a,b,c,d,e]     };
+
+
+# stuff used in skew and tskew
+
+# Here is the description of time skewing from the current draft of the paper.
+IS_Trans := { [2,t,1,i,1] -> [2,tb,1,s,1,tt,1] :
+	0<=tt<1000 && s=i+1*t && t=1000*tb+tt };
+
+IS_Tinv := inverse IS_Trans;
+
+# We use it to transform the iteration spaces
+TS_IS_CALC := IS_CALC join IS_Trans;
+# for some reason OC refuses do to this "join" but will do the reverse:
+# TS_IS_INIT := ex_7_5 join IS_INIT;
+TS_IS_INIT := IS_INIT  join (inverse ex_7_5);
+
+# Now we can update the data flow relations to correspond to the new I.S.'s
+TS_DF1Ia := ex_7_5  join DF1Ia join IS_Trans;
+TS_DF1Ib := ex_7_5  join DF1Ib join IS_Trans;
+TS_DF1C  := IS_Tinv join DF1C  join IS_Trans;
+TS_DF2I  := ex_7_5  join DF2I  join IS_Trans;
+TS_DF2C  := IS_Tinv join DF2C  join IS_Trans;
+TS_DF3Ia := ex_7_5  join DF3Ia join IS_Trans;
+TS_DF3Ib := ex_7_5  join DF3Ib join IS_Trans;
+TS_DF3C  := IS_Tinv join DF3C  join IS_Trans;
+
+ 
+KNOWN := { [] : T >= 0 and N >= 4 };
+ 
+# Finally, here are the memory maps for the arrays we write to,
+#  even if we don't know T statically.
+# The reason this is more challenging is that the memory mapping used
+#  in tskew-even does not work for single-iteration time blocks,
+#  as these overwrite main too soon.
+# We could peel off iterations after the last multiple of 1000,
+#  if we have a "for" loop rather than a "while".
+# To handle "while" as well, we expand the "main" array by two (we'd
+#  need to do this anyway to let us back off and restart).
+#
+# NOTE that, although the array is expanded, only one "copy" is written
+#  in each block, so memory traffic is not affected.
+#
+# For the initialization, just do as we did in "orig", but from 7-dim. space:
+TS_MM_init  :=	(ex_7_5 join MM_INIT);
+#
+# The main calculation writes into the main array when tt=1000-1
+#  _or_ when t=T
+#
+# Due to a bug in tcodegen (it splits MMaps that are unions into
+#   separate MMaps, but without making them disjoint), we have to
+#   do this as two partial (disjoint) mappings
+#
+TS_MM_main0 :=	{ [2,tb,1,s,1,tt,1] -> [tbp1m2,s-(1000*tb+tt)] :
+		  (tt=1000-1 or tt+1000*tb >= T-1) and
+		  (0 <= tbp1m2 <= 1 and exists (x : 2x+tbp1m2 = tb+1)) }
+		restrictDomain TS_IS_CALC;
+TS_MM_main1 := TS_MM_main0 restrictDomain
+		{ [2,tb,1,s,1,tt,1] : tt+1000*tb >= T-1 };
+TS_MM_main2 := TS_MM_main0 - TS_MM_main1;
+
+Even_tb := { [2,tb,1,s,1,tt,1] : exists (x : 2x = tb) };
+Odd_tb  := { [2,tb,1,s,1,tt,1] : exists (x : 2x = tb+1) };
+
+TS_MM_main   := (TS_MM_main1 restrictDomain Even_tb) union
+		(TS_MM_main1 restrictDomain Odd_tb)  union
+		(TS_MM_main2 restrictDomain Even_tb) union
+		(TS_MM_main2 restrictDomain Odd_tb);
+
+TS_MM_cache :=	( { [2,tb,1,s,1,tt,1] -> [smod3, tt] :
+		    exists (sdiv3 : 3*sdiv3+smod3 = s && 0<=smod3<3) }
+		  restrictDomain TS_IS_CALC )
+		- ((domain TS_MM_main) * { [x,y] });
+
+main_dims := {[m,i] : 0<=m<=1 and 0<=i<=N-1};
+cache_dims := {[sm3,tt] : 0<=sm3<3 and 0<=tt<1000};
+
+tcodegen ["w = init(t2)",          TS_IS_INIT,
+	   "cur" [main_dims],    TS_MM_init],
+	 ["w = (r1 + r2+r2 + r3)/4",  TS_IS_CALC,
+	   "cur" [main_dims],    TS_MM_main,
+	   "cache" [cache_dims], TS_MM_cache,
+	     [1, TS_DF1Ia, 1, TS_DF1Ib, 2, TS_DF1C],
+	     [1, TS_DF2I,  2, TS_DF2C],
+	     [1, TS_DF3Ia, 1, TS_DF3Ib, 2, TS_DF3C] ] given KNOWN join ex_0_7v;

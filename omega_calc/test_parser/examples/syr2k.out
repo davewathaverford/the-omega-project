@@ -1,0 +1,78 @@
+# Omega Calculator [v1.1, Nov 96]:
+# # This example of code generation comes from
+# #        "Access Normalization: Loop Restructuring for NUMA Compilers"
+# #           by Wei Li and Keshav Pingali
+# #           Cornell Tech. report TR 92-1278
+# 
+# Symbolic n,b;
+# 
+# 
+# IS10 := {[i,j,k] : 1 <= i <= j <= n && j <= i+2b-2
+# 		&& i-b+1,j-b+1,1 <= k <= i+b-1,j+b-1,n};
+# 
+# T10 :={[i,j,k] -> [j-i+1,k-j,k]};
+# 
+# 
+# known := {[*,*,*] : 1 <= b <= n};
+# 
+# 
+# codegen T10:IS10;
+for(t1 = 1; t1 <= min(2*b-1,n); t1++) {
+  for(t2 = max(-b+1,-n+1); t2 <= min(b-t1,-t1+n); t2++) {
+    for(t3 = max(t1+t2,1); t3 <= min(t2+n,n); t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 
+# codegen T10:IS10 given known;
+for(t1 = 1; t1 <= min(n,2*b-1); t1++) {
+  for(t2 = -b+1; t2 <= b-t1; t2++) {
+    for(t3 = max(t1+t2,1); t3 <= min(t2+n,n); t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 
+# codegen 1 T10:IS10;
+for(t1 = 1; t1 <= min(2*b-1,n); t1++) {
+  for(t2 = max(-b+1,-n+1); t2 <= -t1; t2++) {
+    for(t3 = 1; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = max(-t1+1,-b+1); t2 <= min(b-t1,-1); t2++) {
+    for(t3 = t1+t2; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = 0; t2 <= min(-t1+n,b-t1); t2++) {
+    for(t3 = t1+t2; t3 <= n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 
+# codegen 1 T10:IS10 given known;
+for(t1 = 1; t1 <= min(n,2*b-1); t1++) {
+  for(t2 = -b+1; t2 <= -t1; t2++) {
+    for(t3 = 1; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = max(-t1+1,-b+1); t2 <= min(b-t1,0); t2++) {
+    for(t3 = t1+t2; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = 1; t2 <= b-t1; t2++) {
+    for(t3 = t1+t2; t3 <= n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 

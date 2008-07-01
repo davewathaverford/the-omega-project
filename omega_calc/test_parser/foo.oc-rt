@@ -1,0 +1,37 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# R := {[t,s] -> [t+2,s+2] : t <= s} union
+#  {[t,s] -> [t+4,s+4] : t <= s} union
+#  {[t,s] -> [t+3,s+3] : t <= s} union
+#  {[t,s] -> [t',s-t+t'] : t <= s, t'-5} union
+#  {[t,s] -> [t+1,s+1] : t <= s} union
+#  {[t,s] -> [t',s-t+t'] : t <= s-1, t'-2};
+# 
+# R;
+
+{[t,s] -> [t+2,s+2] : t <= s} union
+ {[t,s] -> [t+4,s+4] : t <= s} union
+ {[t,s] -> [t+3,s+3] : t <= s} union
+ {[t,s] -> [t',s-t+t'] : t <= s, t'-5} union
+ {[t,s] -> [t+1,s+1] : t <= s} union
+ {[t,s] -> [t',s-t+t'] : t <= s-1, t'-2}
+
+# 
+# difference R;
+
+{[1,1]} union
+ {[In_1,In_1]: 2 <= In_1}
+
+# 
+# hull difference R;
+
+{[In_1,In_1]: 1 <= In_1}
+
+# 
+# 
+# Hull R;
+
+{[t,s] -> [t',s-t+t'] : t <= s, t'-1}
+
+# 
+# 

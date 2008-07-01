@@ -1,0 +1,9 @@
+old_IS:= {[i,j]: 1 <= i <= 8 & 1 <= j <= 4};
+T1:={[i,j] -> [j-i+8,i,0]};
+T2:={[i,j] -> [i+j-1,i,1]};
+n1:= T1 \ old_IS;
+n1;
+n2:= T2 \ old_IS;
+n2;
+codegen T1:old_IS,T2:old_IS;
+codegen 1 T1:old_IS,T2:old_IS;

@@ -1,0 +1,58 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# #
+# # Extract from omega4
+# #  removed "eqnarray" commands, associated &'s, and overbrace commands
+# #  added declaration of n
+# #  added semicolon
+# #
+# # It would be nice not to have to do the following:
+# #  removed \ in front of variable names
+# # 
+# 
+# $$
+# symbolic n;
+# 
+# R := \{\ [ii] \rightarrow [ki] \mid
+# 1 \leq ii \leq 2n
+# 	\ \land \  1 \leq ki \leq 2n
+# \land ii = ki 
+# \land ii = ki\\
+# \t \land 
+# 	\ \neg (\ \exists [ji, jj] \st
+# (1 \leq ji \leq 2n \land 1 \leq jj \leq n\!-\!1)
+# \land (ii \leq ji \land ji \leq ki) \land (2jj = ki)\ )\\ 
+# \t 
+# \land \ 
+# \neg (\ \exists [ji, jj] \st
+# (1 \leq ji \leq 2n \land 1 \leq jj \leq n\!-\!1)
+# \land (ii \leq ji \land ji \leq ki) \land (2jj\!+\!1 = ki)\ )
+# \   \}
+# ;
+# 
+# 
+# R;
+
+{[ii] -> [ii] : n = 1 && 1 <= ii <= 2} union
+ {[2n] -> [2n] : 2 <= n} union
+ {[1] -> [1] : 2 <= n}
+
+# 
+# $$
+# # S := \{\ [\ii] \rightarrow [\ki] \mid
+# # 1 \leq \ii \leq 2\n
+# # 	\ \land \  1 \leq \ki \leq 2\n
+# # \land \ii = \ki 
+# # \land \ii = \ki\\
+# # \t \land 
+# # 	\ \neg (\ \exists [\ji, \jj] \st
+# # (1 \leq \ji \leq 2\n \land 1 \leq \jj \leq \n\!-\!1)
+# # \land (\ii \leq \ji \land \ji \leq \ki) \land (2\jj = \ki)\ )\\ 
+# # \t 
+# # \land \ 
+# # \neg (\ \exists [\ji, \jj] \st
+# # (1 \leq \ji \leq 2\n \land 1 \leq \jj \leq \n\!-\!1)
+# # \land (\ii \leq \ji \land \ji \leq \ki) \land (2\jj\!+\!1 = \ki)\ )
+# # \   \}
+# # ;
+# # 
+# # S;

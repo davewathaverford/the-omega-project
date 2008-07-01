@@ -1,0 +1,4 @@
+#!/bin/csh -f
+
+./oc-rt-easy
+./oc-rt-hard

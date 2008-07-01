@@ -1,0 +1,14 @@
+#!/bin/csh -f
+
+echo Starting petit regression test...
+
+foreach t (*.t)
+  set b = `basename $t .t`
+  echo $t dependence differences:
+  ../obj/petit -R$b.tmp $t
+  diff $b.dep_diffs $b.tmp
+  echo $t dependence relations:
+  ../obj/petit -b -R$b.tmp $t
+  diff $b.dep_rels $b.tmp
+  rm $b.tmp
+end

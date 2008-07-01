@@ -1,0 +1,10 @@
+{ "const" },
+{ "float" },
+{ "integer" },
+{ "real" },
+{ "index" },
+{ "old-index" },
+{ "none" },
+{ "comment" },
+{ "loop-step" },
+{ "non-affine" }

@@ -1,0 +1,52 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# IS:={[i,j]: 1 <= i,j <= 9};
+# 
+# T1:={[i,j]->[4j,i,0]};
+# 
+# T2:={[i,j]->[2j,i,1]};
+# 
+# codegen T1:IS,T2:IS;
+for(t1 = 2; t1 <= 36; t1 += 2) {
+  if (intMod(t1,4) == 0 && t1 <= 16) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s1(t2,intDiv(t1,4));
+      s2(t2,intDiv(t1,2));
+    }
+  }
+  if (intMod(t1,4) == 0 && t1 >= 20) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s1(t2,intDiv(t1,4));
+    }
+  }
+  if (intMod(t1-2,4) == 0 && t1 <= 18) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s2(t2,intDiv(t1,2));
+    }
+  }
+}
+
+# 
+# codegen 1 T1:IS,T2:IS;
+for(t1 = 2; t1 <= 16; t1 += 2) {
+  if (intMod(t1,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s1(t2,intDiv(t1,4));
+      s2(t2,intDiv(t1,2));
+    }
+  }
+  if (intMod(t1-2,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s2(t2,intDiv(t1,2));
+    }
+  }
+}
+for(t2 = 1; t2 <= 9; t2++) {
+  s2(t2,9);
+}
+for(t1 = 20; t1 <= 36; t1 += 4) {
+  for(t2 = 1; t2 <= 9; t2++) {
+    s1(t2,intDiv(t1,4));
+  }
+}
+
+# 

@@ -1,0 +1,11 @@
+symbolic n,m;
+incomingKnown := { [i1,i2] : Exists ( alpha : i1+3alpha = 1+i2 ) && 
+                   i1 = n && i2 = m};
+
+
+codegen incomingKnown;
+incomingKnown := { [i1,i2] : Exists ( alpha : i1+2alpha = 1+i2 ) &&
+                   i1 = n && i2 = m};
+
+
+codegen incomingKnown;

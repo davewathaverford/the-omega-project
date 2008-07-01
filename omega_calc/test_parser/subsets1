@@ -1,0 +1,20 @@
+R := {[x]:x > 1 };
+R;
+R2 := subsetof R;
+R2;
+
+R - R2;
+R subset R2;
+R2 - R;
+R2 subset R;
+
+S := {[x]: x > 0};
+S - R; 
+R subset S;
+S - R2;
+R2 subset S;
+
+S2 := {[x]: x > -1};
+S3 := subsetof S2;
+S3 - S;
+S subset S3;

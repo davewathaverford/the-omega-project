@@ -1,0 +1,4 @@
+Sym n;
+R := {[i,j]: i >= 1 && i <= 101 && exists (alpha : i = 2 alpha) &&
+             j >= i+2n && j <=401 && exists (alpha : j = 2 alpha)};
+codegen R;

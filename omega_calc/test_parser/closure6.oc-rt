@@ -1,0 +1,29 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# T1 := {[k,i,j] -> [k',i,j] : 1 <= k < k' < j <= i <= 1024};
+# 
+# 
+# T2 := {[k,i,i] -> [i,i',j'] : 1 <= k < i < j' <= i' <= 1024};
+# 
+# 
+# T3 := {[k,i,j] -> [j,i',i] : 1 <= k < j < i <= i' <= 1024};
+# 
+# 
+# T  := T1 union T2 union T3;
+# 
+# 
+# B  := {[k,i,j]: 1 <= k < j <= i <= 1024};
+# 
+# 
+# T + within B;
+
+{[k,i,j] -> [j',i,j] : 1 <= k < j' < j <= i <= 1024} union
+ {[k,i,j] -> [j',i',Out_3] : 1 <= k < j < i < j' < Out_3 <= i' <= 1024} union
+ {[k,i,i] -> [j',i',Out_3] : 1 <= k < i < j' < Out_3 <= i' <= 1024} union
+ {[k,i,i] -> [i,i',Out_3] : 1 <= k < i < Out_3 <= i' <= 1024} union
+ {[k,i,j] -> [j,i',i] : 1 <= k < j < i <= i' <= 1024} union
+ {[k,i,j] -> [j',i',i] : 1 <= k < j < j' < i <= i' <= 1024} union
+ {[k,i,j] -> [i,i',Out_3] : 1 <= k < j < i < Out_3 <= i' <= 1024}
+
+# 
+# 

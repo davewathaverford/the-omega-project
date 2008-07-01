@@ -1,0 +1,9 @@
+T10:={[mp,mq,mi] -> [mi,mq,mp,0]};
+T20:={[mp,mq,mi] -> [mi,mp,mq,1]};
+
+Symbolic np,morb;
+IS10 := {[mp,mq,mi]: 1 <= mp <= np && 1 <= mq <= mp && 1 <= mi <= morb};
+IS20 := IS10;
+
+codegen T10:IS10,T20:IS20;
+codegen 1 T10:IS10,T20:IS20;

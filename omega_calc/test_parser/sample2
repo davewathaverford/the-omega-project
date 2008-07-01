@@ -1,0 +1,11 @@
+Symbolic n,m;
+
+example { [i] -> [j] : 1 <= i <= 20 };
+
+example {[i] : 1 <= i <= n};
+
+example {[i] : m <= i <= n};
+
+example {[i] : exists ( alpha : i <= 2alpha)};
+
+example {[i] : exists ( alpha : i = 2alpha)};

@@ -1,0 +1,32 @@
+flow     1: Entry           -->  12: c(i,j)                          [ V]
+{[In_1,In_2] -> [In_1,In_2,1] : 1 <= In_1 <= n && 1 <= In_2 <= p && 1 <= m}
+flow     1: Entry           -->  12: a(i,k)                          [ MV]
+{[In_1,In_2] -> [In_1,j,In_2] : 1 <= In_1 <= n && 1 <= In_2 <= m && 1 <= j <= p}
+flow     1: Entry           -->  12: b(k,j)                          [ MV]
+{[In_1,In_2] -> [i,In_2,In_1] : 1 <= In_1 <= m && 1 <= In_2 <= p && 1 <= i <= n}
+flow     1: Entry           -->  12: c(i,j)                          [ M]
+{[In_1,In_2] -> [In_1,In_2,k] : 1 <= In_1 <= n && 1 <= In_2 <= p && 1 <= k <= m}
+output   1: Entry           -->  12: c(i,j)                          [ M]
+{[In_1,In_2] -> [In_1,In_2,k] : 1 <= In_1 <= n && 1 <= In_2 <= p && 1 <= k <= m}
+flow     1: Entry           -->  11: m                               [ MV]
+{ -> [i,j] : 1 <= i <= n && 1 <= j <= p}
+flow     1: Entry           -->   9: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  10: p                               [ MV]
+{ -> [i] : 1 <= i <= n}
+anti    12: c(i,j)          -->  12: c(i,j)          (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= k < k' <= m && 1 <= i <= n && 1 <= j <= p}
+exact dd: {[0,0,In_3]: 1 <= In_3}
+flow    12: c(i,j)          -->  12: c(i,j)          (0,0,1)         [ VO]
+{[i,j,k] -> [i,j,k+1] : 1 <= i <= n && 1 <= j <= p && 1 <= k < m}
+exact dd: {[0,0,1]}
+flow    12: c(i,j)          -->  15: Exit                            [ V]
+{[i,j,m] -> [Out_1] : 1 <= i <= n && 1 <= j <= p && 1 <= m}
+flow    12: c(i,j)          -->  12: c(i,j)          (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= k < k' <= m && 1 <= i <= n && 1 <= j <= p}
+exact dd: {[0,0,In_3]: 1 <= In_3}
+flow    12: c(i,j)          -->  15: Exit                            [ M]
+{[i,j,k] -> [i,j] : 1 <= i <= n && 1 <= j <= p && 1 <= k <= m}
+output  12: c(i,j)          -->  12: c(i,j)          (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= k < k' <= m && 1 <= i <= n && 1 <= j <= p}
+exact dd: {[0,0,In_3]: 1 <= In_3}

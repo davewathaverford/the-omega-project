@@ -1,0 +1,13 @@
+
+Symbolic a,b;
+
+IS1 := {[i] : a <= i <= b };
+IS2 := {[i] : a+10 <= i <= b+10 };
+IS3 := {[i] : a+20 <= i <= b+20 };
+
+T1 := {[i] -> [i,0]};
+T2 := {[i] -> [i,1]};
+T3 := {[i] -> [i,2]};
+
+codegen T1:IS1,T2:IS2,T3:IS3;
+codegen 1 T1:IS1,T2:IS2,T3:IS3;

@@ -1,0 +1,20 @@
+# Passing array sections through array reshaping
+# procedure foo()
+# real a(1:5,1:64,1:64,1:5)
+# for i = 1 to 64 do
+#   for j = 1 to 64 do
+#     bar(a(1,i,j,1))
+# ...
+# procedure bar(x(*))
+# x(1:5) = ...
+#
+# Question which element of a are effected by the call to bar?
+#
+symbolic i,j;
+R := {[i1,i2,i3,i4] -> [o1] :
+		(i1-1) + (i2-i)*5 + (i3-j)*5*64 + (i4-1)*5*64*64
+		= o1-1
+	&& 1 <= i1,i4 <= 5
+	&& 1 <= i,j,i2,i3 <= 64};
+R;
+(inverse R)({[1:5]});

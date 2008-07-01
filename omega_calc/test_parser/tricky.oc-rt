@@ -1,0 +1,25 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic N,M,k;
+# 
+# { [i,j] -> [] : 0 <= i <= M and 0 <= j <= N and 2i+j = k
+#                       and NOT( exists [i2,j2] :
+#                               0 <= i2 <= M  and  0 <= j2 <= N
+#                               and 2i2+j2 = k
+#                               and i < i2 )                };
+
+{[i,k-2i] -> : 2i <= k <= 2i+1 && 0 <= i <= M && k <= N+2i} union
+ {[M,k-2M] -> : 2+2M <= k && k <= N+2M && 0 <= M}
+
+# 
+# { [i,j] -> [] : 0 <= i <= M and 0 <= j <= N and 2i+j = k
+#                       and NOT(  i < M &&  2i-2 <= k &&
+# 				N-k <= 2M
+# 				&& ( N-k < k or N <= 2k && (exists a : k = 2 a)
+# 				))};
+
+{[i,k-2i] -> : 0 <= i <= M && 2M+k < N && 2i <= k} union
+ {[M,k-2M] -> : N <= 2M+k && k <= N+2M && 2M <= k} union
+ {[i,k-2i] -> : 2k < N && N <= 2M+k && 0 <= i && 2i <= k} union
+ {[i,k-2i] -> : Exists ( alpha : N = 2k && 2i = 1+k+2alpha && 2i+1 <= k <= 2M-1 && 0 <= i)}
+
+# 

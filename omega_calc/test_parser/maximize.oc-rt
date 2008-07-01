@@ -1,0 +1,24 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n, f(1);
+# 
+# 
+# R0 := {[x] : 1 <= x <= n};
+# 
+# R1 := {[x] : 1 <= x <= n && f(x) >= 0};
+# 
+# maximize R0;
+
+{[n]: 1 <= n}
+
+# 
+# maximize R1;
+
+{[x]: 1 <= x < n && 0 <= f(x) && UNKNOWN} union
+ {[x]: n = x && 0 <= f(x) && 1 <= x}
+
+# 
+# R1 intersection maximize R0;
+
+{[x]: n = x && 1 <= x && 0 <= f(x)}
+
+# 

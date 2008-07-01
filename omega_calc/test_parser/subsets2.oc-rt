@@ -1,0 +1,18 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# (subsetof {[1:10]}) - subsetof {[1:10]};
+
+{[In_1]: 1 <= In_1 <= 10 && UNKNOWN}
+
+#  
+# 
+# {[1:10]} - subsetof {[1:10]};
+
+{[In_1]: 1 <= In_1 <= 10 && UNKNOWN}
+
+#  
+# 
+# (subsetof {[1:10]}) - {[1:10]};
+
+{[In_1]  : FALSE }
+
+#  

@@ -1,0 +1,42 @@
+flow     1: Entry           -->  18: a(L1-x,y)                       [ V]
+{[In_1,y] -> [x+In_1,L2] : 1 <= L2 <= m && y <= 0 && 0 <= In_1 && x+In_1 <= n} union
+ {[In_1,y] -> [x+In_1,L2] : 1 <= L2 <= m, y && x <= 0 && 0 <= In_1 && x+In_1 <= n} union
+ {[In_1,y] -> [x+In_1,L2] : 1 <= L2 <= m < y && 0 <= In_1 && x+In_1 <= n && 1 <= x} union
+ {[In_1,y] -> [x+In_1,L2] : 1 <= L2 <= y <= m && 0 <= In_1 < x && x+In_1 <= n} union
+ {[In_1,y] -> [x+In_1,L2] : 1 <= y < L2 <= m && 0 <= In_1 < x && x+In_1 <= n} union
+ {[In_1,y] -> [x+In_1,L2] : 1 <= y < L2 <= m && x <= -1 && 0 <= In_1 && x+In_1 <= n}
+flow     1: Entry           -->  18: a(L1-x,y)                       [ M]
+{[In_1,y] -> [x+In_1,L2] : 1 <= L2 <= m && 0 <= In_1 && x+In_1 <= n}
+output   1: Entry           -->  18: a(L1,L2)                        [ M]
+{[In_1,In_2] -> [In_1,In_2] : x <= In_1 <= n && 1 <= In_2 <= m}
+flow     1: Entry           -->  18: c(L1,L2)                        [ MV]
+{[In_1,In_2] -> [In_1,In_2] : x <= In_1 <= n && 1 <= In_2 <= m}
+flow     1: Entry           -->  16: x                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  18: x                               [ MV]
+{ -> [L1,L2] : x <= L1 <= n && 1 <= L2 <= m}
+flow     1: Entry           -->  18: y                               [ MV]
+{ -> [L1,L2] : x <= L1 <= n && 1 <= L2 <= m}
+flow     1: Entry           -->  16: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  17: m                               [ MV]
+{ -> [L1] : x <= L1 <= n}
+anti    18: a(L1-x,y)       -->  18: a(L1,L2)        (0,+)           [ MoZ]
+{[L1,L2] -> [L1,y] : x = 0 && 1 <= L2 < y <= m && 0 <= L1 <= n}
+may dd: {[0,In_2]: 1 <= In_2}
+anti    18: a(L1-x,y)       -->  18: a(L1,L2)        (+,*)           [ MoZ]
+{[L1,L2] -> [L1-x,y] : x <= -1, L1 && 1 <= y <= m && 1 <= L2 <= m && L1 <= x+n}
+may dd: {[In_1,In_2]: 1 <= In_1}
+flow    18: a(L1,L2)        -->  18: a(L1-x,y)       (+,*)           [ VOZ]
+{[L1,y] -> [x+L1,L2'] : 1 <= L2' <= y <= m && 1 <= x <= L1 && x+L1 <= n} union
+ {[L1,y] -> [x+L1,L2'] : 1 <= y < L2' <= m && 1 <= x <= L1 && x+L1 <= n}
+may dd: {[In_1,In_2]: In_2 <= 0 && 1 <= In_1} union
+ {[In_1,In_2]: 1 <= In_1 && 1 <= In_2}
+flow    18: a(L1,L2)        -->  18: a(L1-x,y)       (0,+)           [ MVOZ]
+{[L1,y] -> [L1,L2'] : x = 0 && 1 <= y < L2' <= m && 0 <= L1 <= n}
+may dd: {[0,In_2]: 1 <= In_2}
+flow    18: a(L1,L2)        -->  18: a(L1-x,y)       (+,*)           [ MoZ]
+{[L1,y] -> [x+L1,L2'] : 1 <= x <= L1 && 1 <= y <= m && 1 <= L2' <= m && x+L1 <= n}
+may dd: {[In_1,In_2]: 1 <= In_1}
+flow    18: a(L1,L2)        -->  20: Exit                            [ MV]
+{[L1,L2] -> [L1,L2] : x <= L1 <= n && 1 <= L2 <= m}

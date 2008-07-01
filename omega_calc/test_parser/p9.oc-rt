@@ -1,0 +1,13 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic lot_E;
+# 
+# {[k_w,l_w] -> [k_r,l_r] : 
+# 1 <= k_r <= 12 and 
+# 1 <= l_r <= lot_E and 
+# 2k_r+96l_r = 12+2k_w+96l_w and 
+# 1 <= k_w <= 3 and 
+# 1 <= l_w <= lot_E};
+
+{[k_w,l_w] -> [k_w+6,l_w] : 1 <= k_w <= 3 && 1 <= l_w <= lot_E}
+
+# 

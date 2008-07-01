@@ -1,0 +1,16 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n;
+# 
+# {[iw] -> [ir]  : 
+# 	1 <= iw, ir <= 2n and iw=ir 
+# 	and ! exists ( ik,jk : 1 <= ik <= 2n && 1 <= jk < n and
+# 			iw <= ik = ir and 2jk = ir )
+# 	and ! exists ( ik,jk : 1 <= ik <= 2n && 1 <= jk < n and
+# 			iw <= ik = ir and 2jk+1 = ir )
+# 	};
+
+{[iw] -> [iw] : n = 1 && 1 <= iw <= 2} union
+ {[2n] -> [2n] : 2 <= n} union
+ {[1] -> [1] : 2 <= n}
+
+# 

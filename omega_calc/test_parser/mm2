@@ -1,0 +1,298 @@
+# This example shows the "time skewing" transformation, including
+# the array remapping, for the code below:
+#
+# This facts.prew file describes the program
+#
+#   for(i = 0; i <= N-1; i++)
+#     for(j = 0; j <= M-1; j++)
+#       cur[i][j]=i*j+(i-j)+2.00001;
+# 
+#   for(t = 0; t < T; t++) {
+#     for(i = 0; i <= N-1; i++)
+#       for(j = 0; j <= M-1; j++)
+# 	  old[i][j] = cur[i][j];
+# 
+#     for(i = 1; i <= N-2; i++)
+#       for(j = 0; j <= M-1; j++)
+# 	  cur[i][j] = (old[i-1][j]+old[i][j-1]+4*old[i][j]+old[i][j+1]+old[i+1][j])*0.125;
+# 
+#   }
+
+
+# first, the spaces and memory maps
+
+symbolic T, N, M;
+
+IS_INIT := { [1,i,1,j,1,0,0]            :            0<=i<=N-1 and 0<=j<=M-1 };
+MM_INIT := { [1,i,1,j,1,0,0] -> [0,i,j] :            0<=i<=N-1 and 0<=j<=M-1 };
+
+IS_COPY := { [2,t,0,i,1,j,1]            : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+MM_COPY := { [2,t,0,i,1,j,1] -> [t,i,j] : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+
+IS_CALC := { [2,t,1,i,1,j,1]            : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+MM_CALC := { [2,t,1,i,1,j,1] -> [t,i,j] : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+
+
+
+# data flow for original code:
+
+DF_12p1 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,0,0,i,1,j,1] : 0<i<N-1 and 0<j<M-1 };
+DF_12p2 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=0 };
+DF_12p3 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=N-1 and N>1 };
+DF_12p4 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=0 and 0<i<N-1 };
+DF_12p5 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=M-1 and M>1 and 0<i<N-1 };
+
+DF_32   := ( IS_CALC  * IS_COPY ) intersection
+	{[2,t,1,i,1,j,1] -> [2,t+1,0,i,1,j,1]};
+
+DF_23a  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i+1,1,j,1] };
+DF_23b  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j+1,1] };
+DF_23c  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j,1] };
+DF_23d  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j-1,1] };
+DF_23e  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i-1,1,j,1] };
+
+
+
+# data flow for array expanded code,
+# after forward substitution of "old[i] = cur[i]"
+# the ones that are not there are unsatisifiable
+
+DF13ap1 := DF_12p1 join DF_23a;
+DF13ap2 := DF_12p2 join DF_23a;
+
+DF13bp1 := DF_12p1 join DF_23b;
+DF13bp4 := DF_12p4 join DF_23b;
+        
+DF13cp1 := DF_12p1 join DF_23c;
+
+DF13dp1 := DF_12p1 join DF_23d;
+DF13dp5 := DF_12p5 join DF_23d;
+
+DF13ep1 := DF_12p1 join DF_23e;
+DF13ep3 := DF_12p3 join DF_23e;
+
+DF33a   := DF_32 join DF_23a;
+DF33b   := DF_32 join DF_23b;
+DF33c   := DF_32 join DF_23c;
+DF33d   := DF_32 join DF_23d;
+DF33e   := DF_32 join DF_23e;
+
+
+# stuff used in skew and tskew
+
+# Here is the description of time skewing from the current draft of the paper.
+#
+IS_Trans := { [2,t,1,i,1,j,1] -> [2,tb,1,xb,1,s,1,xx,1,tt,1] :
+	0<=tt,xx<8 and s=j+1*t and t=8*tb+tt and
+	i+1*t = 8*xb+xx };
+
+IS_Tinv := inverse IS_Trans;
+
+
+
+# THE FOLLOWING UPDATES REQUIRE A FEW SIMPLE RELATIONS.
+# IN THE FUTURE, THEY MAY BE DONE AUTOMATICALLY WITHIN TCODEGEN
+# IF THE ORIGINAL IS AND TRANSFORMATION ARE GIVEN
+
+# We use IS_Trans to transform the calculation iteration space
+TS_IS_CALC := IS_CALC join IS_Trans;
+
+# We then expand the init iteration space to be compatible
+ex_11_7:= { [a,b,c,d,e,f,g,0,0,0,0] -> [a,b,c,d,e,f,g]     };
+
+# for some reason OC refuses do to this "join" but will do the reverse:
+# TS_IS_INIT := ex_11_7 join IS_INIT;
+TS_IS_INIT := IS_INIT  join (inverse ex_11_7);
+
+
+# Now we can update the data flow relations to correspond to the new I.S.'s
+
+TS_DF13ap1 := ex_11_7 join DF13ap1 join IS_Trans;
+TS_DF13ap2 := ex_11_7 join DF13ap2 join IS_Trans;
+
+TS_DF13bp1 := ex_11_7 join DF13bp1 join IS_Trans;
+TS_DF13bp4 := ex_11_7 join DF13bp4 join IS_Trans;
+        
+TS_DF13cp1 := ex_11_7 join DF13cp1 join IS_Trans;
+
+TS_DF13dp1 := ex_11_7 join DF13dp1 join IS_Trans;
+TS_DF13dp5 := ex_11_7 join DF13dp5 join IS_Trans;
+       
+TS_DF13ep1 := ex_11_7 join DF13ep1 join IS_Trans;
+TS_DF13ep3 := ex_11_7 join DF13ep3 join IS_Trans;
+
+
+        
+TS_DF33a   := IS_Tinv join DF33a  join IS_Trans;
+TS_DF33b   := IS_Tinv join DF33b  join IS_Trans;
+TS_DF33c   := IS_Tinv join DF33c  join IS_Trans;
+TS_DF33d   := IS_Tinv join DF33d  join IS_Trans;
+TS_DF33e   := IS_Tinv join DF33e  join IS_Trans;
+ 
+
+# Finally, here are the memory maps for the arrays we write to,
+# straight out of the current draft of the paper.
+
+# For the initialization, just do as we did in "orig", but from 11-dim. space:
+NO_T := { [t,i,j] -> [i,j] };
+TS_MM_init  :=  ((ex_11_7 join MM_INIT) join NO_T);
+
+
+# The memory maps for the calculation, from the draft paper
+TS_MM_main  := IS_Tinv join { [2,t,1,i,1,j,1] -> [i,j] }
+                restrictDomain { [2,tb,1,xb,1,s,1,xx,1,tt,1] : tt=8-1 }
+                restrictDomain TS_IS_CALC;
+TS_MM_tide  := { [2,tb,1,xb,1,s,1,xx,1,tt,1]->[xbmod2,s,xx+1-(8-1),tt]:
+                 exists (xbdiv2 : 2*xbdiv2+xbmod2 = xb && 0<=xbmod2<2) and
+                         xx+1>=8-1 and tt<8-1 }
+                restrictDomain TS_IS_CALC;
+TS_MM_cache :=  { [2,tb,1,xb,1,s,1,xx,1,tt,1] -> [smod4, xx, tt] :
+                  exists (sdiv4 : 4*sdiv4+smod4 = s && 0<=smod4<4) and
+                  xx+1<8-1 and tt<8-1 }
+                restrictDomain TS_IS_CALC;
+
+
+
+# Some simple relations used for checks.
+# these checks will be done within tcodegen at some point.
+
+FWD11:= {[a,b,c,d,e,f,g,h,i,j,k] -> [a',b',c',d',e',f',g',h',i',j',k'] :
+	(a'>a) or
+	(a'=a and b'>b) or
+	(a'=a and b'=b and c'>c) or
+	(a'=a and b'=b and c'=c and d'>d) or
+	(a'=a and b'=b and c'=c and d'=d and e'>e) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'>f) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'>g) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'>h) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'>i) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'>j) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'=j and k'>k) };
+
+ALL11:= { [a,b,c,d,e,f,g,h,i,j,k] };
+
+
+# HOW DO WE CHECK TO SEE IF A SET OF MEMORY MAPS MESSES US UP?
+# 1) We can easily check the array bounds.
+#    The following relations show all iterations writing to all legal elements
+
+maindims  := {[i, j] : 0<=i<=N and 0<=j<=M};
+tidedims  := {[xbmod2, s, xxend, tt] : 0<=xbmod2<2 and 0<=s<M+T-1 and
+				0<=xxend<3 and 0<=tt<8};
+cachedims := {[smod4, xx, tt] : 0<=smod4<4 and 0<=xx<8 and 0<=tt<8};
+
+# ... so here are the iterations that write out-of-bounds elements:
+
+assertUnsatisfiable (range TS_MM_main  - maindims);
+assertUnsatisfiable (range TS_MM_tide  - tidedims);
+assertUnsatisfiable (range TS_MM_cache - cachedims);
+
+
+# 2) We can also check for reading an element that's been killed:
+
+# First look for problems with "cache" being overwritten.
+# This can only happen in successive executions of the CALC stmt
+
+samecachefwd33 := (TS_MM_cache join inverse TS_MM_cache) intersection FWD11;
+
+# Here are the sets of elements that are killed before being read in each read:
+assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33a);
+assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33b);
+assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33c);
+assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33d);
+assertUnsatisfiable ((samecachefwd33 join FWD11) intersection TS_DF33e);
+
+# Now look for problems with "tide" being overwritten.
+# This can only happen in successive executions of the CALC stmt
+
+sametidefwd33 := (TS_MM_tide join inverse TS_MM_tide) intersection FWD11;
+
+# Here are the sets of elements that are killed before being read in each read:
+assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33a);
+assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33b);
+assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33c);
+assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33d);
+assertUnsatisfiable ((sametidefwd33 join FWD11) intersection TS_DF33e);
+
+# Finally, look for problems with main array being overwritten.
+# This can happen in successive executions of the CALC stmt
+# or when the array is written in INIT and then CALC
+
+samemainfwd33 := (TS_MM_main join inverse TS_MM_main) intersection FWD11;
+
+# Here are the sets of elements that are killed before being read in each read:
+assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33a);
+assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33b);
+assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33c);
+assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33d);
+assertUnsatisfiable ((samemainfwd33 join FWD11) intersection TS_DF33e);
+
+# for writes in INIT and CALC, I'm only considering when INIT happens first...
+
+samemainfwd13 := (TS_MM_init join inverse TS_MM_main) intersection FWD11;
+
+# Here are the sets of elements that are killed before being read in each read:
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ap1);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ap2);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13bp1);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13bp4);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13cp1);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13dp1);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13dp5);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ep1);
+assertUnsatisfiable ((samemainfwd13 join FWD11) intersection TS_DF13ep3);
+
+
+
+# If we are always in bounds, and never kill a value that we need,
+# and the final values are always in the final array,
+# then the mmap is good.  I'm not sure how to check that last one.
+# We'd probably need to specify what constitutes the "result".
+
+tcodegen
+	["w=t2*t4+(t2-t4)+2.00001",	 TS_IS_INIT,
+	  "cur",   TS_MM_init],
+	["w=0.125*(r1+r2+(4*r3)+r4+r5)", TS_IS_CALC,
+	  "cur",   TS_MM_main,
+	  "tide",  TS_MM_tide,
+	  "cache", TS_MM_cache,
+		[1, TS_DF13ap1, 1, TS_DF13ap2,	2, TS_DF33a],
+		[1, TS_DF13bp1, 1, TS_DF13bp4,	2, TS_DF33b],
+		[1, TS_DF13cp1, 		2, TS_DF33c],
+		[1, TS_DF13dp1, 1, TS_DF13dp5,	2, TS_DF33d],
+		[1, TS_DF13ep1, 1, TS_DF13ep3,	2, TS_DF33e]
+	]
+given	{ [a,b,c,d,e,f,g,h,i,j,k] : T, N, M > 3 };
+
+#
+# Now, an example where the memory map is bad:
+#
+
+TS_MM_tideBad  := { [2,tb,1,xb,1,s,1,xx,1,tt,1]->[s,xx+1-(8-1),tt]:
+                         xx+1>=8-1 and tt<8-1 }
+                restrictDomain TS_IS_CALC;
+
+tcodegen
+	["w=t2*t4+(t2-t4)+2.00001",	 TS_IS_INIT,
+	  "cur",   TS_MM_init],
+	["w=0.125*(r1+r2+(4*r3)+r4+r5)", TS_IS_CALC,
+	  "cur",   TS_MM_main,
+	  "tide",  TS_MM_tideBad,
+	  "cache", TS_MM_cache,
+		[1, TS_DF13ap1, 1, TS_DF13ap2,	2, TS_DF33a],
+		[1, TS_DF13bp1, 1, TS_DF13bp4,	2, TS_DF33b],
+		[1, TS_DF13cp1, 		2, TS_DF33c],
+		[1, TS_DF13dp1, 1, TS_DF13dp5,	2, TS_DF33d],
+		[1, TS_DF13ep1, 1, TS_DF13ep3,	2, TS_DF33e]
+	]
+given	{ [a,b,c,d,e,f,g,h,i,j,k] : T, N, M > 3 };

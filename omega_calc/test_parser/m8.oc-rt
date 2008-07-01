@@ -1,0 +1,41 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# T1:={[i,j]->[j,i,0]};
+# 
+# T2:={[i,j]->[j,i,1]};
+# 
+# R2:={[i,j]: 1 <= i,j <= 9 && exists (alpha: j = 4alpha)};
+# 
+# R3:={[i,j]: 1 <= i,j <= 9 && exists (alpha: j = 2alpha)};
+# 
+# codegen T1:R2,T2:R3;
+for(t1 = 2; t1 <= 8; t1 += 2) {
+  if (intMod(t1,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s1(t2,t1);
+      s2(t2,t1);
+    }
+  }
+  if (intMod(t1-2,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s2(t2,t1);
+    }
+  }
+}
+
+# 
+# codegen 1 T1:R2,T2:R3;
+for(t1 = 2; t1 <= 8; t1 += 2) {
+  if (intMod(t1,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s1(t2,t1);
+      s2(t2,t1);
+    }
+  }
+  if (intMod(t1-2,4) == 0) {
+    for(t2 = 1; t2 <= 9; t2++) {
+      s2(t2,t1);
+    }
+  }
+}
+
+# 

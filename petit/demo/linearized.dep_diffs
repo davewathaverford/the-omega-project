@@ -1,0 +1,4 @@
+flow     1: Entry           -->  13: a(10*(i+2)+j)                   [ MV]
+output   1: Entry           -->  13: a(10*i+j)                       [ M]
+anti    13: a(10*(i+2)+j)   -->  13: a(10*i+j)       (2,0)           [ Mo]
+flow    13: a(10*i+j)       -->  15: Exit                            [ MV]

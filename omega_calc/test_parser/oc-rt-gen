@@ -1,0 +1,12 @@
+#!/bin/csh -f
+
+if (! $?PARSER) setenv PARSER ../obj/oc
+
+foreach i (*.oc-rt)
+  set ofile = ${i}
+  set ifile = ${i:r}
+  echo Generating oc-rt file using ${PARSER} on input file ${ifile}
+  if(-e ${ofile}) /bin/rm -f ${ofile}
+  ${PARSER} ${ifile} > ${ofile}
+  if($status != 0) echo "Error generating oc-rt file for ${ifile}"
+end

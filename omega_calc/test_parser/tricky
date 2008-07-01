@@ -1,0 +1,11 @@
+symbolic N,M,k;
+{ [i,j] -> [] : 0 <= i <= M and 0 <= j <= N and 2i+j = k
+                      and NOT( exists [i2,j2] :
+                              0 <= i2 <= M  and  0 <= j2 <= N
+                              and 2i2+j2 = k
+                              and i < i2 )                };
+{ [i,j] -> [] : 0 <= i <= M and 0 <= j <= N and 2i+j = k
+                      and NOT(  i < M &&  2i-2 <= k &&
+				N-k <= 2M
+				&& ( N-k < k or N <= 2k && (exists a : k = 2 a)
+				))};

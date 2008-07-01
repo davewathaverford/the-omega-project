@@ -1,0 +1,9 @@
+symbolic n;
+I1 := {[k,i] : 1 <= k < i <= n };
+I2 := {[k,i,j] : 1 <= k < i,j <= n };
+T1 := {[k,i] -> [i,k,1,0]};
+T2 := {[k,i,j] -> [i,j,0,k]};
+T1(I1);
+T2(I2);
+codegen T1:I1,T2:I2;
+codegen 1 T1:I1,T2:I2;

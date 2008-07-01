@@ -1,0 +1,16 @@
+#!/bin/csh -f
+
+if (! $?PARSER) setenv PARSER ../obj/oc
+
+foreach i (*.oc-rt)
+  echo ---------------- Running ${PARSER} on input file $i ----------------
+  rm $i
+  ${PARSER} $i:r >$i
+  touch oc.out
+  cat oc.out
+end
+# foreach i (*.oc-rt-G180)
+#   echo ---------------- Running ${PARSER} on input file $i ----------------
+#   rm $i
+#   ${PARSER} -G180 $i:r >$i
+# end

@@ -1,0 +1,2 @@
+Requires compile with -DDONT_QUIT_FOR_FAILED_SUBSTITUTION=1 
+or run with setenv DONT_QUIT_FOR_FAILED_SUBSTITUTION 1

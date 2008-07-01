@@ -1,0 +1,87 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# Symbolic a1,a2,a3,b1,b2,b3;
+# 
+# 
+# IS1 := {[i] : a1 <= i <= b1 };
+# 
+# IS2 := {[i] : a2 <= i <= b2 };
+# 
+# IS3 := {[i] : a3 <= i <= b3 };
+# 
+# 
+# T1 := {[i] -> [i,0]};
+# 
+# T2 := {[i] -> [i,1]};
+# 
+# T3 := {[i] -> [i,2]};
+# 
+# 
+# codegen T1:IS1,T2:IS2,T3:IS3;
+for(t1 = a3; t1 <= min(b3,a1-1,a2-1); t1++) {
+  s3(t1);
+}
+for(t1 = a2; t1 <= min(b2,a1-1,a3-1,b3); t1++) {
+  s2(t1);
+}
+for(t1 = max(a2,a3); t1 <= min(a1-1,b2,b3); t1++) {
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a2,b3+1); t1 <= min(b2,a1-1); t1++) {
+  s2(t1);
+}
+for(t1 = max(a3,a2,b2+1); t1 <= min(b3,a1-1); t1++) {
+  s3(t1);
+}
+for(t1 = a1; t1 <= min(b1,a3-1,b3,a2-1); t1++) {
+  s1(t1);
+}
+for(t1 = max(a1,a3); t1 <= min(b1,a2-1,b3); t1++) {
+  s1(t1);
+  s3(t1);
+}
+for(t1 = max(a1,b3+1); t1 <= min(b1,a2-1); t1++) {
+  s1(t1);
+}
+for(t1 = max(a1,a2); t1 <= min(b1,b2,a3-1); t1++) {
+  s1(t1);
+  s2(t1);
+}
+for(t1 = max(a1,a2,a3); t1 <= min(b1,b2,b3); t1++) {
+  s1(t1);
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a1,a2,a3,b3+1); t1 <= min(b1,b2); t1++) {
+  s1(t1);
+  s2(t1);
+}
+for(t1 = max(a1,b2+1,a2); t1 <= min(b1,a3-1); t1++) {
+  s1(t1);
+}
+for(t1 = max(a1,a2,b2+1,a3); t1 <= min(b1,b3); t1++) {
+  s1(t1);
+  s3(t1);
+}
+for(t1 = max(a1,b3+1,a3,a2,b2+1); t1 <= b1; t1++) {
+  s1(t1);
+}
+for(t1 = max(a3,a1,b1+1); t1 <= min(b3,b2,a2-1); t1++) {
+  s3(t1);
+}
+for(t1 = max(a2,a1,b1+1); t1 <= min(b2,a3-1); t1++) {
+  s2(t1);
+}
+for(t1 = max(a1,b1+1,a2,a3); t1 <= min(b2,b3); t1++) {
+  s2(t1);
+  s3(t1);
+}
+for(t1 = max(a2,a1,b1+1,b3+1,a3); t1 <= b2; t1++) {
+  s2(t1);
+}
+for(t1 = max(a3,a1,b1+1,b2+1); t1 <= b3; t1++) {
+  s3(t1);
+}
+
+# 

@@ -1,0 +1,99 @@
+#! /bin/sh
+#
+#	@(#)lorder.sh 1.6 88/02/08 SMI; from UCB
+#
+# Hacked by davew@cs.umd.edu to print names of symbols, exclude some names
+#
+
+trap "rm -f $$sym?ef; exit" 0 1 2 13 15
+
+# need to use GNU egrep
+EGREP=gegrep
+# need my converter program
+LIST_TO_EGREP=bin/list_to_egrep
+
+OPTIONS="hnux:X:"
+set -- `getopt "${OPTIONS}" $*`
+
+USAGE="Usage: $0 [-${OPTIONS}] objfiles"
+
+if [ $? != 0 ]
+then
+	echo ${USAGE}
+	exit 2
+fi
+
+EXCLUDE=""
+EXCLUDER=""
+SEDDER='s/[^ ]* *//'
+
+for i in $*
+do
+	case $i in
+	-h)	echo "$0 Options:"
+		echo "h : print this Help message"
+		echo "n : print Names that cause dependences"
+		echo "u : Ugly - leave around symdef and symref files"
+		echo "x<file> : eXclude names containing strings in this file"
+		echo "X<file> : use \"file\" as a script to eXclude names"
+		exit;;
+	-u)	trap "exit" 0 1 2 13 15; shift;;
+	-n)	SEDDER='s/^\([^ ]*\) *\(.*\)$/\2	\1/'; shift;;
+	-x)	EXCLUDE=$2; shift 2;;
+	-X)	EXCLUDER=$2; shift 2;;
+	--)	shift; break;;
+	esac
+done
+
+case $# in
+0)	echo $USAGE
+	exit ;;
+1)	case $1 in
+	*.o)	set $1 $1
+	esac
+esac
+
+nm -g $* | sed '
+	/^$/d
+	/:$/{
+		s/://
+		h
+		s/.*/& &/
+		p
+		d
+	}
+	/[TD] /{
+		s/.* //
+		G
+		s/\n/ /
+		w '$$symdef'
+		d
+	}
+	s/.* //
+	G
+	s/\n/ /
+	w '$$symref'
+	d
+'
+
+if	test "${EXCLUDE}" -a -r "${EXCLUDE}"
+then
+	mv $$symdef $$symtmp
+	${EGREP} -v `cat ${EXCLUDE} | ${LIST_TO_EGREP} -` $$symtmp > $$symdef
+	mv $$symref $$symtmp
+	${EGREP} -v `cat ${EXCLUDE} | ${LIST_TO_EGREP} -` $$symtmp > $$symref
+	rm $$symtmp
+fi
+
+if	test "${EXCLUDER}" -a -r "${EXCLUDER}"
+then
+	mv $$symdef $$symtmp
+	cat $$symtmp | ${EXCLUDER} > $$symdef
+	mv $$symref $$symtmp
+	cat $$symtmp | ${EXCLUDER} > $$symref
+	rm $$symtmp
+fi
+
+sort $$symdef -o $$symdef
+sort $$symref -o $$symref
+join $$symref $$symdef | sed "${SEDDER}"

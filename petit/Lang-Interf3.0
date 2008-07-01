@@ -1,0 +1,62 @@
+This document describes the major changes to the interface provided for
+compilers to make use of our routines for dependence testing with the
+omega test.  The interface itself is described in lang-interf.generic,
+and it is used to interface our routines to extended petit, via the
+files lang-interf.h and lang-interf.c.  These may serve as useful
+examples to anyone trying to figure out the interface.
+
+The basic point of this software, and some of the terms used here, are
+described in the paper "Eliminating False Data Dependences using the
+Omega Test", by William Pugh & David Wonnacott.  This is available via
+ftp, or as Tech. Report CS-TR-2993, from the Dept. of Computer Science,
+Univ. of Maryland, and an earlier version appeared at the ACM SIGPLAN
+PLDI'92 conference.
+
+
+Major changes to lang-interf for release 3.0:
+
+The flag "Flows_Covered" has been replaced by a value associated with
+each array access showing the level at which it is "covered" and
+"terminated".
+
+Reduction dependences are computed between update accesses.  Thus there
+is a new type of dependence, and the interface requires new tests to
+determine whether we are working with an update access.
+
+Variables may be private to a loop - we must be able to tell if a
+variable is private, and if so determine the level of the loop for
+which it is private.
+
+Dependences may be computed from the Entry point and to the Exit from
+the routine being analyzed.  If this is done, we must be able to
+distinguish the accesses representing these nodes by comparing them to
+the values "Entry" and "ExitNode".
+
+More information is needed about ifs, including the number of loops
+containing them.
+
+The dir_and_dist_info structure has been revised so that it no longer
+contains a pointer to dependence distance information.  Distance
+information is now stored directly in the dir_and_dist_info.
+
+To ensure that the dependence killing function works, all
+"memory-based" output dependences must be in the dependence graph. To
+ensure that this is the case, our system sometimes needs to duplicate a
+node in the dependence graph.  To do this, it calls a function
+clone_dd_graph_node_for_refinement, providing the an argument that is
+selected from the dd_graph_node_to_be_cloned member of the
+dir_and_dist_info structure.  You must initialize this field and
+provide the function.
+
+You also need to provide interface functions dir_and_dist_into_ddnode
+and ddnode_to_dir_and_dist, to convert dd graph nodes into
+dir_and_dist_info structures.
+
+The function try_to_eliminate computes assertions that can be used to
+eliminate dependences.  It relies on the function add_GEQ_assertion to
+put these assertions into the program.
+
+Currently, many of the functions require string arguments that are used
+for generating debugging output.  These may go away in the future, with
+functions depending instead on interface functions to generate
+printable representations of dependences or expressions.

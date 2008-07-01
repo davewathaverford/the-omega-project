@@ -1,0 +1,22 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Y := { [i,j] : 1 <= i <= 5 and 12 <= j <= 17};
+# 
+# codegen Y;
+for(t1 = 1; t1 <= 5; t1++) {
+  for(t2 = 12; t2 <= 17; t2++) {
+    s1(t1,t2);
+  }
+}
+
+# 
+# 
+# X := { [i,j] : 17i-153 = 12j+17 and 1 <= i <= 100 and 1 <= j <= 100 and i < j};
+# 
+# codegen X;
+for(t1 = 46; t1 <= 70; t1 += 12) {
+  t2=intDiv((17*t1+11),12);
+  s1(t1,intDiv(17*t1+-170,12));
+}
+
+# 
+# 

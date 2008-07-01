@@ -1,0 +1,33 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n,m;
+# 
+# T := { [i,j] -> [i-1,j] : 1 <= i <= n && 0 <= j <= m } union
+#      { [i,j] -> [i,j-1] : 0 <= i <= n && 1 <= j <= m };
+# 
+# T;
+
+{[i,j] -> [i-1,j] : 1 <= i <= n && 0 <= j <= m} union
+ {[i,j] -> [i,j-1] : 0 <= i <= n && 1 <= j <= m}
+
+# 
+# T+;
+
+{[i,0] -> [i',0] : m = 0 && 0 <= i' < i <= n} union
+ {[0,j] -> [0,j'] : n = 0 && 0 <= j' < j <= m} union
+ {[i,j] -> [i',j'] : 0 <= i' < i <= n && 0 <= j' <= j <= m && 1 <= m} union
+ {[i,j] -> [i,j'] : 0 <= j' < j <= m && 0 <= i <= n && 1 <= n}
+
+# 
+# Inverse ( (Inverse T)+);
+
+{[i,0] -> [i',0] : m = 0 && 0 <= i' < i <= n} union
+ {[0,j] -> [0,j'] : n = 0 && 0 <= j' < j <= m} union
+ {[i,j] -> [i',j'] : 0 <= i' < i <= n && 0 <= j' <= j <= m && 1 <= m} union
+ {[i,j] -> [i,j'] : 0 <= j' < j <= m && 0 <= i <= n && 1 <= n}
+
+# 
+# T@;
+
+{[In_1,In_2] -> [Out_1,Out_2] : Out_1 <= In_1 && Out_2 <= In_2 && In_2 <= m+Out_2 && In_1 <= n+Out_1}
+
+# 

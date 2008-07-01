@@ -1,0 +1,6 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# {[i,j,k,l,m] -> [i,i,i,i,i] : 1 <= i <= 100 };
+
+{[i,j,k,l,m] -> [i,i,i,i,i] : 1 <= i <= 100}
+
+# 

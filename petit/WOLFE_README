@@ -1,0 +1,58 @@
+3 December 1990
+
+General information:
+
+Tiny is a tiny research implementation of an interactive program
+restructuring tool.  Tiny computes data dependence relations
+and interactively performs many restructuring transformations, such
+as loop interchanging, distribution, skewing, ... .
+The source may be grabbed by anonymous ftp through the Internet
+at address:
+	cse.ogi.edu
+or	129.95.40.2
+
+ftp cse.ogi.edu
+login: anonymous
+password: myname
+ftp> cd pub
+ftp> cd tiny
+ftp> binary
+ftp> get tiny.tar	[the main distribution]
+ftp> get doc.ms		[the document only]
+ftp> get errata.ms	[errors in the monograph:
+			 "Optimizing Supercompilers for Supercomputers"]
+ftp> get README		[this README file]
+ftp> get README.2	[info about installing on some machines]
+ftp> get README.3	[info about Tiny on a PC]
+
+
+doc.ms is a 'troff -ms' file that describes how to use the Tiny tool.
+This file is also included in the tar file.  It is about 50 pages long.
+
+tiny.list is the 'tar cvf' listing of the files in the tar file.
+
+tiny.tar is a tape archive (tar) file containing the source files
+to tiny.  It contains the following files:
+	doc/doc		document, as above
+	test/*		random 'tiny language' test source files
+	source/makefile	self-explanatory
+	source/*.c	C source for tiny
+	source/*.h	header files
+	source/*.l	'lex' file for front end
+	source/*.y	'yacc' file for front end
+	source/changec.csh	script for changing Tiny from
+			ANSI C to K&R C function headers, for those
+			without access to a newer compiler.
+
+Unpack tiny.tar with the command 'tar xvpf tiny.tar' in the directory
+where you want these files created.
+
+If you have problems transferring the tar file, or if you want to
+be notified when a new version of this software is available,
+contact Michael Wolfe through one of the following channels:
+
+electronic mail:	mwolfe@cse.ogi.edu
+telephone:		503-690-1153
+US Mail			Oregon Graduate Institute of Science and Technology
+			19600 NW Von Neumann Drive
+			Beaverton, OR 97006 USA

@@ -1,0 +1,178 @@
+
+		Induction Variable Recognition (IVR)
+		Forward Substitution (FS)
+		Static Single Assignment Graph (SSA)
+
+
+1. Data structures.
+
+SSA information stored in tree node:
+
+    /* === Induction Variable Recognition & SSA stuff === added by vadik */
+    union {
+      /* op_fetch, op_update, op_store:
+	 op_assign node where variable is assigned to */
+      struct node      *def_node;
+
+      /* op_assign, op_oper_assign:
+	 list of op_fetch/op_update nodes in which this assignment is used */
+      struct use_nodes *use_nodes;
+
+      /* op_phi:  op_do or op_if node which created this phi-fun */
+      struct node      *phi_parent;
+    } ud;
+
+    SCCNO        sc_region;   /* SCC number */
+    SCCNO        sc_number;   /* for FindSCC (private) */
+    SCCNO        sc_lowlink;  /* for FindSCC (private) */
+    bool         sc_onstack;  /* for FindSCC (private) */
+    bool         is_loopfun;  /* flag: is closed form function of loop var. */
+    struct node **ssag_node;  /* for efficiency purposes - a pointer into
+				 an array of all SSA nodes */
+
+    struct node *shadow;	/* shadow expression */
+
+
+For operations that read a variable (op_fetch, op_update), 
+ud.def_node is a pointer to the op_assign node where variable is assigned to.
+These pointers essentially constitute arcs of SSA graph.
+
+For operations that writes a variable (op_store) ud.def_node is
+a pointer to op_assign of this statement.
+These pointers are here for consistency.
+
+For op_assign, op_oper_assign we have
+ud.use_nodes that is a pointer to list of nodes
+in which variable assigned in this statement is used.
+This pointer is valid only at IVR/FS analysis time.
+
+For phi-functions we have ud.phi_parent that points to node
+responsible for creation of this phi-function.
+As I believe, this is needed only at IVR/FS time.
+
+Everything that starts with sc_ is used by Strongly
+Connected Component recognition algorithm.
+sc_region is number of SCC and therefore it may be useful.
+
+Flag is_loopfun says if this node produces a value
+that is an affine function of the loop variables
+and symbolic constants.
+
+Shadow is a pointer to shadow expression.
+Shadow of the node is an expression that produces
+the same result as node itself, but in a different way.
+It is a closed form for a series of values produced 
+by the node.
+
+
+2. Algorithms.
+
+2.1. Tarjan (ivr.c)
+
+Tarjan algorithm for recognizing SCCs is used so often
+that I supplied a special interface to it.
+Here's an example:
+
+  GoDownFun  = &ssa_source; 
+  GoRightFun = &ssa_next_source;
+  AddToScc   = &IvrAddToScc; 
+  ProcessScc = &SccToInd;
+  FindSccTxt = "IVR"; 
+  for(i=ssag_start; i<no_ssag_nodes; i++) {
+    pEXPR w = ssag_nodes[i];
+    if(w && scc_number(w)==0)
+      FindSCC(w);
+  }
+
+First you specify functions that go down and right at your tree.
+Then you specify funciton that is called when node is added to SCC
+and function that is called when SCC is completed.
+FindSccTxt is text fragment used in diagnostics.
+
+
+2.2. Building SSA (ssa.c)
+
+This is hierarchical bottom-to-top algorithm.
+The main data structure used is an array of structures (VDU)
+that for each variable specifies where the variable
+is *currently* defined and what is the list of nodes
+that use the *current* definition.
+
+As the algorithm walks the tree, it updates
+the VDU array and builds SSA graph.
+It's implemented in bld_sub_ssa function.
+
+
+2.3. Doing IVR and FS.
+
+It is done by DoIvrFs that starts Tarjan alg. on SSA graph.
+Once an SCC is found, SccToInd is called that does the actual
+IVR/FS transformations.
+
+IVR/FS is done with active use of is_loopfun flag:
+
+- Constants and loop indices and scalar variables are loopfun.
+  They are always SCCs  consisting of 1 node.
+
+- 1-node SCC that is a variable fetch that refers to 
+  loopfun variable is replaced
+  with expression assigned to the variable there.
+  This is a forward substitution and it can potentially cause problems
+  because it's not checked that variables that participate in
+  subsituted expression can be reassigned in between.
+
+  Fix: substitution should not happen if one of variables
+  referenced in substituted expression is assigned on any
+  path from this expression to the place where it's used.
+
+- 1-node SCC that is an operation becomes loopfun
+  if its arguments are loopfuns an operation itself is +,-,max,min
+  or muliplication by integer.
+
+- Many-node SCC is a candidate for IVR.
+  It is browsed and IVR parameters (step) are extracted on the fly.
+  If SCC is a simple enough to satisfy all the requirements
+  then all the fetches that are in it are converted
+  to closed form. This is done by 2nd browsing.
+
+
+2.4. Dead assignment elimination.
+
+  This is optimistic algorithm. At the beginning it assumes
+  that all assignments are live. Then every SCC that has no arcs
+  coming out of it to live assignment becomes dead.
+
+  It uses Tarjan algorithm but walikng order is exactly opposite
+  to one used in IVR/FS.
+
+
+3. Misc notes
+
+3.1. Phi nodes after loops
+
+  There is a proposal to change the way phi nodes are done for loops
+  now (conceptually, there is one phi node after the initialization,
+  but before the test and increment, of the loop - this is within the
+  cycle in the CFG, and is the source of values used in the loop or
+  after the loop body) - we would have one phi node giving the values
+  inside the loop, and another giving the values after the loop, which
+  is either the last value of the nested phi node or the value before
+  the loop (if the loop was not run).  This second phi node is really
+  unnecessary, as the old phi-node does represent the semantics if you
+  think about the CFG, but might make it easier to figure out the
+  dimensionality of the set of values assumed by the variable.
+
+  The real questions here are what node is the "phi_parent" - the node
+  responsible for the introduction of the phi node, and what should
+  become of the current phi node.  Perhaps for what we wanted the old
+  phi node should be considered to be in the loop, but after the test,
+  and the post-loop node outside of the loop.  This still leaves the
+  question of what to use for their phi_parents - as long as ivr.c is
+  changed accordingly, almost any reasonable solution should work.
+  ivr.c uses phi_parent to reject certain things that can not be
+  induction variables:  only phi nodes that are the result of the
+  loop being analyzed can be in an SCC of induction variables.
+
+  The ivr.c code that handles the current phi node should still work
+  on the phi-node in the loop;  we will probably need new code to
+  handle the phi-node after the loop.

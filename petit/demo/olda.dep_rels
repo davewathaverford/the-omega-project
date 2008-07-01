@@ -1,0 +1,264 @@
+flow     1: Entry           -->  92: xrsij(mrsij+...                 [ Vi]
+{[In_1] -> [mrs,In_1-mrsij_2(mrs)] : mrsij_2(mrs) < In_1 && mrs <= nrs && In_1 <= mrsij_2(mrs)+mrs && In_1 <= nij+mrsij_2(mrs) && 1 <= morb && UNKNOWN} union
+ {[In_1] -> [mrs,In_1-mrsij_2(mrs)] : mrsij_2(mrs) < In_1 && morb <= 0 && mrs <= nrs && In_1 <= mrsij_2(mrs)+mrs && In_1 <= nij+mrsij_2(mrs)}
+flow     1: Entry           -->  93: xrsij(mijrs+...                 [ Vi]
+{[mijrs_1(mrs,mij)+mrs] -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij && 1 <= morb && UNKNOWN} union
+ {[mijrs_1(mrs,mij)+mrs] -> [mrs,mij] : 1 <= mij <= mrs <= nrs && morb <= 0 && mij <= nij}
+flow     1: Entry           --> 121: xijrs(mijrs)                    [ Vi]
+{[In_1] -> [mi,mj,mr,In_1-mijrs_2(mi,mj,mr)] : 1 <= mj <= mi <= morb && mijrs_2(mi,mj,mr) < In_1 && mr <= num && In_1 <= mijrs_2(mi,mj,mr)+mr && 1 <= nrs && 1 <= nij && UNKNOWN} union
+ {[In_1] -> [mi,mj,mr,In_1-mijrs_2(mi,mj,mr)] : 1 <= mj <= mi <= morb && mijrs_2(mi,mj,mr) < In_1 && nrs <= 0 && mr <= num && In_1 <= mijrs_2(mi,mj,mr)+mr} union
+ {[In_1] -> [mi,mj,mr,In_1-mijrs_2(mi,mj,mr)] : 1 <= mj <= mi <= morb && mijrs_2(mi,mj,mr) < In_1 && nij <= 0 && mr <= num && In_1 <= mijrs_2(mi,mj,mr)+mr && 1 <= nrs}
+flow     1: Entry           -->  57: v(mp,mi)                        [ MV]
+{[mp,In_2] -> [mrs,mp,mq,In_2] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_2 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  58: v(mq,mi)                        [ MV]
+{[mq,In_2] -> [mrs,mp,mq,In_2] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_2 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  73: v(mq,mj)                        [ MV]
+{[mq,In_2] -> [mrs,mi,mq,In_2] : 1 <= In_2 <= mi <= morb && 1 <= mrs <= nrs && 1 <= mq <= num && 1 <= <line-71>(mrs,mi,mq)}
+flow     1: Entry           --> 124: v(mr,mk)                        [ MV]
+{[mr,In_2] -> [mi,mj,mr,ms,In_2] : 1 <= mj <= mi <= In_2 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 125: v(ms,mk)                        [ MV]
+{[ms,In_2] -> [mi,mj,mr,ms,In_2] : 1 <= mj <= mi <= In_2 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 141: v(ms,ml)                        [ MV]
+{[ms,In_2] -> [mi,mj,mk,ms,In_2] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= In_2 <= lmax_1(mi,mj,mk) && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+flow     1: Entry           -->  54: xrspq(mrspq)                    [ MV]
+{[In_1] -> [mrs,mp,In_1-mrspq_1(mrs,mp)] : 1 <= mrs <= nrs && mrspq_1(mrs,mp) < In_1 && mp <= num && In_1 <= mrspq_1(mrs,mp)+mp}
+flow     1: Entry           -->  92: xrsij(mrsij+...                 [ M]
+{[In_1] -> [mrs,In_1-mrsij_2(mrs)] : mrsij_2(mrs) < In_1 && mrs <= nrs && In_1 <= mrsij_2(mrs)+mrs && In_1 <= nij+mrsij_2(mrs)}
+flow     1: Entry           -->  93: xrsij(mijrs+...                 [ M]
+{[mijrs_1(mrs,mij)+mrs] -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+output   1: Entry           -->  79: xrsij(mrsij)                    [ M]
+{[In_1] -> [mrs,mi,In_1-mrsij_1(mrs,mi)] : 1 <= mrs <= nrs && mrsij_1(mrs,mi) < In_1 && mi <= morb && In_1 <= mrsij_1(mrs,mi)+mi}
+flow     1: Entry           --> 121: xijrs(mijrs)                    [ M]
+{[In_1] -> [mi,mj,mr,In_1-mijrs_2(mi,mj,mr)] : 1 <= mj <= mi <= morb && mijrs_2(mi,mj,mr) < In_1 && mr <= num && In_1 <= mijrs_2(mi,mj,mr)+mr}
+output   1: Entry           -->  93: xijrs(mrsij+...                 [ M]
+{[In_1] -> [mrs,In_1-mrsij_2(mrs)] : mrsij_2(mrs) < In_1 && mrs <= nrs && In_1 <= mrsij_2(mrs)+mrs && In_1 <= nij+mrsij_2(mrs)}
+output   1: Entry           -->  94: xijrs(mijrs+...                 [ M]
+{[mijrs_1(mrs,mij)+mrs] -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+output   1: Entry           --> 147: xijkl(mijkl)                    [ M]
+{[In_1] -> [mi,mj,mk,lmin_1(mi,mj,mk)-mijkl_1(mi,mj,mk)+In_1-1] : 1 <= mj <= mi <= mk <= morb && mijkl_1(mi,mj,mk) < In_1 && lmin_1(mi,mj,mk)+In_1 <= 1+lmax_1(mi,mj,mk)+mijkl_1(mi,mj,mk)}
+flow     1: Entry           -->  57: xrsiq(mi,mq)                    [ M]
+{[In_1,mq] -> [mrs,mp,mq,In_1] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_1 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  58: xrsiq(mi,mp)                    [ M]
+{[In_1,mp] -> [mrs,mp,mq,In_1] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_1 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  70: xrsiq(mi,mq)                    [ M]
+{[In_1,In_2] -> [mrs,In_1,In_2] : 1 <= In_1 <= morb && 1 <= In_2 <= num && 1 <= mrs <= nrs}
+output   1: Entry           -->  48: xrsiq(mi,mq)                    [ M]
+{[In_1,In_2] -> [mrs,In_2,In_1] : 1 <= In_1 <= morb && 1 <= In_2 <= num && 1 <= mrs <= nrs}
+output   1: Entry           -->  57: xrsiq(mi,mq)                    [ M]
+{[In_1,mq] -> [mrs,mp,mq,In_1] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_1 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+output   1: Entry           -->  58: xrsiq(mi,mp)                    [ M]
+{[In_1,mp] -> [mrs,mp,mq,In_1] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= In_1 <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           --> 124: xijks(mk,ms)                    [ M]
+{[In_1,ms] -> [mi,mj,mr,ms,In_1] : 1 <= mj <= mi <= In_1 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 125: xijks(mk,mr)                    [ M]
+{[In_1,mr] -> [mi,mj,mr,ms,In_1] : 1 <= mj <= mi <= In_1 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 138: xijks(mk,ms)                    [ M]
+{[In_1,In_2] -> [mi,mj,In_1,In_2] : 1 <= mj <= mi <= In_1 <= morb && 1 <= In_2 <= num}
+output   1: Entry           --> 115: xijks(mk,ms)                    [ M]
+{[In_1,In_2] -> [mi,mj,In_2,In_1] : 1 <= mj <= mi <= In_1 <= morb && 1 <= In_2 <= num}
+output   1: Entry           --> 124: xijks(mk,ms)                    [ M]
+{[In_1,ms] -> [mi,mj,mr,ms,In_1] : 1 <= mj <= mi <= In_1 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+output   1: Entry           --> 125: xijks(mk,mr)                    [ M]
+{[In_1,mr] -> [mi,mj,mr,ms,In_1] : 1 <= mj <= mi <= In_1 <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           -->  73: xij(mj)                         [ M]
+{[In_1] -> [mrs,mi,mq,In_1] : 1 <= In_1 <= mi <= morb && 1 <= mrs <= nrs && 1 <= mq <= num && 1 <= <line-71>(mrs,mi,mq)}
+flow     1: Entry           -->  79: xij(mj)                         [ M]
+{[In_1] -> [mrs,mi,In_1] : 1 <= In_1 <= mi <= morb && 1 <= mrs <= nrs}
+output   1: Entry           -->  67: xij(mj)                         [ M]
+{[In_1] -> [mrs,mi,In_1] : 1 <= In_1 <= mi <= morb && 1 <= mrs <= nrs}
+output   1: Entry           -->  73: xij(mj)                         [ M]
+{[In_1] -> [mrs,mi,mq,In_1] : 1 <= In_1 <= mi <= morb && 1 <= mrs <= nrs && 1 <= mq <= num && 1 <= <line-71>(mrs,mi,mq)}
+flow     1: Entry           --> 141: xkl(ml)                         [ M]
+{[In_1] -> [mi,mj,mk,ms,In_1] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= In_1 <= lmax_1(mi,mj,mk) && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+flow     1: Entry           --> 147: xkl(ml)                         [ M]
+{[In_1] -> [mi,mj,mk,In_1] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= In_1 <= lmax_1(mi,mj,mk)}
+output   1: Entry           --> 135: xkl(ml)                         [ M]
+{[In_1] -> [mi,mj,mk,In_1] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= In_1 <= lmax_1(mi,mj,mk)}
+output   1: Entry           --> 141: xkl(ml)                         [ M]
+{[In_1] -> [mi,mj,mk,ms,In_1] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= In_1 <= lmax_1(mi,mj,mk) && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+flow     1: Entry           -->  47: morb                            [ MV]
+{ -> [mrs,mq] : 1 <= mrs <= nrs && 1 <= mq <= num}
+flow     1: Entry           -->  56: morb                            [ MV]
+{ -> [mrs,mp,mq] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  65: morb                            [ MV]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           -->  87: morb                            [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  87: morb                            [ MV]
+{ ->  TRUE }
+flow     1: Entry           --> 109: morb                            [ MV]
+{ ->  TRUE }
+flow     1: Entry           --> 114: morb                            [ MV]
+{ -> [mi,mj,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= num}
+flow     1: Entry           --> 123: morb                            [ MV]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 133: morb                            [ MV]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+flow     1: Entry           -->  39: num                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  40: num                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  46: num                             [ MV]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           -->  51: num                             [ MV]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           -->  69: num                             [ MV]
+{ -> [mrs,mi] : 1 <= mrs <= nrs && 1 <= mi <= morb}
+flow     1: Entry           --> 102: num                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           --> 103: num                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           --> 113: num                             [ MV]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+flow     1: Entry           --> 118: num                             [ MV]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+flow     1: Entry           --> 137: num                             [ MV]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+flow     1: Entry           -->  48: zero                            [ MV]
+{ -> [mrs,mq,mi] : 1 <= mrs <= nrs && 1 <= mq <= num && 1 <= mi <= morb}
+flow     1: Entry           -->  55: zero                            [ MV]
+{ -> [mrs,mp,mq] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs}
+flow     1: Entry           -->  67: zero                            [ MV]
+{ -> [mrs,mi,mj] : 1 <= mj <= mi <= morb && 1 <= mrs <= nrs}
+flow     1: Entry           -->  71: zero                            [ MV]
+{ -> [mrs,mi,mq] : 1 <= mrs <= nrs && 1 <= mi <= morb && 1 <= mq <= num}
+flow     1: Entry           --> 115: zero                            [ MV]
+{ -> [mi,mj,ms,mk] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num}
+flow     1: Entry           --> 122: zero                            [ MV]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+flow     1: Entry           --> 135: zero                            [ MV]
+{ -> [mi,mj,mk,ml] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= ml <= lmax_1(mi,mj,mk)}
+flow     1: Entry           --> 139: zero                            [ MV]
+{ -> [mi,mj,mk,ms] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num}
+flow     1: Entry           --> 134: lmin                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+flow     1: Entry           --> 140: lmin                            [ M]
+{ -> [mi,mj,mk,ms] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+flow     1: Entry           --> 145: lmin                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+output   1: Entry           --> 131: lmin                            [ M]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+output   1: Entry           --> 149: lmin                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+flow     1: Entry           --> 134: lmax                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+flow     1: Entry           --> 140: lmax                            [ M]
+{ -> [mi,mj,mk,ms] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+flow     1: Entry           --> 145: lmax                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+output   1: Entry           --> 132: lmax                            [ M]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+output   1: Entry           --> 150: lmax                            [ M]
+{ -> [mi,mj,mk] : 1 <= mj <= mi <= mk <= morb}
+output   1: Entry           --> 104: mijkl                           [ M]
+{ ->  TRUE }
+output   1: Entry           --> 146: mijkl                           [ M]
+{ -> [mi,mj,mk,ml] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= ml <= lmax_1(mi,mj,mk)}
+output   1: Entry           --> 152: mijkl                           [ M]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+output   1: Entry           --> 107: mleft                           [ M]
+{ ->  TRUE }
+flow     1: Entry           -->  78: mrsij                           [ M]
+{ -> [mrs,mi,mj] : 1 <= mj <= mi <= morb && 1 <= mrs <= nrs}
+flow     1: Entry           -->  79: mrsij                           [ M]
+{ -> [mrs,mi,mj] : 1 <= mj <= mi <= morb && 1 <= mrs <= nrs}
+flow     1: Entry           -->  92: mrsij                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  93: mrsij                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  97: mrsij                           [ M]
+{ -> [mrs] : 1 <= mrs <= nrs}
+output   1: Entry           -->  64: mrsij                           [ M]
+{ -> [mrs] : 1 <= mrs <= nrs}
+output   1: Entry           -->  78: mrsij                           [ M]
+{ -> [mrs,mi,mj] : 1 <= mj <= mi <= morb && 1 <= mrs <= nrs}
+output   1: Entry           -->  88: mrsij                           [ M]
+{ ->  TRUE }
+output   1: Entry           -->  97: mrsij                           [ M]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           -->  93: mijrs                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  94: mijrs                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  95: mijrs                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           --> 120: mijrs                           [ M]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+flow     1: Entry           --> 121: mijrs                           [ M]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+output   1: Entry           -->  90: mijrs                           [ M]
+{ -> [mrs] : 1 <= mrs <= nrs}
+output   1: Entry           -->  95: mijrs                           [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+output   1: Entry           --> 105: mijrs                           [ M]
+{ ->  TRUE }
+output   1: Entry           --> 120: mijrs                           [ M]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+output   1: Entry           -->  42: mrspq                           [ M]
+{ ->  TRUE }
+output   1: Entry           -->  53: mrspq                           [ M]
+{ -> [mrs,mp,mq] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs}
+output   1: Entry           -->  41: mrsij0                          [ M]
+{ ->  TRUE }
+output   1: Entry           -->  82: mrsij0                          [ M]
+{ -> [mrs] : 1 <= mrs <= nrs}
+output   1: Entry           -->  39: np                              [ M]
+{ ->  TRUE }
+output   1: Entry           -->  40: nq                              [ M]
+{ ->  TRUE }
+output   1: Entry           --> 102: nr                              [ M]
+{ ->  TRUE }
+output   1: Entry           --> 103: ns                              [ M]
+{ ->  TRUE }
+output   1: Entry           --> 106: mij                             [ M]
+{ ->  TRUE }
+output   1: Entry           --> 111: mij                             [ M]
+{ -> [mi,mj] : 1 <= mj <= mi <= morb}
+output   1: Entry           -->  87: nij                             [ M]
+{ ->  TRUE }
+flow     1: Entry           -->  55: val                             [ M]
+{ -> [mrs,mp,mq] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs}
+flow     1: Entry           -->  57: val                             [ M]
+{ -> [mrs,mp,mq,mi] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= mi <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  58: val                             [ M]
+{ -> [mrs,mp,mq,mi] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs && 1 <= mi <= morb && 1 <= <line-55>(mrs,mp,mq)}
+flow     1: Entry           -->  71: val                             [ M]
+{ -> [mrs,mi,mq] : 1 <= mrs <= nrs && 1 <= mi <= morb && 1 <= mq <= num}
+flow     1: Entry           -->  73: val                             [ M]
+{ -> [mrs,mi,mq,mj] : 1 <= mj <= mi <= morb && 1 <= mrs <= nrs && 1 <= mq <= num && 1 <= <line-71>(mrs,mi,mq)}
+flow     1: Entry           --> 122: val                             [ M]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+flow     1: Entry           --> 124: val                             [ M]
+{ -> [mi,mj,mr,ms,mk] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 125: val                             [ M]
+{ -> [mi,mj,mr,ms,mk] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= mr <= num && 1 <= <line-122>(mi,mj,mr,ms)}
+flow     1: Entry           --> 139: val                             [ M]
+{ -> [mi,mj,mk,ms] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num}
+flow     1: Entry           --> 141: val                             [ M]
+{ -> [mi,mj,mk,ms,ml] : 1 <= mj <= mi <= mk <= morb && lmin_1(mi,mj,mk) <= ml <= lmax_1(mi,mj,mk) && 1 <= ms <= num && 1 <= <line-139>(mi,mj,mk,ms)}
+output   1: Entry           -->  54: val                             [ M]
+{ -> [mrs,mp,mq] : 1 <= mq <= mp <= num && 1 <= mrs <= nrs}
+output   1: Entry           -->  70: val                             [ M]
+{ -> [mrs,mi,mq] : 1 <= mrs <= nrs && 1 <= mi <= morb && 1 <= mq <= num}
+output   1: Entry           --> 121: val                             [ M]
+{ -> [mi,mj,mr,ms] : 1 <= mj <= mi <= morb && 1 <= ms <= mr <= num}
+output   1: Entry           --> 138: val                             [ M]
+{ -> [mi,mj,mk,ms] : 1 <= mj <= mi <= mk <= morb && 1 <= ms <= num}
+flow     1: Entry           -->  94: dum                             [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+output   1: Entry           -->  92: dum                             [ M]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  44: nrs                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  82: nrs                             [ MV]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           -->  89: nrs                             [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  95: nrs                             [ MV]
+{ -> [mrs,mij] : 1 <= mij <= mrs <= nrs && mij <= nij}
+flow     1: Entry           -->  97: nrs                             [ MV]
+{ -> [mrs] : 1 <= mrs <= nrs}
+flow     1: Entry           --> 107: nrs                             [ MV]
+{ ->  TRUE }
+flow    41: mrsij0          -->  64: mrsij0                          [ V]
+{ -> [1] : 1 <= nrs}

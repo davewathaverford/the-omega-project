@@ -1,0 +1,24 @@
+# Compute Sends and receives for the following HPF fragment
+
+I := { [i,j] : 1 <= i <= 14 && 0 <= j <= 14 };
+X := { [i,j] -> [3i,3j] };
+Y := { [i,j] -> [i',3j] : 3i-1 <= i'<= 3i};
+A := { [i,j] -> [3i,3j] };
+D := { [t1,t2] -> [p1,p2,c1,c2,l1,l2] :
+		t1 = 16c1+4p1+l1 
+		&& t2 = 16c2+4p2+l2 
+		&& 0 <= p1,p2 <= 3
+		&& 0 <= l1,l2 <= 3 };
+P := { [p1,p2,c1,c2,l1,l2] -> [p1,p2]};
+C := { [p1,p2,c1,c2,l1,l2] -> [p1,p2,c1,c2]};
+own := P(D(A(X))) \I;
+own;
+need := D(A(Y)) \I;
+need;
+different := {[p1,p2] -> [q1,q2,c1,c2,l1,l2] : p1 != q1 || p2 != q2};
+ship := (need compose (inverse own) ) intersection different;
+symbolic P1,P2;
+P := {[P1,P2]};
+S := range (ship \ P);
+S;
+codegen S;

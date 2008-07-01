@@ -1,0 +1,12 @@
+symbolic exprVar1;
+symbolic exprVar2;
+symbolic exprVar3;
+
+ispace := {[In_1] : Exists ( alpha : In_1+8alpha = 1+exprVar2 && exprVar3 =
+0 && 1 <= exprVar1 < In_1 <= 16 && exprVar2 < In_1)};
+
+known := {[In1] : Exists ( alpha : exprVar3 = 0 && exprVar2 <= 8alpha +15
+&& alpha <= 0 && 1 <= exprVar1 && exprVar1+8alpha <= exprVar2)};
+
+codegen ispace given known;
+

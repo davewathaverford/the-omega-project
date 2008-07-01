@@ -1,0 +1,20 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# A := {[i] : 1 <= i <= 8};
+# 
+# b := {[i] : exists (t : i=2t+1 & 0<=t<=3)};
+# 
+# c := {[i] : exists (t : i=2t+2 & 0<=t<=3)};
+# 
+# d := A - b;
+# 
+# d;
+
+{[i]: Exists ( alpha : 0 = i+2alpha && 2 <= i <= 8)}
+
+# 
+# codegen d;
+for(t1 = 2; t1 <= 8; t1 += 2) {
+  s1(t1);
+}
+
+# 

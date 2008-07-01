@@ -1,0 +1,41 @@
+Here are some example petit programs, as well as the dependence information.
+In some cases, a bug in our current implementation is preventing the printing
+of dependence relations, and the ".dep_rels" files are empty.
+
+You can test your petit installation with ./petit-rt
+
+
+linearized.t	-- Shows our accuracy on linearized subscripts
+by3.t		-- the example that broke KAP, Paraphase2 and Parascope 
+
+example1.t      -- An example of killing
+example1a.t     -- continues example 1
+example1b.t     -- continues example 1a
+example3.t	-- An example with a temporary work array that 
+		   can be expanded/privatized
+example4.t	-- A more subtle version of example 3
+example5.t      -- A more subtle version of example 3 in which the
+		   dependence carried by the outer loop cannot be killed
+example6.t	-- An example showing the refinement of a coupled dependence
+example7.t	-- Shows the ability to zap a dependence
+olda.t		-- An example of code from the Perfect club benchmarks
+		   showing that we can perform the analysis required to
+		   privatize arrays in real codes
+
+ivr.t		-- Displays our induction variable recognition capabilities
+
+mxm.t		-- Apply unified transformation to see effects of different
+		   loop orderings on parallelism and cache performance
+lu.t		-- Apply unified transformation to obtain all 6 permutations
+		   of the loops (something that can't be obtained using
+		   loop interchange)
+petersen.t	-- Paul Petersen described this example as a code fragment
+		   who's parallelism could not be found by traditional 
+		   analysis methods. Using expansion and a unified 
+		   transformation allows us find the parallelism.
+syr2k.t		-- Using any combination of loop interchanges, this code
+		   will still have 4 references that are not stride 0 or
+		   stride 1 in the innermost loop. By applying a unified
+		   transformation with normalization turned on, we find
+		   skewed transformations that make all array references
+		   stride 1.

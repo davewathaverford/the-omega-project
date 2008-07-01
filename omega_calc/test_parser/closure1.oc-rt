@@ -1,0 +1,31 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# ({[i] -> [i+2]} union {[i] -> [i+3]})+;
+
+{[i] -> [Out_1] : Exists ( alpha : 2alpha = i+Out_1 && i <= Out_1-2)} union
+ {[i] -> [Out_1] : Exists ( alpha : i < Out_1+2alpha && Out_1+3alpha <= i)}
+
+# 
+# R := ({[i] -> [i'] : i'=i+3} union {[i] -> [i'] : i'=i+5} union {[i] -> [i'] : i'=i+7})+;
+# 
+# R;
+
+{[i] -> [i'] : Exists ( alpha : i+3alpha = i' && i <= i'-3)} union
+ {[i] -> [i'] : Exists ( alpha : i < i'+3alpha && 2i'+7alpha <= 2i)} union
+ {[i] -> [i'] : Exists ( alpha : i'+3alpha < i && 2i <= 2i'+5alpha)}
+
+# 
+# notR := {[i] -> [i'] : i' >= i+3} - R;
+# 
+# notR;
+
+{[i] -> [i+4] }
+
+# 
+# {[i] -> [i'] : i' >= i+3} - notR;
+
+{[i] -> [i+3] } union
+ {[i] -> [i'] : i <= i'-5}
+
+# 
+# 
+# 

@@ -1,0 +1,39 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# example { [i] -> [j] : 1 <= i < j <= 20 };
+
+{[19] -> [20] }
+
+# 
+# 
+# example { [i,j] -> [i+1,j+1] : 1 <= i <= 9 && 5 <= j <= 25 };
+
+{[1,5] -> [2,6] }
+
+# 
+# 
+# example (inverse { [i] -> [i+1] : 1 <= i <= 9 });
+
+{[2] -> [1] }
+
+# 
+# 
+# example (domain { [i] -> [i+1] : 1 <= i <= 9 });
+
+{[1]}
+
+# 
+# 
+# example (range { [i] -> [i+1] : 1 <= i <= 9 });
+
+{[2]}
+
+# 
+# 
+# example ({[i] -> [i+1] : 1 <= i <= 9 } compose { [i] -> [i+1] : 1 <= i <= 9 });
+
+{[1] -> [3] }
+
+# 
+# 
+# 
+# 

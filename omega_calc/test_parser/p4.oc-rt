@@ -1,0 +1,22 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# inverse { [i] -> [i+1] : 1 <= i <= 9 };
+
+{[In_1] -> [In_1-1] : 2 <= In_1 <= 10}
+
+# 
+# domain { [i] -> [i+1] : 1 <= i <= 9 };
+
+{[i]: 1 <= i <= 9}
+
+# 
+# range { [i] -> [i+1] : 1 <= i <= 9 };
+
+{[In_1]: 2 <= In_1 <= 10}
+
+# 
+# { [i] -> [i+1] : 1 <= i <= 9 } compose { [i] -> [i+1] : 1 <= i <= 9 };
+
+{[i] -> [i+2] : 1 <= i <= 8}
+
+# 
+# 

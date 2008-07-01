@@ -1,0 +1,97 @@
+symbolic p(2), n, m1, m2, low;
+
+R  := { [ir,jr] : 1 <= ir <= n && 1 <= jr <= m1 };
+
+f1i := { [iw,jw] -> [ir,jr] : 1 <= ir <= n && 1 <= jr <= m1 &&
+			      1 <= iw <= n && 1 <= jw <= m2 &&
+			      jw = jr &&
+			      iw = ir };
+f1f := { [iw,jw] -> [ir,jr] : 1 <= ir <= n && 1 <= jr <= m1 &&
+			      1 <= iw <= n && 1 <= jw <= m2 &&
+			      jw = jr &&
+			      iw < ir };
+
+f3i := { [iw,jw] -> [ir,jr] : 1 <= ir <= n && 1 <= jr <= m1 &&
+			      1 <= iw <= n && 1 < low <= jw <= m1 &&
+			      jw-1 = jr &&
+			      iw = ir };
+f3f := { [iw,jw] -> [ir,jr] : 1 <= ir <= n && 1 <= jr <= m1 &&
+			      1 <= iw <= n && 1 < low <= jw <= m1 &&
+			      jw-1 = jr &&
+			      iw < ir };
+
+o31i := { [iw3,jw3] -> [iw1,jw1] : 1 <= iw1 <= n && 1 <= jw1 <= m2 &&
+				   1 <= iw3 <= n && 1 < low <= jw3 <= m1 &&
+				   jw1 = jw3-1 &&
+				   iw1 = iw3 };
+
+o13f := { [iw1,jw1] -> [iw3,jw3] : 1 <= iw1 <= n && 1 <= jw1 <= m2 &&
+				   1 <= iw3 <= n && 1 < low <= jw3 <= m1 &&
+				   jw1 = jw3-1 &&
+				   iw1 < iw3 };
+
+o31f := { [iw3,jw3] -> [iw1,jw1] : 1 <= iw1 <= n && 1 <= jw1 <= m2 &&
+				   1 <= iw3 <= n && 1 < low <= jw3 <= m1 &&
+				   jw1 = jw3-1 &&
+				   iw3 < iw1 };
+
+o11f := { [iw1a,jw1a] -> [iw1b,jw1b] : 1 <=iw1a<= n && 1 <=jw1a<= m2 &&
+				       1 <=iw1b<= n && 1 <=jw1b<= m2 &&
+				       jw1a = jw1b &&
+				       iw1a < iw1b };
+o33f := { [iw3a,jw3a] -> [iw3b,jw3b] : 1 <=iw3a<= n && 1 < low <=jw3a<= m1 &&
+				       1 <=iw3b<= n && 1 < low <=jw3b<= m1 &&
+				       jw3a-1 = jw3b-1 &&
+				       iw3a < iw3b };
+
+
+# FIRST GROUP - 1i and 2i (NO POSSIBLE OUTPUT DEPS. BETWEEN)
+v1i := f1i;
+v1i;
+
+Exposed12i := R intersection complement domain f1i;
+Exposed12i;
+
+# SECOND GROUP - 3i
+v3i := f3i / Exposed12i;  # / is restrictRange
+v3i;
+
+Exposed3i := R intersection complement domain f3i;
+Exposed3i;
+
+# THIRD GROUP - 1,2,3f (THERE ARE POSSIBLE OUTPUT DEPS BETWEEN THEM)
+
+v1f := ( f1f / Exposed3i )
+	intersection complement ( f3i compose o13f )
+	intersection complement ( f3f compose o13f )
+	intersection complement ( f1i compose o11f )
+	intersection complement ( f1f compose o11f );
+v1f;
+
+# WE SHOULD BE ABLE TO DO v1f WITH SOME VALUE-BASED FLOW DD'S
+
+v1f_val := ( f1f / Exposed3i )
+	intersection complement ( v3i compose o13f )
+	intersection complement ( f3f compose o13f )
+	intersection complement ( v1i compose o11f )
+	intersection complement ( f1f compose o11f );
+v1f_val;
+
+#
+# The effects of loop-independent flow have been taken out already,
+# so this should work.  But it does not.  Probably I am stupyd.
+#
+
+v1f_clever := ( f1f / Exposed3i )
+	intersection complement ( f3f compose o13f )
+	intersection complement ( f1f compose o11f );
+v1f_clever;
+
+#
+# NOW CHECK FOR EQUIVALENCES - THESE SHOULD BE TRUE
+#
+
+v1f subset v1f_val;
+v1f_val subset v1f;
+# v1f subset v1f_clever;
+# v1f_clever subset v1f;

@@ -1,0 +1,22 @@
+BEGIN{FS = "\t"; uo=0;mc=0;st=0;sc=0;dp=0;ap=0;ce=0;pss=0;scs=0;al=0;lc=0;pts=0;aa=0;ds=0;dr=0;wg=0;ae=0;sm=0;sl=0;wp=0}
+$1 == "function" && $2 == "uniform_only(int)" {uo = $5}
+$1 == "function" && $2 == "minimize_communication()" {mc = $5}
+$1 == "function" && $2 == "select_time_mappings()" {st = $5}
+$1 == "function" && $2 == "simple_codegen()" {sc = $5}
+$1 == "function" && $2 == "determine_parallelism()" {dp = $5}
+$1 == "function" && $2 == "analyze_parallelism()" {ap = $5}
+$1 == "function" && $2 == "add_extended_dirs(Dynamic_Array2<extended_dir_list*>&,int,int,int,int,int)" {ae = $5}
+$1 == "function" && $2 == "compute_edge_costs()" {ce = $5}
+$1 == "function" && $2 == "perform_space_search(int)" {pss = $5}
+$1 == "function" && $2 == "select_constants()" {scs = $5}
+$1 == "function" && $2 == "analyze_locality()" {al = $5}
+$1 == "function" && $2 == "locality_cost(int,int,int)" {lc = $5}
+$1 == "function" && $2 == "perform_time_search(int)" {pts = $5}
+$1 == "function" && $2 == "align()" {aa = $5}
+$1 == "function" && $2 == "determine_synchronization()" {ds = $5}
+$1 == "function" && $2 == "set_must_loop()" {sm = $5}
+$1 == "function" && $2 == "set_lb_ub()" {sl = $5}
+$1 == "function" && $2 == "wak_privatize()" {wp = $5}
+$1 == "function" && $2 == "determine_reductions()" {dr = $5}
+$1 == "function" && $2 == "WakGenerateCode(Omega_String)" {wg = $5}
+END {printf "| %5.4f + %5.4f + %5.4f + %5.4f = %6.4f | %5.4f + %5.4f + %5.4f = %6.4f | %5.4f + %5.4f + %5.4f = %6.4f | = %7.4f |\n", (dp+ap)/70000000.0, (ae+ce)/70000000.0, pss/70000000.0, scs/70000000.0, mc/70000000.0, (al+lc)/70000000.0, pts/70000000.0, aa/70000000.0, st/70000000.0, (ds+sm)/70000000.0, dr/70000000.0, (wg+sl+wp)/70000000.0, sc/70000000.0, uo/70000000.0}

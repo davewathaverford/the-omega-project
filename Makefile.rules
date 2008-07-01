@@ -1,0 +1,249 @@
+# Makefile rules for release 1.0 of the omega system
+# DON'T EDIT -- put any locally required changes in Makefile.config.
+# See INSTALL for more details.
+
+include $(BASEDIR)/Makefile.config
+
+
+# Provide reasonable defaults for all the things you can specify in
+# Makefile.config
+
+
+
+
+SUBMAKE=$(MAKE)
+
+STD_INCL_PATH= -I$(BASEDIR)/basic/include -I../include
+STD_LIB_PATH= 
+STD_LIBS= -lm
+STD_CFLAGS=-DOMIT_QUANTIFY_CALLS
+
+TMP_REQ_INCL_PATH= $(REQUIRED:%=-I$(BASEDIR)/%/include)
+REQ_INCL_PATH= $(TMP_REQ_INCL_PATH:%/omega/include=%/omega_lib/include)
+TMP_REQ_LIB_PATH= $(REQUIRED:%=-L$(BASEDIR)/%/obj)
+REQ_LIB_PATH= $(TMP_REQ_LIB_PATH:%/omega/obj=%/omega_lib/obj)
+REQ_LIBS= $(REQUIRED:%=-l%)
+
+INCL_PATH=$(STD_INCL_PATH) $(REQ_INCL_PATH) $(TARGET_INCL_PATH) $(EXTRA_INCL_PATH) $(X11_INCL_PATH) $(OS_INCL_PATH)
+
+LIB_PATH=$(STD_LIB_PATH) $(REQ_LIB_PATH) $(TARGET_LIB_PATH) $(EXTRA_LIB_PATH) $(X11_LIB_PATH) $(OS_LIB_PATH)
+# $(X11_LIBS) is not included here; if the application needs it, it should
+# add it to TARGET_LIBS
+LIBS=$(REQ_LIBS) $(STD_LIBS) $(TARGET_LIBS) $(OS_LIBS) $(EXTRA_LIBS)
+
+CFLAGS=$(STD_CFLAGS) $(OPTIMIZATION_CFLAGS) $(COMPILER_CFLAGS) $(OS_CFLAGS) $(TARGET_CFLAGS) $(INCL_PATH)
+LDFLAGS=$(STD_LDFLAGS) $(OPTIMIZATION_CFLAGS) $(TARGET_LDFLAGS) $(LIB_PATH) $(LIBS)
+
+ALLDIRS=omega_lib omega_calc petit uniform code_gen basic
+#ALLDIRS=omega_lib omega_calc petit code_gen basic
+
+# Executable target; can have only one per directory 
+.executable: required_libs $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(TARGET)
+	touch .executable
+
+
+# Library target; can have only one per directory 
+.library: $(OBJS)
+	$(AR_COMMAND)
+	$(RANLIB) $(TARGET)
+	touch .library
+
+required_libs: always
+	@for libname in $(REQUIRED) ; do\
+	  libdir=`echo $$libname | sed 's/omega/omega_lib/g'` ; \
+	  if test -d $(BASEDIR)/$$libdir ; \
+	  then \
+	    cd $(BASEDIR)/$$libdir/obj; $(SUBMAKE) lib$$libname.a ; \
+	  else \
+	    echo "ERROR: ${TARGET} requires omega/$$libdir: not found!"; \
+	    exit 1; \
+	  fi \
+	done
+
+depend_self: always
+	cp /dev/null Makefile.deps
+	$(MAKEDEPEND) $(INCL_PATH) -fMakefile.deps $(SRCS) > /dev/null 2>1
+
+depend_library: depend_self
+
+depend_executable: depend_self
+	@for libname in $(REQUIRED) ; \
+	do \
+	  libdir=`echo $$libname | sed 's/omega/omega_lib/g'` ; \
+	  if test -d $(BASEDIR)/$$libdir/obj ; \
+	  then \
+	    echo "Makedepend for $$libdir:" ; \
+	    cd $(BASEDIR)/$$libdir/obj; $(SUBMAKE) depend ; \
+	  else \
+	    echo "WARNING: ${TARGET} requires omega/$$libdir: not found!";\
+	  fi \
+	done
+
+
+depend_all:
+	@cd $(BASEDIR) ; \
+	for dirname in $(ALLDIRS) ; \
+	do \
+	  if test -d $$dirname/obj ; \
+	  then \
+	    echo "Makedepend in $$dirname:" ; \
+	    cd $$dirname/obj ; \
+                 $(SUBMAKE) depend_self ; \
+                 cd ../../ ; \
+	  else \
+	    if test $$dirname != "basic" ; then \
+	      echo "$(BASEDIR)/$$dirname/obj not found, continuing." ; \
+	    fi \
+	  fi \
+	done
+
+clean_all:
+	@cd $(BASEDIR) ; \
+	for dirname in $(ALLDIRS) ; \
+	do \
+	  if test -d $$dirname/obj ; \
+	  then \
+	    echo "Clean in $$dirname:" ; \
+	    cd $$dirname/obj ; \
+                 $(SUBMAKE) clean ; \
+                 cd ../../ ; \
+	  else \
+	    if test $$dirname != "basic" ; then \
+	      echo "$(BASEDIR)/$$dirname/obj not found, continuing." ; \
+	    fi \
+	  fi \
+	done
+
+veryclean_all:
+	@cd $(BASEDIR) ; \
+	for dirname in $(ALLDIRS) ; \
+	do \
+	  if test -d $$dirname/obj ; \
+	  then \
+	    echo "Clean in $$dirname:" ; \
+	    cd $$dirname/obj ; \
+                 $(SUBMAKE) veryclean ; \
+                 cd ../.. ; \
+	  else \
+	    if test $$dirname != "basic" ; then \
+	      echo "$(BASEDIR)/$$dirname/obj not found, continuing." ; \
+	    fi \
+	  fi \
+	done
+
+
+clean_self: always
+	-$(RM) -f *.o *.o.li *.typ *.val petit[yl].[ch] hpp[yl].[ch] .tables .executable .library TAGS  < /dev/null 2> /dev/null
+
+veryclean_self: clean
+	-$(RM) -f *.a $(TARGET)
+
+install_all: install_basic 
+	@cd $(BASEDIR) ; \
+	for dirname in $(ALLDIRS) ; do\
+	  if test -d $$dirname/obj ; \
+	  then \
+	    echo "Installing in $$dirname:" ; \
+	    cd $$dirname/obj; $(SUBMAKE) install; \
+	  else \
+	    if test $$dirname != "basic" ; then \
+	      echo "Warning: $$dirname not found, not installed." ;\
+	    fi \
+	  fi \
+	done
+
+install_basic: include_exists
+	@echo "Installing in basic:"
+	cd $(BASEDIR)/basic/include; \
+	tar cf - basic | (cd $(INCL_DESTDIR); tar xf -)
+
+
+install_library: lib_exists
+	$(CP) -p $(TARGET) $(LIB_DESTDIR)
+
+install_includes: include_exists
+	cd ../include; \
+	tar cf - $(LIB) | (cd $(INCL_DESTDIR); tar xf -)
+
+install_executable: bin_exists
+	$(CP) $(TARGET) $(BIN_DESTDIR)
+
+
+include_exists: always
+	@if test ! -d $(INCL_DESTDIR) ; then \
+	   mkdir $(INCL_DESTDIR); \
+        fi
+	@if test ! -w $(INCL_DESTDIR) ; then \
+	   echo "ERROR: $(INCL_DESTDIR) is not writable."; \
+	   exit 1; \
+        fi
+
+lib_exists: always
+	@if test ! -d $(LIB_DESTDIR) ; then \
+	   mkdir $(LIB_DESTDIR); \
+        fi
+	@if test ! -w $(LIB_DESTDIR) ; then \
+	   echo "ERROR: $(LIB_DESTDIR) is not writable."; \
+	   exit 1; \
+        fi
+
+bin_exists: always
+	@if test ! -d $(BIN_DESTDIR) ; then \
+	  mkdir $(BIN_DESTDIR) ;\
+        fi
+	@if test ! -w $(BIN_DESTDIR) ; then \
+	   echo "ERROR: $(BIN_DESTDIR) is not writable."; \
+	   exit 1; \
+	fi
+
+# Implicit rules: make C files in ../src/ directory
+
+%.o: ../src/%.c
+	$(CC) $(CFLAGS) -c $<
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+
+#Special rule for .c files in basic directory, ConstString and Link
+%.o: $(BASEDIR)/basic/src/%.c
+	$(CC) $(CFLAGS) -c $< 
+
+y.tab.c: ../src/parser.y
+	${RUMINANT} -v -d ../src/parser.y
+
+y.tab.h: y.tab.c
+
+lex.yy.c: ../src/parser.l y.tab.h
+	$(LEX) -i ../src/parser.l
+
+PT.o : ../src/PT.c
+	${CC} ${CFLAGS} -w -c ../src/PT.c
+
+always:
+
+#
+# The target "check_order" verifies that it's possible to get an ordering
+# of routines in the library that will work with the single-pass UNIX linker.
+# This is time consuming, and only necessary if you've extended the library in
+# some way. 
+#
+# "gegrep" is GNU egrep
+
+check_order : ubiquitous.names
+	bin/lorder ${OC_OBJ} | tsort > /dev/null
+	@echo " " ; echo "	NOTE: this takes about 11 minutes of CPU time on our SPARC-10" ; echo " "
+	bin/lorder -x ubiquitous.names ${PRES_OBJ} ${REL_OBJ} ${FANCY_OBJ} | tsort > /dev/null
+
+ubiquitous.names : lib_hack.o
+	nm lib_hack.o | gegrep -v '^........ d' | cut -c14- > ubiquitous.names
+
+always:
+
+oldmake: always
+	ln -s ../src/*.[chly] .
+
+include Makefile.deps
+
+

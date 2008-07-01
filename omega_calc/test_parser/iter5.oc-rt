@@ -1,0 +1,11 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := { [i,j] : i < 10 && i > 1 && j <=2i && j > i && j <= 16};
+# 
+# codegen R;
+for(t1 = 2; t1 <= 9; t1++) {
+  for(t2 = t1+1; t2 <= min(2*t1,16); t2++) {
+    s1(t1,t2);
+  }
+}
+
+# 

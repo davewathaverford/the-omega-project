@@ -1,0 +1,12 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Sym n;
+# 
+# new_IS := {[i] : exists (alpha : i = 5alpha-2 && 
+# 	                         i >= 17 && i <= 100)};
+# 
+# codegen new_IS;
+for(t1 = 18; t1 <= 98; t1 += 5) {
+  s1(t1);
+}
+
+# 

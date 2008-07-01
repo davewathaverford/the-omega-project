@@ -1,0 +1,21 @@
+symbolic n,m,B;
+{ [max_diff] : 
+    forall (m : 
+	(not exists (z1,z2 : 0<=z1<n && z1<=z2<m+z1 && z2 = m))
+	or 
+	(forall (minX,minY :
+            (not (forall (x1,x2 : (not (0<=x1<n && x1<=x2<m+x1 && m-B+1 <= x2 <= m)) or (x1+x2 >= minX)) &&
+                  exists (x1,x2 :  0<=x1<n && x1<=x2<m+x1 && m-B+1 <= x2 <= m && x1+x2 = minX) &&
+                  forall (y1,y2 : (not (0<=y1<n && y1<=y2<=m+y1 && m+1 <= y2 <= m+B)) or (y1+y2 >= minY)) &&
+                  exists (y1,y2 :  0<=y1<n && y1<=y2<=m+y1 && m+1 <= y2 <= m+B && y1+y2 = minY)))
+            or 
+	    (minY-minX <= max_diff)))) &&
+    exists (m,z1,z2,minX,minY :
+	0<=z1<n && z1<=z2<=m+z1 && z2 = m &&
+        forall (x1,x2 : (not (0<=x1<n && x1<=x2<m+x1 && m-B+1 <= x2 <= m)) or (x1+x2 >= minX)) &&
+        exists (x1,x2 :  0<=x1<n && x1<=x2<m+x1 && m-B+1 <= x2 <= m && x1+x2 = minX) &&
+        forall (y1,y2 : (not (0<=y1<n && y1<=y2<=m+y1 && m+1 <= y2 <= m+B)) or (y1+y2 >= minY)) &&
+        exists (y1,y2 :  0<=y1<n && y1<=y2<=m+y1 && m+1 <= y2 <= m+B && y1+y2 = minY) &&
+	minY-minX = max_diff)};
+
+

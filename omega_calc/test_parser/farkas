@@ -1,0 +1,8 @@
+
+symbolic n;
+symbolic c;
+
+R := {[i,j] : 1 <= i <= 10 && 1 <= j <= n};
+
+ac := farkas R;
+ac;

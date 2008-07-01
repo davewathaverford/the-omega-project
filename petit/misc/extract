@@ -1,0 +1,5 @@
+BEGIN	{ FS = "\t"}
+$1 == "function" && $2 == "main" {print "0 ",$5}
+$1 == "function" && $2 == "o_dd_do_accurate_kills(node*)" {print "2 ",$5}
+$1 == "function" && $2 == "malloc" {print "4 ",$5}
+$1 == "function" && $2 == "free" {print "6 ",$5}

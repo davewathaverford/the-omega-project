@@ -1,0 +1,232 @@
+# This is the file facts.prew, which is prepended to the .prew files
+# for the particular code generation we want, defines things like the
+# iteration space and dependences.  Known facts are inserted by the
+# Makefile.
+#
+# If you're looking at a .w file instead of facts.prew, then you should
+# remember to edit the original .prew files, not the .w files.
+#
+# This facts.prew file describes the program
+#
+#   for(i = 0; i <= N-1; i++)
+#     for(j = 0; j <= M-1; j++)
+#       cur[i][j]=i*j+(i-j)+2.00001;
+# 
+#   for(t = 0; t < T; t++) {
+#     for(i = 0; i <= N-1; i++)
+#       for(j = 0; j <= M-1; j++)
+# 	  old[i][j] = cur[i][j];
+# 
+#     for(i = 1; i <= N-2; i++)
+#       for(j = 1; j <= M-1; j++)
+# 	  cur[i][j] = (old[i-1][j]+old[i][j-1]+4*old[i][j]+old[i][j+1]+old[i+1][j])*0.125;
+# 
+#   }
+
+
+
+# first, the spaces and memory maps (for expanded version)
+
+symbolic T, N, M;
+
+IS_INIT := { [1,i,1,j,1,0,0]            :            0<=i<=N-1 and 0<=j<=M-1 };
+MM_INIT := { [1,i,1,j,1,0,0] -> [0,i,j] :            0<=i<=N-1 and 0<=j<=M-1 };
+
+IS_COPY := { [2,t,0,i,1,j,1]            : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+MM_COPY := { [2,t,0,i,1,j,1] -> [t+1,i,j] : 0<=t<T and 0<=i<=N-1 and 0<=j<=M-1 };
+
+IS_CALC := { [2,t,1,i,1,j,1]            : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+MM_CALC := { [2,t,1,i,1,j,1] -> [t+1,i,j] : 0<=t<T and 0< i< N-1 and 0< j< M-1 };
+
+
+# memory-based Output and Flow/anti-dependences (among Assign (copy), and Calc)
+
+FWD5 := {[x,t,y,i,z] -> [x',t',y',i',z'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) };
+FWD7 := {[x,t,y,i,z,a,b] -> [x',t',y',i',z',a',b'] :
+	(x'>x) or
+	(x'=x and t'>t) or
+	(x'=x and t'=t and y'>y) or
+	(x'=x and t'=t and y'=y and i'>i) or
+	(x'=x and t'=t and y'=y and i'=i and z'>z) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'>a) or
+	(x'=x and t'=t and y'=y and i'=i and z'=z and a'=a and b'>b) };
+FWD11:= {[a,b,c,d,e,f,g,h,i,j,k] -> [a',b',c',d',e',f',g',h',i',j',k'] :
+	(a'>a) or
+	(a'=a and b'>b) or
+	(a'=a and b'=b and c'>c) or
+	(a'=a and b'=b and c'=c and d'>d) or
+	(a'=a and b'=b and c'=c and d'=d and e'>e) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'>f) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'>g) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'>h) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'>i) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'>j) or
+	(a'=a and b'=b and c'=c and d'=d and e'=e and f'=f and g'=g and h'=h and i'=i and j'=j and k'>k) };
+
+
+BWD5 := inverse FWD5;
+BWD7 := inverse FWD7;
+BWD11:= inverse FWD11;
+EQij := {[x,t,y,i,z,j,w] -> [x',t',y',i',z',j',w'] : i'=i and j'=j };
+
+
+# data flow for original code:
+
+DF_12p1 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,0,0,i,1,j,1] : 0<i<N-1 and 0<j<M-1 };
+DF_12p2 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=0 };
+DF_12p3 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : i=N-1 and N>1 };
+DF_12p4 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=0 and 0<i<N-1 };
+DF_12p5 := ( IS_INIT * IS_COPY ) intersection
+	{[1,i,1,j,1,0,0] -> [2,t,0,i,1,j,1] : j=M-1 and M>1 and 0<i<N-1 };
+
+DF_32   := ( IS_CALC  * IS_COPY ) intersection
+	{[2,t,1,i,1,j,1] -> [2,t+1,0,i,1,j,1]};
+
+DF_23a  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i+1,1,j,1] };
+DF_23b  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j+1,1] };
+DF_23c  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j,1] };
+DF_23d  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i,1,j-1,1] };
+DF_23e  := ( IS_COPY * IS_CALC ) intersection
+	{[2,t,0,i,1,j,1] -> [2,t,1,i-1,1,j,1] };
+
+
+# arity expansion relations
+ex_0_5v := {             [] -> [a,b,c,d,e]     };
+ex_0_7v := {             [] -> [a,b,c,d,e,f,g] };
+ex_0_9v := {             [] -> [a,b,c,d,e,f,g,h,i] };
+ex_0_11v:= {             [] -> [a,b,c,d,e,f,g,h,i,j,k] };
+ex_3_5 := {         [a,b,c] -> [a,b,c,0,0]     };
+ex_3_7 := {         [a,b,c] -> [a,b,c,0,0,0,0] };
+ex_5_7 := {     [a,b,c,d,e] -> [a,b,c,d,e,0,0] };
+
+ex_5_3 := {     [a,b,c,0,0] -> [a,b,c]         };
+ex_7_3 := { [a,b,c,0,0,0,0] -> [a,b,c]         };
+ex_7_5 := { [a,b,c,d,e,0,0] -> [a,b,c,d,e]     };
+
+ex_9_7 := { [a,b,c,d,e,f,g,0,0] -> [a,b,c,d,e,f,g]     };
+ex_11_7:= { [a,b,c,d,e,f,g,0,0,0,0] -> [a,b,c,d,e,f,g]     };
+
+all_11:= { [a,b,c,d,e,f,g,h,i,j,k] };
+
+
+
+# data flow for array expanded code,
+# after forward substitution of "old[i] = cur[i]"
+# the ones that are not there are unsatisifiable
+
+DF13ap1 := DF_12p1 join DF_23a;
+DF13ap2 := DF_12p2 join DF_23a;
+assertUnsatisfiable(DF_12p3 join DF_23a);
+assertUnsatisfiable(DF_12p4 join DF_23a);
+assertUnsatisfiable(DF_12p5 join DF_23a);
+
+DF13bp1 := DF_12p1 join DF_23b;
+assertUnsatisfiable(DF_12p2 join DF_23b);
+assertUnsatisfiable(DF_12p3 join DF_23b);
+DF13bp4 := DF_12p4 join DF_23b;
+assertUnsatisfiable(DF_12p5 join DF_23b);
+        
+DF13cp1 := DF_12p1 join DF_23c;
+assertUnsatisfiable(DF_12p2 join DF_23c);
+assertUnsatisfiable(DF_12p3 join DF_23c);
+assertUnsatisfiable(DF_12p4 join DF_23c);
+assertUnsatisfiable(DF_12p5 join DF_23c);
+
+DF13dp1 := DF_12p1 join DF_23d;
+assertUnsatisfiable(DF_12p2 join DF_23d);
+assertUnsatisfiable(DF_12p3 join DF_23d);
+assertUnsatisfiable(DF_12p4 join DF_23d);
+DF13dp5 := DF_12p5 join DF_23d;
+
+DF13ep1 := DF_12p1 join DF_23e;
+assertUnsatisfiable(DF_12p2 join DF_23e);
+DF13ep3 := DF_12p3 join DF_23e;
+assertUnsatisfiable(DF_12p4 join DF_23e);
+assertUnsatisfiable(DF_12p5 join DF_23e);
+
+DF33a   := DF_32 join DF_23a;
+DF33b   := DF_32 join DF_23b;
+DF33c   := DF_32 join DF_23c;
+DF33d   := DF_32 join DF_23d;
+DF33e   := DF_32 join DF_23e;
+
+ 
+KNOWN := { [] : N, M >= 4 and T >= 0 };
+ 
+# tskew.prew
+#
+# Finally, here are the memory maps for the arrays we write to,
+# straight out of the current draft of the paper.
+#
+# For the initialization, just do as we did in "orig", but from 7-dim. space:
+
+NO_T := { [t,i,j] -> [i,j] };
+
+
+IS_Trans := { [2,t,1,i,1,j,1] -> [2,tb,1,xb,1,s,1,xx,1,tt,1] :
+	0<=tt<16 and 0<=xx<16 and s=j+i+t and
+	t=16*tb+tt and i+t = 16*xb+xx };
+
+IS_Tinv := inverse IS_Trans;
+
+FULL_IS_Trans := IS_Trans union {[1,i,1,j,1,0,0] -> [1,i,1,j,1,0,0,0,0,0,0]};
+
+
+TS_IS_CALC := IS_CALC join IS_Trans;
+
+TS_MM_main  := IS_Tinv join { [2,t,1,i,1,j,1] -> [i,j] }
+                restrictDomain { [2,tb,1,xb,1,s,1,xx,1,tt,1] : tt=16-1 }
+                restrictDomain TS_IS_CALC;
+
+TS_MM_tide  := { [2,tb,1,xb,1,s,1,xx,1,tt,1]->[xbmod2,s-(16*tb+tt),
+					       xx+1-(16-1),tt]:
+                 exists (xbdiv2 : 2*xbdiv2+xbmod2 = xb && 0<=xbmod2<2) and
+                         xx+1>=16-1 and tt<16-1 }
+                restrictDomain TS_IS_CALC;
+
+TS_MM_cache :=  { [2,tb,1,xb,1,s,1,xx,1,tt,1] -> [smod_wid, xx, tt] :
+                  exists (sdiv_wid : 3*sdiv_wid+smod_wid = s &&
+		          0<=smod_wid<3) and
+                  xx+1<16-1 and tt<16-1 }
+                restrictDomain TS_IS_CALC;
+
+main_dims  := {[i, j] : 0<=i<=N and 0<=j<=M};
+
+tide_dims  := {[xbmod2, s, xxend, tt] : 0<=xbmod2<2 and 0<=s<M+N and
+## tide_dims  := {[xbmod2, s, xxend, tt] : 0<=xbmod2<2 and 0<=s<M and
+					0<=xxend<2 and 0<=tt<16};
+
+cache_dims := {[smod4, xx, tt] : 0<=smod4<3 and 0<=xx<16 and
+				 0<=tt<16};
+
+tcodegen
+	set-mmap 2	"cur"   [main_dims],  TS_MM_main,
+			"tide"  [tide_dims],  TS_MM_tide,
+			"cache" [cache_dims], TS_MM_cache
+
+	set-mmap 1	"cur"	[main_dims],  (ex_11_7 join MM_INIT) join NO_T
+
+	trans-is FULL_IS_Trans
+
+	["w=init(t2,t4)",	 	 IS_INIT, "all", MM_INIT],
+	["w=0.125*(r1+r2+(4*r3)+r4+r5)", IS_CALC, "all", MM_CALC,
+		[1, DF13ap1, 1, DF13ap2, 2, DF33a],
+		[1, DF13bp1, 1, DF13bp4, 2, DF33b],
+		[1, DF13cp1, 2, DF33c],
+		[1, DF13dp1, 1, DF13dp5, 2, DF33d],
+		[1, DF13ep1, 1, DF13ep3, 2, DF33e]
+	]
+given KNOWN;

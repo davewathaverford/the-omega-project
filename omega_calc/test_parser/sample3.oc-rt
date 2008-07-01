@@ -1,0 +1,37 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Symbolic n,m;
+# 
+# 
+# sym_example {[i] : 1 <= i <= n};
+
+{[1]: 1 <= n}
+
+# 
+# 
+# sym_example {[i] : m <= i <= n};
+
+{[m]: m <= n}
+
+# 
+# 
+# sym_example {[i] : m <= i <= n && exists (alpha : i = 2alpha)};
+
+{[0]: m <= 0 && 0 <= n}
+
+# 
+# example {[i] : m <= i <= n && exists (alpha : i = 2alpha)};
+
+{[42]: m = 42 && n = 42}
+
+# 
+# example {[i] : m < i <= n && exists (alpha : i = 2alpha)};
+
+{[44]: m = 42 && n = 44}
+
+# 
+# example {[i] : m < i < n};
+
+{[43]: m = 42 && n = 44}
+
+# 
+# 

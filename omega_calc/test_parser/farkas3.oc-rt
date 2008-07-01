@@ -1,0 +1,9 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# R := {[1:10,1:10,1:10,1:10]};
+# 
+# AffineHull R;
+
+{[In_1,In_2,In_3,In_4]}
+
+# 

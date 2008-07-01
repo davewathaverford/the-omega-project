@@ -1,0 +1,12 @@
+flow     1: Entry           -->  10: a(i-1,j+2)                      [ V]
+{[0,In_2] -> [1,In_2-2] : Exists ( alpha : In_2 = 3+3alpha && 3 <= In_2 <= 12)} union
+ {[In_1,In_2] -> [In_1+1,In_2-2] : Exists ( alpha : In_1+3alpha = In_2 && In_1+3, 11 <= In_2 <= 12, In_1+9)}
+flow     1: Entry           -->  10: a(i-1,j+2)                      [ M]
+{[In_1,In_2] -> [In_1+1,In_2-2] : Exists ( alpha : In_1 = In_2+3alpha && 0 <= In_1 <= In_2-3 && In_2 <= 12)}
+output   1: Entry           -->  10: a(i,j)                          [ M]
+{[In_1,In_2] -> [In_1,In_2] : Exists ( alpha : In_1 = In_2+3alpha && 1 <= In_1 <= In_2 <= 10)}
+flow    10: a(i,j)          -->  10: a(i-1,j+2)      (1,-2)          [ MVO]
+{[i,j] -> [i+1,j-2] : Exists ( alpha : j+3alpha = 3+i && 1 <= i <= j-3 && j <= 10)}
+exact dd: {[1,-2]}
+flow    10: a(i,j)          -->  12: Exit                            [ MV]
+{[i,j] -> [i,j] : Exists ( alpha : i = j+3alpha && 1 <= i <= j <= 10)}

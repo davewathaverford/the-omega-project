@@ -1,0 +1,6 @@
+A := {[i] : 1 <= i <= 8};
+b := {[i] : exists (t : i=2t+1 & 0<=t<=3)};
+c := {[i] : exists (t : i=2t+2 & 0<=t<=3)};
+d := A - b;
+d;
+codegen d;

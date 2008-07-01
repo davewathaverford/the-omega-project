@@ -1,0 +1,198 @@
+/************************************************************
+ *                                                          *
+ * Language Interface for IVR and Forward Substitution (FS) *
+ * System-dependent part.                                   *
+ * Generic version for testing system independence.         *
+ * Written by Vadim Maslov vadik@cs.umd.edu 01/03/93.       *
+ *                                                          *
+ ************************************************************/
+
+/*
+ * Here various properties of expression operations are described.
+ */
+#define expr_is_const(e)         (0)
+#define expr_is_int_const(e)     (0)
+#define expr_is_real_const(e)    (0)
+#define int_const_value(e)  (0)
+
+#define expr_is_loop_index(e)    (1)
+
+#define expr_is_scalar_fetch(e)  (1)
+#define expr_is_scalar_store(e)  (1)
+#define expr_is_scalar_update(e) (1)
+
+#define expr_is_aray_reference(e)  (0)
+#define expr_is_memory_reference(e) (0)
+
+#define expr_is_phi(e)        (0)
+
+#define expr_is_assign        (0)
+
+#define stmt_is_entry_node(e) (0)
+#define stmt_is_exit_node(e)  (0)
+
+
+/*
+ * Also we need information about what your operations can do.
+ * So below macros for handling expressions and operations are defiend.
+ */
+#define expr_op(e)       (0)
+#define expr_var_id(e)   ((Var_Id)0)
+#define expr_lineno(e)   (0)
+
+/*
+ * Relatives
+ */
+#define expr_parent(e)       ((pEXPR)0)
+#define bin_op_arg_left(e)   ((pEXPR)0)
+#define bin_op_arg_right(e)  ((pEXPR)0)
+
+#define assgmt_parent(e)     ((pEXPR)0)
+#define assgmt_left_part(p)  ((pEXPR)0)
+#define assgmt_right_part(p) ((pEXPR)0)
+
+#define phi_parent(e)        ((pEXPR)0)
+#define where_defined(e)     ((pEXPR)0)
+
+/*
+ * Types
+ */
+#define expr_type_is_int(e)   (1)
+
+/*
+ * Moving expressions and statements around
+ */
+#define place_expr_instead(new, old)  {int ___; ___=___;}
+void place_new_stmt_after(pEXPR, pEXPR);
+
+/*
+ * Copying and making expressions and statements
+ */
+#define copy_expr_tree(e)         ((pEXPR)0)
+#define make_expr_node(le,op,re)  ((pEXPR)0)
+#define make_constant(value)      ((pEXPR)0)
+#define make_loop_index_ref(l)    ((pEXPR)0)
+pSTMT   make_scalar_assgmt(pEXPR, EXPR_OPER, pEXPR); 
+pEXPR   make_scalar_store(Var_Id);
+pEXPR   make_scalar_fetch(Var_Id);
+void    turn_update_to_store(pEXPR);
+void    turn_store_to_update(pEXPR, EXPR_OPER, pEXPR);
+void    place_shadow_expr(pEXPR,pEXPR);
+
+
+/*
+ * Removing and Freeing expressions and statements.
+ * e is expression to free,
+ * f is flag: TRUE:  remove from memory and SSA graph
+ *            FALSE: remove only from SSA graph
+ */
+#define free_expr_tree(e,f)  { int ___; ___=___;}
+#define free_expr_node(e,f)  { int ___; ___=___;}
+
+#define remove_stmt(p)     { int ___; ___=___;}
+
+/*
+ * Comparing expressions
+ */
+#define compare_exprs(e1, e2) (0)
+
+
+/*
+ * Parameter loop info
+ */
+#define loop_val_start(p)  ((pEXPR)0)
+#define loop_val_finish(p) ((pEXPR)0)
+#define loop_val_step(p)   ((pEXPR)0)
+
+/*
+ * Print and debug stuff
+ */
+#define print_program(text, p) {int ___; ___=___;}
+#define expr_oper_name(op)     ((char*)0)
+
+/*
+ * IVR&FS is done by calling function DoIvrFs.
+ * What exactly is done, is controlled by boolean variables:
+ *   ivr_on           -- do IVR
+ *   ivr_ForwSub      -- do Forward Substitution
+ *   ivr_SubstScalars -- if ivr_ForwSub, substitute integer scalars
+ *                       with unknown values
+ *   ivr_SubstReals   -- if ivr_ForwSub && ivr_SubstScalars, substitute
+ *                       integer and real scalars with unknown values
+ *   ivr_debug        -- print IVR debugging info
+ *
+ * Pointer to SSA graph node has pEXPR type, because (only)
+ * expression operations can be vertexes of SSAG.
+ *
+ * Before calling DoIvrFs you should build a list of SSA graph vertexes.
+ * Each vertex is added to the graph by calling IVR-supplied function
+ *   AddSSAgraph(pEXPR node).
+ */
+
+/*
+ * User-defined macro/function is_ssag_node(pSSAGnode p) tells whether
+ *   node p can be in SSAG.
+ */
+#define is_ssag_node(p)    (0)
+#define can_not_be_dead(e) (1)
+
+/*
+ * Edges of SSA graph are reported by functions supplied by user:
+ *   SsaSource(p)        -- returns first SSAG node supplying data to node p
+ *   SsaNextSource(p,p0) -- returns next SSAG node supplying data to node p
+ *   SsaSink(p)          -- returns first SSAG node consuming data from node p
+ *   SsaNextSink(p,p0)   -- returns next SSAG node consuming data from node p
+ */
+pEXPR ssa_source(pEXPR, void **);
+pEXPR ssa_next_source(pEXPR, pEXPR, void **);
+pEXPR ssa_sink(pEXPR, void **);
+pEXPR ssa_next_sink(pEXPR, pEXPR, void **);
+
+/*
+ * SSA Graph node should have the following members:
+ *   SCCNO sc_region;  -- SCC number 
+ *   SCCNO sc_number;  -- for FindSCC 
+ *   SCCNO sc_lowlink; -- for FindSCC 
+ *   bool  sc_onstack; -- for FindSCC 
+ *   bool  is_loopfun; -- flag: is it a closed form function of loop variable.
+ *   pEXPR *ssag_node; -- pointer to the list of SSAG nodes.
+ *
+ * l-value of these members are supplied by user-defined macros, so
+ * actual structure member names may be different.
+ */
+
+#define scc_region(e)     (*((SCCNO *)0))
+#define scc_number(e)     (*((SCCNO *)0))
+#define scc_lowlink(e)    (*((SCCNO *)0))
+#define scc_onstack(e)    (*((bool  *)1))
+#define scc_isloopfun(e)  (*((bool  *)1))
+#define scc_pssag_list(e) (*((pEXPR **)0))
+
+
+/*
+ * Traverse things
+ */
+void traverse_stmts(pSTMT, void (*)(pSTMT));
+void traverse_expr1(pEXPR, void (*)(pEXPR));
+void traverse_exprs(pSTMT, void (*)(pEXPR));
+
+
+/*
+ * SSA interface to dependence testing -- vadik
+ */
+
+/*
+ * get_ssa_scalar_id(e) produces var_id for given expression.
+ * The difference from expr_var_id(e) is that it produces
+ * different IDs for different definitions of the same variable.
+ * Doing this it may create additional symbol table entries or do some trick.
+ */
+Var_Id get_ssa_scalar_id(pEXPR); 
+
+/*
+ * tag_var_as_changeable_or_constant(var, use, leading0s)
+ * tags variable as changeable variable or symbolic constant depending on
+ * the context of variable use and definition.
+ */
+void tag_var_as_changeable_or_constant(Var_Id, pEXPR, int);
+

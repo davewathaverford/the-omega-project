@@ -1,0 +1,20 @@
+output   1: Entry           -->  15: a(L2)                           [ M]
+{[In_1] -> [L1,In_1] : 2 <= In_1 <= m && 1 <= L1 <= n}
+flow     1: Entry           -->  15: b(L1,L2)                        [ MV]
+{[In_1,In_2] -> [In_1,In_2] : 1 <= In_1 <= n && 2 <= In_2 <= m}
+flow     1: Entry           -->  13: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  14: m                               [ MV]
+{ -> [L1] : 1 <= L1 <= n}
+anti    15: a(L2-1)         -->  15: a(L2)           (+,-1)          [ MoZ]
+{[L1,L2] -> [L1',L2-1] : 1 <= L1 < L1' <= n && 3 <= L2 <= m}
+exact dd: {[In_1,-1]: 1 <= In_1}
+flow    15: a(L2)           -->  15: a(L2-1)         (0,1)           [ MVO]
+{[L1,L2] -> [L1,L2+1] : 1 <= L1 <= n && 2 <= L2 < m}
+exact dd: {[0,1]}
+flow    15: a(L2)           -->  15: a(L2-1)         (+,1)           [ MoZ]
+{[L1,L2] -> [L1',L2+1] : 1 <= L1 < L1' <= n && 2 <= L2 < m}
+exact dd: {[In_1,1]: 1 <= In_1}
+output  15: a(L2)           -->  15: a(L2)           (+,0)           [ Mo]
+{[L1,L2] -> [L1',L2] : 1 <= L1 < L1' <= n && 2 <= L2 <= m}
+exact dd: {[In_1,0]: 1 <= In_1}

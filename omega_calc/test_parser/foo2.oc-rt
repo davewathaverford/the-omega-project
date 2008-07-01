@@ -1,0 +1,8 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# hull( {[1,1]} union
+#  {[In_1,In_1]: 2 <= In_1});
+
+{[In_1,In_1]: 1 <= In_1}
+
+# 
+# 

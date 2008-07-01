@@ -1,0 +1,1 @@
+clear; process_file_list do_run $1

@@ -1,0 +1,6 @@
+#!/bin/sh
+PETIT_TEST_FLAGS=$1
+shift
+for i in $* ; do
+csh $PETITHOME/misc/r-gen $i ${PETIT_TEST_FLAGS}
+done

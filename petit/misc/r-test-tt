@@ -1,0 +1,40 @@
+#!/bin/sh
+
+petit=$1
+file=$2
+flags=$3
+
+# got rid of common because it was too hard to run with pmake on another cpu
+
+echo "Time trialing $petit with flags \"${PETIT_TEST_FLAGS}$flags\" on $file"
+
+tmp=/tmp/t-test.$$.`hostname`
+
+if	test "${petit_dd_suffix}" = ""
+then	petit_dd_suffix=rdd${flags}
+fi
+
+ofile=${2}.${petit_dd_suffix}
+
+if	test "${PETIT_TEST_ALERT}" = ""
+then	PETIT_TEST_ALERT=""
+fi
+
+${petit} -${PETIT_TEST_FLAGS}${flags} -R${tmp} ${file}
+date >> _RawTimes_Omega3
+cat trace.out >> _RawTimes_Omega3
+../misc/postProcess -t -s1 -sk -s1k -s12rk trace.out >> _TotalTimes_Omega3
+
+if	test -r ${tmp}
+then	if  sort < ${tmp} | diff -b ${ofile} -
+	then	rm -f ${tmp} </dev/null
+		exit 0
+	else	rm -f ${tmp} </dev/null
+		${PETIT_TEST_ALERT}
+		exit 1
+	fi
+else	${PETIT_TEST_ALERT}
+	exit 2
+fi
+
+exit 3

@@ -1,0 +1,15 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := {[i,j] : 3i+2j=15 && 1<=i<=j<=100};
+# 
+# R;
+
+{[i,j]: 3i+2j = 15 && 3 <= j <= 6}
+
+# 
+# codegen R;
+for(t1 = 1; t1 <= 3; t1 += 2) {
+  t2=intDiv((-3*t1+15+1),2);
+  s1(t1,intDiv(-3*t1+15,2));
+}
+
+# 

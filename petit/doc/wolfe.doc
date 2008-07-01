@@ -1,0 +1,395 @@
+
+*** CVS: directory ***
+
+::::::::::::::
+alliant.doc
+::::::::::::::
+Mark Streich's routine to perform the actual translation from the 
+target-tree data structure to Alliant FX/8 assembly language.
+::::::::::::::
+alloc.doc
+::::::::::::::
+Define 'malloc' and 'calloc' allocate routines.
+
+This should be defined in <alloc.h> for ANSI C routines.
+::::::::::::::
+alloca.doc
+::::::::::::::
+declare routine to handle allocation on stack, if available.
+on SUN4, include <alloca.h>
+on TURBOC, can't do it.
+::::::::::::::
+browse.doc
+::::::::::::::
+Interactively browse through the data structures.
+::::::::::::::
+browsedd.doc
+::::::::::::::
+Browse the data dependence relations.
+::::::::::::::
+bump.doc
+::::::::::::::
+Bump the loop limits by a constant amount.
+
+Bump assumes that the current position in the program is a loop.
+It asks for a bump-value, that is, an integer value by which to 'bump'
+the loop limits.  It then makes a copy of the program, changes all
+references to the loop index 'i' to the expression 'i-b', and changes
+the loop limits from 'l to u' into 'l+b to u+b'.  For instance,
+the loop:
+	for i = 1 to 10 do
+	  a(i) = ...
+could be changed, by bumping by '2' into:
+	for i = 1+2 to 10+2 do
+	  a(i-2) = ...
+Due to 'tiny' language rules, the last value of 'i' is not available
+after the loop, and so no correction needs to be added after the loop.
+::::::::::::::
+circ.doc
+::::::::::::::
+Circulate a loop nest (repetitive loop interchanging).
+::::::::::::::
+codegen.doc
+::::::::::::::
+Mark Streich's routine to emit Alliant assembly code.
+
+Different routines are used for each instruction format.
+::::::::::::::
+compare.doc
+::::::::::::::
+Compare two trees to see if they are the same.
+
+This compare operators and the subtrees, and (if applicable)
+the 'nodevalue' fields to see if they are equal.  It returns
+'1' if so, and '0' otherwise.
+::::::::::::::
+compile.doc
+::::::::::::::
+Mark Streich's routine to attempt to compile the program by:
+   1) Verifying that loops are of the right type (vectorized/parallel)
+   2) Arranging storage for variables and indexes
+   3) Translating the parse tree into a "target tree"
+   4) Translating the "target tree" into assembly language
+::::::::::::::
+copy.doc
+::::::::::::::
+Copy the program.
+
+Create a new "savepgm" record, to store information about the copied
+program.  Make a copy of the current program, copying all links, dependence
+structures, etc., and store the copied program in the 'old' position
+in the "savepgm" data structure.  Store the original program in the
+'new' position in the "savepgm" data structure.
+
+This also provides two other entry points, one to copy a subtree of
+the data structure, and one to copy a single node of the data structure.
+::::::::::::::
+ddcheck.doc
+::::::::::::::
+Check to see if dependence relations with certain directions appear.
+
+One routine will check all the nodes in a loop against two dependence
+direction vectors, and will make a list of the dependence relations that
+exhibit that condition, allowing the user to override that condition.
+
+Another routine is provided to visit all the dependence relations and
+fix the DD graph after a transformation.
+::::::::::::::
+dddriver.doc
+::::::::::::::
+Main data dependence driver program to build the data dependence graph.
+
+Several decision algorithms are provided.
+::::::::::::::
+ddimpchg.doc
+::::::::::::::
+Special dependence decision algorithm for imperfect-nested loop interchanging,
+based on the Power test.
+
+The particular dependence algorithm tests dependence relations that
+enter or leave the inner loop.
+::::::::::::::
+ddlambda.doc
+::::::::::::::
+Mark Streich's implementation of the Lambda test dependence decision algorithm.
+::::::::::::::
+ddnest.doc
+::::::::::::::
+Find the nest level of the loops surrounding two nodes, along with
+the common nest level.  Modify the nest levels of the loops surrounding
+only the 2nd node so that loops 1:C surround both nodes, loops
+C+1:N1 surround only node 1, and loops N1+1:N2 surround only node 2.
+Thus, in a loop structure such as:
+			original	modified
+	+--- for	nest 1		nest 1
+	|+--  for	nest 2		nest 2
+	||     node 1
+	|+--  endfor
+	|+--  for	nest 2		nest 3
+	||+-   for	nest 3		nest 4
+	|||     node 2
+	||+-   endfor
+	|+-   endfor
+	+--  endfor
+
+nest C = 1, nest N1 = 2, nest N2 = 4.
+
+The other routine fixes up the modified loop nest levels.
+::::::::::::::
+ddt.doc
+::::::::::::::
+Common routines for dependence decision algorithms using Banerjee's
+free variables, the T variables.
+::::::::::::::
+ddtesta.doc
+::::::::::::::
+Single subscript dependence decision algorithms.
+
+This implements simple or triangular Banerjee's inequalities,
+along with other simpler tests when only a single subscript
+appears in the subscript.
+::::::::::::::
+ddtestb.doc
+::::::::::::::
+This is the Generalized GCD test from Banerjee's book.
+It actually calls routines in other files to do all the work.
+::::::::::::::
+ddtestd.doc
+::::::::::::::
+The Power Test.
+::::::::::::::
+ddtutil.doc
+::::::::::::::
+Utilities used in dependence tests derived from
+Banerjee's simultaneous subscript tests (Generalized GCD test).
+::::::::::::::
+ddtype.doc
+::::::::::::::
+This is a table of the types of data dependence that appear in a
+dependence graph in 'tiny'.
+::::::::::::::
+ddutil.doc
+::::::::::::::
+Utilities for dependence decision algorithms.
+::::::::::::::
+debug.doc
+::::::::::::::
+Debug file declaration.
+::::::::::::::
+distrib.doc
+::::::::::::::
+Distribute a loop around inner loops and statements.
+::::::::::::::
+dump.doc
+::::::::::::::
+Dump program on screen.
+::::::::::::::
+evaluate.doc
+::::::::::::::
+Evaluate a constant valued expression.
+::::::::::::::
+exprtype.doc
+::::::::::::::
+This is a table of 'types' of expressions that can appear.
+These appear in the 'exptype' field of a node.
+::::::::::::::
+foldcon.doc
+::::::::::::::
+Mark Streich's routine to perform simple constant folding for the YACC parser.
+::::::::::::::
+getword.doc
+::::::::::::::
+Get a word from the keyboard.
+::::::::::::::
+impchg.doc
+::::::::::::::
+Handle interchanging of imperfectly-nested loops.
+::::::::::::::
+intchg.doc
+::::::::::::::
+Interchange adjacent loops.
+::::::::::::::
+intutil.doc
+::::::::::::::
+Utilities for interchanging and circulation.
+::::::::::::::
+langmenu.doc
+::::::::::::::
+Menus to select the lambda tuple procedure, and the output language.
+The output language choices are the 'tiny' language, Fortran, and 
+Alliant assembler (the latter two courtesy of Mark Streich).
+::::::::::::::
+language.doc
+::::::::::::::
+Define the output language types allowed.
+::::::::::::::
+layout.doc
+::::::::::::::
+Compute storage layouts for variables for compiler.
+::::::::::::::
+limits.doc
+::::::::::::::
+Handle loop limits of interchanged loops.
+::::::::::::::
+linear.doc
+::::::::::::::
+linearize subscripts for data dependence
+::::::::::::::
+link.doc
+::::::::::::::
+Routines to unlink and relink nodes in the Abstract Syntax Tree.
+::::::::::::::
+linkfile.doc
+::::::::::::::
+Link file for 'tlink' to make 'tiny' on a PC with Turbo C
+::::::::::::::
+linkio.doc
+::::::::::::::
+Link atoms on a list, used for dependence computations.
+::::::::::::::
+listdir.doc
+::::::::::::::
+List the files in the current directory to the main window.
+::::::::::::::
+machdef.doc
+::::::::::::::
+Machine dependent parameters for code generation
+::::::::::::::
+make.doc
+::::::::::::::
+Build nodes.
+::::::::::::::
+makefile.doc
+::::::::::::::
+Makefile to make tiny (t) on Unix or on PC (pctiny)
+::::::::::::::
+makeint.doc
+::::::::::::::
+Internal variables of make.
+::::::::::::::
+mem.doc
+::::::::::::::
+declare memcpy system routine
+::::::::::::::
+menu.doc
+::::::::::::::
+Manage menus.
+::::::::::::::
+message.doc
+::::::::::::::
+Manage the message window.
+::::::::::::::
+op.doc
+::::::::::::::
+This is a table of the operations types can appear in the 'optype' field
+of nodes.
+::::::::::::::
+parallel.doc
+::::::::::::::
+Parallelize loops.
+::::::::::::::
+portable.doc
+::::::::::::::
+This defines types that have been shown to be portable across
+various C compilers, including compilers starting with 'g', compilers
+on operating systems ending in 'x', and the Turbo C compiler under MS-DOS.
+::::::::::::::
+print.doc
+::::::::::::::
+Print program.
+::::::::::::::
+restart.doc
+::::::::::::::
+Restart stopped subprocesses.
+::::::::::::::
+restore.doc
+::::::::::::::
+declare a routine to move to a previously stored AST
+::::::::::::::
+restruct.doc
+::::::::::::::
+Restructure menu driver, called interchange, bump, ....
+::::::::::::::
+reverse.doc
+::::::::::::::
+Reverse a loop (run it backwards).
+::::::::::::::
+savepgm.doc
+::::::::::::::
+Data structures used to save previous versions of program.
+::::::::::::::
+screen.doc
+::::::::::::::
+screen handling routines.
+this is portable between TURBO C and Curses, so far.
+::::::::::::::
+skew.doc
+::::::::::::::
+Skew an inner loop with respect to an outer loop.
+::::::::::::::
+stdlib.doc
+::::::::::::::
+include file to either include standard stdlib, or to declare
+things like exit, abort, ...
+::::::::::::::
+string.doc
+::::::::::::::
+Define 'strtok' string routine.
+
+This should be defined in <string.h> for ANSI C routines.
+::::::::::::::
+symtype.doc
+::::::::::::::
+This is a table of the types of symbols in the symbol table.
+::::::::::::::
+tarjan.doc
+::::::::::::::
+Tarjan's maximal cycle finding algorithm, used for loop distribution, ... .
+::::::::::::::
+tbltyp.doc
+::::::::::::::
+'sed' script to create '.typ' file from '.tbl' file
+::::::::::::::
+tblval.doc
+::::::::::::::
+'sed' script to create '.val' file from '.tbl' file
+::::::::::::::
+tgttree.doc
+::::::::::::::
+convert from 'tree' format to 'target-tree' format for generating code
+written by Mark Streich
+::::::::::::::
+tiny.doc
+::::::::::::::
+Tiny main program.
+::::::::::::::
+tinyl.doc
+::::::::::::::
+LEX description of the tiny language tokens
+::::::::::::::
+tinyy.doc
+::::::::::::::
+YACC description of the tiny language
+This was updated and improved by Mark Streich
+::::::::::::::
+tree.doc
+::::::::::::::
+Global data structures (Abstract Syntax Tree) for tiny program.
+::::::::::::::
+tt.doc
+::::::::::::::
+TT main program - Tiny Test program - tests dependence routines without
+all the other baggage.
+::::::::::::::
+vector.doc
+::::::::::::::
+vectorize loops
+This is from Mark Streich
+::::::::::::::
+verify.doc
+::::::::::::::
+Verify data structures.
+::::::::::::::
+viedit.doc
+::::::::::::::
+declaration of function that calls an editor on a file

@@ -1,0 +1,40 @@
+
+symbolic exprVar1;
+symbolic exprVar2;
+
+ispace0 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+
+ispace1 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+
+ispace2 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+
+ispace3 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+
+ispace4 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+
+ispace5 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+&& alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)} union
+ {[In_1] : Exists ( alpha : 1+exprVar1 = In_1+8alpha && exprVar2 = 0 && 1,
+exprVar1+1 <= In_1 <= 15)};
+
+known := { [In_1] : exprVar2 = 0 && exprVar1 <= 15} union
+ {[In_1] : exprVar2 = 0 && exprVar1 <= 14} union
+ {[In_1] : exprVar2 = 0 && exprVar1 <= 15};
+
+
+k := Hull known;
+
+gist ispace0 given k;
+gist ispace1 given k;
+gist ispace2 given k;
+gist ispace3 given k;
+gist ispace4 given k;
+gist ispace5 given k;
+
+codegen ispace0, ispace1, ispace2, ispace3, ispace4, ispace5 given k;
+

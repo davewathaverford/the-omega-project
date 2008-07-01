@@ -1,0 +1,43 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic L,M;
+# 
+# 
+# I := {[j,i] : 1 <= j <= 100 && j-L <= i <= j};
+# 
+# 
+# D := I*I intersection {[j1,i1] -> [j2,i2] : i1+j1 = i2+M};
+# 
+# I;
+
+{[j,i]: 1, i <= j <= 100 && j <= L+i}
+
+# 
+# D;
+
+{[In_1,In_2] -> [Out_1,In_1-M+In_2] : 1, In_2 <= In_1 <= 100 && 1 <= Out_1 <= 100 && In_1 <= L+In_2 && M+Out_1 <= L+In_1+In_2 && In_1+In_2 <= M+Out_1}
+
+# 
+# range D;
+
+{[In_1,In_2]: Exists ( alpha : 1, In_2 <= In_1 <= 100 && M <= -In_2+200 && 2 <= M+L+In_2 && M+In_2 <= L+2alpha && 2alpha <= M+In_2 && In_1 <= L+In_2)}
+
+# 
+# (range D) - (range D);
+
+{[In_1,In_2]  : FALSE }
+
+# 
+# E := I - range D;
+# 
+# sample := {[-M+3,-M+3]: L = 0 && -97 <= M <= 2};
+# 
+# sample intersection range D;
+
+{[In_1,In_2]  : FALSE }
+
+# 
+# sample intersection E;
+
+{[-M+3,-M+3]: L = 0 && -97 <= M <= 2}
+
+# 

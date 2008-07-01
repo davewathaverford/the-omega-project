@@ -1,0 +1,10 @@
+symconst,
+symfloat,
+syminteger,
+symreal,
+symindex,
+symoldindex,
+symnone,
+symcomment,
+symloopstep,
+symfunction

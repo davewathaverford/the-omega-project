@@ -1,0 +1,11 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# { [i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b,c] -> [j] : 1 <= i < j <= 20 };
+
+{[i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b,c] -> [j] : 1 <= i < j <= 20}
+
+# 
+# { [j] -> [i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v] : 1 <= i < j <= 20 };
+
+{[j] -> [i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v] : 1 <= i < j <= 20}
+
+# 

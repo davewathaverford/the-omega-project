@@ -1,0 +1,29 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# hull {[p1,p2] -> [p1-1,p2,Out_3,Out_4] : 
+# Exists ( alpha,gamma : 
+# 1 <= p1 <= 3 
+# && 0 <= p2 <= 3 
+# && -2Out_4+1 <= alpha <= -2Out_4+14 
+# && -2Out_3+1 <= gamma <= -2Out_3+14 
+# && 4p1 <= 2Out_3+9gamma 
+# && 4p2 <= 2Out_4+9alpha 
+# && 2Out_3+9gamma <= 2+4p1 
+# && 2Out_4+9alpha <= 3+4p2)};
+
+{[p1,p2] -> [p1-1,p2,Out_3,Out_4] : 1, -4Out_3+2 <= p1 <= 3 && 0, -4Out_4+2 <= p2 <= 3 && Out_3 <= 7 && Out_4 <= 7}
+
+# 
+# 
+# hull {[0,p2] -> [3,p2,Out_3,Out_4] : 
+# Exists (alpha,gamma : 
+# Out_3+4alpha = 0 
+# && 0 <= p2 <= 3 
+# && 0 <= Out_3 <= 4 
+# && -2Out_4+1 <= gamma <= -2Out_4+14 
+# && 4p2 <= 2Out_4+9gamma 
+# && 2Out_4+9gamma <= 3+4p2)};
+
+{[0,p2] -> [3,p2,Out_3,Out_4] : 0, -4Out_4+2 <= p2 <= 3 && 0 <= Out_3 <= 4 && Out_4 <= 7}
+
+# 
+# 

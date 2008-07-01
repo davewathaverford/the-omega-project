@@ -1,0 +1,6 @@
+T1:={[i,j]->[j,i,0]};
+T2:={[i,j]->[j,i,1]};
+R2:={[i,j]: 1 <= i,j <= 9};
+R3:={[i,j]: 1 <= i,j <= 9 && exists (alpha: j = 2alpha)};
+codegen T1:R2,T2:R3;
+codegen 1 T1:R2,T2:R3;

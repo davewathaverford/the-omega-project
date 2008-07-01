@@ -1,0 +1,49 @@
+# From Fabien Coelho
+
+R := { [i, j, k, l, m, n, o, p] :
+ 0 <= i <= 3 && 
+ 0 <= j <= 3 &&
+ 0 <= k <= 3 &&
+ 0 <= l <= 3 &&
+ 0 <= m <= 3 &&
+ 0 <= n <= 3 &&
+ 1 <= o <= 1000 && o <= p <= 2 o +1 && 
+ 0 <= -1000 i + o + p <= 999 &&
+ 0 <= -1000 j - o + 2p <= 999 &&
+ -1 <= -1000 k + 3 o <= 998 &&
+ 2 <= -1000 l + 2 o + p <= 1001 &&
+ 0 <= -1000 m + o <= 999 &&
+ 3 <= -1000 n + 2 p<= 1002
+} ;
+
+R;
+
+R7 :=  { [i, j, k, l, m, n, o, p] 
+		 -> [i, j, k, l, m, n, o ]}(R);
+R7;
+approximate R7;
+R6 :=  { [i, j, k, l, m, n, o] 
+		 -> [i, j, k, l, m, n ]}(R7);
+R6;
+approximate R6;
+R5 :=  { [i, j, k, l, m, n] 
+		 -> [i, j, k, l, m ]}(R6);
+R5;
+approximate R5;
+R4 :=  { [i, j, k, l, m] 
+		 -> [i, j, k, l ]}(R5);
+R4;
+approximate R4;
+R3 :=  { [i, j, k, l] 
+		 -> [i, j, k ]}(R4);
+R3;
+approximate R3;
+R2 :=  { [i, j, k] 
+		 -> [i, j ]}(R3);
+R2;
+approximate R2;
+R1 :=  { [i, j] 
+		 -> [i]}(R2);
+R1;
+approximate R1;
+

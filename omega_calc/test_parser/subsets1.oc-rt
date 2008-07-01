@@ -1,0 +1,70 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := {[x]:x > 1 };
+# 
+# R;
+
+{[x]: 2 <= x}
+
+# 
+# R2 := subsetof R;
+# 
+# R2;
+
+{[x]: 2 <= x && UNKNOWN}
+
+# 
+# 
+# R - R2;
+
+{[x]: 2 <= x && UNKNOWN}
+
+# 
+# R subset R2;
+
+False
+# 
+# R2 - R;
+
+{[x]  : FALSE }
+
+# 
+# R2 subset R;
+
+True
+# 
+# 
+# S := {[x]: x > 0};
+# 
+# S - R;
+
+{[1]}
+
+#  
+# R subset S;
+
+True
+# 
+# S - R2;
+
+{[x]: 2 <= x && UNKNOWN} union
+ {[1]}
+
+# 
+# R2 subset S;
+
+True
+# 
+# 
+# S2 := {[x]: x > -1};
+# 
+# S3 := subsetof S2;
+# 
+# S3 - S;
+
+{[0]: UNKNOWN}
+
+# 
+# S subset S3;
+
+False
+# 

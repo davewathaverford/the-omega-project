@@ -1,0 +1,9 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# # In verify, we now prefer to eliminate wildcards last
+# # This gives us an improved chance of finding equality
+# # constraints on wildcards. 
+# {[i,j] : 0 <= i,j <= 4 && exists(a:i=j+5a)};
+
+{[i,i]: 0 <= i <= 4}
+
+# 

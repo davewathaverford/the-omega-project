@@ -1,0 +1,89 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "code_gen"=.\code_gen\code_gen.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "omega_calc"=.\omega_calc\omega_calc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name code_gen
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name omega_lib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "omega_lib"=.\omega_lib\omega_lib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "petit"=.\petit\petit.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name omega_calc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name uniform
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "uniform"=.\uniform\uniform.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

@@ -1,0 +1,18 @@
+
+a2b:={[1]->[2]};
+a2a:={[i]->[i]};
+b2b2:={[i]->[i+1]};
+b2c3:={[i]->[i]};
+c2c:={[i]->[i]};
+
+reachable of a in (a,b,c) {
+                  a->b:a2b, b->c:b2c3, a->a:a2a, b->b:b2b2, c->c:c2c,
+                  a:{[1]}
+	          };
+reachable of b in (a,b,c) {
+                  a->b:a2b, b->c:b2c3, a->a:a2a, a:{[1]}, b->b:b2b2, c->c:c2c
+	          };
+cr := reachable of c in (a,b,c) { 
+                  a:{[1]},a->b:a2b, b->c:b2c3, a->a:a2a,
+		  b->b:b2b2, c->c:c2c };
+cr;

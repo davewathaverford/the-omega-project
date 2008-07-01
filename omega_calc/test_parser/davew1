@@ -1,0 +1,25 @@
+#
+# A one point, we couldn't handling this analysis of value-based dependences.
+# Now we can :-)
+#
+
+Pos := {[In_1,In_2] -> [i,j] :	1 <= i,j <= 100 &&
+				In_1 = 1+2j+i && 2i+In_2 = 1 };
+
+ko := {[In_1,In_2] -> [i,j] :	1+In_1+2j = 4i && In_2+i+2j = 0 &&
+				1 <= i <= 100 && 1 <= j <= 100};
+
+kf := {[i,j] -> [i',j'] :	1 <= i,i',j,j' <= 100 && i < i' &&
+				4i = 2+2j+2j'+i' && 2i' = 1+2j+i };
+
+k := ko join kf;
+
+k intersection Pos;
+example (k intersection Pos);
+Pos;
+Pos - (ko join kf);
+Pos - k;
+answer := Pos - k;
+answer;
+answer intersection {[7,-7] -> [4,1]};
+gist answer given Pos;

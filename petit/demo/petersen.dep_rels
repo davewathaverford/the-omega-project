@@ -1,0 +1,91 @@
+flow     1: Entry           -->  17: b(l)                            [ V]
+{[1] -> [i,1] : 2 <= i <= n}
+flow     1: Entry           -->  17: a(l,i)                          [ MV]
+{[In_1,In_2] -> [In_2,In_1] : 1 <= In_1 < In_2 <= n}
+flow     1: Entry           -->  17: b(l)                            [ M]
+{[In_1] -> [i,In_1] : 1 <= In_1 < i <= n}
+flow     1: Entry           -->  19: b(i)                            [ MV]
+{[In_1] -> [In_1] : 2 <= In_1 <= n}
+output   1: Entry           -->  19: b(i)                            [ M]
+{[In_1] -> [In_1] : 2 <= In_1 <= n}
+flow     1: Entry           -->  14: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  17: s                               [ M]
+{ -> [i,l] : 1 <= l < i <= n}
+flow     1: Entry           -->  19: s                               [ M]
+{ -> [i] : 2 <= i <= n}
+output   1: Entry           -->  15: s                               [ M]
+{ -> [i] : 2 <= i <= n}
+output   1: Entry           -->  17: s                               [ M]
+{ -> [i,l] : 1 <= l < i <= n}
+flow    15: s               -->  17: s               (0)             [ Vo]
+{[i] -> [i,1] : 2 <= i <= n}
+may dd: {[0]}
+flow    15: s               -->  17: s               (0)             [ Mo]
+{[i] -> [i,l] : 1 <= l < i <= n}
+exact dd: {[0]}
+flow    15: s               -->  17: s               (+)             [ Mo]
+{[i] -> [i',l] : 2 <= i < i' <= n && 1 <= l < i'}
+exact dd: {[In_1]: 1 <= In_1}
+flow    15: s               -->  19: s               (0)             [ Mo]
+{[i] -> [i] : 2 <= i <= n}
+exact dd: {[0]}
+flow    15: s               -->  19: s               (+)             [ Mo]
+{[i] -> [i'] : 2 <= i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+output  15: s               -->  15: s               (+)             [ Mo]
+{[i] -> [i'] : 2 <= i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+output  15: s               -->  17: s               (0)             [ Mo]
+{[i] -> [i,l] : 1 <= l < i <= n}
+exact dd: {[0]}
+output  15: s               -->  17: s               (+)             [ Mo]
+{[i] -> [i',l] : 2 <= i < i' <= n && 1 <= l < i'}
+exact dd: {[In_1]: 1 <= In_1}
+anti    17: s               -->  15: s               (+)             [ Mo]
+{[i,l] -> [i'] : 1 <= l < i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+anti    17: s               -->  17: s               (0,+)           [ Mo]
+{[i,l] -> [i,l'] : 1 <= l < l' < i <= n}
+exact dd: {[0,In_2]: 1 <= In_2}
+anti    17: s               -->  17: s               (+,*)           [ Mo]
+{[i,l] -> [i',l'] : 1 <= l < i < i' <= n && 1 <= l' < i'}
+exact dd: {[In_1,In_2]: 1 <= In_1}
+flow    17: s               -->  17: s               (0,1)           [ VO]
+{[i,l] -> [i,l+1] : l+2 <= i <= n && 1 <= l}
+exact dd: {[0,1]}
+flow    17: s               -->  19: s               (0)             [ VO]
+{[i,i-1] -> [i] : 2 <= i <= n}
+may dd: {[0]}
+flow    17: s               -->  17: s               (0,+)           [ Mo]
+{[i,l] -> [i,l'] : 1 <= l < l' < i <= n}
+exact dd: {[0,In_2]: 1 <= In_2}
+flow    17: s               -->  17: s               (+,*)           [ Mo]
+{[i,l] -> [i',l'] : 1 <= l < i < i' <= n && 1 <= l' < i'}
+exact dd: {[In_1,In_2]: 1 <= In_1}
+flow    17: s               -->  19: s               (0)             [ Mo]
+{[i,l] -> [i] : 1 <= l < i <= n}
+exact dd: {[0]}
+flow    17: s               -->  19: s               (+)             [ Mo]
+{[i,l] -> [i'] : 1 <= l < i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+output  17: s               -->  15: s               (+)             [ Mo]
+{[i,l] -> [i'] : 1 <= l < i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+output  17: s               -->  17: s               (0,+)           [ Mo]
+{[i,l] -> [i,l'] : 1 <= l < l' < i <= n}
+exact dd: {[0,In_2]: 1 <= In_2}
+output  17: s               -->  17: s               (+,*)           [ Mo]
+{[i,l] -> [i',l'] : 1 <= l < i < i' <= n && 1 <= l' < i'}
+exact dd: {[In_1,In_2]: 1 <= In_1}
+anti    19: s               -->  15: s               (+)             [ Mo]
+{[i] -> [i'] : 2 <= i < i' <= n}
+exact dd: {[In_1]: 1 <= In_1}
+anti    19: s               -->  17: s               (+)             [ Mo]
+{[i] -> [i',l] : 2 <= i < i' <= n && 1 <= l < i'}
+exact dd: {[In_1]: 1 <= In_1}
+flow    19: b(i)            -->  17: b(l)            (+)             [ MVO]
+{[i] -> [i',i] : 2 <= i < i' <= n}
+may dd: {[In_1]: 1 <= In_1}
+flow    19: b(i)            -->  20: Exit                            [ MV]
+{[i] -> [i] : 2 <= i <= n}

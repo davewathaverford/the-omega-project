@@ -1,0 +1,71 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n,lb,ub;
+# 
+# I1 := {[k,i] : 1 <= k < i <= n && lb <= k <= ub};
+# 
+# I2 := {[k,i,j] : 1 <= k <= i,j <= n && lb <= j <= ub};
+# 
+# p := {[k,i] : 1, lb <= k <= ub < n && k < i <= n};
+# 
+# w := {[k,i,j,k,i] : 1 <= k <= i,j <= n && k < lb = j <= ub};
+# 
+# 
+# T1 := {[k,i] -> [k,i,0,0,0,0,0,0]};
+# 
+# T2 := {[k,i,j] -> [k,i,1,j,0,0,0,0]};
+# 
+# Tp := {[k,i] -> [k,i,0,0,1,0,0,0]};
+# 
+# Tw := {[k,i,j,t1,t2] -> [k,i,1,j,-1,t1,t2,0]};
+# 
+# 
+# known := {[*,*,*,*,*,*,*,*] : 1 <= lb && ub <= n};
+# 
+# known2 := {[*,*,*,*,*,*,*,*] : 1 <= lb <= ub <= n};
+# 
+# 
+# codegen -2 T1:I1,T2:I2,Tp:p,Tw:w given known;
+if (lb <= ub) {
+  for(t1 = 1; t1 <= ub; t1++) {
+    for(t2 = t1; t2 <= n; t2++) {
+      if (t1 >= lb && t2 >= t1+1) {
+        s1(t1,t2);
+      }
+      if (ub <= n-1 && t2 >= t1+1 && t1 >= lb) {
+        s3(t1,t2);
+      }
+      for(t4 = max(lb,t1); t4 <= ub; t4++) {
+        if (t4 >= t1+1 && t4 <= lb) {
+          s4(t1,t2,lb,t1,t2);
+        }
+        s2(t1,t2,t4);
+      }
+    }
+  }
+}
+
+# 
+# codegen 0 T1:I1,T2:I2,Tp:p,Tw:w given known;
+if (lb <= ub) {
+  for(t1 = 1; t1 <= ub; t1++) {
+    for(t2 = t1; t2 <= n; t2++) {
+      if (t1 >= lb && t2 >= t1+1) {
+        s1(t1,t2);
+      }
+      if (ub <= n-1 && t2 >= t1+1 && t1 >= lb) {
+        s3(t1,t2);
+      }
+      for(t4 = max(lb,t1); t4 <= ub; t4++) {
+        if (t4 >= t1+1 && t4 <= lb) {
+          s4(t1,t2,lb,t1,t2);
+        }
+        s2(t1,t2,t4);
+      }
+    }
+  }
+}
+
+# 
+# # codegen 1 T1:I1,T2:I2,Tp:p,Tw:w given known;
+# # codegen 0 T1:I1,T2:I2,Tp:p,Tw:w given known2;
+# # codegen 1 T1:I1,T2:I2,Tp:p,Tw:w given known2;

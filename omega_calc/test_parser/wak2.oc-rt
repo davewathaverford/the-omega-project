@@ -1,0 +1,319 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# Symbolic a1,a2,b1,b2,c1,c2,d1,d2;
+# 
+# 
+# IS1 := {[i,j] : a1 <= i <= b1 && c1 <= j <= d1};
+# 
+# IS2 := {[i,j] : a2 <= i <= b2 && c2 <= j <= d2};
+# 
+# 
+# T1 := {[i,j] -> [i,j,0]};
+# 
+# T2 := {[i,j] -> [i,j,1]};
+# 
+# 
+# codegen T1:IS1,T2:IS2;
+if (d2 >= c2) {
+  for(t1 = a2; t1 <= min(a1-1,b2); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+for(t1 = a1; t1 <= b1; t1++) {
+  if (t1 >= a2 && t1 <= b2) {
+    for(t2 = c2; t2 <= min(c1-1,d2); t2++) {
+      s2(t1,t2);
+    }
+  }
+  if (t1 <= a2-1) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+  if (t1 >= a2 && t1 <= b2) {
+    for(t2 = c1; t2 <= min(d1,c2-1,d2); t2++) {
+      s1(t1,t2);
+    }
+  }
+  if (t1 <= b2 && t1 >= a2) {
+    for(t2 = max(c2,c1); t2 <= min(d2,d1); t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+  }
+  if (t1 >= a2 && t1 <= b2) {
+    for(t2 = max(d2+1,c1); t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+  if (t1 >= a2 && t1 >= b2+1) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+  if (t1 >= a2 && t1 <= b2) {
+    for(t2 = max(c2,d1+1,c1); t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (d2 >= c2) {
+  for(t1 = max(a1,a2,b1+1); t1 <= b2; t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+
+# 
+# codegen 1 T1:IS1,T2:IS2;
+if (d2 >= c2) {
+  for(t1 = a2; t1 <= min(a1-1,b2); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (d1 >= c1) {
+  for(t1 = a1; t1 <= min(a2-1,b1); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d1 >= c1 && c1 >= d2+2 && c2 <= d2) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d2 >= c2 && d2 <= c1-2 && d1 <= c1-1) {
+  for(t1 = max(a1,a2); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c1 >= c2+1 && d1 <= d2-1 && d1 >= c1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c2; t2 <= c1-1; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d1+1; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c1 >= c2+1 && c1 <= d2 && d1 >= d2+1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c2; t2 <= c1-1; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d2+1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d1 == d2 && d1 >= c1 && c1 >= c2+1) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= c1-1; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+  }
+}
+if (c2 <= c1-1 && d2 >= c1 && d1 <= c1-1) {
+  for(t1 = max(a1,a2); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= c1-1; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (d2 == c1-1 && d2 <= d1-1 && d2 >= c2) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= c1-1; t2++) {
+      s2(t1,t2);
+    }
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d2 == c1-1 && d2 >= d1 && d2 >= c2) {
+  for(t1 = max(a1,a2); t1 <= min(b1,b2); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (d1 >= c1 && c1 >= c2+1 && d2 <= c2-1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (c1 <= c2-1 && d1 >= c2 && d1 <= d2-1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= c2-1; t2++) {
+      s1(t1,t2);
+    }
+    for(t2 = c2; t2 <= d1; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d1+1; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c1 <= c2-1 && d1 >= d2+1 && c2 <= d2) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= c2-1; t2++) {
+      s1(t1,t2);
+    }
+    for(t2 = c2; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d2+1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d1 == d2 && d1 >= c2 && c1 <= c2-1) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c1; t2 <= c2-1; t2++) {
+      s1(t1,t2);
+    }
+    for(t2 = c2; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+  }
+}
+if (c2 <= d2 && d1 >= c1 && d1 <= c2-1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c1 <= c2-1 && d2 <= c2-1 && d1 >= c1 && d1 <= d2-1) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d2 >= c1 && d2 <= c2-1 && d1 >= d2+1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= d2; t2++) {
+      s1(t1,t2);
+    }
+    for(t2 = d2+1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d1 == d2 && d1 <= c2-1 && d1 >= c1) {
+  for(t1 = max(a2,a1); t1 <= min(b2,b1); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d2 >= c2 && c2 >= c1+1 && d1 <= c1-1) {
+  for(t1 = max(a1,a2); t1 <= min(b2,b1); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c2 == c1 && d1 <= d2-1 && c2 <= d1) {
+}
+if (c2 == c1 && d1 <= d2-1 && c2 <= d1) {
+  for(t1 = max(a1,a2); t1 <= min(b2,b1); t1++) {
+    for(t2 = -infinity; t2 <= d1; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d1+1; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (c2 == c1 && c2 <= d2 && d1 >= d2) {
+}
+if (c2 == c1 && c2 <= d2 && d1 >= d2+1) {
+  for(t1 = max(a1,a2); t1 <= min(b2,b1); t1++) {
+    for(t2 = -infinity; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+    for(t2 = d2+1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (c1 == c2 && d1 == d2 && d1 >= c1) {
+  for(t1 = max(a1,a2); t1 <= min(b1,b2); t1++) {
+    for(t2 = -infinity; t2 <= d2; t2++) {
+      s1(t1,t2);
+      s2(t1,t2);
+    }
+  }
+}
+if (c1 == c2 && c1 >= d1+1 && d2 >= c1) {
+  for(t1 = max(a1,a2); t1 <= min(b1,b2); t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+if (d1 >= c1 && c1 <= c2 && d2 <= c1-1) {
+  for(t1 = max(a2,a1); t1 <= min(b1,b2); t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d1 >= c1) {
+  for(t1 = max(b2+1,a1,a2); t1 <= b1; t1++) {
+    for(t2 = c1; t2 <= d1; t2++) {
+      s1(t1,t2);
+    }
+  }
+}
+if (d2 >= c2) {
+  for(t1 = max(a1,a2,b1+1); t1 <= b2; t1++) {
+    for(t2 = c2; t2 <= d2; t2++) {
+      s2(t1,t2);
+    }
+  }
+}
+
+# 

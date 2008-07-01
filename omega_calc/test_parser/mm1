@@ -1,0 +1,90 @@
+# test of Tina_code_gen
+
+symbolic T, N;
+
+GIVEN5 := { [t,i,x,y,z] : T > 3 && N > 3 };
+
+# iteration space for initialization
+ISI := { [1,k,0,0,0] : 0 <= k <= N-1 };
+MMI := { [1,k,0,0,0] -> [0,k] } restrictDomain ISI;
+
+# iteration space for computation
+ISC := { [2,t,1,i,1] : 1 <= t <= T && 0 < i < N-1 };
+MMC := { [2,t,1,i,1] -> [t, i] } restrictDomain ISC;
+
+codegen ISI, ISC given GIVEN5;
+
+# generate the two statements with no reads
+tcodegen ["w = input()", ISI, "a" [{[t,i]:t=0}], MMI],
+	 ["w = calculation", ISC, "a"[range MMC], MMC] given GIVEN5;
+
+# do it again, this time with some reads in the calculation, as in:
+#
+# for k = 0 to N-1
+#   a[0,k] = input()			# stmt 1, index number 1,k,0,0,0
+# for t = 1 to T
+#   for i = 1 to N-2
+#     a[t,i] = a[0,0] + a[t-1,i-1]	# stmt 2, index number 2,t,1,i,1
+#
+# the first read always has data flow from the initialization;
+# the second reads from either initialization or the previous t
+
+# DF1, for a[0,0], comes from initialization, whenever k=0 and [t,i] is in ISC
+DF1 := { [1,k,0,0,0] -> [2,t,1,i,1] : k=0 } restrictRange ISC;
+
+# DF2a, for a[t-1,i-1], comes from initialization whenever t=1 or i=1
+#   THIS MUST BE 2 PARTIALS AS PARTIALS MUST BE SINGLE CONJUNCTS
+#   ALSO THEY MUST BE DISJOINT, USE t=1 and (t>1 and i=1)
+DF2a1 := { [1,k,0,0,0] -> [2,t,1,i,1] : k=i-1 && (t=1) } restrictRange ISC;
+DF2a2 := { [1,k,0,0,0] -> [2,t,1,i,1] : k=i-1 && (t>1 && i=1) } restrictRange ISC;
+
+# DF2b, for a[t-1,i-1], comes from calculation whenever t>1 or i>1
+DF2b := { [2,t,1,i,1] -> [2,t+1,1,i+1,1] : t>0 && i>0 } restrictRange ISC;
+
+
+tcodegen ["w = input()", ISI, "a", MMI], 
+	 ["w = r1 + r2", ISC, "a", MMC, [1, DF1], [1, DF2a1, 1, DF2a2, 2, DF2b]]
+   given GIVEN5;
+
+# BEGIN_NOLATEX
+
+# This is example 4 from the paper - it has one write and one read,
+#   but we want to remap the write to use two arrays.
+#
+# The result is equivelant to what happens when we take the code
+#  for i = 0 to N-1
+#    a[i] = input()
+#  for j = 0 to N-1
+#    b[j] = a[j]
+#
+# and change around the first loop so it writes to part1[i] when i<M
+# and part2[i-M] when i>=M, like so:
+#  for i = 0 to N-1
+#    if i < M
+#      part1[i] = input()
+#    else
+#      part2[i-M] = input()
+#  for j = 0 to N-1
+#    b[j] = (if j<M part1[j] else part2[j-M])
+#
+
+symbolic M;
+
+GIVEN3 := { [x,y,z] : T > 3 && N > 3 && 0 < M < N-1 };
+# END_NOLATEX
+
+IS1  := { [1, i, 1] : 0 <= i <= N-1 };
+MM1a := { [1, i, 1] -> [i] : i < M } restrictDomain IS1;
+MM1b := { [1, i, 1] -> [i-M] : i >= M } restrictDomain IS1;
+
+IS2 := { [2, j, 1] : 0 <= j <= N-1 };
+MM2 := { [2, j, 1] -> [j] } restrictDomain IS2;
+
+READ1 := { [1, i, 1] -> [2, i, 1] } restrictRange IS2;
+
+tcodegen ["w = input1()", IS1, "part1", MM1a, "part2", MM1b],
+		["w = r1", IS2, "b", MM2, [1, READ1]]
+
+# BEGIN_NOLATEX
+given GIVEN3;
+# END_NOLATEX

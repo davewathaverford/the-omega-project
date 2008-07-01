@@ -1,0 +1,129 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := { [i] -> [i'] : 1 <= i,i' <= 10 && i' = i+1 };
+# 
+# R;
+
+{[i] -> [i+1] : 1 <= i <= 9}
+
+# 
+# inverse R;
+
+{[i] -> [i-1] : 2 <= i <= 10}
+
+# 
+# domain R;
+
+{[i]: 1 <= i <= 9}
+
+# 
+# range R;
+
+{[i]: 2 <= i <= 10}
+
+# 
+# R compose R;
+
+{[i] -> [i+2] : 1 <= i <= 8}
+
+# 
+# R+;
+
+{[i] -> [i'] : 1 <= i < i' <= 10}
+
+#              # closure of R = R union (R compose R) union (R compose R ...
+# complement R;
+
+{[i] -> [i'] : i <= 0} union
+ {[i] -> [i'] : 10 <= i} union
+ {[i] -> [i'] : 1 <= i <= 9, i'-2} union
+ {[i] -> [i'] : 1, i' <= i <= 9}
+
+# 
+# S := {[i] : 5 <= i <= 25};
+# 
+# S;
+
+{[i]: 5 <= i <= 25}
+
+# 
+# R(S);
+
+{[i]: 6 <= i <= 10}
+
+#            # apply R to S
+# R \ S;
+
+{[i] -> [i+1] : 5 <= i <= 9}
+
+#           # restrict domain of R to S
+# R / S;
+
+{[i] -> [i+1] : 4 <= i <= 9}
+
+#           # restrict range of R to S
+# (R\S) union (R/S);
+
+{[i] -> [i+1] : 4 <= i <= 9}
+
+# 
+# (R\S) intersection (R/S);
+
+{[i] -> [i+1] : 5 <= i <= 9}
+
+# 
+# (R/S) - (R\S);
+
+{[4] -> [5] }
+
+# 
+# S*S;
+
+{[i] -> [i'] : 5 <= i <= 25 && 5 <= i' <= 25}
+
+#             # cross product 
+# D := S - {[9:16:2]} - {[17:19]};
+# 
+# D;
+
+{[i]: 5 <= i <= 8} union
+ {[i]: Exists ( alpha : 2alpha = i && 10 <= i <= 16)} union
+ {[i]: 20 <= i <= 25}
+
+# 
+# T :=  { [i] : 1 <= i <= 11 & exists (a : i = 2a) };
+# 
+# T;
+
+{[i]: Exists ( alpha : 2alpha = i && 2 <= i <= 10)}
+
+# 
+# Hull T;
+
+{[i]: 2 <= i <= 10}
+
+# 
+# Hull D;
+
+{[i]: 5 <= i <= 25}
+
+# 
+# codegen D;
+for(t1 = 5; t1 <= 8; t1++) {
+  s1(t1);
+}
+for(t1 = 10; t1 <= 16; t1 += 2) {
+  s1(t1);
+}
+for(t1 = 20; t1 <= 25; t1++) {
+  s1(t1);
+}
+
+# 
+# codegen {[i,j] : 1 <= i+j,j <= 10};
+for(t1 = -9; t1 <= 9; t1++) {
+  for(t2 = max(-t1+1,1); t2 <= min(-t1+10,10); t2++) {
+    s1(t1,t2);
+  }
+}
+
+# 

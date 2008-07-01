@@ -1,0 +1,6 @@
+R1 := {[i] -> [j] : i < j};
+R2 := {[x] -> [y] : x < y};
+inverse R2;
+R1 union R2;
+R2(R1);
+

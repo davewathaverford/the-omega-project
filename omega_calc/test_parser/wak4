@@ -1,0 +1,9 @@
+Symbolic a1,a2,a3,a4,a5,b1,b2,b3,b4,b5;
+IS1 := {[i] : a1,a2,a3,a4,a5 <= i <= b1,b2,b3,b4,b5 };
+IS2 := {[i] : a1,a2,a3,a4,a5 <= i <= b1,b2,b3,b4,b5 };
+
+T1 := {[i] -> [i,0]};
+T2 := {[i] -> [i,1]};
+
+codegen T1:IS1,T2:IS2;
+codegen 1 T1:IS1,T2:IS2;

@@ -1,0 +1,17 @@
+symbolic n,lb,ub;
+I5 := {[k,j] : 1 <= k < j <= n};
+I7 := {[k,j,i] : 1 <= k < j,i <= n};
+T5 := {[k,j] -> [k,j,1,0]};
+T7 := {[k,j,i] -> [i,j,0,k]};
+D57 := {[k,j] -> [k,j,i] : 1 <= k < j,i <= n};
+D75 := {[k,j,k+1] -> [k+1,j] : 1 <= k <= j-2 && j <= n} union
+	{[k,k+1,k+1] -> [k+1,j'] : 1 <= k <= j'-2 && j' <= n};
+D77 := {[k,j,i] -> [k+1,j,i] : 1 <= k <= i-2, j-2 && j <= n && i <= n}
+	union
+	{[k,k+1,i] -> [k+1,j',i] : 1 <= k <= i-2, j'-2 && j' <= n && i <= n};
+difference ( (inverse T5) join D57 join T7 );
+difference ( (inverse T7) join D75 join T5 );
+difference ( (inverse T7) join D77 join T7 );
+codegen T5:I5,T7:I7;
+codegen 1 T5:I5,T7:I7;
+codegen 2 T5:I5,T7:I7;

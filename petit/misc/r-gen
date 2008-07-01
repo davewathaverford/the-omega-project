@@ -1,0 +1,15 @@
+#!/bin/csh -f
+unset noclobber
+
+set tmp = /tmp/t-test.$$
+
+if (! ${?petit}) set petit = petit
+
+if (! ${?petit_dd_suffix}) set petit_dd_suffix = rdd
+
+if (! ${?PETIT_TEST_FLAGS}) set PETIT_TEST_FLAGS = 
+
+echo "Generating $1 -$2"
+${petit} -$2${PETIT_TEST_FLAGS} -R${tmp} $1
+sort < ${tmp} > ${1}.${petit_dd_suffix}$2
+rm -f ${tmp}

@@ -1,0 +1,60 @@
+flow     1: Entry           -->  16: C(i,j-i+1)                      [ V]
+{[In_1,In_2] -> [In_1,In_1+In_2-1,In_1-b+In_2] : 1 <= In_2 <= 2b-1 && 1 <= In_1 && In_1+In_2 <= 1+n && b < In_1+In_2} union
+ {[In_1,In_2] -> [In_1,In_1+In_2-1,1] : In_1+In_2 <= 1+n && 1 <= In_2 && In_1+In_2 <= b && 1 <= In_1}
+flow     1: Entry           -->  16: A(k,i-k+b)                      [ MV]
+{[In_1,In_2] -> [In_1-b+In_2,j,In_1] : 1 <= In_1 <= n && j <= n && In_1+In_2 <= b+j && j < b+In_1 && 1 <= In_2 && b < In_1+In_2}
+flow     1: Entry           -->  16: A(k,j-k+b)                      [ MV]
+{[In_1,In_2] -> [i,In_1-b+In_2,In_1] : 1 <= In_1 <= n && In_2 <= 2b-1 && b+i <= In_1+In_2 && In_1 < b+i && 1 <= i && In_1+In_2 <= b+n}
+flow     1: Entry           -->  16: B(k,j-k+b)                      [ MV]
+{[In_1,In_2] -> [i,In_1-b+In_2,In_1] : 1 <= In_1 <= n && In_2 <= 2b-1 && b+i <= In_1+In_2 && In_1 < b+i && 1 <= i && In_1+In_2 <= b+n}
+flow     1: Entry           -->  16: B(k,i-k+b)                      [ MV]
+{[In_1,In_2] -> [In_1-b+In_2,j,In_1] : 1 <= In_1 <= n && j <= n && In_1+In_2 <= b+j && j < b+In_1 && 1 <= In_2 && b < In_1+In_2}
+flow     1: Entry           -->  16: C(i,j-i+1)                      [ M]
+{[In_1,In_2] -> [In_1,In_1+In_2-1,k] : 1 <= k <= n && 1 <= In_2 && In_1+In_2 <= b+k && k < b+In_1 && 1 <= In_1 && In_1+In_2 <= 1+n}
+output   1: Entry           -->  16: C(i,j-i+1)                      [ M]
+{[In_1,In_2] -> [In_1,In_1+In_2-1,k] : 1 <= k <= n && 1 <= In_2 && In_1+In_2 <= b+k && k < b+In_1 && 1 <= In_1 && In_1+In_2 <= 1+n}
+flow     1: Entry           -->  16: alpha                           [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+flow     1: Entry           -->  16: alpha                           [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+flow     1: Entry           -->  13: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->  14: n                               [ MV]
+{ -> [i] : 1 <= i <= n}
+flow     1: Entry           -->  15: n                               [ MV]
+{ -> [i,j] : 1 <= i <= j <= n && 2+j <= 2b+i}
+flow     1: Entry           -->  14: b                               [ MV]
+{ -> [i] : 1 <= i <= n}
+flow     1: Entry           -->  15: b                               [ MV]
+{ -> [i,j] : 1 <= i <= j <= n && 2+j <= 2b+i}
+flow     1: Entry           -->  15: b                               [ MV]
+{ -> [i,j] : 1 <= i <= j <= n && 2+j <= 2b+i}
+flow     1: Entry           -->  15: b                               [ MV]
+{ -> [i,j] : 1 <= i <= j <= n && 2+j <= 2b+i}
+flow     1: Entry           -->  15: b                               [ MV]
+{ -> [i,j] : 1 <= i <= j <= n && 2+j <= 2b+i}
+flow     1: Entry           -->  16: b                               [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+flow     1: Entry           -->  16: b                               [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+flow     1: Entry           -->  16: b                               [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+flow     1: Entry           -->  16: b                               [ MV]
+{ -> [i,j,k] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+anti    16: C(i,j-i+1)      -->  16: C(i,j-i+1)      (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= i <= j <= n && 1 <= k < k' <= n && k' < b+i && j < b+k}
+exact dd: {[0,0,In_3]: 1 <= In_3}
+flow    16: C(i,j-i+1)      -->  16: C(i,j-i+1)      (0,0,1)         [ VO]
+{[i,j,k] -> [i,j,k+1] : 1 <= i <= j <= n && 1 <= k < n && j < b+k && 2+k <= b+i}
+exact dd: {[0,0,1]}
+flow    16: C(i,j-i+1)      -->  20: Exit                            [ V]
+{[i,j,b+i-1] -> [Out_1] : 1 <= i <= j <= n && b+i <= 1+n && 2+j <= 2b+i} union
+ {[i,j,n] -> [Out_1] : 1 <= i <= j <= n && 2+n <= b+i}
+flow    16: C(i,j-i+1)      -->  16: C(i,j-i+1)      (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= i <= j <= n && 1 <= k < k' <= n && k' < b+i && j < b+k}
+exact dd: {[0,0,In_3]: 1 <= In_3}
+flow    16: C(i,j-i+1)      -->  20: Exit                            [ M]
+{[i,j,k] -> [i,j-i+1] : 1 <= i <= j <= n && 1 <= k <= n && j < b+k && k < b+i}
+output  16: C(i,j-i+1)      -->  16: C(i,j-i+1)      (0,0,+)         [ Mo]
+{[i,j,k] -> [i,j,k'] : 1 <= i <= j <= n && 1 <= k < k' <= n && k' < b+i && j < b+k}
+exact dd: {[0,0,In_3]: 1 <= In_3}

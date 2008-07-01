@@ -1,0 +1,67 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# #
+# # A one point, we couldn't handling this analysis of value-based dependences.
+# # Now we can :-)
+# #
+# 
+# Pos := {[In_1,In_2] -> [i,j] :	1 <= i,j <= 100 &&
+# 				In_1 = 1+2j+i && 2i+In_2 = 1 };
+# 
+# 
+# ko := {[In_1,In_2] -> [i,j] :	1+In_1+2j = 4i && In_2+i+2j = 0 &&
+# 				1 <= i <= 100 && 1 <= j <= 100};
+# 
+# 
+# kf := {[i,j] -> [i',j'] :	1 <= i,i',j,j' <= 100 && i < i' &&
+# 				4i = 2+2j+2j'+i' && 2i' = 1+2j+i };
+# 
+# 
+# k := ko join kf;
+# 
+# 
+# k intersection Pos;
+
+{[In_1,In_2] -> [i,j] : Exists ( alpha : In_2+2i = 1 && 2In_1+In_2 = 3+4j && In_2 = 5+8j+20alpha && -199 <= In_2 <= -2j-5 && 1 <= j)}
+
+# 
+# example (k intersection Pos);
+
+{[7,-7] -> [4,1] }
+
+# 
+# Pos;
+
+{[In_1,In_2] -> [i,j] : In_1 = 1+i+2j && In_2+2i = 1 && 1 <= i <= 100 && 1 <= j <= 100}
+
+# 
+# Pos - (ko join kf);
+
+{[In_1,In_2] -> [i,j] : In_1 = 1+i+2j && In_2+2i = 1 && 1 <= i <= j+2, 100 && 1 <= j <= 100} union
+ {[In_1,In_2] -> [i,j] : Exists ( alpha : In_1 = 1+i+2j && In_2+2i = 1 && j+3 <= i <= 100 && 5+10alpha <= 3i+2j && 3i+2j <= 13+10alpha && 1 <= j)}
+
+# 
+# Pos - k;
+
+{[In_1,In_2] -> [i,j] : 1+i+2j = In_1 && 2In_1+In_2 = 3+4j && 2j+2 <= In_1 <= 3j+3, 2j+101 && 1 <= j <= 100} union
+ {[In_1,In_2] -> [i,j] : Exists ( alpha : 1+i+2j = In_1 && 2In_1+In_2 = 3+4j && 3j+4 <= In_1 <= 2j+101 && 8+4j+10alpha <= 3In_1 && 3In_1 <= 16+4j+10alpha && 1 <= j)}
+
+# 
+# answer := Pos - k;
+# 
+# answer;
+
+{[In_1,In_2] -> [i,j] : 1+i+2j = In_1 && 2In_1+In_2 = 3+4j && 2j+2 <= In_1 <= 3j+3, 2j+101 && 1 <= j <= 100} union
+ {[In_1,In_2] -> [i,j] : Exists ( alpha : 1+i+2j = In_1 && 2In_1+In_2 = 3+4j && 3j+4 <= In_1 <= 2j+101 && 8+4j+10alpha <= 3In_1 && 3In_1 <= 16+4j+10alpha && 1 <= j)}
+
+# 
+# answer intersection {[7,-7] -> [4,1]};
+
+{[In_1,In_2] -> [i,j]  : FALSE }
+
+# 
+# gist answer given Pos;
+
+{[In_1,In_2] -> [i,j] : i <= j+2} union
+ {[In_1,In_2] -> [i,j] : Exists ( alpha : j <= i-3 && 3i+2j <= 13+10alpha && 5+10alpha <= 3i+2j)}
+
+# 

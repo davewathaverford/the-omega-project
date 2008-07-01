@@ -1,0 +1,117 @@
+
+This is the README file for Petit.  For instructions on how to build
+Petit, see the file "CompilationInstructions".
+
+Petit is a research tool for dependence analysis and program
+transformations developed from Michael Wolfe's Tiny Tool.  Petit was
+developed at the University of Maryland by the Omega Project.
+Petit operates on programs in a simple Fortran-like language.
+
+Petit relies on the the Omega Library for performing its analyses.
+The library is a system for building, manipulating, and querying sets
+of integer tuples and relations between integer tuples.  The current
+release is a minor release that contains a directory reorganization
+and some changes to support the current release of Petit.
+
+Features of Petit include:
+ * Memory- and Value-based dependence analysis, based on the Omega test
+ * Nonlinear dependence analysis using uninterpreted function symbols
+ * Capabilities that improve the accuracy of data dependence
+   analysis (induction variable recognition, forward
+   substitution).
+ * An interface for building new analyses that simplifies building
+   sets of constraints describing programs
+ * An interface to allow easier integration of our dependence analysis
+   techniques into other compilers
+ * A program transformation system for finding computation decompositions
+   (not available in this release)
+ * An X Window System / Motif interface for examining programs and dependence
+   relations
+
+Petit is available for FTP at ftp://ftp.cs.umd.edu/pub/omega/petit.
+Petit uses the Omega Library to perform its analyses; the library is
+available at ftp://ftp.cs.umd.edu/pub/omega/omega_library.
+
+More information on the Omega Project as well as papers written by the
+group are available on the WWW at http://www.cs.umd.edu/projects/omega,
+or by sending mail to omega@cs.umd.edu.
+
+This implementation is a research prototype and has not been subjected
+to rigorous testing. In other words:
+
+		THERE ARE BUGS IN THIS SOFTWARE
+
+We don't know of any at the moment (other that the ones listed
+under KNOWN BUGS/LIMITATIONS below), but we are sure that other,
+undiscovered bugs remain in the software.
+
+If you register with us as someone who has a copy of the Petit,
+we will send you update notices.  Send email to omega@cs.umd.edu to 
+be added to the list of registered users. 
+
+We welcome any research groups to incorporate our software into their
+compilers. Please stay in contact with us if you plan to make serious
+us of Petit or the Omega Library so that we can provide you with
+updates and get feedback from your use.
+
+We are grateful to Michael Wolfe for placing tiny in the public
+domain, which allowed us to build on top of his software.
+
+The implementation of the Omega test and extensions to petit have
+been done by a number of people at the University of Maryland:
+	Udayan Borkar
+	Wayne Kelly
+	Evan Rosser
+	Vadim Maslov
+	William Pugh
+	Tatiana Shpeisman
+	Jerry Sobieski
+	Dave Wonnacott
+
+Our work on this software has been supported by NSF grants CCR-8908900 and 
+CCR-9157384 and by a Packard Fellowship, as well as being based on
+Michael Wolfe's original implementation of tiny.
+
+				FILES
+				-----
+
+The following tar files can be ftp-ed from ftp.cs.umd.edu (128.8.128.8) 
+from the directory pub/omega:
+
+
+ * README             This file
+ * WOLFE_README       The readme file that originally accompanied Michael 
+                      Wolfe's distribution of tiny
+ * src.tar.Z	      Source for the omega test, our enhanced version of petit,
+                      and f2p, a FORTRAN to petit converter
+ * sparc_demo.tar.Z   Sun Sparc executable versions of the programs that can be
+		      made from the src files, demo files, and documentation of
+		      on how to use petit.
+ * decstation_demo.tar.Z 
+                      Decstation executable versions of the programs 
+                      that can be made from the src files.  demo files,
+                      and documentation of how to use petit.
+ * demo.tar.Z	      Test files for demos
+ * test.tar.Z	      Regression test files 
+ * doc.tar.Z	      Some documentation
+
+Together, these tar files constitute the entire petit system, with the
+following directories:
+
+ * include header files (from src.tar.Z)
+ * src	   source code (from src.tar.Z)
+ * obj	   makefile (from src.tar.Z), generated files (from sparc_demo.tar)
+ * doc	   documentation for petit
+ * demo	   sample files documented to show features of the Omega test and
+	   petit
+ * f2p	   A FORTRAN to petit converter based on f2c (from src.tar.Z)
+ * rt	   regression test sample files and expected results (from test.tar.Z)
+ * misc	   shell scripts used for regression testing (rt.tar and src.tar)
+
+The executable programs are:
+
+ * "petit"   the petit environment, upgraded to use the omega test and
+	     test for refinement, killing, and covering of dependences
+
+ * "f2p"     A FORTRAN to petit converter based on f2c
+

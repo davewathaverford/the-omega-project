@@ -1,0 +1,13 @@
+symbolic L,M;
+
+I := {[j,i] : 1 <= j <= 100 && j-L <= i <= j};
+
+D := I*I intersection {[j1,i1] -> [j2,i2] : i1+j1 = i2+M};
+I;
+D;
+range D;
+(range D) - (range D);
+E := I - range D;
+sample := {[-M+3,-M+3]: L = 0 && -97 <= M <= 2};
+sample intersection range D;
+sample intersection E;

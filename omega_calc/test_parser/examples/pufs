@@ -1,0 +1,20 @@
+#
+# Examples of relations using uninterpreted function symbols
+# from Omega Calculator documentation
+#
+
+symbolic p(2), n, m;
+R  := { [ir,jr] : 1 <= ir <= n && 1 <= jr <= m };
+W1 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(Set) >= 0 };
+W2 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(Set) <  0 };
+Exposed := R intersection complement ( W1 union W2 );
+Exposed;
+
+symbolic f(1);
+R1 := { [i] -> [j] : 1 <= i = j <= 100 && f(In) <= f(Out)};
+R2 := { [i] -> [j] : 1 <= i <= j <= 100 && f(In) = f(Out)};
+
+R1 intersection R2;
+R1 union R2;
+R1 intersection complement R2;
+R1;

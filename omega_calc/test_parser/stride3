@@ -1,0 +1,4 @@
+Sym n;
+new_IS := {[t1,t2] : exists (alpha : t1 = 32alpha+3 && 
+	                     t2 - 31,0 <= t1 <= t2 <= n)};
+codegen new_IS;

@@ -1,0 +1,13 @@
+The following documentation is provided in this directory:
+
+
+       wolfe_tiny.* : Michael Wolfe's original documentation for
+			the version of tiny upon which our system is based
+            petit.* : Our documentation of the changes between the above
+			and the current system
+
+          wolfe.doc : single sentence descriptions of some tiny source files
+
+The description of the interface to the collection of routines that use the
+Omega test to dependence testing is in include/lang-interf.generic, which
+is included in src.tar.

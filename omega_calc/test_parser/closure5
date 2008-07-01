@@ -1,0 +1,6 @@
+symbolic n,m;
+d11 := {[i,j] -> [i,2i+j] : 1 <= i <= n && 1 <= j,2i+j <= m};
+d12 := {[i,j] -> [i,j+4] : 1 <= i <= n && 1 <= j,j+4 <= m};
+d := d11 union d12;
+e := d - (d+ compose d);
+gist e given d;

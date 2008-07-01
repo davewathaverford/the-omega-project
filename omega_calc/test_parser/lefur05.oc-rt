@@ -1,0 +1,118 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# # From Fabien Coelho
+# 
+# R := { [i, j, k, l, m, n, o, p] :
+#  0 <= i <= 3 && 
+#  0 <= j <= 3 &&
+#  0 <= k <= 3 &&
+#  0 <= l <= 3 &&
+#  0 <= m <= 3 &&
+#  0 <= n <= 3 &&
+#  1 <= o <= 1000 && o <= p <= 2 o +1 && 
+#  0 <= -1000 i + o + p <= 999 &&
+#  0 <= -1000 j - o + 2p <= 999 &&
+#  -1 <= -1000 k + 3 o <= 998 &&
+#  2 <= -1000 l + 2 o + p <= 1001 &&
+#  0 <= -1000 m + o <= 999 &&
+#  3 <= -1000 n + 2 p<= 1002
+# } ;
+# 
+# 
+# R;
+
+{[i,j,k,l,m,n,o,p]: 1000m <= o <= p <= 500n+501, 2o+1 && o <= 1000m+999, 1000 && 1000i <= o+p && o+p <= 999+1000i && 1000j+o <= 2p && 2p <= 999+1000j+o && 1000k <= 1+3o && 3o <= 998+1000k && 2+500n <= p && 0 <= n && 2+1000l <= 2o+p && 2o+p <= 1001+1000l}
+
+# 
+# 
+# R7 :=  { [i, j, k, l, m, n, o, p] 
+# 		 -> [i, j, k, l, m, n, o ]}(R);
+# 
+# R7;
+
+{[i,j,k,l,m,n,o]: 1000m, 250n+1 <= o <= 1000m+999, 1000, 500n+501, 1000j+999, 500i+499 && 200j+o <= 400+400l && 1000j+o <= 1002+1000n && 1000i <= 1+3o && 1000j+3o <= 1998+2000i && 1000k <= 1+3o && 3o <= 998+1000k && 1000j <= 2+3o && 2000i <= 999+1000j+3o && 0 <= n && 1000i <= 501+500n+o && 250n+o <= 499+500l && 1000n <= 995+1000j+o && 500n+o <= 997+1000i && 3o <= 1001+1000l && 500l <= 249+250n+o && 400l <= 199+200j+o && 1000l <= 997+1000i+o}
+
+# 
+# approximate R7;
+
+{[i,j,k,l,m,n,o]: 1000m, 250n+1 <= o <= 1000m+999, 1000, 500n+501, 1000j+999, 500i+499 && 200j+o <= 400+400l && 1000j+o <= 1002+1000n && 1000i <= 1+3o && 1000j+3o <= 1998+2000i && 1000k <= 1+3o && 3o <= 998+1000k && 1000j <= 2+3o && 2000i <= 999+1000j+3o && 0 <= n && 1000i <= 501+500n+o && 250n+o <= 499+500l && 1000n <= 995+1000j+o && 500n+o <= 997+1000i && 3o <= 1001+1000l && 500l <= 249+250n+o && 400l <= 199+200j+o && 1000l <= 997+1000i+o}
+
+# 
+# R6 :=  { [i, j, k, l, m, n, o] 
+# 		 -> [i, j, k, l, m, n ]}(R7);
+# 
+# R6;
+
+{[i,j,k,l,m,n]: Exists ( alpha : 0, 2l-4 <= n <= 3, j+1, l, 2j+1 && 3m <= k <= 3, 3m+2 && 2i-3 <= j <= 3m+2 && 2k <= 2+3i && 1000i <= 1+3alpha && 1000j+3alpha <= 1998+2000i && 4j <= 3+3n && 1000k <= 1+3alpha && 3alpha <= 998+1000k && 1000j <= 2+3alpha && 2000i <= 999+1000j+3alpha && 4k+3n <= 5+6l && 6i <= 5+2l+3n && 3alpha <= 1001+1000l && 3j+5k <= 6+6l && 4l <= 7+2j+5n && 2l <= 2+3i && 2k <= 3+3n)}
+
+# 
+# approximate R6;
+
+{[i,j,k,l,m,n]: 2l-4, 0 <= n <= 3, j+1, l, 2j+1 && 3m, i <= k <= 3m+2, 3 && 2i-3 <= j <= 3m+2 && 2k <= 2+3i && j+k <= 1+2i && 4j <= 3+3n && 2l <= 2+3i && 2k <= 3+3n && 4l <= 7+2j+5n && 4k+3n <= 5+6l && 6i <= 5+2l+3n && 3j+5k <= 6+6l}
+
+# 
+# R5 :=  { [i, j, k, l, m, n] 
+# 		 -> [i, j, k, l, m ]}(R6);
+# 
+# R5;
+
+{[i,j,k,l,m]: Exists ( alpha,beta : 2i-3, 0 <= j <= 3m+2 && 3m <= k <= 3, 3m+2 && l <= 3 && 2k <= 2+3i && 2k <= 3+3alpha && 1000i <= 1+3beta && 1000j+3beta <= 1998+2000i && 4j <= 3+3alpha && 1000k <= 1+3beta && 3beta <= 998+1000k && 1000j <= 2+3beta && 2000i <= 999+1000j+3beta && 4k+3alpha <= 5+6l && 6i <= 5+2l+3alpha && 6i <= 5+5l && 3beta <= 1001+1000l && 4j <= 3+3l && 2k <= 2+3l && 3j+5k <= 6+6l && 4l <= 7+2j+5alpha && 2l <= 2+3i)}
+
+# 
+# approximate R5;
+
+{[i,j,k,l,m]: i, 3m <= k <= 3m+2, 3 && 0, 2i-3 <= j <= 3m+2 && l <= 3 && 2k <= 2+3i && 2l <= 2+3i && 2k <= 2+3l && j+k <= 1+2i && 3j+5k <= 6+6l && 6i <= 5+5l && 4j <= 3+3l}
+
+# 
+# R4 :=  { [i, j, k, l, m] 
+# 		 -> [i, j, k, l ]}(R5);
+# 
+# R4;
+
+{[i,j,k,l]: Exists ( alpha,beta,gamma : 2i-3, 0 <= j <= 3alpha+2 && 3alpha <= k <= 3, 3alpha+2 && l <= 3 && 2k <= 2+3i && 2k <= 3+3beta && 1000i <= 1+3gamma && 1000j+3gamma <= 1998+2000i && 4j <= 3+3beta && 1000k <= 1+3gamma && 3gamma <= 998+1000k && 1000j <= 2+3gamma && 2000i <= 999+1000j+3gamma && 4k+3beta <= 5+6l && 6i <= 5+2l+3beta && 6i <= 5+5l && 3gamma <= 1001+1000l && 4j <= 3+3l && 2k <= 2+3l && 3j+5k <= 6+6l && 4l <= 7+2j+5beta && 2l <= 2+3i)}
+
+# 
+# approximate R4;
+
+{[i,j,k,l]: i <= k <= 3 && l <= 3 && 2k <= 2+3i && 2l <= 2+3i && 6i <= 5+5l && j+k <= 1+2i && 3j+5k <= 6+6l && 4j <= 3+3l && 2i <= 3+j && 2k <= 2+3l && 0 <= j}
+
+# 
+# R3 :=  { [i, j, k, l] 
+# 		 -> [i, j, k ]}(R4);
+# 
+# R3;
+
+{[i,j,k]: Exists ( alpha,beta,gamma,delta : 2i-3, 0 <= j <= 3beta+2 && 3beta <= k <= 3, 3beta+2 && alpha <= 3 && 2k <= 2+3i && 2k <= 3+3gamma && 1000i <= 1+3delta && 1000j+3delta <= 1998+2000i && 4j <= 3+3gamma && 1000k <= 1+3delta && 3delta <= 998+1000k && 1000j <= 2+3delta && 2000i <= 999+1000j+3delta && 4k+3gamma <= 5+6alpha && 6i <= 5+2alpha+3gamma && 6i <= 5+5alpha && 3delta <= 1001+1000alpha && 4j <= 3+3alpha && 2k <= 2+3alpha && 3j+5k <= 6+6alpha && 4alpha <= 7+2j+5gamma && 2alpha <= 2+3i)}
+
+# 
+# approximate R3;
+
+{[i,j,k]: 0, 2i-3 <= j <= 3 && i <= k <= 3 && 2k <= 2+3i && j+k <= 1+2i}
+
+# 
+# R2 :=  { [i, j, k] 
+# 		 -> [i, j ]}(R3);
+# 
+# R2;
+
+{[i,j]: Exists ( alpha,beta,gamma,delta,tau : 2i-3, 0 <= j <= 3tau+2 && 3tau <= alpha <= 3, 3tau+2 && delta <= 3 && 2alpha <= 2+3i && 2alpha <= 3+3beta && 1000i <= 1+3gamma && 1000j+3gamma <= 1998+2000i && 4j <= 3+3beta && 1000alpha <= 1+3gamma && 3gamma <= 998+1000alpha && 1000j <= 2+3gamma && 2000i <= 999+1000j+3gamma && 4alpha+3beta <= 5+6delta && 6i <= 5+3beta+2delta && 6i <= 5+5delta && 3gamma <= 1001+1000delta && 4j <= 3+3delta && 2alpha <= 2+3delta && 3j+5alpha <= 6+6delta && 4delta <= 7+2j+5beta && 2delta <= 2+3i)}
+
+# 
+# approximate R2;
+
+{[i,j]: 0, 2i-3 <= j <= i+1, 3}
+
+# 
+# R1 :=  { [i, j] 
+# 		 -> [i]}(R2);
+# 
+# R1;
+
+{[i]: Exists ( alpha,beta,gamma,delta,tau,sigma : 2i-3, 0 <= alpha <= 3beta+2 && 3beta <= gamma <= 3, 3beta+2 && sigma <= 3 && 2gamma <= 2+3i && 2gamma <= 3+3delta && 1000i <= 1+3tau && 1000alpha+3tau <= 1998+2000i && 4alpha <= 3+3delta && 1000gamma <= 1+3tau && 3tau <= 998+1000gamma && 1000alpha <= 2+3tau && 2000i <= 999+1000alpha+3tau && 4gamma+3delta <= 5+6sigma && 6i <= 5+3delta+2sigma && 6i <= 5+5sigma && 3tau <= 1001+1000sigma && 4alpha <= 3+3sigma && 2gamma <= 2+3sigma && 3alpha+5gamma <= 6+6sigma && 4sigma <= 7+2alpha+5delta && 2sigma <= 2+3i)}
+
+# 
+# approximate R1;
+
+{[i]: -1 <= i <= 3}
+
+# 
+# 

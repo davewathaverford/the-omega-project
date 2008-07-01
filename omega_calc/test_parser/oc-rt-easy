@@ -1,0 +1,27 @@
+#!/bin/csh -f
+
+echo "Beginning easy oc regression test at" `date`
+
+if(! $?PETIT_TEST_ALERT) setenv PETIT_TEST_ALERT "echo DIFF"
+
+if (! $?PARSER) setenv PARSER ../obj/oc
+
+set tmp=/tmp/oc-test.$$.`hostname`
+
+foreach i (`cat easy-oc-files`)
+  set ofile = ${i}
+  set ifile = ${i:r}
+  if (-e ${tmp}) /bin/rm -f ${tmp}
+  echo ---------------- Running ${PARSER} on input file ${ifile} ----------------
+  ${PARSER} ${ifile} >& ${tmp}
+
+  if (-r ${tmp}) then
+      diff -b ${ofile} ${tmp}
+      if($status != 0) ${PETIT_TEST_ALERT}
+  else
+      ${PETIT_TEST_ALERT}
+  endif
+end
+
+echo "Finished easy oc regression tests at" `date`
+

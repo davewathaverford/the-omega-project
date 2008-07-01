@@ -1,0 +1,17 @@
+# This example of code generation comes from
+#        "Access Normalization: Loop Restructuring for NUMA Compilers"
+#           by Wei Li and Keshav Pingali
+#           Cornell Tech. report TR 92-1278
+
+Symbolic n,b;
+
+IS10 := {[i,j,k] : 1 <= i <= j <= n && j <= i+2b-2
+		&& i-b+1,j-b+1,1 <= k <= i+b-1,j+b-1,n};
+T10 :={[i,j,k] -> [j-i+1,k-j,k]};
+
+known := {[*,*,*] : 1 <= b <= n};
+
+codegen T10:IS10;
+codegen T10:IS10 given known;
+codegen 1 T10:IS10;
+codegen 1 T10:IS10 given known;

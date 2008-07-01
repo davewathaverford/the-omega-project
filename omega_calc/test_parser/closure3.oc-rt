@@ -1,0 +1,48 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n,m;
+# 
+# d11 := {[i,j] -> [i,2i+j] : 1 <= i <= n && 1 <= j,2i+j <= m};
+# 
+# d12 := {[i,j] -> [i,j+4] : 1 <= i <= n && 1 <= j,j+4 <= m};
+# 
+# d := d11 union d12;
+# 
+# d+;
+
+{[1,j] -> [1,j+2] : j+2 <= m <= 4 && 1 <= n && 1 <= j} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = j+4alpha && Out_2+4 <= m <= 2i && 1 <= j <= Out_2-4 && i <= n)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = 2i+j+4alpha && 1 <= i <= n && Out_2 <= m && 1 <= j && 5 <= m && 2i+j <= Out_2)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha,beta : Out_2 = j+4alpha && 1 <= i <= n && Out_2 <= m && 2i+4beta < Out_2 && 1 <= j && Out_2 <= m+2i+4beta && 4i+j <= Out_2)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = j+4alpha && 1 <= i <= n && 1 <= j <= Out_2-4 && Out_2 <= m && 2i < m)}
+
+# 
+# d+ compose d;
+
+{[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = j+4alpha && Out_2+4 <= m <= 2i && 1 <= j <= Out_2-8 && i <= n)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = j+4alpha && 1 <= i <= n && Out_2 <= m && 1 <= j && 4i+j <= Out_2)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = 2i+j+4alpha && 1 <= i <= n && Out_2 <= m && 4+2i+j <= Out_2 && 1 <= j)} union
+ {[i,j] -> [i,Out_2] : Exists ( alpha : Out_2 = j+4alpha && 1 <= i <= n && 1 <= j <= Out_2-8 && Out_2 <= m && 2i < m)}
+
+# 
+# d11 - (d+ compose d);
+
+{[i,j] -> [i,2i+j] : 1 <= i <= 3, n && 1 <= j && 2i+j <= m} union
+ {[i,j] -> [i,2i+j] : Exists ( alpha : 2alpha = 1+i && 5 <= i <= n && 2i+j <= m && 1 <= j)}
+
+# 
+# gist d11 - (d+ compose d) given d11;
+
+{[i,j] -> [i',Out_2] : i' <= 3} union
+ {[i,j] -> [i',Out_2] : Exists ( alpha : 0 = 1+i'+2alpha && 5 <= i)}
+
+# 
+# d12 - (d+ compose d);
+
+{[i,j] -> [i,j+4] : 2 <= i <= n && 1 <= j <= m-4}
+
+# 
+# gist d12 - (d+ compose d) given d12;
+
+{[i,j] -> [i',Out_2] : 2 <= i'}
+
+# 

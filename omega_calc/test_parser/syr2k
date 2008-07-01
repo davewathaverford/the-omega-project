@@ -1,0 +1,20 @@
+
+Symbolic n,b;
+
+IS10 := {[i,j,k] : 1 <= i <= j <= n && j <= i+2b-2
+		&& i-b+1,j-b+1,1 <= k <= i+b-1,j+b-1,n};
+T10 :={[i,j,k] -> [j-i+1,k-j,k]};
+
+T := {[i,j,k] -> [j-i+1,k-j,k]};
+newIS10 := T10(IS10);
+
+strip1 := {[i,j,k] -> [i,j,foo]};
+strip2 := {[i,j,k] -> [i,foo1,foo2]};
+
+newIS10;
+strip1(newIS10);
+strip2(newIS10);
+gist strip1(newIS10) given strip2(newIS10);
+
+codegen T:IS10;
+codegen 1 T:IS10;

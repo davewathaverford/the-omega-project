@@ -1,0 +1,2 @@
+#undef Collection
+#undef Sequence

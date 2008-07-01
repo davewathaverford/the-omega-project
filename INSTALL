@@ -1,0 +1,152 @@
+
+These are the installation instructions for release 1.0 of the Omega
+Library, Omega Calculator, and Petit.
+
+
+
+
+GETTING IT
+
+All files are available in the directory ftp://ftp.cs.umd.edu/pub/omega.
+
+There are a number of different things you can make.
+
+  Executables:
+     oc: The Omega Calculator.  Text interface to the Omega library and the
+         code generation library.
+        DEMO: omega_calc_sparc_demo.tar.gz
+        SOURCE NEEDED: omega_calc.tar.gz, omega_library.tar.gz, code_gen.tar.gz
+  
+     Petit: Our extended version of Michael Wolfe's Tiny tool.  A research
+            tool for dependence analysis and program transformations.  
+        DEMO: petit_sparc_demo.tar.gz
+        SOURCE NEEDED: petit.tar.gz, omega_library.tar.gz,
+                       code_gen.tar.gz, uniform.tar.gz
+	
+
+  Libraries:
+    libomega.a: The Omega library, contains relation operations and presburger
+                arithmetic code. 
+        SOURCE NEEDED: omega_library.tar.gz
+    libcode_gen.a: Library for generating code to scan the solutions of a set.
+        SOURCE NEEDED: code_gen.tar.gz, omega_library.tar.gz
+    libuniform.a: The Uniform library, a source to source parallelizing 
+      transformation system, described in Wayne Kelly's Ph.D. dissertation.
+        SOURCE NEEDED: uniform.tar.gz, omega_library.tar.gz, optionally petit
+
+UNPACKING 
+
+You should unpack all tar files in the same directory; they will unpack as:  
+
+omega/  Root of the Omega system, contains makefiles, information files.
+     omega_lib/    The Omega Library.
+     basic/        Data structures for the library; included in
+                   the omega_library.tar file.
+     omega_calc/   The Omega Calculator.
+     petit/        The Petit tool.
+     code_gen/     Code generation library
+     uniform/      Uniform library
+
+Each library or executable's directory will have subdirectories of
+src/, include/, and obj/.
+
+Users with code that uses previous versions of the Omega library may
+need to make some changes to their code in order to comply with the new
+functions for checking subsets, satisfiability, and tautologies.
+
+
+
+
+BUILDING 
+
+Requirements: 
+    C++ compiler: You will need a C++ compiler; G++ and SunPro CC
+           are currently the only ones known to work, but others may work
+           as well.
+    Make:  If you have GNU Make (gmake), you should use it; other
+           makes may work, but may have trouble either with the include
+           syntax, or with the pattern-match rules in the Makefiles.
+    Motif: If you want to build petit, then you will need to have the 
+           Motif libraries and include files.  You can build a
+           command-line version by specifying -DBATCH_ONLY_PETIT in
+           COMPILER_CFLAGS.
+    Flex and Bison: flex and bison are required if you want to modify
+           the grammars, but not otherwise.
+
+1. Edit omega/Makefile.config.  This has a few things to edit,
+such as location of system-specific files, and options for different
+operating systems. 
+
+2. Do "make depend" in the omega directory.
+
+3. Choose a target, and make it.  
+   Targets are: oc, petit, libomega.a, and libcode_gen.a.
+
+   You can also change to the target's obj/ subdirectory, for example
+   omega/omega_calc/obj/, and do a "make" there.
+
+4. You can use the items in place (they will be left in their respective
+   obj/ directories), move them someplace you want, or use the install
+   procedure in the INSTALLATION section.
+
+
+
+
+TROUBLESHOTING
+
+Make trouble:
+  You may run into trouble if your make does not support % rules or 
+  the particular include syntax in our makefiles.  The easiest
+  solution is to switch to GNU make (gmake).  If that is not an
+  option, the first problem can be overcome by making symbolic links
+  to all ../src files from each obj/ directory.  The second can be
+  overcome by editing each Makefile and Makefile.rules to change 
+  the include syntax to one your make supports.
+
+Warnings from g++272
+  We are aware of the large number of warnings, which result from changes
+  made to the C++ language by the ANSI committee.  The resulting object
+  files are correct.  We're working on this problem and hope to address
+  it in a future release.
+
+Other trouble
+  We haven't anticipated any other problems you might have, so for any
+  other problems you have, write to omega@cs.umd.edu.
+
+
+
+
+INSTALLATION
+
+If you want to install the library in a public directory, you need to
+set a DESTDIR in Makefile.config.  The files will be installed as:
+
+DESTDIR/    Installation root      
+  lib/      All library files go here (libomega.a, libcode_gen.a)
+  include/  
+    omega.h         Main omega include file.
+    omega/          Omega library includes.
+    basic/          Basic includes.
+    code_gen/       Code generation includes.
+  bin/      Binaries (oc, petit)
+
+You can change the relative layout of these files by editing the other
+destination variables in Makefile.config.
+
+
+
+
+DOCUMENTATION AND QUESTIONS
+
+Documentation for the Omega calculator is in omega/omega_calc/doc;
+Omega library are docs in omega/omega_lib/doc; documentation for petit
+is in omega/petit/doc.  There are also README files in the omega_calc/
+and petit/ directories.
+
+You can also visit our web site at:
+  <URL: http://www.cs.umd.edu/projects/omega/>.
+
+If you have any problems, questions, or comments about installation,
+please send us email at omega@cs.umd.edu.  We'd like to fix any
+problems you run into for future releases.
+

@@ -1,0 +1,72 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# Symbolic n,b;
+# 
+# 
+# IS10 := {[i,j,k] : 1 <= i <= j <= n && j <= i+2b-2
+# 		&& i-b+1,j-b+1,1 <= k <= i+b-1,j+b-1,n};
+# 
+# T10 :={[i,j,k] -> [j-i+1,k-j,k]};
+# 
+# 
+# T := {[i,j,k] -> [j-i+1,k-j,k]};
+# 
+# newIS10 := T10(IS10);
+# 
+# 
+# strip1 := {[i,j,k] -> [i,j,foo]};
+# 
+# strip2 := {[i,j,k] -> [i,foo1,foo2]};
+# 
+# 
+# newIS10;
+
+{[In_1,In_2,k]: 1 <= k <= n && In_1+In_2 <= k && 1 <= In_1 && k <= n+In_2 && In_1+In_2 <= b && 1 <= b+In_2}
+
+# 
+# strip1(newIS10);
+
+{[i,j,foo]: 1 <= i <= n && i+j <= n && 1 <= n+j && i+j <= b && 1 <= b+j}
+
+# 
+# strip2(newIS10);
+
+{[i,foo1,foo2]: 1 <= i <= 2b-1, n}
+
+# 
+# gist strip1(newIS10) given strip2(newIS10);
+
+{[i,j,foo]: 1 <= n+j && i+j <= b && i+j <= n && 1 <= b+j}
+
+# 
+# 
+# codegen T:IS10;
+for(t1 = 1; t1 <= min(2*b-1,n); t1++) {
+  for(t2 = max(-b+1,-n+1); t2 <= min(b-t1,-t1+n); t2++) {
+    for(t3 = max(t1+t2,1); t3 <= min(t2+n,n); t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 
+# codegen 1 T:IS10;
+for(t1 = 1; t1 <= min(2*b-1,n); t1++) {
+  for(t2 = max(-b+1,-n+1); t2 <= -t1; t2++) {
+    for(t3 = 1; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = max(-t1+1,-b+1); t2 <= min(b-t1,-1); t2++) {
+    for(t3 = t1+t2; t3 <= t2+n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+  for(t2 = 0; t2 <= min(-t1+n,b-t1); t2++) {
+    for(t3 = t1+t2; t3 <= n; t3++) {
+      s1(t3-t1-t2+1,t3-t2,t3);
+    }
+  }
+}
+
+# 

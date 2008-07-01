@@ -1,0 +1,10 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R1 := {[i,j,k] : 17i=12j+170};
+# 
+# R2 :=  {[i,j,k] : k >= 0};
+# 
+# gist R1 given R2;
+
+{[i,j,k]: 17i = 170+12j}
+
+# 

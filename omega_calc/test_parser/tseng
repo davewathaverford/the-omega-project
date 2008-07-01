@@ -1,0 +1,16 @@
+symbolic n;
+symbolic LV,UV;
+D := {[ i,i+1] -> [i+1,k] : 1 <= i && i+1 < k <= n};
+local := {[i1,k1] -> [i2,k2] : LV <= k1,k2 <= UV };
+sameP := {[i1,k1] -> [i2,k2] : k1=k2  ||  LV <= k1,k2 <= UV };
+myIter := {[i,k]  : LV <= k <= UV};
+lexPos := {[i1,k1] -> [i2,k2] : i1 = i2 && k1 < k2 || i1 < i2};
+
+post := D restrictDomain myIter;
+wait := D restrictRange myIter;
+enforcedTime := sameP intersection lexPos;
+enforcedTime;
+enforced := enforcedTime compose D union D compose enforcedTime union enforcedTime;
+enforced;
+post - enforced;
+wait - enforced;

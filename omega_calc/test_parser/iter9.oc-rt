@@ -1,0 +1,121 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# symbolic exprVar1;
+# 
+# symbolic exprVar2;
+# 
+# 
+# ispace0 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+# 
+# 
+# ispace1 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+# 
+# 
+# ispace2 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+# 
+# 
+# ispace3 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+# 
+# 
+# ispace4 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)};
+# 
+# 
+# ispace5 := {[In_1] : Exists ( alpha : exprVar2 = 0 && exprVar1 <= 8alpha+15
+# && alpha <= 0 && 1 <= In_1 && In_1+8alpha <= exprVar1)} union
+#  {[In_1] : Exists ( alpha : 1+exprVar1 = In_1+8alpha && exprVar2 = 0 && 1,
+# exprVar1+1 <= In_1 <= 15)};
+# 
+# 
+# known := { [In_1] : exprVar2 = 0 && exprVar1 <= 15} union
+#  {[In_1] : exprVar2 = 0 && exprVar1 <= 14} union
+#  {[In_1] : exprVar2 = 0 && exprVar1 <= 15};
+# 
+# 
+# 
+# k := Hull known;
+# 
+# 
+# gist ispace0 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)}
+
+# 
+# gist ispace1 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)}
+
+# 
+# gist ispace2 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)}
+
+# 
+# gist ispace3 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)}
+
+# 
+# gist ispace4 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)}
+
+# 
+# gist ispace5 given k;
+
+{[In_1]: Exists ( alpha : exprVar1 <= 8alpha+15 && 1 <= In_1 && In_1+8alpha <= exprVar1)} union
+ {[In_1]: Exists ( alpha : In_1+8alpha = 1+exprVar1 && 1, exprVar1+1 <= In_1 <= 15)}
+
+# 
+# 
+# codegen ispace0, ispace1, ispace2, ispace3, ispace4, ispace5 given k;
+for(t1 = 1; t1 <= 8; t1++) {
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s1(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s2(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s3(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s4(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s5(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(exprVar1-t1,8) && exprVar1-15 <= 8*intDiv(exprVar1-t1,8)) {
+    s6(t1);
+  }
+}
+for(t1 = 9; t1 <= 15; t1++) {
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s1(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s2(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s3(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s4(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s5(t1);
+  }
+  if (exprVar1-15 <= 8*intDiv(-t1+exprVar1,8)) {
+    s6(t1);
+  }
+  if (intMod(-t1+exprVar1+1,8) == 0) {
+    s6(t1);
+  }
+}
+
+# 
+# 

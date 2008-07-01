@@ -1,0 +1,8 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n;
+# 
+# { [i] -> [i+1] : 1 <= i <= n }+;
+
+{[i] -> [Out_1] : 1 <= i < Out_1 <= n+1}
+
+# 

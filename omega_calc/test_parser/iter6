@@ -1,0 +1,6 @@
+Y := { [i,j] : 1 <= i <= 5 and 12 <= j <= 17};
+codegen Y;
+
+X := { [i,j] : 17i-153 = 12j+17 and 1 <= i <= 100 and 1 <= j <= 100 and i < j};
+codegen X;
+

@@ -1,0 +1,38 @@
+#
+# A problem that arises during the analysis of emit.t
+# We are trying to find the dependences to the read 58: rhs(i)
+# There are memory-based deps from the write 58: rhs(j)
+# 			       and the write 50: rhs(i0+k)
+# Due to some screwy stuff, we do not realize that the first is
+# a partial cover for the second, and do the real kill test.
+#
+# line_49_expr is nwall(l)
+#
+
+Symbolic matdim_E, i0_1(1), line_49_expr(1);
+
+is_58 := { [i,j] : i+1 <= j <= matdim_E && 1 <= i <= matdim_E };
+is_50 := { [l,k] : 1 <= k <= line_49_expr(Set) && 1 <= l <= 5 };
+
+plus_plus := { [i,j] -> [i',j'] : i < i' && j < j' };
+plus_zero := { [i,j] -> [i',j'] : i < i' && j = j' };
+plus_star := { [i,j] -> [i',j'] : i < i' };
+
+mo_50_50 := (is_50 * is_50) intersection plus_star
+		intersection { [l1,k1]->[l2,k2] : i0_1(In)+k1 = i0_1(Out)+k2 };
+mo_50_58 := (is_50 * is_58)
+		intersection { [l,k] -> [i,j] : i0_1(In)+k = j };
+mo_58_58 := (is_58 * is_58) intersection plus_zero
+		intersection { [i,j] -> [i',j'] : j = j' };
+
+mf_58_58 := (is_58 * is_58) intersection plus_plus
+		intersection { [iw,jw] -> [ir,jr] : jw = ir };
+mf_50_58 := (is_50 * is_58)
+		intersection { [l,k] -> [i,j] : i0_1(In)+k = i };
+
+vf_58_58 := mf_58_58 - (mf_58_58 compose mo_58_58);
+vf_58_58;
+
+vf_50_58 := mf_50_58 intersection ( complement (mf_58_58 compose mo_50_58) )
+		     intersection ( complement (mf_50_58 compose mo_50_50) );
+vf_50_58;

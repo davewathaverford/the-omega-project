@@ -1,0 +1,6 @@
+#!/bin/csh -f
+setenv QUANTIFYOPTIONS '-windows=no -filename-prefix=%v.%d -run-at-exit="/fs/savoir2/p/bin/qv -write-export-file=%v.%d /fs/elan3/wak/omega/petit/obj/pquant %b"'
+../../petit/obj/pquant -W$2 $1.t >& /dev/null
+mv pquant.*.q[vx] time
+printf "%-12s" `basename $1`
+awk -f extract time

@@ -1,0 +1,5 @@
+IS:={[i,j]: 1 <= i,j <= 9};
+T1:={[i,j]->[4j,i,0]};
+T2:={[i,j]->[2j,i,1]};
+codegen T1:IS,T2:IS;
+codegen 1 T1:IS,T2:IS;

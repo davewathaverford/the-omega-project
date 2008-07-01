@@ -1,0 +1,17 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# symbolic n;
+# 
+# symbolic c;
+# 
+# 
+# R := {[i,j] : 1 <= i <= 10 && 1 <= j <= n};
+# 
+# 
+# ac := farkas R;
+# 
+# ac;
+
+{[i,j]: 0 <= constantTerm+n+i+j && 0 <= constantTerm+n+10i+j && 0 <= n+j && 0 <= n}
+
+# 

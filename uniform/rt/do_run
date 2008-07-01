@@ -1,0 +1,5 @@
+#!/bin/csh -f
+printf "%-15s\n" `basename $1`
+time ../../petit/obj/petit -W$2 $1.t
+mv spmd.c $1.c
+mv uniform.trace $1.trace

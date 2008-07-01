@@ -1,0 +1,29 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# #
+# # A (memory-based!) data dependence relation from a greatly simplified
+# # cfft2d1.t that was causing us trouble.
+# #
+# 
+# Symbolic line22(1), im_1(2);
+# 
+# 
+# flow := { [iii_w,jj_w] -> [iii_r,jj_r] :
+# 	   im_1(In) = im_1(Out)
+# 	&& 1 <= jj_w
+# 	&& jj_w <= line22(In)
+# 	&& 1 <= iii_w
+# 	&& iii_w <= 200
+# 	&& 1 <= jj_r
+# 	&& jj_r <= line22(Out)
+# 	&& 1 <= iii_r
+# 	&& iii_r <= 200 };
+# 
+# 
+# zero_plus := { [i1,j1] -> [i2,j2] : i1 = i2 && j1 < j2 };
+# 
+# 
+# flow intersection zero_plus;
+
+{[In_1,In_2] -> [Out_1,Out_2] : im_1(In_1,In_2) = im_1(Out_1,Out_2) && Out_1 = In_1 && 1 <= In_2 < Out_2 <= line22(In_1) && 1 <= In_1 <= 200}
+
+# 

@@ -1,0 +1,29 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# symbolic n(1);
+# 
+# R := { [i] -> [j] : 1 <= i = j <= 100 && n(i) <= n(j)};
+# 
+# S := { [i] -> [j] : 1 <= i <= j <= 100 && n(i) = n(j)};
+# 
+# 
+# R intersection complement S;
+
+{[i] -> [j]  : FALSE }
+
+# 
+# inverse R;
+
+{[j] -> [j] : 1 <= j <= 100}
+
+# 
+# inverse S;
+
+{[j] -> [j] : 1 <= j <= 100} union
+ {[j] -> [i] : n(j) = n(i) && 1 <= i < j <= 100}
+
+# 
+# inverse S intersection complement inverse R;
+
+{[j] -> [i] : n(j) = n(i) && 1 <= i < j <= 100}
+
+# 

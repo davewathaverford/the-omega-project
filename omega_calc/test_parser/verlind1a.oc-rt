@@ -1,0 +1,9 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := { [i] : 1 <= i <= 6 & Exists (alpha : 3 alpha + 1 <= i <= 3 alpha + 2)
+# 	   & not (1 <= i <= 2) };
+# 
+# R;
+
+{[i]: 4 <= i <= 5}
+
+# 

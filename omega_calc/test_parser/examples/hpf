@@ -1,0 +1,46 @@
+# Example taken from
+# # @INPROCEEDINGS{delft,
+#         author = {Corinne Ancourt and Fabien Coelho and Fran\c{c}ois Irigoin 
+#		and Ronan Keryell},
+#         title = {A Linear Algebra Framework for Static HPF Code Distribution},
+#         booktitle = {Proceedings of the Fourth International Workshop
+#                   on Compilers for Parallel Computers},
+#         year = 1993,
+#         month = dec,
+#         pages = {117-132},
+#         publisher = {Delft University of Technology}
+#         }
+# 
+# Generate local code for this HPF code fragment
+# !HPF$ template T(0:150,0:150)
+# !HPF$ align Y(I,J) with T(3*I,3*J)
+A := { [i,j] -> [3i,3j] };
+# !HPF$ processors P(0:3, 0:3)
+# !HPF$ distribute
+# !HPF$  T(cyclic(4), cyclic(4)) onto P
+D := { [t1,t2] -> [p1,p2,c1,c2,o1,o2] :
+		t1 = 16c1+4p1+o1 
+		&& t2 = 16c2+4p2+o2 
+		&& 0 <= p1,p2 <= 3
+		&& 0 <= o1,o2 <= 3 };
+#      do I = 0, 14
+#         Y(I,I) = 1.0
+#      enddo
+I := { [i] : 0 <= i <= 14 };
+Y := { [i] -> [i,i] };
+R := D(A(Y(I)));
+R;
+symbolic P1,P2;
+selectLocal := {[P1,P2,c1,c2,o1,o2] -> [c1,c2,o1,o2]};
+# We want to iteration the chunk and offset values
+# of Y touched by this statement.
+# the code given in the above paper is:
+# do u3 = 0, 2
+#   do u4 = 0, 2
+#    do u5 = max(max(0,intDiv(2+4*p1+16*u3,3)),intDiv(2+4*p2+16*u4),3),
+#		min(min(14,intDiv(3+4*p1+16*u3,3)),intDiv(3+4*p2+16*u4,3))
+#      u6 = intDiv(3*u5-4*p1-16*u3,3)
+#        s1[u3,u4,u5,u6]
+#
+# We generate:
+codegen selectLocal(R);

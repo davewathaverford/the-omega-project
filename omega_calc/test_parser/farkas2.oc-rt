@@ -1,0 +1,22 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# 
+# R := {[1:10,1:10]} union {[5:15,11:20]};
+# 
+# R;
+
+{[In_1,In_2]: 1 <= In_1 <= 10 && 1 <= In_2 <= 10} union
+ {[In_1,In_2]: 5 <= In_1 <= 15 && 11 <= In_2 <= 20}
+
+# 
+# f := farkas R;
+# 
+# f;
+
+{[In_1,In_2]: 0 <= constantTerm+10In_1+In_2 && 0 <= constantTerm+In_1+10In_2 && 0 <= constantTerm+15In_1+20In_2 && 0 <= constantTerm+In_1+In_2 && 0 <= constantTerm+15In_1+11In_2 && 0 <= constantTerm+5In_1+20In_2}
+
+# 
+# Hull R;
+
+{[In_1,In_2]: 1, 2In_1-19 <= In_2 <= 20 && 1 <= In_1 <= 15 && 2In_2 <= 15+5In_1}
+
+# 

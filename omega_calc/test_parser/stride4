@@ -1,0 +1,4 @@
+Sym n;
+new_IS := {[i] : exists (alpha : i = 5alpha-2 && 
+	                         i >= 17 && i <= 100)};
+codegen new_IS;

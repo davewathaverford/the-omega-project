@@ -1,0 +1,30 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+#  T1 := {[i1,i2,i3] -> [o1,i2,o3] : 2 <= i2 <= 511 && o1 <= 256 
+# && o3 <= 511 && 2 <= i3 && i1+o3 <= i3+o1 
+# 	&& 255i3+o1 <= i1+255o3 && 1 <= i1};
+# 
+# 
+# T1;
+
+{[i1,i2,i3] -> [o1,i2,o3] : 2 <= i2 <= 511 && o1 <= 256 && o3 <= 511 && 2 <= i3 && i1+o3 <= i3+o1 && 255i3+o1 <= i1+255o3 && 1 <= i1}
+
+# 
+# 
+#  T2 := {[i1,i2,i3] -> [o1,i2,o3] : Exists ( x: 2 <= i2 <= 511 
+# 	&& 2 <= o3 <= 509 && o1 <= 256 
+# 	&& 3+i1+o3 <= i3+o1 && 2o1+o3 <= 511+2x 
+# 	&& 2 <= i3 && i1+2o1+o3 <= i3+3x 
+# 	&& 255i3+511x <= i1+510o1+255o3 && 1 <= i1)};
+# 
+# 
+# T2;
+
+{[i1,i2,i3] -> [o1,i2,o3] : Exists ( alpha : 2 <= i2 <= 511 && 2 <= o3 <= 509 && o1 <= 256 && 3+i1+o3 <= i3+o1 && 2o1+o3 <= 511+2alpha && 2 <= i3 && i1+2o1+o3 <= i3+3alpha && 255i3+511alpha <= i1+510o1+255o3 && 1 <= i1)}
+
+# 
+#  
+#  T1 compose T2;
+
+{[i1,i2,i3] -> [o1,i2,o3] : Exists ( alpha,beta,gamma : 2 <= i2 <= 511 && 2 <= gamma <= 509 && o1 <= 256 && o3 <= 511 && o3+alpha <= o1+gamma && o1+255gamma <= 255o3+alpha && gamma+2alpha <= 511+2beta && 1 <= i1 && 255i3+511beta <= i1+255gamma+510alpha && i1+gamma+2alpha <= i3+3beta && 2 <= i3 && 3+i1+gamma <= i3+alpha)}
+
+# 

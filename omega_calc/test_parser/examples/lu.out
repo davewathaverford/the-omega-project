@@ -1,0 +1,267 @@
+# Omega Calculator [v1.1, Nov 96]:
+# # Perform imperfect loop interchange of LU decomposition 
+# # to get jki form and then block the k and i loops
+# #
+# #for k = 1 to n do
+# # for i = k+1 to n do
+# #  a(i,k) = a(i,k) / a(k,k)
+# #  for j = k+1 to n do
+# #   a(i,j) = a(i,j) - a(k,j)*a(i,k)
+# #  endfor
+# # endfor
+# #endfor
+# #
+# #
+# Symbolic n;
+# 
+# IS10 := {[k,i] : 1 <= k <= n && k+1 <= i <= n};
+# 
+# IS20 := {[k,i,j] : 1 <= k <= n && k+1 <= i <= n && k+1 <= j <= n};
+# 
+# 
+# T10 := {[k,i] -> [t1,t2,k,k,i]:
+# exists (alpha,beta: t1 = 64beta+1 && k-1 = alpha + 64 beta &&
+#                     alpha >= 0 && alpha <= 63)
+# && exists (gamma,delta: t2 = 64delta && i = gamma +64delta &&
+# 		    gamma >= 0 && gamma <= 63)};
+# 
+# 
+# T20 := {[k,i,j] -> [t1,t2,j,k,i]:
+# exists (alpha,beta: t1 = 64beta+1 && k-1 = alpha + 64 beta &&
+#                     alpha >= 0 && alpha <= 63)
+# && exists (gamma,delta: t2 = 64delta && i = gamma +64delta &&
+# 		    gamma >= 0 && gamma <= 63)};
+# 
+# 
+# T10;
+
+{[k,i] -> [t1,t2,k,k,i] : Exists ( alpha,beta : t1 = 1+64beta && t2 = 64alpha && k-63 <= t1 <= k && i-63 <= t2 <= i)}
+
+# 
+# T20;
+
+{[k,i,j] -> [t1,t2,j,k,i] : Exists ( alpha,beta : t1 = 1+64beta && t2 = 64alpha && k-63 <= t1 <= k && i-63 <= t2 <= i)}
+
+# 
+# 
+# # Generate code with different ammounts of overhead remove
+# # The more overhead we remove, the more code duplication may occur
+# codegen T10:IS10,T20:IS20;
+for(t1 = 1; t1 <= n-1; t1 += 64) {
+  for(t2 = t1-1; t2 <= n; t2 += 64) {
+    for(t3 = t1; t3 <= n; t3++) {
+      for(t4 = t1; t4 <= min(t1+63,t3-1,t2+62); t4++) {
+        for(t5 = max(t2,t4+1); t5 <= min(n,t2+63); t5++) {
+          s2(t4,t5,t3);
+        }
+      }
+      if (t3 <= t1+63) {
+        for(t5 = max(t2,t3+1); t5 <= min(n,t2+63); t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+  }
+}
+
+# 
+# codegen 1 T10:IS10,T20:IS20;
+for(t1 = 1; t1 <= n-1; t1 += 64) {
+  for(t2 = t1-1; t2 <= n; t2 += 64) {
+    for(t3 = t1; t3 <= n; t3++) {
+      if (t2 >= t1+63 && t2 <= n-64) {
+        for(t4 = t1; t4 <= min(t1+63,t2-1,t3-1); t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+      if (t2 >= n-63 && t2 >= t1+63) {
+        for(t4 = t1; t4 <= min(t3-1,t1+63,t2-1); t4++) {
+          for(t5 = t2; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+      if (t2 <= n-63) {
+        for(t4 = max(t1,t2); t4 <= min(t2+62,t1+63,t3-1); t4++) {
+          for(t5 = t4+1; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+      if (t2 >= n-62) {
+        for(t4 = max(t2,t1); t4 <= min(t3-1,t1+63); t4++) {
+          for(t5 = t4+1; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+      if (t3 <= t1+63) {
+        for(t5 = max(t2,t3+1); t5 <= min(n,t2+63); t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+  }
+}
+
+# 
+# codegen 2 T10:IS10,T20:IS20;
+for(t1 = 1; t1 <= n-1; t1 += 64) {
+  for(t2 = t1-1; t2 <= n; t2 += 64) {
+    for(t5 = max(t2,t1+1); t5 <= min(t2+63,n); t5++) {
+      s1(t1,t5);
+    }
+    if (t1 >= t2+1 && n >= t1+62) {
+      for(t3 = t2+2; t3 <= t2+62; t3++) {
+        for(t4 = t2+1; t4 <= t3-1; t4++) {
+          for(t5 = t4+1; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t3+1; t5 <= t2+63; t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+    if (n >= t1+62 && t1 >= t2+1) {
+      for(t3 = t2+63; t3 <= n; t3++) {
+        for(t4 = t2+1; t4 <= t2+62; t4++) {
+          for(t5 = t4+1; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+    }
+    if (t1 >= t2+1 && n >= t1+2) {
+      for(t3 = t2+2; t3 <= n-1; t3++) {
+        for(t4 = t2+1; t4 <= t3-1; t4++) {
+          for(t5 = t4+1; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t3+1; t5 <= n; t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+    if (t1 >= t2+1) {
+      for(t4 = t2+1; t4 <= n-1; t4++) {
+        for(t5 = t4+1; t5 <= n; t5++) {
+          s2(t4,t5,n);
+        }
+      }
+    }
+    if (t1 <= t2-63 && n >= t2+64) {
+      for(t3 = t1+1; t3 <= min(t2-2,t1+63); t3++) {
+        for(t4 = t1; t4 <= t3-1; t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t2; t5 <= t2+63; t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+    if (t2 == t1+63 && n >= t2+64) {
+      for(t3 = t2-1; t3 <= t2; t3++) {
+        for(t4 = t2-63; t4 <= t3-1; t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t3+1; t5 <= t2+63; t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+    if (t2 == t1+63 && n >= t2+64) {
+      for(t3 = t2+1; t3 <= n; t3++) {
+        for(t4 = t2-63; t4 <= t2-1; t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t1+64; t5 <= t1+126; t5++) {
+          s2(t1+63,t5,t3);
+        }
+      }
+    }
+    if (n >= t2+64 && t1 <= t2-127) {
+      for(t3 = t1+64; t3 <= n; t3++) {
+        for(t4 = t1; t4 <= t1+63; t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+    }
+    if (t1 <= t2-63 && n <= t2+63) {
+      for(t3 = t1+1; t3 <= min(t2-1,t1+63); t3++) {
+        for(t4 = t1; t4 <= t3-1; t4++) {
+          for(t5 = t2; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t2; t5 <= n; t5++) {
+          s1(t3,t5);
+        }
+      }
+    }
+    if (t1 == t2-63 && n <= t1+126 && n >= t1+64) {
+      for(t4 = t1; t4 <= t1+62; t4++) {
+        for(t5 = t2; t5 <= n; t5++) {
+          s2(t4,t5,t1+63);
+        }
+      }
+    }
+    if (t2 == t1+63 && n <= t2+63) {
+      for(t5 = t2+1; t5 <= n; t5++) {
+        s1(t1+63,t5);
+      }
+    }
+    if (t2 == t1+63 && t2 >= n) {
+      for(t4 = t2-63; t4 <= t2-1; t4++) {
+        s2(t4,n,n);
+      }
+    }
+    if (t1 == t2-63 && t1 == n-126) {
+      for(t3 = t1+64; t3 <= t1+126; t3++) {
+        for(t4 = t2-63; t4 <= t2-1; t4++) {
+          for(t5 = t2; t5 <= t2+63; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t1+64; t5 <= t1+126; t5++) {
+          s2(n-63,t5,t3);
+        }
+      }
+    }
+    if (t2 == t1+63 && n <= t2+62) {
+      for(t3 = t2+1; t3 <= n; t3++) {
+        for(t4 = t2-63; t4 <= t2-1; t4++) {
+          for(t5 = t2; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+        for(t5 = t1+64; t5 <= n; t5++) {
+          s2(t1+63,t5,t3);
+        }
+      }
+    }
+    if (n <= t2+63 && t1 <= t2-127) {
+      for(t3 = t1+64; t3 <= n; t3++) {
+        for(t4 = t1; t4 <= t1+63; t4++) {
+          for(t5 = t2; t5 <= n; t5++) {
+            s2(t4,t5,t3);
+          }
+        }
+      }
+    }
+  }
+}
+
+# 
+# 

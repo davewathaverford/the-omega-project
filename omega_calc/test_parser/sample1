@@ -1,0 +1,14 @@
+example { [i] -> [j] : 1 <= i < j <= 20 };
+
+example { [i,j] -> [i+1,j+1] : 1 <= i <= 9 && 5 <= j <= 25 };
+
+example (inverse { [i] -> [i+1] : 1 <= i <= 9 });
+
+example (domain { [i] -> [i+1] : 1 <= i <= 9 });
+
+example (range { [i] -> [i+1] : 1 <= i <= 9 });
+
+example ({[i] -> [i+1] : 1 <= i <= 9 } compose { [i] -> [i+1] : 1 <= i <= 9 });
+
+
+

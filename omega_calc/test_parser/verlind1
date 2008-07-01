@@ -1,0 +1,42 @@
+   R3 := {[x] -> [y] : (y = x) | (y = 3x)};
+
+   Rf := {[x] -> [y] : x <= y <= 3x};
+
+   R3;
+
+   Rf;
+
+   s12 := {[x] : 1 <= x <= 2};
+   s12;
+
+   sd3 := R3(s12);
+   sd3;
+
+   sc3 := Rf(s12);
+   sc3;
+
+   sc3 intersection sd3;
+
+   # I think this is faulty
+   sc3 - sd3;
+
+   # This is OK
+   sd3 - sc3;
+
+   complement sc3;
+   complement sd3;
+
+   sc3;
+
+   sc3 intersection (complement sd3);
+
+   # alternative description of sd3;
+   sd3' := {[y] : 1 <= y <= 3 | y = 6};
+   sd3';
+   sc3 - sd3';
+
+   # sd3 wrt sd3';
+
+   sd3 - sd3';
+
+   sd3' - sd3;

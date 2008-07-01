@@ -1,0 +1,14 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R := {[1,1]} union {[3,3]};
+# 
+# R;
+
+{[1,1]} union
+ {[3,3]}
+
+# 
+# hull R;
+
+{[In_1,In_1]: 1 <= In_1 <= 3}
+
+# 

@@ -1,0 +1,30 @@
+flow     1: Entry           -->   8: a(L1-L2)                        [ V]
+{[In_1] -> [In_1+1,1] : 0 <= In_1 < n && 1 <= m} union
+ {[In_1] -> [1,-In_1+1] : -m+1 <= In_1 <= -1 && 1 <= n}
+flow     1: Entry           -->   8: a(L1-L2)                        [ M]
+{[In_1] -> [L1,L1-In_1] : In_1+1, 1 <= L1 <= n && L1 <= m+In_1}
+output   1: Entry           -->   8: a(L1-L2)                        [ M]
+{[In_1] -> [L1,L1-In_1] : In_1+1, 1 <= L1 <= n && L1 <= m+In_1}
+flow     1: Entry           -->   8: c(L1)                           [ MV]
+{[In_1] -> [In_1,L2] : 1 <= In_1 <= n && 1 <= L2 <= m}
+flow     1: Entry           -->   6: n                               [ MV]
+{ ->  TRUE }
+flow     1: Entry           -->   7: m                               [ MV]
+{ -> [L1] : 1 <= L1 <= n}
+anti     8: a(L1-L2)        -->   8: a(L1-L2)        (+,+)           [ MoZ]
+{[L1,L2] -> [L1',L2-L1+L1'] : 1 <= L1 < L1' <= n && L2+L1' <= m+L1 && 1 <= L2}
+exact dd: {[In_1,In_1]: 1 <= In_1}
+flow     8: a(L1-L2)        -->   8: a(L1-L2)        (1,1)           [ VOZ]
+{[L1,L2] -> [L1+1,L2+1] : 1 <= L1 < n && 1 <= L2 < m}
+exact dd: {[1,1]}
+flow     8: a(L1-L2)        -->  10: Exit                            [ V]
+{[n,L2] -> [Out_1] : 1 <= L2 <= m && 1 <= n} union
+ {[L1,m] -> [Out_1] : 1 <= L1 < n && 1 <= m}
+flow     8: a(L1-L2)        -->   8: a(L1-L2)        (+,+)           [ MoZ]
+{[L1,L2] -> [L1',L2-L1+L1'] : 1 <= L1 < L1' <= n && 1 <= L2 && L2+L1' <= m+L1}
+exact dd: {[In_1,In_1]: 1 <= In_1}
+flow     8: a(L1-L2)        -->  10: Exit                            [ M]
+{[L1,L2] -> [L1-L2] : 1 <= L1 <= n && 1 <= L2 <= m}
+output   8: a(L1-L2)        -->   8: a(L1-L2)        (+,+)           [ MoZ]
+{[L1,L2] -> [L1',L2-L1+L1'] : 1 <= L1 < L1' <= n && 1 <= L2 && L2+L1' <= m+L1}
+exact dd: {[In_1,In_1]: 1 <= In_1}

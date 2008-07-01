@@ -1,0 +1,35 @@
+#!/bin/csh -f
+
+echo "Beginning hard oc regression test at" `date`
+
+# make sure tcodegen doesn't give up too easily:
+setenv DONT_QUIT_FOR_FAILED_SUBSTITUTION 1
+
+if(! $?PETIT_TEST_ALERT) setenv PETIT_TEST_ALERT "echo DIFF"
+
+if (! $?PARSER) setenv PARSER ../obj/oc
+
+set tmp=/tmp/oc-test.$$.`hostname`
+
+
+#echo "hard files are" "$hardf"
+foreach i (*.oc-rt)
+  grep $i easy-oc-files > /dev/null
+  if($status != 0 ) then 
+    set ofile = ${i}
+    set ifile = ${i:r}
+    if (-e ${tmp}) /bin/rm -f ${tmp}
+    echo ---------------- Running ${PARSER} on input file ${ifile} ----------------
+    ${PARSER} ${ifile} >& ${tmp}
+
+    if (-r ${tmp}) then
+        diff -b ${ofile} ${tmp}
+        if($status != 0) ${PETIT_TEST_ALERT}
+    else
+        ${PETIT_TEST_ALERT}
+    endif
+  endif
+end
+
+echo "Finished hard oc regression tests at" `date`
+

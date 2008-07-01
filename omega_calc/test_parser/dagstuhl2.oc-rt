@@ -1,0 +1,11 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# {[i,j] : 
+# 	2i+6j>=9
+# 	&& 5i-3j >= 0
+# 	&& 2i-10j >= -15
+# 	&& -2i+6j >= 3
+# 	&& -2i-6j >= -17};
+
+{[i,j]  : FALSE }
+
+# 

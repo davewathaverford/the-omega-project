@@ -1,0 +1,21 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# R1 := {[i] -> [j] : i < j};
+# 
+# R2 := {[x] -> [y] : x < y};
+# 
+# inverse R2;
+
+{[y] -> [x] : x < y}
+
+# 
+# R1 union R2;
+
+{[In_1] -> [Out_1] : In_1 < Out_1}
+
+# 
+# R2(R1);
+
+{[i] -> [y] : i <= y-2}
+
+# 
+# 

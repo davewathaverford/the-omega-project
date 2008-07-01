@@ -1,0 +1,7 @@
+symbolic n, f(1);
+
+R0 := {[x] : 1 <= x <= n};
+R1 := {[x] : 1 <= x <= n && f(x) >= 0};
+maximize R0;
+maximize R1;
+R1 intersection maximize R0;

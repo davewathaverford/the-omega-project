@@ -1,0 +1,96 @@
+flow     1: Entry           -->  40: trigs(kb)                       [ MV]
+{[In_1] -> [In_1] : Exists ( alpha : 0 = 1+In_1+2alpha && 3 <= In_1 <= 31)}
+flow     1: Entry           -->  41: trigs(kb+1)                     [ MV]
+{[In_1] -> [In_1-1] : Exists ( alpha : 0 = In_1+2alpha && 4 <= In_1 <= 32)}
+flow     1: Entry           -->  45: g(i)                            [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 96+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: g(i+1)                          [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 95+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: g(i+33)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 63+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: g(i+65)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 31+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: g(i)                            [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 96+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: g(i+32)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 64+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: g(i+64)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 32+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: g(i+1)                          [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 95+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: g(i+33)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 63+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: g(i+65)                         [ MV]
+{[In_1] -> [kb,l] : Exists ( alpha : 31+In_1 = kb+96l && 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  45: w(j)                            [ M]
+{[In_1] -> [kb,l] : Exists ( alpha : 3kb+96l = 98+In_1 && In_1 = 1+6alpha && 96l-89 <= In_1 <= 96l-5 && 1 <= l <= lot)}
+output   1: Entry           -->  46: w(j+1)                          [ M]
+{[In_1] -> [kb,l] : Exists ( alpha : 3kb+96l = 97+In_1 && In_1 = 2+6alpha && 96l-88 <= In_1 <= 96l-4 && 1 <= l <= lot)}
+output   1: Entry           -->  47: w(j+2)                          [ M]
+{[In_1] -> [kb,l] : Exists ( alpha : 3kb+96l = 96+In_1 && In_1 = 3+6alpha && 96l-87 <= In_1 <= 96l-3 && 1 <= l <= lot)}
+output   1: Entry           -->  48: w(j+3)                          [ M]
+{[In_1] -> [kb,l] : Exists ( alpha : 3kb+96l = 95+In_1 && 2+In_1 = 6alpha && 96l-86 <= In_1 <= 96l-2 && 1 <= l <= lot)}
+flow     1: Entry           -->  44: lot                             [ MV]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+flow     1: Entry           -->  45: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  49: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  42: i                               [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+output   1: Entry           -->  49: i                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  45: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  46: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  47: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  48: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+flow     1: Entry           -->  50: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  43: j                               [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+output   1: Entry           -->  50: j                               [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  36: ibase                           [ M]
+{ ->  TRUE }
+output   1: Entry           -->  52: ibase                           [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+output   1: Entry           -->  37: jbase                           [ M]
+{ ->  TRUE }
+output   1: Entry           -->  53: jbase                           [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+output   1: Entry           -->  38: kc                              [ M]
+{ ->  TRUE }
+output   1: Entry           -->  54: kc                              [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+flow     1: Entry           -->  47: c1                              [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  40: c1                              [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+flow     1: Entry           -->  48: s1                              [ M]
+{ -> [kb,l] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31 && 1 <= l <= lot)}
+output   1: Entry           -->  41: s1                              [ M]
+{ -> [kb] : Exists ( alpha : 0 = 1+kb+2alpha && 3 <= kb <= 31)}
+flow    36: ibase           -->  42: ibase                           [ V]
+{ -> [3] }

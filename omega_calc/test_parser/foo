@@ -1,0 +1,13 @@
+
+R := {[t,s] -> [t+2,s+2] : t <= s} union
+ {[t,s] -> [t+4,s+4] : t <= s} union
+ {[t,s] -> [t+3,s+3] : t <= s} union
+ {[t,s] -> [t',s-t+t'] : t <= s, t'-5} union
+ {[t,s] -> [t+1,s+1] : t <= s} union
+ {[t,s] -> [t',s-t+t'] : t <= s-1, t'-2};
+R;
+difference R;
+hull difference R;
+
+Hull R;
+

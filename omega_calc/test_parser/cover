@@ -1,0 +1,6 @@
+symbolic p(2), n, m;
+R  := { [ir,jr] : 1 <= ir <= n && 1 <= jr <= m };
+W1 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(Set) >= 0 };
+W2 := { [iw,jw] : 1 <= iw <= n && 1 <= jw <= m && p(Set) <  0 };
+Exposed := R intersection complement ( W1 union W2 );
+Exposed;

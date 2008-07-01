@@ -1,0 +1,19 @@
+I1 := { [i,j,k,l,m] : 5 <= i <= 60 && 1 <= j,k,l,m <= 100 };
+I2 := { [i,j,k,l,m] : 1 <= i,j,k,l,m <= 100 };
+
+codegen -2 I1,I2;
+
+codegen -1 I1,I2;
+
+codegen 0 I1,I2;  # default
+
+codegen 1 I1,I2;
+
+codegen 2 I1,I2;
+
+codegen 3 I1,I2;
+
+codegen 4 I1,I2;
+
+codegen 5 I1,I2;
+

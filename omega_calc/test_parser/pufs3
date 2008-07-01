@@ -1,0 +1,8 @@
+symbolic n(1);
+R := { [i] -> [j] : 1 <= i = j <= 100 && n(i) <= n(j)};
+S := { [i] -> [j] : 1 <= i <= j <= 100 && n(i) = n(j)};
+
+R intersection complement S;
+inverse R;
+inverse S;
+inverse S intersection complement inverse R;

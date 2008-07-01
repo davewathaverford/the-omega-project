@@ -1,0 +1,16 @@
+#!/bin/sh
+
+literalize='s/\([\$\.\\()|]\)/\\\1/g'
+
+if	test "$1" = "-"
+then
+	sed -e $literalize | awk -f bin/list_to_egrep.awk
+else
+	echo -n "(`echo $1 | sed -e $literalize`"
+	shift
+	for f in $*
+	do
+		echo -n ")|(`echo $f | sed -e $literalize`"
+	done
+	echo ")"
+fi

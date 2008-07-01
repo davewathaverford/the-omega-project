@@ -1,0 +1,56 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# #    do i = 1, np {
+# #	do j = 1, i {
+# #	    ij = ia(i) + j
+# #	    a = 1. / (i + j)
+# #	    do k = 1, i {
+# #		maxl = k
+# #		if (k == i) then
+# #		    maxl = j
+# #		endif
+# #		do l = 1, maxl {
+# #		    kl = ia(k) + l
+# #		    b = 1. / (k + l)
+# #		    val = a + b
+# #		    if (i == j) then
+# #			val = val * .5
+# #		    endif
+# #		    if (k == l) then
+# #			val = val * .5
+# #		    endif
+# #		    x(ij,kl) = val
+# #		    x(kl,ij) = val
+# #		}
+# #	    }
+# #	}
+# #    }
+# #! 
+# #
+# # 
+# # As far as I remember it was the dependence test between X(IJ,KL) and X(IJ,KL).
+# # 
+# # Pips discovered the following precondition:
+# # 
+# 
+# {[d1,d2,d3,d4] : exists ( NP,
+# 			I,J,K,L,IJ,KJ,MAXL,
+# 			I',J',K',L',IJ',KJ',MAXL' :
+# 			I' = I+d1 &&
+# 			J' = J+d2 &&
+# 			K' = K+d3 &&
+# 			L' = L+d4 
+# 	&& 1<=L &&  1<=J &&  MAXL<=K &&  I<=NP &&  NP<=40 &&  10<=NP 
+# 	&& 10+8K+MAXL<=NP+8I+J &&  38K+MAXL<=38I+J 
+# 	&&  J+K<=I+MAXL &&  L<=MAXL
+# 	&& 1 <= J,K <= I <= NP && 1 <=L <= MAXL
+# 
+# 	&& 1<=L' &&  1<=J' &&  MAXL'<=K' &&  I'<=NP &&  NP<=40 &&  10<=NP 
+# 	&& 10+8K'+MAXL'<=NP+8I'+J' &&  38K'+MAXL'<=38I'+J' 
+# 	&&  J'+K'<=I'+MAXL' &&  L'<=MAXL'
+# 	&& 1 <= J',K' <= I' <= NP && 1 <=L' <= MAXL'
+# 	)};
+
+{[d1,d2,d3,d4]: d2-39, -39, d4-39, d3-39 <= d1 <= d3+39, d2+39, d4+39, 39 && d4-39, -39 <= d3 <= 39, d4+39 && -39 <= d2 <= 39 && 39d4 <= 1521+38d1+d2 && d3 <= 39+d1+d4 && d2 <= 1521+d1+38d3+d4 && 38d1+d2 <= 1521+39d4 && 38d1+d2 <= 1521+38d3+d4 && d2 <= 1521+d1+39d4 && d1+38d3+d4 <= 1521+d2 && d1+d4 <= 39+d3 && 38d3+d4 <= 1521+38d1+d2 && d1+39d4 <= 1521+d2}
+
+# 
+# 

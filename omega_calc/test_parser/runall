@@ -1,0 +1,8 @@
+#!/bin/csh -f
+
+if (! $?PARSER) setenv PARSER ../oc
+
+foreach i (*.oc-rt)
+  echo ---------------- Running ${PARSER} on input file $i ----------------
+  ${PARSER} ${i:r}
+end

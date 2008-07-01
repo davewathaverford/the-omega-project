@@ -1,0 +1,3 @@
+R:={[t1,t2]: exists (aa : 2aa = t1 &&  2 <= t1 && t1 <= 8)};
+known := {[t1,t2]: 1 <= t1 <= 9};
+gist R given known;

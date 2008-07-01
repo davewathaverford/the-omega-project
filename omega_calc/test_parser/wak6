@@ -1,0 +1,14 @@
+T1 := {[k,i,j] -> [k',i,j] : 1 <= k < k' < i <= 1024 && k'+1 <= j <= 1024};
+T2 := {[k,i,j] -> [j,i,j'] : 1 <= k < j < i <= 1024 && j < j' <= 1024};
+T3 := {[k,k+1,k+1] -> [k+1,i',j'] : 1 <= k <= i'-2, j'-2 && j' <= 1024 && i' <= 1024};
+
+# The following expression evaluates to FALSE, which I believe is incorrect:
+
+T3+;
+
+# And the following cause assertion failures:
+
+(T2 union T3)+;
+(T1 union T2)+;
+
+# This comes from Guassian Elimination.

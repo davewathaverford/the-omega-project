@@ -1,0 +1,13 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# T := { [d1, -1] : d1 > 0 };
+# 
+# T;
+
+{[d1,-1]: 1 <= d1}
+
+# 
+# farkas T;
+
+{[d1,In_2]: 0 <= d1 && In_2 <= constantTerm+d1}
+
+# 

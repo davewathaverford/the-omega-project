@@ -1,0 +1,5 @@
+flow     1: Entry           -->  10: a(i-1,j+2)                      [ V]
+flow     1: Entry           -->  10: a(i-1,j+2)                      [ M]
+output   1: Entry           -->  10: a(i,j)                          [ M]
+flow    10: a(i,j)          -->  10: a(i-1,j+2)      (1,-2)          [ MVO]
+flow    10: a(i,j)          -->  12: Exit                            [ MV]

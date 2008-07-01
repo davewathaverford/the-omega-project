@@ -1,0 +1,36 @@
+# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Sym n;
+# 
+# R := {[i,j]: i >= 1 && i <= 101 &&
+#              j >= i && j <=401 && exists (alpha : j = 2 alpha)};
+# 
+# codegen R;
+for(t1 = 1; t1 <= 101; t1++) {
+  for(t2 = 2*intDiv(t1+1,2); t2 <= 400; t2 += 2) {
+    s1(t1,t2);
+  }
+}
+
+# 
+# S := {[i,j]: i >= 1 && i <= 101 && exists (alpha : i = 2 alpha) &&
+#              j >= i && j <=401 && exists (alpha : j = 2 alpha)};
+# 
+# codegen S;
+for(t1 = 2; t1 <= 100; t1 += 2) {
+  for(t2 = t1; t2 <= 400; t2 += 2) {
+    s1(t1,t2);
+  }
+}
+
+# 
+# T := {[i,j]: i >= 1 && i <= 101 && exists (alpha : i = 2 alpha) &&
+#              j >= i && j <=401 && exists (alpha : 2j = 4 alpha)};
+# 
+# codegen T;
+for(t1 = 2; t1 <= 100; t1 += 2) {
+  for(t2 = t1; t2 <= 400; t2 += 2) {
+    s1(t1,t2);
+  }
+}
+
+# 
