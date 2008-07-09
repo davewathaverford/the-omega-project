@@ -7,6 +7,8 @@
 #include <basic/String.h>
 #include <omega/Relations.h>
 
+namespace omega {
+
 class elimination_info {
 public: 
   elimination_info();
@@ -24,5 +26,8 @@ private:
 };
 
 int max_fs_arity(const Constraint_Handle &c);
+
+}
+
 
 #endif

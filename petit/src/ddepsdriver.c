@@ -1,4 +1,4 @@
-/* $Id: ddepsdriver.c,v 1.2 2000/08/16 20:01:19 dwonnaco Exp $ */
+/* $Id: ddepsdriver.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* murka - 11.12.93 */
 
 #include <basic/assert.h>
@@ -16,6 +16,8 @@
 #include <petit/dd_misc.h>
 #include <petit/depcycles.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 /***
  * dd_eps_test - test dependence for 2 accesses (whole thing)
@@ -287,3 +289,5 @@ node * ddpred, *ddsucc;
     
     return s;
 }/* get_difdep_number */
+
+} // end of omega namespace

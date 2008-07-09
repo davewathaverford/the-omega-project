@@ -23,6 +23,12 @@
 
 #define DEBUG_FILE_NAME "./oc.out"
 
+/* Can only do the following when "using namespace omega"
+   is also put before the inclusion of y.tab.h in parser.l.
+*/
+using omega::min;
+using omega::negate;
+using namespace omega;
 
 Map<Const_String,Relation*> relationMap ((Relation *)0);
 static int redundant_conj_level;
@@ -32,6 +38,7 @@ void free(void *p);
 void *realloc(void *p, size_t s);
 #endif
 
+namespace omega {
 #if !defined(OMIT_GETRUSAGE)
 void start_clock( void );
 int clock_diff( void );
@@ -43,7 +50,7 @@ int tuplePos = 0;
 Argument_Tuple currentTuple = Input_Tuple;
 
 Relation LexForward(int n);
-
+} // end namespace omega
 
 reachable_information *reachable_info;
 
@@ -179,7 +186,7 @@ inputItem :
 	| VAR IS_ASSIGNED relation ';' 
 			{
 			  flushScanBuffer();
-			  $3->simplify(min(2,redundant_conj_level),4);
+			  $3->simplify(::min(2,redundant_conj_level),4);
 			  Relation *r = relationMap((Const_String)$1);
 			  if (r) delete r;
 			  relationMap[(Const_String)$1] = $3; 
@@ -1026,7 +1033,7 @@ formula_sep : ':'
 	;
 
 tupleDeclaration :
-	{ currentTupleDescriptor = new tupleDescriptor; tuplePos = 1 }
+	{ currentTupleDescriptor = new tupleDescriptor; tuplePos = 1; }
 	'[' optionalTupleVarList ']' 
 	{$$ = currentTupleDescriptor; }
 	;
@@ -1179,7 +1186,7 @@ argumentList :
 exp : INT 		{$$ = new Exp($1);}
 	| INT simpleExp  %prec '*' {$$ = multiply($1,$2);}
 	| simpleExp	{ $$ = $1; }
-	| '-' exp %prec '*'   { $$ = negate($2);}
+	| '-' exp %prec '*'   { $$ = ::negate($2);}
 	| exp '+' exp  { $$ = add($1,$3);}
 	| exp '-' exp  { $$ = subtract($1,$3);}
 	| exp '*' exp  { $$ = multiply($1,$3);}
@@ -1321,6 +1328,16 @@ realNodeSpecificationList:
 
 %%
 
+extern FILE *yyin;
+
+#if ! defined(OMIT_GETRUSAGE)
+#ifdef __sparc__
+extern "C" int getrusage (int, struct rusage*);
+#endif
+
+
+namespace omega {
+
 #if !defined(OMIT_GETRUSAGE)
 #include <sys/types.h>
 #include <sys/time.h>
@@ -1339,11 +1356,6 @@ void *realloc(void *p, size_t s)
     {
     return realloc((malloc_t) p, s);
     }
-#endif
-
-#if ! defined(OMIT_GETRUSAGE)
-#ifdef __sparc__
-extern "C" int getrusage (int, struct rusage*);
 #endif
 
 void start_clock( void )
@@ -1365,7 +1377,8 @@ void printUsage(FILE *outf, char **argv) {
 }
 
 int omega_calc_debug;
-extern FILE *yyin;
+
+} // end namespace omega
 
 int main(int argc, char **argv){
   redundant_conj_level = 2;
@@ -1461,6 +1474,7 @@ int main(int argc, char **argv){
   return(0);
 } /* end main */
 
+namespace omega {
 
 Relation LexForward(int n) {
   Relation r(n,n);
@@ -1483,4 +1497,5 @@ Relation LexForward(int n) {
   return r;
   }
 
+} // end of namespace omega
 

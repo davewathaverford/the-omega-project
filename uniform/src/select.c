@@ -1,7 +1,9 @@
-/* $Id: select.c,v 1.1.1.1 2000/06/29 19:24:44 dwonnaco Exp $ */
+/* $Id: select.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <uniform/uniform_misc.h>
 #include <uniform/select.h>
+
+namespace omega {
 
 
 static void initialize_stmt(AssignStmt *n)
@@ -79,3 +81,5 @@ void traverse()
     for (AssignIterator ai = AssignFirst(); !AssignLast(ai); AssignNext(ai))
         initialize_stmt(AssignCurr(ai));
     } /* traverse */
+
+}

@@ -13,6 +13,9 @@
 #include <omega.h>
 #include <omega/AST.h>
 
+
+namespace omega {
+
 template int max(int, int);
 template int min(int, int);
 template unsigned int min(unsigned int, unsigned int);
@@ -81,3 +84,5 @@ instantiate_Map(Variable_Ref *, Variable_Ref *);
 instantiate_Map(Const_String, Variable_Ref *);
 instantiate_Set(Free_Var_Decl *);
 instantiate_Tuple(Variable_Ref *);
+
+} // end of namespace omega

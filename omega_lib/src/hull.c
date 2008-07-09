@@ -1,10 +1,12 @@
-/* $Id: hull.c,v 1.1.1.1 2000/06/29 19:24:05 dwonnaco Exp $ */
+/* $Id: hull.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega.h>
 #include <omega/farkas.h>
 #include <omega/hull.h>
 #include <basic/Bag.h>
 #include <basic/Map.h>
+
+namespace omega {
 
 int hull_debug = 0; 
 
@@ -732,3 +734,5 @@ Relation CheckForConvexRepresentation(NOT_CONST Relation &R_In) {
 
 
 
+
+} // end of namespace omega

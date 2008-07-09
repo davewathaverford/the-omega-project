@@ -9,7 +9,9 @@
 #include <basic/Iterator.h>
 #include <basic/util.h>
 
-#include <basic/enter_Tuple.h>
+//#include <basic/enter_Tuple.h>
+
+namespace omega {
 
 template<class T> class Tuple_Iterator;
 
@@ -78,16 +80,17 @@ private:
     T  * current, * lastptr, *firstptr;
     int sz;
 }; 
+} // end of namespace omega
 
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/Tuple.c>
 #endif
 
+namespace omega {
 #define instantiate_Tuple(T)	template class Tuple<T>; \
 				template class Tuple_Iterator<T>; \
 				instantiate_Sequence(T)
 
-
-
-     
+} // end of namespace omega
+   
 #endif

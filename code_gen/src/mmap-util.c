@@ -1,5 +1,7 @@
 #include <code_gen/mmap-util.h>
 
+namespace omega {
+
 /* simplify everything */
 
 static void simplify_everything(Tuple<stm_info> &info)
@@ -440,3 +442,5 @@ void DoDebug(char * message, int effort, const Tuple<stm_info> &info, const Rela
 
    fprintf(DebugFile, "%s", (const char *) result);
 }
+
+} // end namespace omega

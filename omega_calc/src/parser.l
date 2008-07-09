@@ -3,8 +3,8 @@
 #include <string.h>
 #include <omega/AST.h>
 #include <basic/Dynamic_Array.h>
+#include <basic/Exit.h>
 #include <code_gen/mmap-codegen.h>
-#include "y.tab.h"
 #include <omega/calc_debug.h>
 #ifdef WIN32
 #include <io.h>
@@ -15,6 +15,8 @@
 
 extern "C" int yywrap() {return 1;};
 
+using namespace omega;
+#include "y.tab.h"
 
 #if defined BRAIN_DAMAGED_FREE
 void free(void *p);

@@ -1,9 +1,11 @@
 #if ! defined _pres_cmpr_h
 #define _pres_cmpr_h 1
 
-/* $Id: pres_cmpr.h,v 1.1.1.1 2000/06/29 19:24:02 dwonnaco Exp $ */
+/* $Id: pres_cmpr.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega/omega_core/oc.h>
+
+namespace omega {
 
 //
 // Compressed problem: rectangular non-0 cut from the big problem.
@@ -43,5 +45,7 @@ private:
   Comp_Constraints eqs;
   Comp_Constraints geqs;
 };
+
+} // end of namespace omega
 
 #endif

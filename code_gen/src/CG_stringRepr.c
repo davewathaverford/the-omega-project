@@ -1,4 +1,4 @@
-// $Id: CG_stringRepr.c,v 1.1.1.1 2000/06/29 19:23:30 dwonnaco Exp $
+// $Id: CG_stringRepr.c,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $
 
 //*****************************************************************************
 // File: CG_stringRepr.C
@@ -14,8 +14,9 @@
 
 #include <code_gen/CG_stringRepr.h>
 #include <stdio.h>
-#include <iostream.h>
+#include <iostream>
 
+namespace omega {
 
 CG_stringRepr::CG_stringRepr()
 {
@@ -56,3 +57,4 @@ void CG_stringRepr::DumpToFile(FILE *fp) const
   fprintf(fp,"%s", (const char *)s);
 }
 
+} // end namespace omega

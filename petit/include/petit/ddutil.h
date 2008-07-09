@@ -1,9 +1,11 @@
-/* $Id: ddutil.h,v 1.1.1.1 2000/06/29 19:24:24 dwonnaco Exp $ */
+/* $Id: ddutil.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_DDUtil
 #define Already_Included_DDUtil
 
 #include <basic/bool.h>
 #include <petit/tree.h>
+
+namespace omega {
 
 extern bool DDdebug;
 
@@ -67,5 +69,7 @@ extern char *dir_vec( dddirection dddir, unsigned int nest );
 extern char *dir_diff_vec( dddirection dddir, DDdifference dddiff, unsigned int nest );
 
 #define ABS(x)	(x > 0 ? x : -x)
+
+}
 
 #endif

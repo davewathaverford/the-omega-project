@@ -1,4 +1,4 @@
-/* $Id: message.c,v 1.1.1.1 2000/06/29 19:24:37 dwonnaco Exp $ */
+/* $Id: message.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined BATCH_ONLY_PETIT
 
@@ -11,6 +11,8 @@
 #include <petit/debug.h>
 #include <petit/Exit.h>
 #include <petit/motif.h>
+
+namespace omega {
 
 unsigned int Message_Max = 50;
 unsigned int Message_Width = 80;
@@ -65,5 +67,7 @@ void *build_Message_Menu()
 
     return Build_Menu( M1, Message_Dump, 0 );
     } /* build_Message_Menu */
+
+} // end omega namespace
 
 #endif

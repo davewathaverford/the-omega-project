@@ -13,7 +13,9 @@
 #include <basic/Collection.h>
 #include <basic/Link.h>
 
-#include <basic/enter_List.h>
+//#include <basic/enter_List.h>
+
+namespace omega {
 
 template<class T> class List_Iterator;
 
@@ -75,18 +77,23 @@ public:
     List_Iterator(const List<T> &l);
     List_Iterator();
 private:
-    List_Element<T> &element() { return *i; } ;
+    List_Element<T> &element() { return *(this->i); }
     friend class List<T>;
 };
 
+} // end of namespace omega
 
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/List.c>
 #endif
 
+namespace omega {
 #define instantiate_List(T)	template class List<T>; \
 				template class List_Iterator<T>; \
 				instantiate_Only_List_Element(T) \
 				instantiate_Sequence(T)
+
+}
+
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: PT.c,v 1.2 2000/06/30 16:42:53 dwonnaco Exp $ */
+/* $Id: PT.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #if defined DONT_INCLUDE_TEMPLATE_CODE
 
 /* DONT BOTHER COMPILING THIS FILE UNLESS WE ARE USING G++ >= 260
@@ -15,6 +15,8 @@
 #include <petit/lang-interf.h>
 #include <petit/Zima.h>
 #include <petit/hpp.h>
+
+namespace omega {
 
 template long min(long,long);
 template unsigned short min(unsigned short, unsigned short);
@@ -41,5 +43,6 @@ class template_info;
 instantiate_List(template_info *);
 instantiate_Map(String,String);
 instantiate_Map(node *,String);
+}
 
 #endif

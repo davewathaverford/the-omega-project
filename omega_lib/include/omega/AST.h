@@ -5,6 +5,9 @@
 #include <omega.h>
 #include <omega/enter_AST.h>
 
+
+namespace omega {
+
 typedef enum {eq, lt, gt, geq, leq, neq} Rel_Op;
 
 
@@ -87,6 +90,13 @@ inline void popScope() {
 Variable_Ref *lookupScalar(char *s);
 Declaration_Site * defined (char *);
 
+// prototypes for friend classes
+class Exp;
+Exp * multiply (int c, Exp * x);	
+Exp * multiply (Exp * x, Exp *y);	
+Exp * negate (Exp * x);
+Exp * add (Exp * x, Exp *y);	
+Exp * subtract (Exp * x, Exp *y);	
 
 class Exp {
 public:
@@ -322,6 +332,9 @@ public:
     Tuple<Relation>  space;
     Tuple<Relation>  time;
 };
+
+
+} // end of namespace omega
 
 
 #endif 

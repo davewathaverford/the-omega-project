@@ -1,4 +1,4 @@
-/* $Id: dddir.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: dddir.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /*
  * Dependence flags. Separated from direction vectors
  * Added new flags 
@@ -8,6 +8,8 @@
  */
 #ifndef Already_Included_dddir
 #define Already_Included_dddir
+
+namespace omega {
 
 typedef long unsigned int dd_flags;
 
@@ -136,5 +138,7 @@ extern int dd_carried_by(dddirection dv, int length);
 extern int leading_zeros(dddirection dv, int length);
 extern void append_dd_flags(char *, dddirection dv, const char *iflags);
 /* code for the above is currently in ddodriver.c */
+
+}
 
 #endif

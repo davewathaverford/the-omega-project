@@ -1,4 +1,4 @@
-/* $Id: vutil.c,v 1.1.1.1 2000/06/29 19:24:40 dwonnaco Exp $ */
+/* $Id: vutil.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /**********************************************************
  *                                                        *
@@ -22,6 +22,8 @@
 #include <petit/lang-interf.h>
 #include <petit/definitions.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 /* functions used only in this file */
 static void 	MYcopy_fixtree(node *new_node, int flag); 
@@ -829,3 +831,4 @@ node *MakeConst(long int value, int addssa) {
   return(lp);
 }
 
+} // end of omega namespace

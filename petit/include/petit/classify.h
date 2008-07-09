@@ -1,8 +1,10 @@
-/* $Id: classify.h,v 1.1.1.1 2000/06/29 19:24:22 dwonnaco Exp $ */
+/* $Id: classify.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* classification information about dependence */
 
 #ifndef Already_Included_Classify
 #define Already_Included_Classify
+
+namespace omega {
 
 /* reasons why dependence test isn't fully applicable */
 #define APPL_FULL             0 /* tests are fully applicable */
@@ -20,6 +22,8 @@
 #define EPSILON_SIMPLE    2  /* found by simple tests */
 #define EPSILON_BANERJEE  3  /* found by Banerjee tests */
 #define EPSILON_OTHER     4  /* some other reason - !!shouldn't be at all !!*/
+
+}
 
 #endif
 

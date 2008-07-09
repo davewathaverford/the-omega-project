@@ -1,6 +1,8 @@
-/* $Id: parse_and_analyse.h,v 1.1.1.1 2000/06/29 19:24:27 dwonnaco Exp $ */
+/* $Id: parse_and_analyse.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Calc_Depends
 #define Already_Included_Calc_Depends
+
+namespace omega {
 
 extern int parse_and_analyse(char *filename);
 
@@ -15,5 +17,7 @@ extern void calculate_depnum();
 extern int do_reopen(int dummy);
 
 extern int do_newfile(int dummy);
+
+}
 
 #endif

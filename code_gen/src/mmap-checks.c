@@ -1,9 +1,10 @@
 #include <code_gen/mmap-checks.h>
 #include <code_gen/mmap-util.h>
 #include <stdio.h>
-#include <iostream.h>
+#include <iostream>
 #include <omega.h>
 
+namespace omega {
 
 /*****************************************************************************/
 // checks the reads and writes to make sure they cover all of the iteration space
@@ -403,3 +404,5 @@ bool check_arities(Tuple<stm_info> &info)
     }
   return value;
 }
+
+} // end namespace omega

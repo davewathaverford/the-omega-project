@@ -2,6 +2,7 @@
 #ifndef Already_Included_Message
 #define Already_Included_Message
 
+namespace omega {
 
 #if ! defined BATCH_ONLY_PETIT
 
@@ -22,5 +23,7 @@ void *build_Message_Menu( void );
 #define Message_Add(X)	printf("%s", X)
 
 #endif
+
+}
 
 #endif

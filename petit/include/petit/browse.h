@@ -4,6 +4,8 @@
 
 #include <petit/tree.h>
 
+namespace omega {
+
 /* go to next interesting node */
 extern node *br_go_to_another( node *n );
 
@@ -32,5 +34,7 @@ extern void br_move_it( node *new_node );
 extern void *build_br_browse( void );
 extern int br_browse( int dummy );
 extern int br_browse_epilog( int dummy );
+
+}
 
 #endif

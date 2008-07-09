@@ -1,4 +1,4 @@
-/* $Id: dddriver.c,v 1.1.1.1 2000/06/29 19:24:34 dwonnaco Exp $ */
+/* dddriver.c */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +26,7 @@
 #include <petit/debug.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 
 void build_dd_graph( bool debug_flag )
 {
@@ -118,3 +119,4 @@ void zap_dd_graph(void)
     }
 }
 
+} // end omega namespace

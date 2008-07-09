@@ -23,6 +23,8 @@
 #include <omega/pres_conj.h>
 #include <omega/pres_cnstr.h>
 
+namespace omega {
+
 
 class Sub_Handle;
 class Sub_Iterator;
@@ -81,5 +83,8 @@ private:
     Substitutions *s;
     int current, last;
 };
+
+} // end of namespace omega
+
 
 #endif

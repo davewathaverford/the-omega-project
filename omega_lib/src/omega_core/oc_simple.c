@@ -1,6 +1,8 @@
 #include <omega/omega_core/oc_i.h>
 
 
+namespace omega {
+
 
 int
 checkIfSingleVar(eqn* e, int i)
@@ -47,17 +49,17 @@ difficulty(int &numberNZs, coef_t &maxMinAbsCoef, coef_t &sumMinAbsCoef) const {
       for(i=1;i <= nVars;i++) 
         if (GEQs[e].coef[i]!=0) {
 		coef_t a = abs(GEQs[e].coef[i]);
-      		maxCoef = max(maxCoef,a);
+      		maxCoef = omega::max(maxCoef,a);
 		numberNZs++;
 		}
       coef_t nextCoef = 0;
       for(i=1;i <= nVars;i++) 
         if (GEQs[e].coef[i]!=0) {
 		coef_t a = abs(GEQs[e].coef[i]);
-		if (a < maxCoef) nextCoef = max(nextCoef,a);
+		if (a < maxCoef) nextCoef = omega::max(nextCoef,a);
 		else if (a == maxCoef) maxCoef = 0x7fffffff;
 		}
-      maxMinAbsCoef = max(maxMinAbsCoef,nextCoef);
+      maxMinAbsCoef = omega::max(maxMinAbsCoef,nextCoef);
       sumMinAbsCoef += nextCoef;
       }
 
@@ -68,17 +70,17 @@ difficulty(int &numberNZs, coef_t &maxMinAbsCoef, coef_t &sumMinAbsCoef) const {
       for(i=1;i <= nVars;i++) 
         if (EQs[e].coef[i]!=0) {
 		coef_t a = abs(EQs[e].coef[i]);
-      		maxCoef = max(maxCoef,a);
+      		maxCoef = omega::max(maxCoef,a);
 		numberNZs++;
 		}
       coef_t nextCoef = 0;
       for(i=1;i <= nVars;i++) 
         if (EQs[e].coef[i]!=0) {
 		coef_t a = abs(EQs[e].coef[i]);
-		if (a < maxCoef) nextCoef = max(nextCoef,a);
+		if (a < maxCoef) nextCoef = omega::max(nextCoef,a);
 		else if (a == maxCoef) maxCoef = 0x7fffffff;
 		}
-      maxMinAbsCoef = max(maxMinAbsCoef,nextCoef);
+      maxMinAbsCoef = omega::max(maxMinAbsCoef,nextCoef);
       sumMinAbsCoef += nextCoef;
       }
 }
@@ -317,20 +319,20 @@ setInternals()
     if (nextKey * 3 > maxKeys) 
 	{
         int e;
-	    ::hashVersion++;
+	    hashVersion++;
         nextKey = maxVars + 1;
         for (e = nGEQs - 1; e >= 0; e--)
             GEQs[e].touched = TRUE;
         for (i = 0; i < hashTableSize; i++)
             hashMaster[i].touched = -1;
-        hashVersion = ::hashVersion;
+        mHashVersion = hashVersion;
 	}
-    else if (hashVersion != ::hashVersion) 
+    else if (mHashVersion != hashVersion) 
 	{
         int e;
         for (e = nGEQs - 1; e >= 0; e--)
             GEQs[e].touched = TRUE;
-        hashVersion = ::hashVersion;
+        mHashVersion = hashVersion;
 	};
     }
 
@@ -458,7 +460,7 @@ Problem::
 cleanoutWildcards()
     {
     int e, e2, i, j;
-    coef_t a, c;
+    coef_t a, c, barb;
     coef_t g;
     int renormalize = 0;
 
@@ -502,8 +504,9 @@ cleanoutWildcards()
 			eqn* eqn = &(EQs[e2]);
 			int j;
 			coef_t k;
+                        barb = abs(eqn->coef[i]);
 			preserveThisConstraint  =
-			  preserveThisConstraint && gcd(a,abs(eqn->coef[i])) != 1;
+			  preserveThisConstraint && gcd(a,barb) != 1;
 			for (j = nVars; j >= 0; j--)
 			    eqn->coef[j] *= a;
 			k = eqn->coef[i];
@@ -511,8 +514,10 @@ cleanoutWildcards()
 			    eqn->coef[j] -= sub->coef[j] * k / c;
 			eqn->coef[i] = 0;
 			g = 0;
-			for (j = nVars; j >= 0; j--)
-			    g = gcd(abs(eqn->coef[j]), g);
+			for (j = nVars; j >= 0; j--) {
+                            barb = abs(eqn->coef[j]);
+			    g = gcd(barb, g);
+                        }
 			if (g)
 			    for (j = nVars; j >= 0; j--)
 				eqn->coef[j] = eqn->coef[j] / g;
@@ -549,8 +554,10 @@ cleanoutWildcards()
 			    eqn->coef[j] -= sub->coef[j] * k / c;
 			eqn->coef[i] = 0;
 			g = 0;
-			for (j = nVars; j >= 0; j--)
-			    g = gcd(abs(eqn->coef[j]), g);
+			for (j = nVars; j >= 0; j--) {
+                            barb = abs(eqn->coef[j]);
+			    g = gcd(barb, g);
+                        }
 			if (g)
 			    for (j = nVars; j >= 0; j--)
 				eqn->coef[j] = eqn->coef[j] / g;
@@ -712,7 +719,9 @@ rememberRedConstraint(eqn* e, redType type, coef_t stride)
 		};
 	    j = backSub[i];
 	    k = abs(SUBs[j].coef[i]);
-	    k = k / gcd(k,abs(e->coef[i]));
+            
+            coef_t barb = abs(e->coef[i]);
+	    k = k / gcd(k,barb);
 	    l = lcm(l,k);
 	    };
 	for(i=0; i<=safeVars;i++) e->coef[i] *= l;
@@ -1271,3 +1280,5 @@ brainDammage::brainDammage()
     }
  
 static brainDammage Podgorny;
+
+} // end of namespace omega

@@ -1,10 +1,12 @@
-/* $Id: parallelism.h,v 1.1.1.1 2000/06/29 19:24:40 dwonnaco Exp $ */
+/* $Id: parallelism.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Parallelism
 #define Already_Included_Parallelism
 
 #include <basic/Dynamic_Array.h>
 #include <uniform/depend_dir.h>
 #include <uniform/search.h>
+
+namespace omega {
 
 typedef Tuple<int> IntTuple;
 
@@ -36,5 +38,7 @@ extern int unbalanced(int i, int si);
 extern search_cost pipeline_cost2(int p, int cp, int sequential);
 extern search_cost pipeline_cost(int p, int /*cp*/, int x, int y,
 			         int dist_level, int sequential);
+
+}
 
 #endif

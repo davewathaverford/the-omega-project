@@ -1,4 +1,4 @@
-// $Id: CG_stringBuilder.c,v 1.1.1.1 2000/06/29 19:23:29 dwonnaco Exp $
+// $Id: CG_stringBuilder.c,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $
 
 //*****************************************************************************
 // File: CG_stringBuilder.C
@@ -17,6 +17,8 @@
 #include <basic/String.h>
 #include <code_gen/CG_stringBuilder.h>
 #include <code_gen/CG_stringRepr.h>
+
+using namespace omega;
 
 //*****************************************************************************
 // static function declarations
@@ -42,7 +44,7 @@ CG_stringBuilder::~CG_stringBuilder()
 //-----------------------------------------------------------------------------
 CG_outputRepr* 
 CG_stringBuilder::CreatePlaceHolder(int indent, const String &funcName,
-				    CG_outputRepr* funcList) const
+				    CG_outputRepr* funcList,bool gen_python) const
 {
   String listStr = "";
 
@@ -54,7 +56,10 @@ CG_stringBuilder::CreatePlaceHolder(int indent, const String &funcName,
 
   String indentStr = GetIndentSpaces(indent);
 
-  return new CG_stringRepr(indentStr + fStr + "(" + listStr + ");\n");
+  if(gen_python)
+    return new CG_stringRepr(indentStr + fStr + "(" + listStr + ")\n");
+  else
+    return new CG_stringRepr(indentStr + fStr + "(" + listStr + ");\n");
 }
 
 //-----------------------------------------------------------------------------
@@ -142,7 +147,8 @@ CG_outputRepr* CG_stringBuilder::CreateIf(int indent, CG_outputRepr* guardList,
 CG_outputRepr* CG_stringBuilder::CreateInductive(CG_outputRepr* index,
 						 CG_outputRepr* lower,
 						 CG_outputRepr* upper,
-						 CG_outputRepr* step) const
+						 CG_outputRepr* step,
+						 bool gen_python) const
 {
   if ( index == CG_REPR_NIL || lower == CG_REPR_NIL || upper == CG_REPR_NIL ) {
     assert(0 && "Something wrong in CreateInductive");
@@ -153,20 +159,35 @@ CG_outputRepr* CG_stringBuilder::CreateInductive(CG_outputRepr* index,
   String lowerStr = GetString(lower);
   String upperStr = GetString(upper);
 
-  String doStr = "for(" + indexStr + " = " + lowerStr + "; " 
-                        + indexStr + " <= " + upperStr + "; " 
-                        + indexStr;
-  
-  if ( step != CG_REPR_NIL ) {
-    String stepStr = GetString(step);
-    doStr += " += " + stepStr;
+  String doStr;
+  if(gen_python)
+  {
+    doStr = "for " + indexStr + " in range("+
+                    lowerStr + "," + upperStr + "+1";
+    if ( step != CG_REPR_NIL )
+    {
+      String stepStr = GetString(step);
+      doStr+=","+stepStr;
+    }
+    doStr+="):";
   }
-  else {
-    doStr += "++";
+  else
+  {
+     doStr = "for(" + indexStr + " = " + lowerStr + "; " 
+                          + indexStr + " <= " + upperStr + "; " 
+                          + indexStr;
+
+    if ( step != CG_REPR_NIL ) {
+     String stepStr = GetString(step);
+     doStr += " += " + stepStr;
+     }
+    else {
+     doStr += "++";
+    }
+
+    doStr += ")";
   }
-    
-  doStr += ")";
-      
+
   return new CG_stringRepr(doStr);
 }
 
@@ -175,7 +196,7 @@ CG_outputRepr* CG_stringBuilder::CreateInductive(CG_outputRepr* index,
 // loop stmt generation
 //-----------------------------------------------------------------------------
 CG_outputRepr* CG_stringBuilder::CreateLoop(int indent, CG_outputRepr* control,
-					    CG_outputRepr* stmtList) const
+					    CG_outputRepr* stmtList,bool gen_python) const
 {
   if ( stmtList == CG_REPR_NIL ) {
     delete control;
@@ -191,9 +212,18 @@ CG_outputRepr* CG_stringBuilder::CreateLoop(int indent, CG_outputRepr* control,
 
   String indentStr = GetIndentSpaces(indent);
 
-  String s = indentStr + ctrlStr + " {\n" 
+  String s;
+  if(gen_python)
+  {
+     s = indentStr + ctrlStr + "\n" 
+                       + stmtStr;
+  }
+  else
+  {
+     s = indentStr + ctrlStr + " {\n" 
                        + stmtStr 
            + indentStr + "}\n";
+  }
 
   return new CG_stringRepr(s);
 }

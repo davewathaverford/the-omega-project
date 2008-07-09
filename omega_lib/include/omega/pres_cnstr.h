@@ -4,10 +4,12 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_cnstr.h,v 1.1.1.1 2000/06/29 19:24:02 dwonnaco Exp $ */
+/* $Id: pres_cnstr.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #if ! defined _pres_var_h
 #include <omega/pres_var.h>
 #endif
+
+namespace omega {
 
 //
 // Constraint handles
@@ -21,6 +23,7 @@ void copy_constraint(Constraint_Handle H, const Constraint_Handle initial);
 class Constraint_Handle {
 public:
   inline Constraint_Handle() {}
+  virtual ~Constraint_Handle() {}
   void   update_coef(Variable_ID, coef_t delta);
   void   update_const(coef_t delta);
   coef_t get_coef(Variable_ID v) const;
@@ -84,6 +87,7 @@ private:
 class GEQ_Handle : public Constraint_Handle {
 public:
     inline GEQ_Handle() {}
+    virtual ~GEQ_Handle() {}
 
     virtual String print_to_string() const;
     virtual String print_term_to_string() const;
@@ -101,6 +105,7 @@ private:
 class EQ_Handle : public Constraint_Handle {
 public:
     inline EQ_Handle() {}
+    virtual ~EQ_Handle() {}
 
     virtual String print_to_string() const;
     virtual String print_term_to_string() const;
@@ -191,5 +196,7 @@ private:
   bool              wild_only;
   int               current;
 };
+
+} // end of namespace omega
 
 #endif

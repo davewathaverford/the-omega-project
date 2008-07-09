@@ -34,7 +34,7 @@ LIBS=$(REQ_LIBS) $(STD_LIBS) $(TARGET_LIBS) $(OS_LIBS) $(EXTRA_LIBS)
 CFLAGS=$(STD_CFLAGS) $(OPTIMIZATION_CFLAGS) $(COMPILER_CFLAGS) $(OS_CFLAGS) $(TARGET_CFLAGS) $(INCL_PATH)
 LDFLAGS=$(STD_LDFLAGS) $(OPTIMIZATION_CFLAGS) $(TARGET_LDFLAGS) $(LIB_PATH) $(LIBS)
 
-ALLDIRS=omega_lib omega_calc petit uniform code_gen basic
+ALLDIRS=omega_lib omega_calc petit uniform code_gen basic parse_lib
 #ALLDIRS=omega_lib omega_calc petit code_gen basic
 
 # Executable target; can have only one per directory 

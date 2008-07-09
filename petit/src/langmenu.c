@@ -13,6 +13,7 @@
 #include <petit/tree.h>
 #include <petit/Exit.h>
 
+namespace omega {
 
 void *build_do_translate()
     {
@@ -48,4 +49,5 @@ int do_translate_epilog( int x )
      return 0;
 }/* do_translate_epilog */
 
+} // end omega namespace
 #endif

@@ -1,3 +1,8 @@
+
+namespace omega {
+
+
+
 template<class T> Simple_List_Iterator<T>::Simple_List_Iterator(Simple_List<T> &l) 
 : List_Element_Iterator<T>(l.contents) {}
 
@@ -99,3 +104,6 @@ template<class T> void Simple_List<T>::join(Simple_List<T> &consumed)
     consumed.contents = 0;
     *(end()) = e;
     }
+
+} // end of namespace omega
+

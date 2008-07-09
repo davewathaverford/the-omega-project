@@ -1,7 +1,9 @@
-/* $Id: oc_eq.c,v 1.1.1.1 2000/06/29 19:24:08 dwonnaco Exp $ */
+/* $Id: oc_eq.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 
 void Problem::simplifyStrideConstraints() 
@@ -190,7 +192,8 @@ void Problem:: substitute(eqn *sub, int i, coef_t c)
 		};
 	    if (zero && clr != notRed && !eq->color) 
 		{
-		coef_t z = int_div(eq->coef[0],abs(k));
+                coef_t barb = abs(k);
+		coef_t z = int_div(eq->coef[0],barb);
 		if (DBUG || doTrace) 
 		    {
 		    fprintf(outputFile,"Black inequality matches red substitution\n");
@@ -468,7 +471,10 @@ Problem::solveEQ()
 	if (DEBUG) fprintf(outputFile, "\n");
 
 	g = 0;
-	for (i = nVars; i >= 1; i--) g = gcd(abs(eq->coef[i]),g);
+	for (i = nVars; i >= 1; i--) {
+          coef_t barb = abs(eq->coef[i]);
+          g = gcd(barb,g);
+        }
 
 	if (g == 0) 
 	    {
@@ -482,7 +488,10 @@ Problem::solveEQ()
 	    continue;
 	    };
 
-	if (inApproximateMode) g = gcd(abs(eq->coef[0]),g);
+          if (inApproximateMode) {
+            coef_t barb = abs(eq->coef[0]);
+            g = gcd(barb,g);
+          }
 
         if (eq->coef[0] % g != 0) 
 	    {
@@ -539,8 +548,10 @@ Problem::solveEQ()
 	    k = j;
 	    if (k > safeVars) 
 		{
-		for (; g != 1 && k > safeVars; k--)
-		    g = gcd(abs(eq->coef[k]), g);
+                  for (; g != 1 && k > safeVars; k--) {
+                    coef_t barb = abs(eq->coef[k]);
+		    g = gcd(barb, g);
+                  }
 		g2 = g;
 		}
 	    else if (i > safeVars)
@@ -740,4 +751,6 @@ Problem::solveEQ()
     return (UNKNOWN);
     }
 
+
+} // end of namespace omega
 

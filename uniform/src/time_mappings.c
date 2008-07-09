@@ -1,4 +1,4 @@
-/* $Id: time_mappings.c,v 1.1.1.1 2000/06/29 19:24:44 dwonnaco Exp $ */
+/* $Id: time_mappings.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <math.h>
@@ -14,6 +14,8 @@
 #include <uniform/space_constants.h>
 #include <uniform/wak_codegen.h>
 #include <uniform/uniform_args.h>
+
+namespace omega {
 
 int best_time[max_stmts];
 int time_coef[maxLevels][max_stmts];
@@ -693,3 +695,4 @@ void select_time_mappings()
             }
         }
     } /* select_time_mappings */
+}

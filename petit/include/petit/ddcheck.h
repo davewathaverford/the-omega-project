@@ -4,6 +4,8 @@
 
 #include <basic/bool.h>
 
+namespace omega {
+
 extern ddnode *GLOBAL_START;
 
 /* each dependence relation in the loop is checked with:
@@ -45,5 +47,7 @@ extern void DDcheck_add( ddnode *dd );
 
 /* check for null list */
 extern bool DDcheck_fini( char *string, int child);
+
+}
 
 #endif

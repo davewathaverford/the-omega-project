@@ -1,4 +1,7 @@
 #include <basic/assert.h>
+#include "List.h"
+
+using namespace omega;
 
 template<class T> List_Iterator<T>::List_Iterator(List<T> &l) 
 : List_Element_Iterator<T>(l.contents) {}
@@ -8,6 +11,7 @@ template<class T> List_Iterator<T>::List_Iterator(const List<T> &l)
 
 template<class T> List_Iterator<T>::List_Iterator()
 : List_Element_Iterator<T>(0) {}
+
 
 template<class T> Iterator<T> *List<T>::new_iterator()
 {
@@ -143,3 +147,5 @@ template<class T> void List<T>::join(List<T> &consumed)
     consumed.contents = 0;
     *(end()) = e;
     }
+
+     

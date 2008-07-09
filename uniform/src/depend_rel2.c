@@ -1,10 +1,12 @@
-/* $Id: depend_rel2.c,v 1.2 2000/08/16 19:27:23 dwonnaco Exp $ */
+/* $Id: depend_rel2.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <omega/Relations.h>
 #include <uniform/depend_rel.h>
 #include <uniform/select.h>
 #include <uniform/uniform_misc.h>
+
+namespace omega {
 
 
 void dump_graph(depend_graph &graph, FILE *f)
@@ -197,3 +199,5 @@ int build_depend_relation_graph(void)
 
     return 1;
     } /* build_depend_relation_graph */
+
+}

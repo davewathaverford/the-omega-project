@@ -1,4 +1,4 @@
-/* $Id: space_mappings.c,v 1.3 2000/08/18 17:22:06 dwonnaco Exp $ */
+/* $Id: space_mappings.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <math.h>
@@ -9,6 +9,8 @@
 #include <uniform/parallelism.h>
 #include <uniform/depend_dir.h>
 #include <uniform/time_mappings.h>
+
+namespace omega {
 
 
 int Use_Cyclic;
@@ -357,3 +359,5 @@ void minimize_communication()
     valid_candidate.resize(0, 0);
 #endif
     } /* minimize_communication */
+
+}

@@ -1,3 +1,6 @@
+
+namespace omega {
+
 class reachable_information {
 public:
 	Tuple<String> node_names;
@@ -14,3 +17,4 @@ Dynamic_Array1<Relation> *
 I_Reachable_Nodes(reachable_information * reachable_info);
 
 
+} // end of namespace omega

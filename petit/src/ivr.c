@@ -1,4 +1,4 @@
-/* $Id: ivr.c,v 1.1.1.1 2000/06/29 19:24:36 dwonnaco Exp $ */
+/* $Id: ivr.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /**********************************************************
  *                                                        *
@@ -17,6 +17,8 @@
 #include <petit/debug.h>
 #include <petit/definitions.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 static void      IvrAddToScc(pEXPR);
 static void      SccToInd(pEXPR);
@@ -816,4 +818,6 @@ void MakeUpdate(pEXPR n, pEXPR p, EXPR_OPER op, INT_CONST value)
     place_expr_instead(make_constant(value), p);
     free_expr_tree(p,true);
     }
+
+} // end of namespace omega
 

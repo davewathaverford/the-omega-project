@@ -5,6 +5,8 @@
 
 #include <basic/bool.h>
 
+namespace omega {
+
 
 typedef struct {
     dd_current  dep;
@@ -126,5 +128,7 @@ bool definite_lt_t(dd_current f1, dd_current f2);
    if f1 <=c f2 and not f2 <=c f1, then f1 precedes f2.
 
   */
+
+}
 
 #endif

@@ -1,9 +1,11 @@
-/* $Id: timer.c,v 1.1.1.1 2000/06/29 19:24:39 dwonnaco Exp $ */
+/* $Id: timer.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #if !defined(OMIT_GETRUSAGE)
 
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+
+namespace omega {
 
 static struct rusage start_time;
 
@@ -20,4 +22,7 @@ long clock_diff( void )
     return (current_time.ru_utime.tv_sec -start_time.ru_utime.tv_sec)*1000000 +
            (current_time.ru_utime.tv_usec-start_time.ru_utime.tv_usec);
     }
+
+} 
+
 #endif

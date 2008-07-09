@@ -1,8 +1,10 @@
-/* $Id: dd_misc.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: dd_misc.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_DD_Misc 
 #define Already_Included_DD_Misc
 
 #include <basic/bool.h>
+
+namespace omega {
 
 void o_dd_merge_between_nodes(a_access From, a_access To, int depth, 
                               bool merge_levels);
@@ -26,5 +28,7 @@ void do_compress_operation_on_flow (a_access list, int operation_type);
 #define uncompress_dd_reduction(A) do_compress_operation_on_reduction(A,0)
 #define compress_dd_flow(A)     do_compress_operation_on_flow(A,1)
 #define uncompress_dd_flow(A)   do_compress_operation_on_flow(A,0)
+
+}
 
 #endif 

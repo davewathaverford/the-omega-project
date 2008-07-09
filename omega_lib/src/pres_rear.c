@@ -1,9 +1,11 @@
-/* $Id: pres_rear.c,v 1.1.1.1 2000/06/29 19:24:07 dwonnaco Exp $ */
+/* $Id: pres_rear.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega/pres_tree.h>
 #include <omega/pres_conj.h>
 #include <omega/Relation.h>
 #include <omega/omega_i.h>
+
+namespace omega {
 
 /////////////////////////
 //                     //
@@ -128,3 +130,4 @@ void F_Exists::rearrange() {
 
   child->rearrange();
 }
+} // end of namespace omeganamespace omega {

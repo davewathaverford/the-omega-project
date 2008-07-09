@@ -9,4 +9,8 @@
     and integrated into the Substitutions class.
  */
 
+namespace omega {
+
 String get_sub(Relation &R, int o, Substitutions &subs);
+
+}

@@ -1,4 +1,4 @@
-/* $Id: ddomega.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: ddomega.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /*
    This file now contains only the main dependence test function.
    see refine.h, cover.h, and kill.h for the other functions that
@@ -15,6 +15,8 @@
 #include <basic/bool.h>
 #include <petit/range.h>
 #include <petit/lang-interf.h>
+
+namespace omega {
 
 
 bool subscripts_ZIV_test(a_access access1, a_access access2);
@@ -90,5 +92,6 @@ void delta_cleanup(delta_prob_desc *dpd);
 
 #endif
 
+}
 
 #endif

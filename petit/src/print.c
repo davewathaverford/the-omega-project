@@ -18,6 +18,9 @@
 #include <petit/petit_args.h>
 #include <petit/message.h>
 
+namespace omega
+{
+
 String printBuf;
 static char S[PETITBUFSIZ];
 static int printed;
@@ -1051,3 +1054,6 @@ int do_writepgm( int  )
     return 0;
     }/* do_writepgm */
 #endif
+
+} // end namespace omega
+

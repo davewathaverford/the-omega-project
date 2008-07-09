@@ -1,4 +1,4 @@
-/* $Id: motif.c,v 1.2 2000/06/30 15:10:48 dwonnaco Exp $ */
+/* $Id: motif.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #if ! defined BATCH_ONLY_PETIT
 
 #include <Xm/Xm.h>
@@ -29,6 +29,7 @@
 #include <petit/mouse.h>
 #include <petit/omega.xbm>
 
+namespace omega {
 #define XK_LATIN1       1
 
 
@@ -613,7 +614,7 @@ static int node_length(node *n)
                 break;
             }
 
-    return max((int)1, (int)strlen(op_string));
+    return omega::max((int)1, (int)strlen(op_string));
     } /* node_length */
 
 
@@ -732,5 +733,7 @@ void motif_list(char *Message_Buffer, unsigned int /*Message_Buffer_Size*/,
   {
   motif_display(Message_Buffer);
   }
+
+} // end omega namespace
 
 #endif

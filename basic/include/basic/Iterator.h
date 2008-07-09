@@ -16,7 +16,10 @@
 
 #define foreachSeparated(x,T,S,A,B) do {for (Any_Iterator<T> __P_##x = (S).any_iterator();__P_##x;) {T & x = *__P_##x; A; __P_##x++; if (__P_##x) B;}} while (0)
 
-#include <basic/enter_Iterator.h>
+//#include <basic/enter_Iterator.h>
+
+
+namespace omega {
 
 /*
  * Abstract base class Iterator<type>
@@ -38,6 +41,8 @@
 
 template<class T> class Iterator {
 public:
+    Iterator() {}
+    virtual ~Iterator() {}
     virtual const T &  operator*() const = 0;
     virtual       T &  operator*() = 0;
 
@@ -60,6 +65,8 @@ public:
 
 template<class T> class Generator {
 public:
+    Generator() {}
+    virtual ~Generator() {}
     virtual       T    operator*() const = 0;
 
     virtual    void    operator++(int) = 0;
@@ -126,5 +133,8 @@ template <class T> inline Any_Iterator<T>::Any_Iterator(const Iterator<T> &i)
 #define instantiate_Generator(T) 	template class Generator<T>;
 #define instantiate_Any_Iterator(T)	template class Any_Iterator<T>; \
 					instantiate_Iterator(T)
+
+} // end of namespace omega
+
 
 #endif

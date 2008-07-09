@@ -1,11 +1,13 @@
 #if ! defined _pres_quant_h
 #define _pres_quant_h 1
 
-/* $Id: pres_quant.h,v 1.1.1.1 2000/06/29 19:24:03 dwonnaco Exp $ */
+/* $Id: pres_quant.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_decl_h
 #include <omega/pres_decl.h>
 #endif
+
+namespace omega {
 
 //
 // Presburger formula nodes for quantifiers
@@ -59,5 +61,7 @@ private:
     void rearrange();
     DNF* DNFize();
 };
+
+} // end of namespace omega
 
 #endif

@@ -1,6 +1,8 @@
-/* $Id: oc_exp_kill.c,v 1.1.1.1 2000/06/29 19:24:08 dwonnaco Exp $*/
+/* $Id: oc_exp_kill.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $*/
 
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 int
 Problem::
@@ -319,3 +321,5 @@ quickRedKill(int computeGist)
     }
 
 
+
+} // end of namespace omega

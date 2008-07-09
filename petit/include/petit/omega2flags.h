@@ -1,9 +1,10 @@
-/* $Id: omega2flags.h,v 1.1.1.1 2000/06/29 19:24:26 dwonnaco Exp $ */
+/* $Id: omega2flags.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* compile time and run time flags that control the behavior of the
    code that eliminates dead dependences */
 #ifndef Already_Included_Omega2flags
 #define Already_Included_Omega2flags
 
+namespace omega {
 
 #if defined SKIP_OMEGA4
 #define skipping_omega4 1
@@ -91,8 +92,15 @@ I guess you did not read the makefile sufficiently carefully.
 Those options do not go together.  This will not compile.
 #endif
 
+}
+
 #endif
+
+namespace omega {
 
 extern int number_of_easy_assulters;
 extern int number_of_easy_assults;
 extern int number_of_hard_assults;
+
+}
+

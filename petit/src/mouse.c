@@ -1,4 +1,4 @@
-/* $Id: mouse.c,v 1.1.1.1 2000/06/29 19:24:37 dwonnaco Exp $ */
+/* $Id: mouse.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 int mouse_in_out;  
 
@@ -27,6 +27,7 @@ int mouse_in_out;
 #include <Xm/ToggleB.h>
 #include <Xm/ToggleBG.h>
 
+namespace omega {
 
 
 /* The variable mouse_in_out indicates the type of dependences being browsed:*/
@@ -469,7 +470,7 @@ static void display_relation() {
     if (BRDD_Current) {
 	if (BRDD_Current->dd_relation != NULL) {
 	    BRDD_Current->dd_relation->uncompress();
-	    Omega_String s = 
+	    omega::String s = 
 		BRDD_Current->dd_relation->print_with_subs_to_string(false);
 	    if (BRDD_Current->ddflags & ddzappable)
 		{
@@ -802,5 +803,7 @@ int mouse_toggle( int returncode )
 
     return returncode ;  
     } /* mouse_toggle */
+
+} // end omega namespace
 
 #endif

@@ -4,6 +4,8 @@
 
 #include <basic/bool.h>
 
+namespace omega {
+
 
 /* various utility functions for making data structures */
 
@@ -36,5 +38,7 @@ extern void init_extras( unsigned int extra, unsigned int extra2 );
 extern bool test_inloop( node *n, node *loop );
 
 extern bool test_tightly_nested( node *outer, node *inner );
+
+}
 
 #endif

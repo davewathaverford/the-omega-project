@@ -3,6 +3,8 @@
 #include <petit/tree.h>
 #include <petit/pres-interf.h>
 
+namespace omega {
+
 struct OPinforec OPinfo[] = {
 #include "op.val"
     };
@@ -53,3 +55,5 @@ symtabentry::~symtabentry()
 //	    delete *li;
     delete omega_vars;
     }
+
+} // end omega namespace

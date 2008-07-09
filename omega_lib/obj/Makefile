@@ -32,7 +32,7 @@ OC_SRC = ../src/omega_core/oc.c ../src/omega_core/oc_solve.c \
          ../src/omega_core/oc_query.c ../src/omega_core/oc_util.c \
          ../src/omega_core/oc_global.c
 OC_OBJ = oc.o oc_solve.o oc_simple.o oc_eq.o oc_problems.o oc_print.o \
-         oc_query.o oc_quick_kill.o oc_exp_kill.o oc_util.o oc_global.o
+         oc_query.o oc_quick_kill.o oc_exp_kill.o oc_util.o oc_global.o Exit.o
 
 PRES_SRC = ../src/pres_print.c ../src/pres_rear.c ../src/pres_beaut.c \
            ../src/pres_dnf.c ../src/pres_conj.c ../src/pres_quant.c \

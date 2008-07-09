@@ -1,6 +1,8 @@
-/* $Id: oc_print.c,v 1.1.1.1 2000/06/29 19:24:08 dwonnaco Exp $*/
+/* $Id: oc_print.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $*/
 
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 int print_in_code_gen_style = 0;
 
@@ -779,3 +781,5 @@ prettyPrintRedEquations() const
 
     return 0;
     }
+
+} // end of namespace omega

@@ -15,6 +15,9 @@
 #endif
 #endif
 
+namespace omega {
+
+
 /* 
    List_Element: one item in a list and the pointer to the next.
    Each such object should be pointed to by either exactly one
@@ -91,5 +94,8 @@ protected:
 					 template class List_Element_Iterator<T>;
 #define instantiate_List_Element(T)	instantiate_Only_List_Element(T)\
 					instantiate_Collection(T)
+
+
+} // end of namespace omega
 
 #endif

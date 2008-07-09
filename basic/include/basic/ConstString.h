@@ -5,6 +5,9 @@
 
 #include <basic/String.h>
 
+namespace omega {
+
+
 
 // should be inside Const_String, but I can't get it to
 // compile the hashTable when it is: hashTable can't be
@@ -57,5 +60,8 @@ static int	operator==(const Const_String &x, const char *y)
 static int	operator!=(const Const_String &x, const char *y)
 		    { return x != (Const_String) y; }
 #endif
+
+} // end of namespace omega
+
 
 #endif

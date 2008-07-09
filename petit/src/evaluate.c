@@ -5,6 +5,8 @@
 #include <petit/tree.h>
 #include <petit/evaluate.h>
 
+namespace omega {
+
 bool EVdebug = 0;
 
 
@@ -169,3 +171,5 @@ int chval;
 			n, *val, *rest );
     }
 }/* evaluate_simple */
+
+} // end omega namespace

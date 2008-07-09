@@ -1,4 +1,4 @@
-/* $Id: spmd.c,v 1.2 2000/08/16 19:27:18 dwonnaco Exp $ */
+/* $Id: spmd.c,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $ */
 #include <basic/bool.h>
 #include <code_gen/code_gen.h>
 #include <code_gen/spmd.h>
@@ -12,6 +12,10 @@
 #include <sys/resource.h>
 #endif
 
+using namespace omega;
+
+namespace omega {
+
 FILE *cyclic_debug_file = DebugFile;
 
 int overheadEffort = -1;
@@ -19,6 +23,7 @@ int overheadEffort = -1;
 int gen_dash = 1;
 int Block_Size = 0;
 int Num_Procs = 0;
+
 
 
 String program_head(String Decls, int timeDepth) {
@@ -890,3 +895,5 @@ String SPMD_GenerateCode(String Decls, SetTuple &Space, RelTuple &Time,
     return SPMD_GenerateCode(Decls, Space, Time, IterationSpaces, NameInfo,
 			     lowerBounds,upperBounds,my_procs,Time.size());
 }
+
+} // end namespace omega

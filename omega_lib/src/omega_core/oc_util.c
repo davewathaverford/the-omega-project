@@ -1,8 +1,10 @@
 
-/* $Id: oc_util.c,v 1.1.1.1 2000/06/29 19:24:10 dwonnaco Exp $ */
+/* $Id: oc_util.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega/omega_core/oc_i.h>
 
+
+namespace omega {
 
 void Problem:: problem_merge(Problem &p2)
     {
@@ -369,3 +371,5 @@ Problem::coalesce()
 	};
     }
 
+
+} // end of namespace omega

@@ -1,4 +1,4 @@
-/* $Id: ddomega-use.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: ddomega-use.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_DDOmega_Use
 #define Already_Included_DDOmega_Use
 

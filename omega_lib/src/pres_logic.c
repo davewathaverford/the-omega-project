@@ -1,10 +1,12 @@
-/* $Id: pres_logic.c,v 1.1.1.1 2000/06/29 19:24:07 dwonnaco Exp $ */
+/* $Id: pres_logic.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/pres_logic.h>
 #include <omega/pres_conj.h>
 #include <omega/pres_quant.h>
 #include <omega/omega_i.h>
+
+namespace omega {
 
 
 GEQ_Handle F_And::add_GEQ(int preserves_level) {
@@ -233,3 +235,4 @@ F_Or *Formula::add_or() {
     myChildren.append(f);
     return f;
 }
+} // end of namespace omega

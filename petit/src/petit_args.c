@@ -1,4 +1,4 @@
-/* $Id: petit_args.c,v 1.7 2000/08/18 17:22:04 dwonnaco Exp $ */
+/* $Id: petit_args.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <basic/util.h>
@@ -14,6 +14,8 @@
 #include <petit/definitions.h>
 #include <petit/motif.h>
 #include <petit/browse.h>
+
+namespace omega {
 
 #define MAXLINELEN 80
 
@@ -753,3 +755,5 @@ int br_compile_options(int)
     } /* br_compile_options */
 
 #endif
+
+} // end omega namespace

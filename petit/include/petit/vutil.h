@@ -1,4 +1,4 @@
-/* $Id: vutil.h,v 1.1.1.1 2000/06/29 19:24:29 dwonnaco Exp $ */
+/* $Id: vutil.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /**********************************************************
  *                                                        *
  * General purpose functions (utilities).                 *
@@ -11,6 +11,8 @@
 #include <basic/assert.h>
 #include <petit/Exit.h>  // get Vadim's Exit.h for petit, not just Omega Library
 #include <petit/tree.h>
+
+namespace omega {
 
 int       DefinedAtBegin(node *);
 int       UsedAtEnd(node *);
@@ -47,5 +49,7 @@ node     *EmbracingLoop(node *, int);
 void      RmUnusedDcls(void);
 
 node     *MakeConst(long int, int);
+
+}
 
 #endif /* Already_Included_Vutil */

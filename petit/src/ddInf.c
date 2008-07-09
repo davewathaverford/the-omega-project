@@ -1,4 +1,4 @@
-/* $Id: ddInf.c,v 1.1.1.1 2000/06/29 19:24:34 dwonnaco Exp $ */
+/* $Id: ddInf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* dependence information to compare Omega and Epsilon tests */
 
 #if defined compareOmegaEpsilon
@@ -12,7 +12,7 @@
 #include <petit/ddInf.h>
 #include <petit/classify.h>
 
-
+namespace omega {
 
 bool storeInf=0;
 
@@ -132,6 +132,7 @@ fprintf (debug,
          "I %p %p %d %d\n", a1,a2, appl, eps);
 }
  
+} // end omega namespace
 
 #endif
 

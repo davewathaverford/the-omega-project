@@ -16,6 +16,9 @@ FILE *statsfile;
 int singles, totals=0;
 #endif
 
+
+namespace omega {
+
 int closure_presburger_debug=0;
 
 bool is_lex_forward(Relation R){
@@ -1646,3 +1649,5 @@ Relation TransitiveClosure(NOT_CONST Relation &input_r,
 	    }
     return answer;
     }
+
+} // end of namespace omega

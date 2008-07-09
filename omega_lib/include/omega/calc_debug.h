@@ -6,6 +6,8 @@
 #include <omega/omega_core/debugging.h>
 #include <ctype.h>
 
+namespace omega {
+
 extern int omega_calc_debug;
 extern int code_gen_debug;
 
@@ -65,5 +67,8 @@ inline int process_calc_debugging_flags(char *arg,int &j) {
 	    }
     return(1);
 }
+
+} // end of namespace omega
+
 
 #endif

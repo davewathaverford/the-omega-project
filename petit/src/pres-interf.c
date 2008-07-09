@@ -1,9 +1,11 @@
-/* $Id: pres-interf.c,v 1.1.1.1 2000/06/29 19:24:39 dwonnaco Exp $ */
+/* $Id: pres-interf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/String.h>
 #include <basic/assert.h>
 #include <petit/find_affine.h>
 #include <petit/pres-interf.h>
+
+namespace omega {
 
 
 Global_Kind Omega_Var::kind() const
@@ -117,9 +119,11 @@ int Omega_Var::arity() const
       return art;
     }
 
+} // end omega namespace
 
 #include <petit/tree.h>
 
+namespace omega {
 // hack to avoid memory leaks - wak
 #define maxOmegaVars	10000
 Omega_Var* all_omega_vars[maxOmegaVars];
@@ -215,3 +219,5 @@ Omega_Var * get_omega_var(symtabentry *s, int a)
       assert(0 && "Omega var with required arity is not in the list");
       return 0;
    }      
+
+} // end namespace omega

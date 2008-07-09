@@ -2,6 +2,8 @@
 #ifndef Already_Included_Link
 #define Already_Included_Link
 
+namespace omega {
+
 /* initialize link procedure */
 extern void link_start( node *prev, node *parent );
 
@@ -15,5 +17,7 @@ extern void link_unlink( node *n );
 extern void link_pushscope( node *n );
 
 extern void link_popscope( void );
+
+}
 
 #endif

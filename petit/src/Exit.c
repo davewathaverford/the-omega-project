@@ -1,4 +1,4 @@
-/* $Id: Exit.c,v 1.3 2000/08/16 20:01:18 dwonnaco Exp $ */
+/* $Id: Exit.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /**********************************************************
  *                                                        *
@@ -20,6 +20,7 @@
 #include <petit/motif.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 #ifdef WIN32
 #define Write(x) ;
 #endif
@@ -38,13 +39,13 @@ void set_signals(void) {
    the handler is set back to SIG_DFL before the signal handler is run.  
    This shouldn't make any difference.  */
   if(!mysignals) {
-    if(signal(SIGQUIT,&sigAbort) == SIGNAL_ERROR ||
-       signal(SIGINT, &sigAbort) == SIGNAL_ERROR ||
-       signal(SIGILL, &sigAbort) == SIGNAL_ERROR ||
-       signal(SIGTRAP,&sigAbort) == SIGNAL_ERROR ||
-       signal(SIGFPE, &sigAbort) == SIGNAL_ERROR ||
-       signal(SIGBUS, &sigAbort) == SIGNAL_ERROR ||
-       signal(SIGSEGV,&sigAbort) == SIGNAL_ERROR ||
+    if(signal(SIGQUIT,&sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGINT, &sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGILL, &sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGTRAP,&sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGFPE, &sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGBUS, &sigAbort) == (void(*)(int))SIGNAL_ERROR ||
+       signal(SIGSEGV,&sigAbort) == (void(*)(int))SIGNAL_ERROR ||
        //       signal(SIGSYS, &sigAbort) == SIGNAL_ERROR ||
        false ) {  // this just makes it possible to comment out the above
       fprintf(stderr, "\nset_signals: can not set reaction to signals\n");
@@ -108,7 +109,7 @@ int Quit(int x) {
 void Exit(int e)
 {
 #ifndef WIN32
-  if(mysignals && signal(SIGTRAP, SIG_DFL) == SIGNAL_ERROR) {
+  if(mysignals && signal(SIGTRAP, SIG_DFL) == (void(*)(int))SIGNAL_ERROR) {
 
       fprintf(stderr, "\nset_signals: can not set reaction to signals\n");
       exit(-4);
@@ -220,9 +221,12 @@ void out_of_memory(void)
     Exit(-1000);
 }
 
+} // end of omega namespace
 
 #ifndef WIN32
 #include <sys/file.h>
+
+namespace omega {
 
 void Write(char *s) {
   static int fd = -1;
@@ -234,11 +238,14 @@ void Write(char *s) {
   l=strlen(s);
   if(write(fd,s,l)!=l) exit(188);
 }
+
+}
 #endif
 
 /*
  * Remove file with given name if it's empty
  */
+namespace omega {
 static
 void RemoveIfEmpty(char *fname, FILE *file) {
   fclose(file);
@@ -259,4 +266,6 @@ void RemoveIfEmpty(char *fname, FILE *file) {
   } else {
     fclose(file);
   }
+}
+
 }

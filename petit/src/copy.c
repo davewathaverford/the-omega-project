@@ -11,6 +11,8 @@
 #include <petit/vutil.h>
 #include <petit/affine.h>
 
+namespace omega {
+
 ddnode::ddnode(int nest) {
   if(nest <= 0) {
     dddiff = NULL;
@@ -195,3 +197,5 @@ void copy_dd( node *new_node ) {
         if( n->nodechild != NULL ) copy_dd( n->nodechild );
     }
 }/* copy_dd */
+
+} // end omega namespace

@@ -1,4 +1,4 @@
-/* $Id: ssa.h,v 1.1.1.1 2000/06/29 19:24:28 dwonnaco Exp $ */
+/* $Id: ssa.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /*********************************************************************
  *                                                                   *
  * Include file for Static Single Assignment calculation.            *
@@ -9,6 +9,8 @@
 #define Already_Included_Ssa
 
 #include <petit/tree.h>
+
+namespace omega {
 
 /*
  * Representation for defs and uses of petit AST block node.
@@ -58,5 +60,7 @@ void      zap_ssa_graph(void);
 extern VARNO var_no;
 //TTT
 void print_tree_debug(void);
+
+}
 
 #endif /* Already_Included_Ssa */

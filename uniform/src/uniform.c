@@ -1,4 +1,4 @@
-/* $Id: uniform.c,v 1.1.1.1 2000/06/29 19:24:45 dwonnaco Exp $ */
+/* $Id: uniform.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /*----------------------------------------------------------------------------  
     This is the entry procedure for the Uniform methods transformation 
@@ -16,6 +16,7 @@ output to the file "spmd.c".
 #include <uniform/select.h>
 #include <uniform/time_mappings.h>
 #include <uniform/simple_codegen.h>
+namespace omega {
 
 void uniform(char * uniform_args)
     {
@@ -83,3 +84,4 @@ void uniform(char * uniform_args)
 
     simple_codegen();
     } /* uniform */
+}

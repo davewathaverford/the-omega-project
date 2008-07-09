@@ -1,5 +1,7 @@
 #include <omega/omega_core/oc_i.h>
 
+namespace omega {
+
 static int solveDepth = 0;
 #define maxDead maxmaxGEQs
 
@@ -1575,3 +1577,5 @@ freeRedEliminations()
 	fprintf(outputFile, "\n");
 	};
     }
+
+} // end of namespace omega

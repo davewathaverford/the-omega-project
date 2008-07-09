@@ -9,8 +9,8 @@
 
 #if ! defined Relation
 
-#define Relation Omega_Relation
-#define Formula  Omega_Formula
+//#define Relation Omega_Relation
+//#define Formula  Omega_Formula
 #define LOWER_BOUND OMEGA_LOWER_BOUND
 #define UPPER_BOUND OMEGA_UPPER_BOUND
 #define EXACT_BOUND OMEGA_EXACT_BOUND

@@ -1,10 +1,13 @@
-/* $Id: affine.h,v 1.2 2000/07/04 20:11:31 dwonnaco Exp $ */
+/* $Id: affine.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #ifndef Already_Included_Affine
 #define Already_Included_Affine 1
 
+
 #include <basic/bool.h>
 #include <petit/lang-interf.h>
+
+namespace omega {
 
 /* This file defines the affine_expr structure and macros & functions
    that are independent of petit - that is, code that examines existing
@@ -14,6 +17,9 @@
  */
 
 #define aeMaxVars 12
+
+typedef struct symtabentry *Var_Id;
+typedef node *a_access;
 
 struct affine_term {
     Var_Id petit_var;   /* pointer to symbol table entry */
@@ -52,5 +58,6 @@ affine_expr *CopyAffineExpr(affine_expr *);
 void         FreeAffineExpr(affine_expr *);
 char *       print_rep(const affine_expr *);  // return static char array
 
+}
 
 #endif

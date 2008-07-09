@@ -1,4 +1,4 @@
-/* $Id: ddomega.c,v 1.1.1.1 2000/06/29 19:24:35 dwonnaco Exp $ */
+/* $Id: ddomega.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 
 /* 
@@ -29,6 +29,8 @@
 #include <petit/timeTrials.h>
 #include <petit/affine.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 #define approximateTrivialDependences 0
 
@@ -346,3 +348,5 @@ void GetLoopDirs(a_access access, int /*bnest*/, signed char *loop_dirs) {
        cont_i_next(c);
      }
 }
+
+} // end of omega namespace

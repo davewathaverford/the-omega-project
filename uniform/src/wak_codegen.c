@@ -1,4 +1,4 @@
-/* $Id: wak_codegen.c,v 1.1.1.1 2000/06/29 19:24:45 dwonnaco Exp $ */
+/* $Id: wak_codegen.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #define NEED_PARALLEL
 #define NEED_SYNC
@@ -14,6 +14,7 @@
 #include <uniform/time_mappings.h>
 #include <uniform/wak_codegen.h>
 #include <uniform/simple_codegen.h>
+namespace omega {
 
 int is_loop_dist[max_stmts][maxLevels];
 int is_const_dist[max_stmts][maxLevels];
@@ -1053,3 +1054,4 @@ String WakGenerateCode(String init)
 
     return local_declarations() + init + s;
     } /* WakGenerateCode */
+}

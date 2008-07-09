@@ -1,6 +1,8 @@
-/* $Id: notedd.h,v 1.1.1.1 2000/06/29 19:24:26 dwonnaco Exp $ */
+/* $Id: notedd.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_NoteDD
 #define Already_Included_NoteDD
+
+namespace omega {
 
 /* information about nodes involved in dependence */
 struct situation{
@@ -11,6 +13,8 @@ struct situation{
 
 void noteDependence(situation *sit, dir_and_diff_info *d_info);
 void keep_dependence(situation *sit, dir_and_diff_info *d_info);
+
+}
 
 #endif
 

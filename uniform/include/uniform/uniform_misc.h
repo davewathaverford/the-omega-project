@@ -1,4 +1,4 @@
-/* $Id: uniform_misc.h,v 1.4 2000/08/18 19:49:39 dwonnaco Exp $ */
+/* $Id: uniform_misc.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Uniform_Misc
 #define Already_Included_Uniform_Misc
 
@@ -7,6 +7,11 @@
 #include <basic/assert.h>
 #include <petit/uniform-interf.h>
 #include <uniform/depend_dir.h>
+
+//#include <basic/String.h> AIS
+//#include "Exit.h" AIS
+
+namespace omega {
 
 #define maxLevels	14
 #define max_stmts 	74
@@ -65,7 +70,7 @@ extern Dynamic_Array2<Relation> T1;
 extern Dynamic_Array2<Coef_Var_Decl *> coef_var;
 extern Dynamic_Array2<int> negative;
 extern Dynamic_Array2<int> was_negative;
-extern Dynamic_Array2<Omega_String> var_name_list;
+extern Dynamic_Array2<String> var_name_list;
 
 extern FILE *uniform_debug, *uniform_debug2;
 
@@ -85,5 +90,7 @@ extern void process_uniform_args(char *arg, int &j);
 extern void determine_steps(int i);
 
 extern void find_names();
+
+}
 
 #endif

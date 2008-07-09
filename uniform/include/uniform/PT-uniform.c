@@ -1,4 +1,4 @@
-/* $Id: PT-uniform.c,v 1.2 2000/06/30 16:42:54 dwonnaco Exp $ */
+/* $Id: PT-uniform.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/Dynamic_Array.h>
 #include <basic/Tuple.h>

@@ -1,7 +1,7 @@
 #if ! defined _Rel_map_h
 #define _Rel_map_h 1
 
-/* $Id: Rel_map.h,v 1.1.1.1 2000/06/29 19:24:00 dwonnaco Exp $ */
+/* $Id: Rel_map.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_gen_h
 #include <omega/pres_gen.h>
@@ -9,6 +9,9 @@
 #if ! defined _pres_var_h
 #include <omega/pres_var.h>
 #endif
+
+
+namespace omega {
 
 //
 // Mapping for relations
@@ -162,5 +165,8 @@ private:
   Var_Kind map_out_kind[maxVars];
   int      map_out_pos[maxVars];
 };
+
+
+} // end of namespace omega
 
 #endif

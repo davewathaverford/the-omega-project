@@ -15,6 +15,7 @@
 #include <petit/hpp.h>
 #include <code_gen/spmd.h>
 
+namespace omega {
 
 #define inc_filter 0
 #if inc_filter
@@ -135,7 +136,7 @@ void set_template_info(node *n) {
 
 Relation get_is(node *n) {
     a_access a = n;
-    Relation R(depth(a));
+    Relation R(node_depth(a));
     AccessIteration ai(a, &R, Input_Tuple);
     F_And *f = R.add_and();
     access_in_bounds(f, ai);
@@ -152,7 +153,7 @@ Relation make_space(node * n) {
 	    
 
 /* First, create R:iterations -> array locations */
-	    Relation R(depth(a), dim);
+	    Relation R(node_depth(a), dim);
 	    AccessIteration ai(a, &R, Input_Tuple);
 	    F_And *f = R.add_and();
             subscripts_equal_to_tuple(f,ai,&output_vars);
@@ -177,7 +178,7 @@ Relation make_time(node *n) {
     EQ_Handle e;
     node *p = n;
     const a_access &a = (a_access) n;
-    int dep = depth(a);
+    int dep = node_depth(a);
     int outward = 0;
     Relation T(dep, dep+dep+1);
     F_And *f = T.add_and();
@@ -354,7 +355,11 @@ static void restore_dd_filter() {
 
 #endif
 
+} // omega namespace
+
 #include <petit/motif.h>
+
+namespace omega {
 
 void* build_hpp() {
 #if ! defined BATCH_ONLY_PETIT
@@ -370,3 +375,5 @@ void* build_hpp() {
     return 0;
 #endif
 }
+
+} // omega namespace

@@ -3,6 +3,8 @@
 #include <petit/tree.h>
 #include <petit/link.h>
 
+namespace omega {
+
 /* What to use for 'prev' of next node, 'parent' of next node */
 node *Link_Prev, *Link_Next, *Link_Parent;
 
@@ -76,3 +78,5 @@ void link_popscope(void)
     Link_Next = Link_Prev->nodenext;
     Link_Parent = Link_Prev->nodeparent;
 }/* link_popscope */
+
+} // end omega namespace

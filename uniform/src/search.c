@@ -1,4 +1,4 @@
-/* $Id: search.c,v 1.1.1.1 2000/06/29 19:24:43 dwonnaco Exp $ */
+/* $Id: search.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <basic/util.h>
@@ -6,6 +6,8 @@
 #include <uniform/uniform_args.h>
 #include <uniform/uniform_misc.h>
 #include <uniform/search.h>
+
+namespace omega {
 
 Dynamic_Array1<int> best("Stmts");
 search_cost best_cost;
@@ -530,3 +532,5 @@ void perform_search(int aut)
     cheap.resize(0, 0);
 #endif
     } /* perform_search */
+
+}

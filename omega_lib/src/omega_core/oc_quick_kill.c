@@ -2,6 +2,8 @@
 
 #include <omega/omega_core/oc_i.h>
 
+namespace omega {
+
 int Problem::combineToTighten() 
     {
     int e,e2,i;
@@ -762,3 +764,5 @@ int Problem::quickKill(int onlyWildcards, bool desperate)
 	};
     return 1;
     }
+
+} // end of namespace omega

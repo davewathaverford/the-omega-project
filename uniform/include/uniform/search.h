@@ -17,7 +17,10 @@
 
 #define max_candidates  24
 
+namespace omega {
+
 #if defined (SPEED)
+
 
 typedef search_cost ma[max_stmts][maxnest][maxnest];
 typedef search_cost mb[max_stmts][maxnest];
@@ -42,5 +45,7 @@ extern search_cost best_cost;
 
 extern void perform_search(int aut);
 extern void process_edge_costs();
+
+}
 
 #endif

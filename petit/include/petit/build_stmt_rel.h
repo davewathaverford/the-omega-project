@@ -1,4 +1,4 @@
-/* $Id: build_stmt_rel.h,v 1.1.1.1 2000/06/29 19:24:22 dwonnaco Exp $ */
+/* $Id: build_stmt_rel.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_BuildStmtRel
 #define Already_Included_BuildStmtRel
 
@@ -8,6 +8,8 @@
 
 #define myMaxStmts 50
 #define myOmitScalars 0
+
+namespace omega {
 
 struct StmtDep {
      Relation   dep_rel;        // dependence relation
@@ -27,5 +29,7 @@ extern void set_closure_flags(int n);
 extern void print_closure_help(void);
 
 extern void test_closure(int found);
+
+}
 
 #endif

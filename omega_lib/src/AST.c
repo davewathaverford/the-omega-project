@@ -1,6 +1,8 @@
 #include <omega/AST.h>
 #include <string.h>
 
+namespace omega {
+
 Global_Declaration_Site *globalDecls;	
 Declaration_Site *relationDecl;	
 tupleDescriptor *currentTupleDescriptor;
@@ -219,9 +221,9 @@ void AST_constraints::install(Formula *F) {
   
 	
 void install_neq(F_And *F, Exp *e1, Exp *e2) {
-	F_Or *or = F->add_or();
-	F_And *and1 = or->add_and();
-	F_And *and2 = or->add_and();
+	F_Or *or1 = F->add_or();
+	F_And *and1 = or1->add_and();
+	F_And *and2 = or1->add_and();
 	install_gt(and1,e1,e2);
 	install_gt(and2,e2,e1);
 	};
@@ -404,3 +406,5 @@ void tupleDescriptor::extend(Exp * lb,Exp *ub, int stride) {
 	s->step = stride;
 	stride_constraints.insert(s); 
 	}
+
+} // end of namespace omega

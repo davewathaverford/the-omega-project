@@ -1,4 +1,4 @@
-/* $Id: linkio.c,v 1.1.1.1 2000/06/29 19:24:37 dwonnaco Exp $ */
+/* $Id: linkio.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #include <stdio.h>
 
 #include <basic/assert.h>
@@ -6,6 +6,7 @@
 #include <petit/ops.h>
 #include <petit/linkio.h>
 
+namespace omega {
 /* traverse tree looking for fetch and store nodes and link them together */
 
 
@@ -64,3 +65,5 @@ nametabentry *n;
     }
     linkio_node( Entry );
 }/* link_lists */
+
+} // end omega namespace

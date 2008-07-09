@@ -2,6 +2,8 @@
 #ifndef Already_Included_Dynamic_Array
 #define Already_Included_Dynamic_Array
 
+namespace omega {
+
 template <class T> class Dynamic_Array2;
 template <class T> class Dynamic_Array3;
 template <class T> class Dynamic_Array4;
@@ -79,9 +81,13 @@ template <class T> class Dynamic_Array4 : public Dynamic_Array<T,4>
 	void do_construct(int d0, int d1, int d2, int d3);
     };
 
+} // end of namespace omega
+
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/Dynamic_Array.c>
 #endif
+
+namespace omega {
 
 #define instantiate_Dynamic_Array1(T)	template class Dynamic_Array1<T>; \
 					template class Dynamic_Array<T,1>;
@@ -97,4 +103,6 @@ template <class T> class Dynamic_Array4 : public Dynamic_Array<T,4>
 #define instantiate_Dynamic_Array4(T)	template class Dynamic_Array4<T>;  \
 					template class Dynamic_Array<T,4>; \
 					instantiate_Dynamic_Array3(T);
+}
+
 #endif

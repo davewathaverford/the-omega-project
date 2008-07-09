@@ -1,4 +1,4 @@
-/* $Id: browsedd.c,v 1.1.1.1 2000/06/29 19:24:33 dwonnaco Exp $ */
+/* $Id: browsedd.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,6 +31,7 @@
 #include <petit/petit_args.h>
 #include <petit/parse_and_analyse.h>
 
+namespace omega {
 
 int BRDD_mode;
 int BRDD_show;	/* 2 to show prev, 1 to show next */
@@ -465,7 +466,7 @@ char *graph_edge_attributes(ddnode *ddn, char *buffer) {
 }
 
 void write_graph_edge(FILE *f, ddnode *ddn,
-		      const Map<node*,Omega_String> &nodemap) {
+		      const Map<node*,omega::String> &nodemap) {
     char diffbuf[PETITBUFSIZ],attrbuf[PETITBUFSIZ];
 
     diffbuf[0] = '\0';
@@ -485,9 +486,9 @@ void write_graph_edge(FILE *f, ddnode *ddn,
 
 void write_graph_nodes(FILE *printout,
 		       bool graph_by_statement,
-		       Map<node*,Omega_String> &nodemap) {
-    Tuple<Omega_String> seen_labels;
-//    Map<node *,Omega_String> nodemap(Omega_String("nonexistent node"));
+		       Map<node*,omega::String> &nodemap) {
+    Tuple<omega::String> seen_labels;
+//    Map<node *,omega::String> nodemap(omega::String("nonexistent node"));
     char label[PETITBUFSIZ];
     int vorder=1,horder=1,lastseq=Entry->nodesequence-1;
     
@@ -500,7 +501,7 @@ void write_graph_nodes(FILE *printout,
 	    {
 		if(graph_by_statement) {
 		    sprintf(label,"%d",n->nodesequence);
-		    Omega_String slabel(label);
+		    omega::String slabel(label);
 		    if (seen_labels.index(slabel) == 0) {
 			fprintf(printout,"node: { title: \"%s\" "
 				"label: \"%s\""
@@ -514,7 +515,7 @@ void write_graph_nodes(FILE *printout,
 		} else {
 		    print_to_buf( n, 0, 0);
 		    sprintf(label,"%d: %s",n->nodesequence,(const char *)printBuf);
-		    Omega_String slabel(label);
+		    omega::String slabel(label);
 		    while (seen_labels.index(slabel) != 0)
 			slabel = slabel + "'";
 		    if ((int)n->nodesequence == lastseq) {
@@ -571,7 +572,7 @@ void write_deps(char *filename , char *inputfile,
 	printout = stdout;
 
     Assert(printout!=NULL, "brdd_write: bad dependence file name");
-    Map<node*,Omega_String> nodemap("nonexistent node");
+    Map<node*,omega::String> nodemap("nonexistent node");
     if (write_as_graph) 
 	{  /* print graph header and nodes */
 	write_graph_header(printout, inputfile);
@@ -697,7 +698,7 @@ int brdd_graph(char *filename, char *inputfile, bool graph_by_statement, bool po
 {
     write_deps(filename, inputfile, true, graph_by_statement);
     if (popup_vcg) {
-	Omega_String call_vcg = Omega_String("xvcg ") + filename;
+	omega::String call_vcg = omega::String("xvcg ") + filename;
 	system(call_vcg);
     }
     return 0;
@@ -857,3 +858,5 @@ int brdd_menu_epilog( int )
 }/* brdd_menu_epilog */
 
 #endif
+
+} // end omega namespace

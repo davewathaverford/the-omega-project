@@ -2,11 +2,13 @@
 #include <omega.h>
 #include <code_gen/elim.h>
 
+namespace omega {
+
 int max_fs_arity(const Constraint_Handle &c) {
   int max_arity=0;
   for(Constr_Vars_Iter cv(c); cv; cv++)
     if((*cv).var->kind() == Global_Var)
-      max_arity = max(max_arity,(*cv).var->get_global_var()->arity());
+      max_arity = omega::max(max_arity,(*cv).var->get_global_var()->arity());
   return max_arity;
 }
 
@@ -21,7 +23,7 @@ elimination_info::elimination_info(const Tuple<Relation> &sets) {
     assert(R.is_set());
     for(DNF_Iterator D(R.query_DNF()); D; D++)
       for(Constraint_Iterator c(*D); c; c++)
-	max_arity = max(max_arity,max_fs_arity(*c));
+	max_arity = omega::max(max_arity,max_fs_arity(*c));
   }
   never_eliminate_lt = max_arity;
 }
@@ -74,3 +76,5 @@ String elimination_info::print_eliminated_to_string() {
         + ") ";
   return res;
 }
+
+} // end namespace omega

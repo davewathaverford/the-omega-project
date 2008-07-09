@@ -2,7 +2,7 @@
 #define Already_Included_Lang_Interf_Generic 1
 
 
-/* $Id: lang-interf.generic,v 1.1.1.1 2000/06/29 19:24:25 dwonnaco Exp $ */
+/* $Id: lang-interf.generic,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /* Changes:
 	tags are now void*

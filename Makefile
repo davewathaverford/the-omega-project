@@ -21,11 +21,17 @@ BASEDIR =.
 oc: always
 	cd omega_calc/obj; $(MAKE) oc
 
+libparse.a: 
+	cd parse_lib/obj; $(MAKE) libparse.a
+
 tables: 
 	cd petit/obj; $(MAKE) .tables
 
 petit: tables always
 	cd petit/obj; $(MAKE) petit
+
+rtrt-petit: tables always
+	cd petit/obj; $(MAKE) -f Makefile-rtrt rtrt-petit
 
 libomega.a: always 
 	cd omega_lib/obj; $(MAKE) libomega.a

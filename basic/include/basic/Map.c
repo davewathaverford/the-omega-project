@@ -1,4 +1,7 @@
 
+namespace omega {
+
+
 template<class K, class V> MapElement<K,V>:: MapElement(const MapElement<K,V>& M) {
 		if (M.tail) tail = new MapElement<K,V>(*M.tail);
 		else tail = 0;
@@ -58,3 +61,7 @@ template <class K, class V> V & Map<K,V>::operator[](K k) {
 		contents = P;
 		return P->v;
 		}
+
+
+} // end of namespace omega
+

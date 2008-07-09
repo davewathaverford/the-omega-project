@@ -1,7 +1,7 @@
 #if ! defined _RelBody_h
 #define _RelBody_h 1
 
-/* $Id: RelBody.h,v 1.2 2000/08/02 20:04:41 dwonnaco Exp $ */
+/* $Id: RelBody.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 
@@ -12,6 +12,9 @@
 #if ! defined _pres_dnf_h
 #include <omega/pres_dnf.h>
 #endif
+
+
+namespace omega {
 
 typedef enum {under_construction, compressed, uncompressed} Rel_Body_Status;
 typedef unsigned char Rel_Unknown_Uses;
@@ -174,5 +177,8 @@ private:
     bool finalized;
     bool _is_set;
 };
+
+
+} // end of namespace omega
 
 #endif

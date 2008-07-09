@@ -1,6 +1,8 @@
-/* $Id: ddepsilon.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: ddepsilon.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_DDEpsilon
 #define Already_Included_DDEpsilon
+
+namespace omega {
 
 
 #define maxSubscr  10
@@ -97,5 +99,7 @@ int min_known;
 void epsilon_test(a_access a1, a_access a2,dir_and_diff_info * d_info,
                     situation * sit);
 int  epsilon_preproc(a_access a1, a_access a2);
+
+}
 
 #endif

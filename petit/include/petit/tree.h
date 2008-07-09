@@ -1,4 +1,4 @@
-/* $Id: tree.h,v 1.3 2000/08/16 20:01:17 dwonnaco Exp $ */
+/* $Id: tree.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Tree
 #define Already_Included_Tree
 
@@ -9,6 +9,7 @@
 #include <petit/dddir.h>
 #include <petit/classes.h>
 
+namespace omega {
 
 /*
  * Strongly connected component number
@@ -246,5 +247,7 @@ extern int number_of_kills_for_use_count;
 #define get_nodevalue_sym(n)	((symtabentry*)((n)->nodevalue))
 #define get_nodevalue_int(n)	((int)((n)->nodevalue))
 #define get_nodevalue_node(n)	((node*)((n)->nodevalue))
+
+}
 
 #endif

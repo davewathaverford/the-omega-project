@@ -1,4 +1,4 @@
-/* $Id: ssa.c,v 1.1.1.1 2000/06/29 19:24:39 dwonnaco Exp $ */
+/* $Id: ssa.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /*********************************************************************
  *                                                                   *
@@ -19,6 +19,8 @@
 #include <petit/Exit.h>
 #include <petit/definitions.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 
 static STE vars[MAXVARNO];	       /* array of variables used in SSA */
@@ -423,12 +425,15 @@ char *str_var_index(node *p)
     return(s);
     }
 
+} // end omega namespace
 
 /*
  * ==================== Utilities for SSA =================
  */
 
 #include <string.h>
+
+namespace omega {
 
 /*
  * Reset variables use/def descriptor
@@ -725,3 +730,4 @@ void print_tree_debug() {
    print_subtree_debug(Entry, debug, 0);
  }
              
+} // end of namespace omega

@@ -13,6 +13,8 @@
 #include <petit/motif.h>
 #include <petit/petit_args.h>
 
+namespace omega {
+
 ddnode *DDcheck_save_list;
 ddnode *GLOBAL_START;
 
@@ -191,5 +193,7 @@ node *b;
 	DDfix( b->nodechild, loop, adjust );
     }
 }/* DDfix */
+
+} // omega namespace
 
 #endif

@@ -15,6 +15,7 @@
 #define Motif_False 0
 #include <petit/tree.h>
 
+namespace omega {
 
 
 typedef void (*refresher)( int );
@@ -71,6 +72,10 @@ void motif_list(char *Message_Buffer, unsigned int Message_Buffer_Size,
 
 void set_mouse_buttons();
 
-#endif
+}
 
 #endif
+
+
+#endif
+

@@ -1,0 +1,2885 @@
+# DO NOT DELETE
+
+../src/Exit.o: /usr/include/stdarg.h /usr/include/stdlib.h
+../src/Exit.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/Exit.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/Exit.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/Exit.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/Exit.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/Exit.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/Exit.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/Exit.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/Exit.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/Exit.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/Exit.o: /usr/include/stdio.h /usr/include/string.h
+../src/Exit.o: /usr/include/signal.h /usr/include/unistd.h
+../src/Exit.o: /usr/include/sys/unistd.h /usr/include/sys/select.h
+../src/Exit.o: /usr/include/sys/types.h /usr/include/sys/time.h
+../src/Exit.o: /usr/include/time.h /usr/include/machine/_limits.h
+../src/Exit.o: /usr/include/i386/_limits.h /usr/include/fcntl.h
+../src/Exit.o: /usr/include/sys/fcntl.h ../include/petit/Exit.h
+../src/Exit.o: ../../basic/include/basic/Exit.h
+../src/Exit.o: ../../basic/include/basic/List.h
+../src/Exit.o: ../../basic/include/basic/Iterator.h
+../src/Exit.o: ../../basic/include/basic/bool.h
+../src/Exit.o: ../../basic/include/basic/Collection.h
+../src/Exit.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/Exit.o: ../../basic/include/basic/List.c
+../src/Exit.o: ../../basic/include/basic/assert.h
+../src/Exit.o: ../../basic/include/basic/List.h ../include/petit/debug.h
+../src/Exit.o: ../include/petit/omega2flags.h ../include/petit/motif.h
+../src/Exit.o: ../include/petit/tree.h
+../src/Exit.o: ../../omega_lib/include/omega/Relations.h
+../src/Exit.o: ../../omega_lib/include/omega/Relation.h
+../src/Exit.o: ../../omega_lib/include/omega/RelBody.h
+../src/Exit.o: ../../omega_lib/include/omega/pres_form.h
+../src/Exit.o: ../../omega_lib/include/omega/pres_gen.h
+../src/Exit.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/Exit.o: ../../basic/include/basic/String.h
+../src/Exit.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/Exit.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/Exit.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/Exit.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/Exit.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/Exit.o: ../../basic/include/basic/ConstString.h
+../src/Exit.o: ../../basic/include/basic/Tuple.h
+../src/Exit.o: ../../basic/include/basic/Tuple.c
+../src/Exit.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/Exit.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/Exit.o: ../../omega_lib/include/omega/pres_var.h
+../src/Exit.o: ../../basic/include/basic/NonCoercible.h
+../src/Exit.o: ../../basic/include/basic/Bag.h
+../src/Exit.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/Exit.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/Exit.o: ddtype.typ ../include/petit/petit_args.h
+../src/Exit.o: /usr/include/sys/file.h /usr/include/sys/queue.h
+../src/Zima.o: ../../basic/include/basic/bool.h
+../src/Zima.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/Zima.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/Zima.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/Zima.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/Zima.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/Zima.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/Zima.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/Zima.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/Zima.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/Zima.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/Zima.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/Zima.o: /usr/include/stdio.h ../../omega_lib/include/omega/pres_tree.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_var.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_logic.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_form.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_gen.h
+../src/Zima.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/Zima.o: ../../basic/include/basic/String.h
+../src/Zima.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/Zima.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/Zima.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/Zima.o: /usr/include/float.h /usr/include/string.h
+../src/Zima.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/Zima.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/Zima.o: ../../basic/include/basic/ConstString.h
+../src/Zima.o: ../../basic/include/basic/Iterator.h
+../src/Zima.o: ../../basic/include/basic/Collection.h
+../src/Zima.o: ../../basic/include/basic/List.h
+../src/Zima.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/Zima.o: ../../basic/include/basic/List.c
+../src/Zima.o: ../../basic/include/basic/List.h
+../src/Zima.o: ../../basic/include/basic/Tuple.h
+../src/Zima.o: ../../basic/include/basic/Tuple.c
+../src/Zima.o: ../../omega_lib/include/omega/pres_quant.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_decl.h
+../src/Zima.o: ../../basic/include/basic/Section.h
+../src/Zima.o: ../../basic/include/basic/Section.c
+../src/Zima.o: ../include/petit/lang-interf.h
+../src/Zima.o: ../../omega_lib/include/omega/Relations.h
+../src/Zima.o: ../../omega_lib/include/omega/Relation.h
+../src/Zima.o: ../../omega_lib/include/omega/RelBody.h
+../src/Zima.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/Zima.o: ../../basic/include/basic/NonCoercible.h
+../src/Zima.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/Zima.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/Zima.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/Zima.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/Zima.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/Zima.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/Zima.o: ../include/petit/Zima.h ../include/petit/pres-interf.h
+../src/Zima.o: ../include/petit/debug.h ../include/petit/affine.h
+../src/Zima.o: ../include/petit/notedd.h ../include/petit/dd_misc.h
+../src/Zima.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/Zima.o: /usr/include/signal.h ../include/petit/petit_args.h
+../src/add-assert.o: ../../basic/include/basic/bool.h
+../src/add-assert.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/add-assert.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/add-assert.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/add-assert.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/add-assert.o: /usr/include/sys/signal.h
+../src/add-assert.o: /usr/include/sys/appleapiopts.h
+../src/add-assert.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/add-assert.o: /usr/include/sys/resource.h
+../src/add-assert.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/add-assert.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/add-assert.o: /usr/include/libkern/OSByteOrder.h
+../src/add-assert.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/add-assert.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/add-assert.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/add-assert.o: ../../basic/include/basic/Exit.h
+../src/add-assert.o: ../../basic/include/basic/List.h
+../src/add-assert.o: ../../basic/include/basic/Iterator.h
+../src/add-assert.o: ../../basic/include/basic/Collection.h
+../src/add-assert.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/add-assert.o: ../../basic/include/basic/List.c
+../src/add-assert.o: ../../basic/include/basic/List.h
+../src/add-assert.o: ../../omega_lib/include/omega/Relations.h
+../src/add-assert.o: ../../omega_lib/include/omega/Relation.h
+../src/add-assert.o: ../../omega_lib/include/omega/RelBody.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_form.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_gen.h
+../src/add-assert.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/add-assert.o: ../../basic/include/basic/String.h
+../src/add-assert.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/add-assert.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/add-assert.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/add-assert.o: /usr/include/float.h /usr/include/string.h
+../src/add-assert.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/add-assert.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/add-assert.o: ../../basic/include/basic/ConstString.h
+../src/add-assert.o: ../../basic/include/basic/Tuple.h
+../src/add-assert.o: ../../basic/include/basic/Tuple.c
+../src/add-assert.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_var.h
+../src/add-assert.o: ../../basic/include/basic/NonCoercible.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_tree.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_logic.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_quant.h
+../src/add-assert.o: ../../omega_lib/include/omega/pres_decl.h
+../src/add-assert.o: ../../basic/include/basic/Section.h
+../src/add-assert.o: ../../basic/include/basic/Section.c
+../src/add-assert.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/add-assert.o: ../../basic/include/basic/Bag.h
+../src/add-assert.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/add-assert.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/add-assert.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/add-assert.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/add-assert.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/add-assert.o: ../include/petit/ddodriver.h ../include/petit/Zima.h
+../src/add-assert.o: ../include/petit/pres-interf.h
+../src/add-assert.o: ../include/petit/add-assert.h ../include/petit/debug.h
+../src/add-assert.o: ../include/petit/message.h ../include/petit/timeTrials.h
+../src/add-assert.o: ../include/petit/petit_args.h
+../src/affine.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/affine.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/affine.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/affine.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/affine.o: /usr/include/sys/appleapiopts.h
+../src/affine.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/affine.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/affine.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/affine.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/affine.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/affine.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/affine.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/affine.o: /usr/include/string.h ../../basic/include/basic/bool.h
+../src/affine.o: ../../basic/include/basic/assert.h
+../src/affine.o: ../include/petit/pres-interf.h
+../src/affine.o: ../../basic/include/basic/String.h
+../src/affine.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/affine.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/affine.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/affine.o: /usr/include/float.h
+../src/affine.o: ../../omega_lib/include/omega/Relations.h
+../src/affine.o: ../../omega_lib/include/omega/Relation.h
+../src/affine.o: ../../omega_lib/include/omega/RelBody.h
+../src/affine.o: ../../omega_lib/include/omega/pres_form.h
+../src/affine.o: ../../omega_lib/include/omega/pres_gen.h
+../src/affine.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/affine.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/affine.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/affine.o: ../../basic/include/basic/ConstString.h
+../src/affine.o: ../../basic/include/basic/Iterator.h
+../src/affine.o: ../../basic/include/basic/Collection.h
+../src/affine.o: ../../basic/include/basic/List.h
+../src/affine.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/affine.o: ../../basic/include/basic/List.c
+../src/affine.o: ../../basic/include/basic/List.h
+../src/affine.o: ../../basic/include/basic/Tuple.h
+../src/affine.o: ../../basic/include/basic/Tuple.c
+../src/affine.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/affine.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/affine.o: ../../omega_lib/include/omega/pres_var.h
+../src/affine.o: ../../basic/include/basic/NonCoercible.h
+../src/affine.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/affine.o: ../../basic/include/basic/Bag.h
+../src/affine.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/affine.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/affine.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/affine.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/affine.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/affine.o: ../include/petit/omega2flags.h ../include/petit/debug.h
+../src/affine.o: ../include/petit/affine.h ../include/petit/find_affine.h
+../src/affine.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/affine.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/affine.o: ../include/petit/petity.h ../include/petit/ssa.h
+../src/affine.o: ../include/petit/ivr-lang-interf.h ../include/petit/make.h
+../src/affine.o: ../include/petit/compare.h ../include/petit/definitions.h
+../src/affine.o: ../include/petit/petit_args.h
+../src/arrayExpand.o: /usr/include/stdio.h /usr/include/_types.h
+../src/arrayExpand.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/arrayExpand.o: /usr/include/machine/_types.h
+../src/arrayExpand.o: /usr/include/i386/_types.h /usr/include/string.h
+../src/arrayExpand.o: ../../basic/include/basic/bool.h
+../src/arrayExpand.o: ../include/petit/arrayExpand.h ../include/petit/tree.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/Relations.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/Relation.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/RelBody.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/pres_form.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/pres_gen.h
+../src/arrayExpand.o: ../../basic/include/basic/assert.h
+../src/arrayExpand.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/arrayExpand.o: /usr/include/sys/signal.h
+../src/arrayExpand.o: /usr/include/sys/appleapiopts.h
+../src/arrayExpand.o: /usr/include/machine/signal.h
+../src/arrayExpand.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/arrayExpand.o: /usr/include/machine/endian.h
+../src/arrayExpand.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/arrayExpand.o: /usr/include/stdint.h
+../src/arrayExpand.o: /usr/include/libkern/OSByteOrder.h
+../src/arrayExpand.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/arrayExpand.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/arrayExpand.o: /usr/include/i386/types.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/arrayExpand.o: ../../basic/include/basic/String.h
+../src/arrayExpand.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/arrayExpand.o: /usr/include/machine/limits.h
+../src/arrayExpand.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+../src/arrayExpand.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/arrayExpand.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/arrayExpand.o: ../../basic/include/basic/ConstString.h
+../src/arrayExpand.o: ../../basic/include/basic/Iterator.h
+../src/arrayExpand.o: ../../basic/include/basic/Collection.h
+../src/arrayExpand.o: ../../basic/include/basic/List.h
+../src/arrayExpand.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/arrayExpand.o: ../../basic/include/basic/List.c
+../src/arrayExpand.o: ../../basic/include/basic/List.h
+../src/arrayExpand.o: ../../basic/include/basic/Tuple.h
+../src/arrayExpand.o: ../../basic/include/basic/Tuple.c
+../src/arrayExpand.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/arrayExpand.o: ../../omega_lib/include/omega/pres_var.h
+../src/arrayExpand.o: ../../basic/include/basic/NonCoercible.h
+../src/arrayExpand.o: ../../basic/include/basic/Bag.h
+../src/arrayExpand.o: ../../basic/include/basic/Bag.c
+../src/arrayExpand.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/arrayExpand.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/arrayExpand.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/arrayExpand.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/arrayExpand.o: ../include/petit/affine.h
+../src/arrayExpand.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/arrayExpand.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/arrayExpand.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/arrayExpand.o: ../include/petit/ddodriver.h ../include/petit/make.h
+../src/arrayExpand.o: ../include/petit/pres-interf.h
+../src/arrayExpand.o: ../include/petit/definitions.h
+../src/arrayExpand.o: ../include/petit/petity.h ../include/petit/petit_args.h
+../src/arrayExpand.o: ../include/petit/parse_and_analyse.h
+../src/arrayExpand.o: ../include/petit/debug.h
+../src/browse.o: /usr/include/stdio.h /usr/include/_types.h
+../src/browse.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/browse.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/browse.o: ../../omega_lib/include/omega/Relations.h
+../src/browse.o: ../../basic/include/basic/bool.h
+../src/browse.o: ../../omega_lib/include/omega/Relation.h
+../src/browse.o: ../../omega_lib/include/omega/RelBody.h
+../src/browse.o: ../../omega_lib/include/omega/pres_form.h
+../src/browse.o: ../../omega_lib/include/omega/pres_gen.h
+../src/browse.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/browse.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/browse.o: /usr/include/sys/appleapiopts.h
+../src/browse.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/browse.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/browse.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/browse.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/browse.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/browse.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/browse.o: /usr/include/i386/types.h
+../src/browse.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/browse.o: ../../basic/include/basic/String.h
+../src/browse.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/browse.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/browse.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/browse.o: /usr/include/float.h /usr/include/string.h
+../src/browse.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/browse.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/browse.o: ../../basic/include/basic/ConstString.h
+../src/browse.o: ../../basic/include/basic/Iterator.h
+../src/browse.o: ../../basic/include/basic/Collection.h
+../src/browse.o: ../../basic/include/basic/List.h
+../src/browse.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/browse.o: ../../basic/include/basic/List.c
+../src/browse.o: ../../basic/include/basic/List.h
+../src/browse.o: ../../basic/include/basic/Tuple.h
+../src/browse.o: ../../basic/include/basic/Tuple.c
+../src/browse.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/browse.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/browse.o: ../../omega_lib/include/omega/pres_var.h
+../src/browse.o: ../../basic/include/basic/NonCoercible.h
+../src/browse.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/browse.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/browse.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/browse.o: ddtype.typ ../include/petit/browse.h
+../src/browse.o: ../include/petit/motif.h ../include/petit/message.h
+../src/browse.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/browse.o: ../include/petit/ops.h ../include/petit/mouse.h
+../src/browse.o: ../include/petit/makeint.h
+../src/browse.o: ../include/petit/ivr-lang-interf.h ../include/petit/vutil.h
+../src/browse.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/browse.o: /usr/include/signal.h ../include/petit/make.h
+../src/browse.o: ../include/petit/compare.h ../include/petit/definitions.h
+../src/browse.o: ../include/petit/lang-interf.h ../include/petit/ddutil.h
+../src/browse.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/browse.o: ../include/petit/petit_args.h
+../src/browsedd.o: /usr/include/stdio.h /usr/include/_types.h
+../src/browsedd.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/browsedd.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/browsedd.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/browsedd.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/browsedd.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/browsedd.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/browsedd.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/browsedd.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/browsedd.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/browsedd.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/browsedd.o: /usr/include/i386/types.h /usr/include/string.h
+../src/browsedd.o: /usr/include/unistd.h /usr/include/sys/unistd.h
+../src/browsedd.o: /usr/include/sys/select.h /usr/include/sys/types.h
+../src/browsedd.o: /usr/include/signal.h /usr/include/sys/time.h
+../src/browsedd.o: /usr/include/time.h /usr/include/machine/_limits.h
+../src/browsedd.o: /usr/include/i386/_limits.h
+../src/browsedd.o: ../../basic/include/basic/bool.h
+../src/browsedd.o: ../../basic/include/basic/Map.h
+../src/browsedd.o: ../../basic/include/basic/Link.h
+../src/browsedd.o: ../../basic/include/basic/Iterator.h
+../src/browsedd.o: ../../basic/include/basic/Collection.h
+../src/browsedd.o: /usr/include/stddef.h ../../basic/include/basic/Map.c
+../src/browsedd.o: ../../basic/include/basic/assert.h
+../src/browsedd.o: ../../omega_lib/include/omega/Relations.h
+../src/browsedd.o: ../../omega_lib/include/omega/Relation.h
+../src/browsedd.o: ../../omega_lib/include/omega/RelBody.h
+../src/browsedd.o: ../../omega_lib/include/omega/pres_form.h
+../src/browsedd.o: ../../omega_lib/include/omega/pres_gen.h
+../src/browsedd.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/browsedd.o: ../../basic/include/basic/String.h
+../src/browsedd.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/browsedd.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/browsedd.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/browsedd.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/browsedd.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/browsedd.o: ../../basic/include/basic/ConstString.h
+../src/browsedd.o: ../../basic/include/basic/List.h
+../src/browsedd.o: ../../basic/include/basic/List.c
+../src/browsedd.o: ../../basic/include/basic/List.h
+../src/browsedd.o: ../../basic/include/basic/Tuple.h
+../src/browsedd.o: ../../basic/include/basic/Tuple.c
+../src/browsedd.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/browsedd.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/browsedd.o: ../../omega_lib/include/omega/pres_var.h
+../src/browsedd.o: ../../basic/include/basic/NonCoercible.h
+../src/browsedd.o: ../include/petit/Zima.h ../../basic/include/basic/Bag.h
+../src/browsedd.o: ../../basic/include/basic/Bag.c
+../src/browsedd.o: ../include/petit/pres-interf.h
+../src/browsedd.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/browsedd.o: ../include/petit/dddir.h ../include/petit/classes.h op.typ
+../src/browsedd.o: exprtype.typ symtype.typ ddtype.typ ../include/petit/ops.h
+../src/browsedd.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/browsedd.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/browsedd.o: ../include/petit/ddodriver.h ../include/petit/missing.h
+../src/browsedd.o: ../include/petit/mouse.h ../include/petit/depend_filter.h
+../src/browsedd.o: ../include/petit/motif.h ../include/petit/message.h
+../src/browsedd.o: ../include/petit/browse.h ../include/petit/dddriver.h
+../src/browsedd.o: ../include/petit/debug.h ../include/petit/Exit.h
+../src/browsedd.o: ../../basic/include/basic/Exit.h
+../src/browsedd.o: ../include/petit/definitions.h
+../src/browsedd.o: ../include/petit/omega2flags.h
+../src/browsedd.o: ../include/petit/add-assert.h
+../src/browsedd.o: ../include/petit/arrayExpand.h ../include/petit/ddcheck.h
+../src/browsedd.o: ../include/petit/petit_args.h
+../src/browsedd.o: ../include/petit/parse_and_analyse.h
+../src/build_stmt_rel.o: /usr/include/stdio.h /usr/include/_types.h
+../src/build_stmt_rel.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/build_stmt_rel.o: /usr/include/machine/_types.h
+../src/build_stmt_rel.o: /usr/include/i386/_types.h /usr/include/string.h
+../src/build_stmt_rel.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/build_stmt_rel.o: /usr/include/sys/signal.h
+../src/build_stmt_rel.o: /usr/include/sys/appleapiopts.h
+../src/build_stmt_rel.o: /usr/include/machine/signal.h
+../src/build_stmt_rel.o: /usr/include/i386/signal.h
+../src/build_stmt_rel.o: /usr/include/sys/resource.h
+../src/build_stmt_rel.o: /usr/include/machine/endian.h
+../src/build_stmt_rel.o: /usr/include/i386/endian.h
+../src/build_stmt_rel.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/build_stmt_rel.o: /usr/include/libkern/OSByteOrder.h
+../src/build_stmt_rel.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/build_stmt_rel.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/build_stmt_rel.o: /usr/include/i386/types.h
+../src/build_stmt_rel.o: ../../basic/include/basic/assert.h
+../src/build_stmt_rel.o: ../../basic/include/basic/bool.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Exit.h
+../src/build_stmt_rel.o: ../../basic/include/basic/List.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Iterator.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Collection.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Link.h
+../src/build_stmt_rel.o: /usr/include/stddef.h
+../src/build_stmt_rel.o: ../../basic/include/basic/List.c
+../src/build_stmt_rel.o: ../../basic/include/basic/List.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/Relations.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/Relation.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/RelBody.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/pres_form.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/pres_gen.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/build_stmt_rel.o: ../../basic/include/basic/String.h
+../src/build_stmt_rel.o: ../../basic/include/basic/util.h
+../src/build_stmt_rel.o: /usr/include/limits.h /usr/include/machine/limits.h
+../src/build_stmt_rel.o: /usr/include/i386/limits.h
+../src/build_stmt_rel.o: /usr/include/i386/_limits.h
+../src/build_stmt_rel.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/build_stmt_rel.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/build_stmt_rel.o: ../../basic/include/basic/ConstString.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Tuple.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Tuple.c
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/pres_var.h
+../src/build_stmt_rel.o: ../../basic/include/basic/NonCoercible.h
+../src/build_stmt_rel.o: ../../omega_lib/include/omega/closure.h
+../src/build_stmt_rel.o: ../include/petit/lang-interf.h
+../src/build_stmt_rel.o: ../include/petit/tree.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Bag.h
+../src/build_stmt_rel.o: ../../basic/include/basic/Bag.c
+../src/build_stmt_rel.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/build_stmt_rel.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/build_stmt_rel.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/build_stmt_rel.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/build_stmt_rel.o: ../include/petit/evaluate.h
+../src/build_stmt_rel.o: ../include/petit/ddodriver.h
+../src/build_stmt_rel.o: ../include/petit/debug.h ../include/petit/browse.h
+../src/build_stmt_rel.o: ../include/petit/Zima.h
+../src/build_stmt_rel.o: ../include/petit/pres-interf.h
+../src/build_stmt_rel.o: ../include/petit/omega2flags.h
+../src/build_stmt_rel.o: ../include/petit/build_stmt_rel.h
+../src/build_stmt_rel.o: ../include/petit/petit_args.h
+../src/compare.o: ../../basic/include/basic/bool.h ../include/petit/tree.h
+../src/compare.o: ../../omega_lib/include/omega/Relations.h
+../src/compare.o: ../../omega_lib/include/omega/Relation.h
+../src/compare.o: ../../omega_lib/include/omega/RelBody.h
+../src/compare.o: ../../omega_lib/include/omega/pres_form.h
+../src/compare.o: ../../omega_lib/include/omega/pres_gen.h
+../src/compare.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/compare.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/compare.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/compare.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/compare.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/compare.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/compare.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/compare.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/compare.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/compare.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/compare.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/compare.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/compare.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/compare.o: ../../basic/include/basic/String.h
+../src/compare.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/compare.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/compare.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/compare.o: /usr/include/float.h /usr/include/string.h
+../src/compare.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/compare.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/compare.o: ../../basic/include/basic/ConstString.h
+../src/compare.o: ../../basic/include/basic/Iterator.h
+../src/compare.o: ../../basic/include/basic/Collection.h
+../src/compare.o: ../../basic/include/basic/List.h
+../src/compare.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/compare.o: ../../basic/include/basic/List.c
+../src/compare.o: ../../basic/include/basic/List.h
+../src/compare.o: ../../basic/include/basic/Tuple.h
+../src/compare.o: ../../basic/include/basic/Tuple.c
+../src/compare.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/compare.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/compare.o: ../../omega_lib/include/omega/pres_var.h
+../src/compare.o: ../../basic/include/basic/NonCoercible.h
+../src/compare.o: ../../basic/include/basic/Bag.h
+../src/compare.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/compare.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/compare.o: ddtype.typ ../include/petit/ops.h
+../src/compare.o: ../include/petit/compare.h
+../src/copy.o: /usr/include/stdio.h /usr/include/_types.h
+../src/copy.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/copy.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/copy.o: /usr/include/string.h
+../src/copy.o: ../../omega_lib/include/omega/Relations.h
+../src/copy.o: ../../basic/include/basic/bool.h
+../src/copy.o: ../../omega_lib/include/omega/Relation.h
+../src/copy.o: ../../omega_lib/include/omega/RelBody.h
+../src/copy.o: ../../omega_lib/include/omega/pres_form.h
+../src/copy.o: ../../omega_lib/include/omega/pres_gen.h
+../src/copy.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/copy.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/copy.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/copy.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/copy.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/copy.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/copy.o: /usr/include/libkern/OSByteOrder.h
+../src/copy.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/copy.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/copy.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/copy.o: ../../basic/include/basic/String.h
+../src/copy.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/copy.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/copy.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/copy.o: /usr/include/float.h
+../src/copy.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/copy.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/copy.o: ../../basic/include/basic/ConstString.h
+../src/copy.o: ../../basic/include/basic/Iterator.h
+../src/copy.o: ../../basic/include/basic/Collection.h
+../src/copy.o: ../../basic/include/basic/List.h
+../src/copy.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/copy.o: ../../basic/include/basic/List.c
+../src/copy.o: ../../basic/include/basic/List.h
+../src/copy.o: ../../basic/include/basic/Tuple.h
+../src/copy.o: ../../basic/include/basic/Tuple.c
+../src/copy.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/copy.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/copy.o: ../../omega_lib/include/omega/pres_var.h
+../src/copy.o: ../../basic/include/basic/NonCoercible.h
+../src/copy.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/copy.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/copy.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/copy.o: ddtype.typ ../include/petit/ops.h ../include/petit/make.h
+../src/copy.o: ../include/petit/makeint.h ../include/petit/copy.h
+../src/copy.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/copy.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/copy.o: ../include/petit/affine.h ../include/petit/lang-interf.h
+../src/copy.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/copy.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/copy.o: ../include/petit/ddodriver.h
+../src/coverlist.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/coverlist.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/coverlist.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/coverlist.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/coverlist.o: /usr/include/sys/appleapiopts.h
+../src/coverlist.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/coverlist.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/coverlist.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/coverlist.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/coverlist.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/coverlist.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/coverlist.o: /usr/include/i386/types.h
+../src/coverlist.o: ../../basic/include/basic/bool.h
+../src/coverlist.o: ../../basic/include/basic/assert.h /usr/include/stdio.h
+../src/coverlist.o: ../../omega_lib/include/omega/Relations.h
+../src/coverlist.o: ../../omega_lib/include/omega/Relation.h
+../src/coverlist.o: ../../omega_lib/include/omega/RelBody.h
+../src/coverlist.o: ../../omega_lib/include/omega/pres_form.h
+../src/coverlist.o: ../../omega_lib/include/omega/pres_gen.h
+../src/coverlist.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/coverlist.o: ../../basic/include/basic/String.h
+../src/coverlist.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/coverlist.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/coverlist.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/coverlist.o: /usr/include/float.h /usr/include/string.h
+../src/coverlist.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/coverlist.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/coverlist.o: ../../basic/include/basic/ConstString.h
+../src/coverlist.o: ../../basic/include/basic/Iterator.h
+../src/coverlist.o: ../../basic/include/basic/Collection.h
+../src/coverlist.o: ../../basic/include/basic/List.h
+../src/coverlist.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/coverlist.o: ../../basic/include/basic/List.c
+../src/coverlist.o: ../../basic/include/basic/List.h
+../src/coverlist.o: ../../basic/include/basic/Tuple.h
+../src/coverlist.o: ../../basic/include/basic/Tuple.c
+../src/coverlist.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/coverlist.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/coverlist.o: ../../omega_lib/include/omega/pres_var.h
+../src/coverlist.o: ../../basic/include/basic/NonCoercible.h
+../src/coverlist.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/coverlist.o: ../../basic/include/basic/Bag.h
+../src/coverlist.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/coverlist.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/coverlist.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/coverlist.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/coverlist.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/coverlist.o: ../include/petit/ddodriver.h ../include/petit/debug.h
+../src/coverlist.o: ../include/petit/coverlist.h ../include/petit/kill.h
+../src/coverlist.o: ../include/petit/omega2flags.h
+../src/coverlist.o: ../include/petit/petit_args.h
+../src/ddcheck.o: /usr/include/stdio.h /usr/include/_types.h
+../src/ddcheck.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ddcheck.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/ddcheck.o: ../../basic/include/basic/bool.h
+../src/ddcheck.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/ddcheck.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/ddcheck.o: /usr/include/sys/appleapiopts.h
+../src/ddcheck.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddcheck.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddcheck.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddcheck.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddcheck.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddcheck.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddcheck.o: /usr/include/i386/types.h ../include/petit/tree.h
+../src/ddcheck.o: ../../omega_lib/include/omega/Relations.h
+../src/ddcheck.o: ../../omega_lib/include/omega/Relation.h
+../src/ddcheck.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddcheck.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddcheck.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddcheck.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddcheck.o: ../../basic/include/basic/String.h
+../src/ddcheck.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddcheck.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddcheck.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddcheck.o: /usr/include/float.h /usr/include/string.h
+../src/ddcheck.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddcheck.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddcheck.o: ../../basic/include/basic/ConstString.h
+../src/ddcheck.o: ../../basic/include/basic/Iterator.h
+../src/ddcheck.o: ../../basic/include/basic/Collection.h
+../src/ddcheck.o: ../../basic/include/basic/List.h
+../src/ddcheck.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddcheck.o: ../../basic/include/basic/List.c
+../src/ddcheck.o: ../../basic/include/basic/List.h
+../src/ddcheck.o: ../../basic/include/basic/Tuple.h
+../src/ddcheck.o: ../../basic/include/basic/Tuple.c
+../src/ddcheck.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddcheck.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddcheck.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddcheck.o: ../../basic/include/basic/NonCoercible.h
+../src/ddcheck.o: ../../basic/include/basic/Bag.h
+../src/ddcheck.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ddcheck.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/ddcheck.o: ddtype.typ ../include/petit/message.h
+../src/ddcheck.o: ../include/petit/ddcheck.h ../include/petit/make.h
+../src/ddcheck.o: ../include/petit/browsedd.h ../include/petit/motif.h
+../src/ddcheck.o: ../include/petit/petit_args.h
+../src/dddriver.o: /usr/include/stdio.h /usr/include/_types.h
+../src/dddriver.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/dddriver.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/dddriver.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/dddriver.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/dddriver.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/dddriver.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/dddriver.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/dddriver.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/dddriver.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/dddriver.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/dddriver.o: /usr/include/i386/types.h /usr/include/sys/time.h
+../src/dddriver.o: /usr/include/time.h /usr/include/machine/_limits.h
+../src/dddriver.o: /usr/include/i386/_limits.h
+../src/dddriver.o: ../../basic/include/basic/bool.h
+../src/dddriver.o: ../../basic/include/basic/assert.h ../include/petit/Exit.h
+../src/dddriver.o: ../../basic/include/basic/Exit.h
+../src/dddriver.o: ../../basic/include/basic/List.h
+../src/dddriver.o: ../../basic/include/basic/Iterator.h
+../src/dddriver.o: ../../basic/include/basic/Collection.h
+../src/dddriver.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/dddriver.o: ../../basic/include/basic/List.c
+../src/dddriver.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/dddriver.o: ../include/petit/tree.h
+../src/dddriver.o: ../../omega_lib/include/omega/Relations.h
+../src/dddriver.o: ../../omega_lib/include/omega/Relation.h
+../src/dddriver.o: ../../omega_lib/include/omega/RelBody.h
+../src/dddriver.o: ../../omega_lib/include/omega/pres_form.h
+../src/dddriver.o: ../../omega_lib/include/omega/pres_gen.h
+../src/dddriver.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/dddriver.o: ../../basic/include/basic/String.h
+../src/dddriver.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/dddriver.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/dddriver.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/dddriver.o: /usr/include/string.h
+../src/dddriver.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/dddriver.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/dddriver.o: ../../basic/include/basic/ConstString.h
+../src/dddriver.o: ../../basic/include/basic/Tuple.h
+../src/dddriver.o: ../../basic/include/basic/Tuple.c
+../src/dddriver.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/dddriver.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/dddriver.o: ../../omega_lib/include/omega/pres_var.h
+../src/dddriver.o: ../../basic/include/basic/NonCoercible.h
+../src/dddriver.o: ../../basic/include/basic/Bag.h
+../src/dddriver.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/dddriver.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/dddriver.o: ddtype.typ ../include/petit/ops.h
+../src/dddriver.o: ../include/petit/ddutil.h ../include/petit/ddomega.h
+../src/dddriver.o: ../include/petit/range.h ../include/petit/lang-interf.h
+../src/dddriver.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/dddriver.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/dddriver.o: ../include/petit/dddriver.h ../include/petit/ddepsdriver.h
+../src/dddriver.o: ../include/petit/ddnest.h ../include/petit/timeTrials.h
+../src/dddriver.o: ../include/petit/timer.h ../include/petit/debug.h
+../src/dddriver.o: ../include/petit/petit_args.h
+../src/ddepsdriver.o: ../../basic/include/basic/assert.h
+../src/ddepsdriver.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/ddepsdriver.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/ddepsdriver.o: /usr/include/machine/_types.h
+../src/ddepsdriver.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/ddepsdriver.o: /usr/include/sys/signal.h
+../src/ddepsdriver.o: /usr/include/sys/appleapiopts.h
+../src/ddepsdriver.o: /usr/include/machine/signal.h
+../src/ddepsdriver.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/ddepsdriver.o: /usr/include/machine/endian.h
+../src/ddepsdriver.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddepsdriver.o: /usr/include/stdint.h
+../src/ddepsdriver.o: /usr/include/libkern/OSByteOrder.h
+../src/ddepsdriver.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddepsdriver.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddepsdriver.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/ddepsdriver.o: ../../basic/include/basic/Exit.h
+../src/ddepsdriver.o: ../../basic/include/basic/List.h
+../src/ddepsdriver.o: ../../basic/include/basic/Iterator.h
+../src/ddepsdriver.o: ../../basic/include/basic/bool.h
+../src/ddepsdriver.o: ../../basic/include/basic/Collection.h
+../src/ddepsdriver.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddepsdriver.o: ../../basic/include/basic/List.c
+../src/ddepsdriver.o: ../../basic/include/basic/List.h
+../src/ddepsdriver.o: ../include/petit/lang-interf.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/Relations.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/Relation.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddepsdriver.o: ../../basic/include/basic/String.h
+../src/ddepsdriver.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddepsdriver.o: /usr/include/machine/limits.h
+../src/ddepsdriver.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+../src/ddepsdriver.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/ddepsdriver.o: /usr/include/string.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddepsdriver.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddepsdriver.o: ../../basic/include/basic/ConstString.h
+../src/ddepsdriver.o: ../../basic/include/basic/Tuple.h
+../src/ddepsdriver.o: ../../basic/include/basic/Tuple.c
+../src/ddepsdriver.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddepsdriver.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddepsdriver.o: ../../basic/include/basic/NonCoercible.h
+../src/ddepsdriver.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/ddepsdriver.o: ../../basic/include/basic/Bag.c
+../src/ddepsdriver.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/ddepsdriver.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/ddepsdriver.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ddepsdriver.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/ddepsdriver.o: ../include/petit/evaluate.h
+../src/ddepsdriver.o: ../include/petit/ddodriver.h ../include/petit/ddnest.h
+../src/ddepsdriver.o: ../include/petit/notedd.h ../include/petit/browse.h
+../src/ddepsdriver.o: ../include/petit/dddriver.h
+../src/ddepsdriver.o: ../include/petit/ddepsdriver.h
+../src/ddepsdriver.o: ../include/petit/ddepsilon.h
+../src/ddepsdriver.o: ../include/petit/timeTrials.h ../include/petit/timer.h
+../src/ddepsdriver.o: ../include/petit/ddInf.h ../include/petit/dd_misc.h
+../src/ddepsdriver.o: ../include/petit/depcycles.h
+../src/ddepsdriver.o: ../include/petit/petit_args.h
+../src/ddepsilon.o: /usr/include/memory.h /usr/include/string.h
+../src/ddepsilon.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/ddepsilon.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+../src/ddepsilon.o: /usr/include/i386/_types.h /usr/include/stdlib.h
+../src/ddepsilon.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/ddepsilon.o: /usr/include/sys/appleapiopts.h
+../src/ddepsilon.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddepsilon.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddepsilon.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddepsilon.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddepsilon.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddepsilon.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddepsilon.o: /usr/include/i386/types.h
+../src/ddepsilon.o: ../../basic/include/basic/bool.h
+../src/ddepsilon.o: ../../basic/include/basic/Exit.h
+../src/ddepsilon.o: ../../basic/include/basic/List.h /usr/include/stdio.h
+../src/ddepsilon.o: ../../basic/include/basic/Iterator.h
+../src/ddepsilon.o: ../../basic/include/basic/Collection.h
+../src/ddepsilon.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddepsilon.o: ../../basic/include/basic/List.c
+../src/ddepsilon.o: ../../basic/include/basic/assert.h
+../src/ddepsilon.o: ../../basic/include/basic/List.h
+../src/ddepsilon.o: ../include/petit/lang-interf.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/Relations.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/Relation.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddepsilon.o: ../../basic/include/basic/String.h
+../src/ddepsilon.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddepsilon.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddepsilon.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddepsilon.o: /usr/include/float.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddepsilon.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddepsilon.o: ../../basic/include/basic/ConstString.h
+../src/ddepsilon.o: ../../basic/include/basic/Tuple.h
+../src/ddepsilon.o: ../../basic/include/basic/Tuple.c
+../src/ddepsilon.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddepsilon.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddepsilon.o: ../../basic/include/basic/NonCoercible.h
+../src/ddepsilon.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/ddepsilon.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ddepsilon.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/ddepsilon.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/ddepsilon.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/ddepsilon.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/ddepsilon.o: ../include/petit/ddodriver.h ../include/petit/affine.h
+../src/ddepsilon.o: ../include/petit/notedd.h ../include/petit/ddepsilon.h
+../src/ddepsilon.o: ../include/petit/classify.h ../include/petit/ddInf.h
+../src/ddepsilon.o: ../include/petit/eps_print.h ../include/petit/debug.h
+../src/ddepsilon.o: ../include/petit/dddriver.h ../include/petit/petit_args.h
+../src/ddnest.o: ../include/petit/tree.h ../../basic/include/basic/bool.h
+../src/ddnest.o: ../../omega_lib/include/omega/Relations.h
+../src/ddnest.o: ../../omega_lib/include/omega/Relation.h
+../src/ddnest.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddnest.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddnest.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddnest.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/ddnest.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/ddnest.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/ddnest.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/ddnest.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/ddnest.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddnest.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddnest.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddnest.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddnest.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddnest.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddnest.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/ddnest.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddnest.o: ../../basic/include/basic/String.h
+../src/ddnest.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddnest.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddnest.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddnest.o: /usr/include/float.h /usr/include/string.h
+../src/ddnest.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddnest.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddnest.o: ../../basic/include/basic/ConstString.h
+../src/ddnest.o: ../../basic/include/basic/Iterator.h
+../src/ddnest.o: ../../basic/include/basic/Collection.h
+../src/ddnest.o: ../../basic/include/basic/List.h
+../src/ddnest.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddnest.o: ../../basic/include/basic/List.c
+../src/ddnest.o: ../../basic/include/basic/List.h
+../src/ddnest.o: ../../basic/include/basic/Tuple.h
+../src/ddnest.o: ../../basic/include/basic/Tuple.c
+../src/ddnest.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddnest.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddnest.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddnest.o: ../../basic/include/basic/NonCoercible.h
+../src/ddnest.o: ../../basic/include/basic/Bag.h
+../src/ddnest.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ddnest.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/ddnest.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ddnest.o: ../include/petit/ddnest.h
+../src/ddodriver.o: /usr/include/stdio.h /usr/include/_types.h
+../src/ddodriver.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ddodriver.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/ddodriver.o: /usr/include/string.h /usr/include/stdlib.h
+../src/ddodriver.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/ddodriver.o: /usr/include/sys/appleapiopts.h
+../src/ddodriver.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddodriver.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddodriver.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddodriver.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddodriver.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddodriver.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddodriver.o: /usr/include/i386/types.h
+../src/ddodriver.o: ../../basic/include/basic/assert.h
+../src/ddodriver.o: ../../basic/include/basic/bool.h
+../src/ddodriver.o: ../../omega_lib/include/omega/Relations.h
+../src/ddodriver.o: ../../omega_lib/include/omega/Relation.h
+../src/ddodriver.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddodriver.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddodriver.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddodriver.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddodriver.o: ../../basic/include/basic/String.h
+../src/ddodriver.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddodriver.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddodriver.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddodriver.o: /usr/include/float.h
+../src/ddodriver.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddodriver.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddodriver.o: ../../basic/include/basic/ConstString.h
+../src/ddodriver.o: ../../basic/include/basic/Iterator.h
+../src/ddodriver.o: ../../basic/include/basic/Collection.h
+../src/ddodriver.o: ../../basic/include/basic/List.h
+../src/ddodriver.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddodriver.o: ../../basic/include/basic/List.c
+../src/ddodriver.o: ../../basic/include/basic/List.h
+../src/ddodriver.o: ../../basic/include/basic/Tuple.h
+../src/ddodriver.o: ../../basic/include/basic/Tuple.c
+../src/ddodriver.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddodriver.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddodriver.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddodriver.o: ../../basic/include/basic/NonCoercible.h
+../src/ddodriver.o: ../include/petit/Zima.h ../../basic/include/basic/Bag.h
+../src/ddodriver.o: ../../basic/include/basic/Bag.c
+../src/ddodriver.o: ../include/petit/pres-interf.h
+../src/ddodriver.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/ddodriver.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/ddodriver.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/ddodriver.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ddodriver.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/ddodriver.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/ddodriver.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/ddodriver.o: /usr/include/signal.h ../include/petit/debug.h
+../src/ddodriver.o: ../include/petit/affine.h ../include/petit/dddriver.h
+../src/ddodriver.o: ../include/petit/omega2flags.h ../include/petit/ddomega.h
+../src/ddodriver.o: ../include/petit/range.h ../include/petit/coverlist.h
+../src/ddodriver.o: ../include/petit/kill.h ../include/petit/add-assert.h
+../src/ddodriver.o: ../include/petit/ddnest.h ../include/petit/vutil.h
+../src/ddodriver.o: ../include/petit/timeTrials.h ../include/petit/timer.h
+../src/ddodriver.o: ../include/petit/ddInf.h ../include/petit/notedd.h
+../src/ddodriver.o: ../include/petit/dd_misc.h ../include/petit/ddepsilon.h
+../src/ddodriver.o: ../include/petit/depcycles.h
+../src/ddodriver.o: ../include/petit/petit_args.h /usr/include/sys/time.h
+../src/ddodriver.o: /usr/include/time.h /usr/include/machine/_limits.h
+../src/ddodriver.o: ../include/petit/missing.h
+../src/ddomega.o: /usr/include/string.h /usr/include/_types.h
+../src/ddomega.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ddomega.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/ddomega.o: /usr/include/stdio.h /usr/include/stdlib.h
+../src/ddomega.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/ddomega.o: /usr/include/sys/appleapiopts.h
+../src/ddomega.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddomega.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddomega.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddomega.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddomega.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddomega.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddomega.o: /usr/include/i386/types.h ../../basic/include/basic/bool.h
+../src/ddomega.o: ../../basic/include/basic/assert.h ../include/petit/Exit.h
+../src/ddomega.o: ../../basic/include/basic/Exit.h
+../src/ddomega.o: ../../basic/include/basic/List.h
+../src/ddomega.o: ../../basic/include/basic/Iterator.h
+../src/ddomega.o: ../../basic/include/basic/Collection.h
+../src/ddomega.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddomega.o: ../../basic/include/basic/List.c
+../src/ddomega.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/ddomega.o: ../include/petit/lang-interf.h
+../src/ddomega.o: ../../omega_lib/include/omega/Relations.h
+../src/ddomega.o: ../../omega_lib/include/omega/Relation.h
+../src/ddomega.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddomega.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddomega.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddomega.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddomega.o: ../../basic/include/basic/String.h
+../src/ddomega.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddomega.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddomega.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddomega.o: /usr/include/float.h
+../src/ddomega.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddomega.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddomega.o: ../../basic/include/basic/ConstString.h
+../src/ddomega.o: ../../basic/include/basic/Tuple.h
+../src/ddomega.o: ../../basic/include/basic/Tuple.c
+../src/ddomega.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddomega.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddomega.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddomega.o: ../../basic/include/basic/NonCoercible.h
+../src/ddomega.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/ddomega.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ddomega.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/ddomega.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ddomega.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/ddomega.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/ddomega.o: ../include/petit/Zima.h ../include/petit/pres-interf.h
+../src/ddomega.o: ../include/petit/debug.h ../include/petit/ddomega.h
+../src/ddomega.o: ../include/petit/range.h ../include/petit/timeTrials.h
+../src/ddomega.o: ../include/petit/affine.h ../include/petit/petit_args.h
+../src/ddutil.o: /usr/include/stdio.h /usr/include/_types.h
+../src/ddutil.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ddutil.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/ddutil.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/ddutil.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/ddutil.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ddutil.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ddutil.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ddutil.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ddutil.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ddutil.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ddutil.o: /usr/include/i386/types.h /usr/include/string.h
+../src/ddutil.o: ../../basic/include/basic/bool.h ../include/petit/Exit.h
+../src/ddutil.o: ../../basic/include/basic/Exit.h
+../src/ddutil.o: ../../basic/include/basic/List.h
+../src/ddutil.o: ../../basic/include/basic/Iterator.h
+../src/ddutil.o: ../../basic/include/basic/Collection.h
+../src/ddutil.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ddutil.o: ../../basic/include/basic/List.c
+../src/ddutil.o: ../../basic/include/basic/assert.h
+../src/ddutil.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/ddutil.o: ../include/petit/tree.h
+../src/ddutil.o: ../../omega_lib/include/omega/Relations.h
+../src/ddutil.o: ../../omega_lib/include/omega/Relation.h
+../src/ddutil.o: ../../omega_lib/include/omega/RelBody.h
+../src/ddutil.o: ../../omega_lib/include/omega/pres_form.h
+../src/ddutil.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ddutil.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ddutil.o: ../../basic/include/basic/String.h
+../src/ddutil.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ddutil.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ddutil.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ddutil.o: /usr/include/float.h
+../src/ddutil.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ddutil.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ddutil.o: ../../basic/include/basic/ConstString.h
+../src/ddutil.o: ../../basic/include/basic/Tuple.h
+../src/ddutil.o: ../../basic/include/basic/Tuple.c
+../src/ddutil.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ddutil.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ddutil.o: ../../omega_lib/include/omega/pres_var.h
+../src/ddutil.o: ../../basic/include/basic/NonCoercible.h
+../src/ddutil.o: ../../basic/include/basic/Bag.h
+../src/ddutil.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ddutil.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/ddutil.o: ddtype.typ ../include/petit/ddutil.h ../include/petit/ops.h
+../src/ddutil.o: ../include/petit/petit_args.h
+../src/debug.o: /usr/include/stdio.h /usr/include/_types.h
+../src/debug.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/debug.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/debug.o: ../../omega_lib/include/omega/pres_gen.h
+../src/debug.o: ../../basic/include/basic/bool.h
+../src/debug.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/debug.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/debug.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/debug.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/debug.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/debug.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/debug.o: /usr/include/libkern/OSByteOrder.h
+../src/debug.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/debug.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/debug.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/debug.o: ../../basic/include/basic/String.h
+../src/debug.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/debug.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/debug.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/debug.o: /usr/include/float.h /usr/include/string.h
+../src/debug.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/debug.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/debug.o: ../../basic/include/basic/ConstString.h
+../src/debug.o: ../../basic/include/basic/Iterator.h
+../src/debug.o: ../../basic/include/basic/Collection.h
+../src/debug.o: ../../basic/include/basic/List.h
+../src/debug.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/debug.o: ../../basic/include/basic/List.c
+../src/debug.o: ../../basic/include/basic/List.h
+../src/debug.o: ../../basic/include/basic/Tuple.h
+../src/debug.o: ../../basic/include/basic/Tuple.c ../include/petit/debug.h
+../src/depcycles.o: ../../basic/include/basic/bool.h ../include/petit/Exit.h
+../src/depcycles.o: ../../basic/include/basic/Exit.h
+../src/depcycles.o: ../../basic/include/basic/List.h /usr/include/stdio.h
+../src/depcycles.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/depcycles.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+../src/depcycles.o: /usr/include/i386/_types.h
+../src/depcycles.o: ../../basic/include/basic/Iterator.h
+../src/depcycles.o: ../../basic/include/basic/Collection.h
+../src/depcycles.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/depcycles.o: ../../basic/include/basic/List.c
+../src/depcycles.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/depcycles.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/depcycles.o: /usr/include/sys/appleapiopts.h
+../src/depcycles.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/depcycles.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/depcycles.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/depcycles.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/depcycles.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/depcycles.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/depcycles.o: /usr/include/i386/types.h
+../src/depcycles.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/depcycles.o: ../include/petit/ivr.h ../include/petit/ivr-lang-interf.h
+../src/depcycles.o: ../include/petit/vutil.h ../include/petit/tree.h
+../src/depcycles.o: ../../omega_lib/include/omega/Relations.h
+../src/depcycles.o: ../../omega_lib/include/omega/Relation.h
+../src/depcycles.o: ../../omega_lib/include/omega/RelBody.h
+../src/depcycles.o: ../../omega_lib/include/omega/pres_form.h
+../src/depcycles.o: ../../omega_lib/include/omega/pres_gen.h
+../src/depcycles.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/depcycles.o: ../../basic/include/basic/String.h
+../src/depcycles.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/depcycles.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/depcycles.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/depcycles.o: /usr/include/float.h /usr/include/string.h
+../src/depcycles.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/depcycles.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/depcycles.o: ../../basic/include/basic/ConstString.h
+../src/depcycles.o: ../../basic/include/basic/Tuple.h
+../src/depcycles.o: ../../basic/include/basic/Tuple.c
+../src/depcycles.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/depcycles.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/depcycles.o: ../../omega_lib/include/omega/pres_var.h
+../src/depcycles.o: ../../basic/include/basic/NonCoercible.h
+../src/depcycles.o: ../../basic/include/basic/Bag.h
+../src/depcycles.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/depcycles.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/depcycles.o: symtype.typ ddtype.typ ../include/petit/make.h
+../src/depcycles.o: ../include/petit/compare.h ../include/petit/definitions.h
+../src/depcycles.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/depcycles.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/depcycles.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/depcycles.o: ../include/petit/ddodriver.h
+../src/depcycles.o: ../include/petit/omega2flags.h ../include/petit/debug.h
+../src/depcycles.o: ../include/petit/petit_args.h
+../src/depend_filter.o: ../include/petit/depend_filter.h
+../src/depend_filter.o: ../include/petit/tree.h
+../src/depend_filter.o: ../../basic/include/basic/bool.h
+../src/depend_filter.o: ../../omega_lib/include/omega/Relations.h
+../src/depend_filter.o: ../../omega_lib/include/omega/Relation.h
+../src/depend_filter.o: ../../omega_lib/include/omega/RelBody.h
+../src/depend_filter.o: ../../omega_lib/include/omega/pres_form.h
+../src/depend_filter.o: ../../omega_lib/include/omega/pres_gen.h
+../src/depend_filter.o: ../../basic/include/basic/assert.h
+../src/depend_filter.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/depend_filter.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/depend_filter.o: /usr/include/machine/_types.h
+../src/depend_filter.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/depend_filter.o: /usr/include/sys/signal.h
+../src/depend_filter.o: /usr/include/sys/appleapiopts.h
+../src/depend_filter.o: /usr/include/machine/signal.h
+../src/depend_filter.o: /usr/include/i386/signal.h
+../src/depend_filter.o: /usr/include/sys/resource.h
+../src/depend_filter.o: /usr/include/machine/endian.h
+../src/depend_filter.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/depend_filter.o: /usr/include/stdint.h
+../src/depend_filter.o: /usr/include/libkern/OSByteOrder.h
+../src/depend_filter.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/depend_filter.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/depend_filter.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/depend_filter.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/depend_filter.o: ../../basic/include/basic/String.h
+../src/depend_filter.o: ../../basic/include/basic/util.h
+../src/depend_filter.o: /usr/include/limits.h /usr/include/machine/limits.h
+../src/depend_filter.o: /usr/include/i386/limits.h
+../src/depend_filter.o: /usr/include/i386/_limits.h
+../src/depend_filter.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/depend_filter.o: /usr/include/string.h
+../src/depend_filter.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/depend_filter.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/depend_filter.o: ../../basic/include/basic/ConstString.h
+../src/depend_filter.o: ../../basic/include/basic/Iterator.h
+../src/depend_filter.o: ../../basic/include/basic/Collection.h
+../src/depend_filter.o: ../../basic/include/basic/List.h
+../src/depend_filter.o: ../../basic/include/basic/Link.h
+../src/depend_filter.o: /usr/include/stddef.h
+../src/depend_filter.o: ../../basic/include/basic/List.c
+../src/depend_filter.o: ../../basic/include/basic/List.h
+../src/depend_filter.o: ../../basic/include/basic/Tuple.h
+../src/depend_filter.o: ../../basic/include/basic/Tuple.c
+../src/depend_filter.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/depend_filter.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/depend_filter.o: ../../omega_lib/include/omega/pres_var.h
+../src/depend_filter.o: ../../basic/include/basic/NonCoercible.h
+../src/depend_filter.o: ../../basic/include/basic/Bag.h
+../src/depend_filter.o: ../../basic/include/basic/Bag.c
+../src/depend_filter.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/depend_filter.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/depend_filter.o: ../include/petit/ops.h
+../src/eps_print.o: /usr/include/memory.h /usr/include/string.h
+../src/eps_print.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/eps_print.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+../src/eps_print.o: /usr/include/i386/_types.h /usr/include/stdlib.h
+../src/eps_print.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/eps_print.o: /usr/include/sys/appleapiopts.h
+../src/eps_print.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/eps_print.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/eps_print.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/eps_print.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/eps_print.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/eps_print.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/eps_print.o: /usr/include/i386/types.h ../include/petit/lang-interf.h
+../src/eps_print.o: ../../basic/include/basic/bool.h
+../src/eps_print.o: ../../omega_lib/include/omega/Relations.h
+../src/eps_print.o: ../../omega_lib/include/omega/Relation.h
+../src/eps_print.o: ../../omega_lib/include/omega/RelBody.h
+../src/eps_print.o: ../../omega_lib/include/omega/pres_form.h
+../src/eps_print.o: ../../omega_lib/include/omega/pres_gen.h
+../src/eps_print.o: ../../basic/include/basic/assert.h /usr/include/stdio.h
+../src/eps_print.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/eps_print.o: ../../basic/include/basic/String.h
+../src/eps_print.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/eps_print.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/eps_print.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/eps_print.o: /usr/include/float.h
+../src/eps_print.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/eps_print.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/eps_print.o: ../../basic/include/basic/ConstString.h
+../src/eps_print.o: ../../basic/include/basic/Iterator.h
+../src/eps_print.o: ../../basic/include/basic/Collection.h
+../src/eps_print.o: ../../basic/include/basic/List.h
+../src/eps_print.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/eps_print.o: ../../basic/include/basic/List.c
+../src/eps_print.o: ../../basic/include/basic/List.h
+../src/eps_print.o: ../../basic/include/basic/Tuple.h
+../src/eps_print.o: ../../basic/include/basic/Tuple.c
+../src/eps_print.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/eps_print.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/eps_print.o: ../../omega_lib/include/omega/pres_var.h
+../src/eps_print.o: ../../basic/include/basic/NonCoercible.h
+../src/eps_print.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/eps_print.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/eps_print.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/eps_print.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/eps_print.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/eps_print.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/eps_print.o: ../include/petit/ddodriver.h ../include/petit/affine.h
+../src/eps_print.o: ../include/petit/notedd.h ../include/petit/ddepsilon.h
+../src/eps_print.o: ../include/petit/classify.h ../include/petit/ddInf.h
+../src/evaluate.o: /usr/include/stdio.h /usr/include/_types.h
+../src/evaluate.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/evaluate.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/evaluate.o: ../../basic/include/basic/bool.h ../include/petit/tree.h
+../src/evaluate.o: ../../omega_lib/include/omega/Relations.h
+../src/evaluate.o: ../../omega_lib/include/omega/Relation.h
+../src/evaluate.o: ../../omega_lib/include/omega/RelBody.h
+../src/evaluate.o: ../../omega_lib/include/omega/pres_form.h
+../src/evaluate.o: ../../omega_lib/include/omega/pres_gen.h
+../src/evaluate.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/evaluate.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/evaluate.o: /usr/include/sys/appleapiopts.h
+../src/evaluate.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/evaluate.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/evaluate.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/evaluate.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/evaluate.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/evaluate.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/evaluate.o: /usr/include/i386/types.h
+../src/evaluate.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/evaluate.o: ../../basic/include/basic/String.h
+../src/evaluate.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/evaluate.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/evaluate.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/evaluate.o: /usr/include/float.h /usr/include/string.h
+../src/evaluate.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/evaluate.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/evaluate.o: ../../basic/include/basic/ConstString.h
+../src/evaluate.o: ../../basic/include/basic/Iterator.h
+../src/evaluate.o: ../../basic/include/basic/Collection.h
+../src/evaluate.o: ../../basic/include/basic/List.h
+../src/evaluate.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/evaluate.o: ../../basic/include/basic/List.c
+../src/evaluate.o: ../../basic/include/basic/List.h
+../src/evaluate.o: ../../basic/include/basic/Tuple.h
+../src/evaluate.o: ../../basic/include/basic/Tuple.c
+../src/evaluate.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/evaluate.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/evaluate.o: ../../omega_lib/include/omega/pres_var.h
+../src/evaluate.o: ../../basic/include/basic/NonCoercible.h
+../src/evaluate.o: ../../basic/include/basic/Bag.h
+../src/evaluate.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/evaluate.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/evaluate.o: ddtype.typ ../include/petit/evaluate.h
+../src/f2p.o: /usr/include/stdio.h /usr/include/_types.h
+../src/f2p.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/f2p.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/f2p.o: /usr/include/unistd.h /usr/include/sys/unistd.h
+../src/f2p.o: /usr/include/sys/select.h /usr/include/sys/appleapiopts.h
+../src/f2p.o: /usr/include/sys/types.h /usr/include/machine/types.h
+../src/f2p.o: /usr/include/i386/types.h /usr/include/machine/endian.h
+../src/f2p.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/f2p.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/f2p.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/signal.h
+../src/f2p.o: /usr/include/sys/signal.h /usr/include/machine/signal.h
+../src/f2p.o: /usr/include/i386/signal.h /usr/include/sys/time.h
+../src/f2p.o: /usr/include/time.h /usr/include/machine/_limits.h
+../src/f2p.o: /usr/include/i386/_limits.h /usr/include/sys/wait.h
+../src/f2p.o: /usr/include/sys/resource.h ../include/petit/definitions.h
+../src/f2p.o: ../../basic/include/basic/bool.h ../include/petit/petit_args.h
+../src/f2p.o: ../include/petit/dddir.h ../include/petit/Exit.h
+../src/f2p.o: ../../basic/include/basic/Exit.h
+../src/f2p.o: ../../basic/include/basic/List.h
+../src/f2p.o: ../../basic/include/basic/Iterator.h
+../src/f2p.o: ../../basic/include/basic/Collection.h
+../src/f2p.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/f2p.o: ../../basic/include/basic/List.c
+../src/f2p.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/f2p.o: /usr/include/alloca.h ../../basic/include/basic/List.h
+../src/hpp.o: ../../omega_lib/include/omega/Relations.h
+../src/hpp.o: ../../basic/include/basic/bool.h
+../src/hpp.o: ../../omega_lib/include/omega/Relation.h
+../src/hpp.o: ../../omega_lib/include/omega/RelBody.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_form.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_gen.h
+../src/hpp.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/hpp.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/hpp.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/hpp.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/hpp.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/hpp.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/hpp.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/hpp.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/hpp.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/hpp.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/hpp.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/hpp.o: /usr/include/stdio.h
+../src/hpp.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/hpp.o: ../../basic/include/basic/String.h
+../src/hpp.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/hpp.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/hpp.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/hpp.o: /usr/include/float.h /usr/include/string.h
+../src/hpp.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/hpp.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/hpp.o: ../../basic/include/basic/ConstString.h
+../src/hpp.o: ../../basic/include/basic/Iterator.h
+../src/hpp.o: ../../basic/include/basic/Collection.h
+../src/hpp.o: ../../basic/include/basic/List.h
+../src/hpp.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/hpp.o: ../../basic/include/basic/List.c
+../src/hpp.o: ../../basic/include/basic/List.h
+../src/hpp.o: ../../basic/include/basic/Tuple.h
+../src/hpp.o: ../../basic/include/basic/Tuple.c
+../src/hpp.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_var.h
+../src/hpp.o: ../../basic/include/basic/NonCoercible.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_tree.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_logic.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_quant.h
+../src/hpp.o: ../../omega_lib/include/omega/pres_decl.h
+../src/hpp.o: ../../basic/include/basic/Section.h
+../src/hpp.o: ../../basic/include/basic/Section.c
+../src/hpp.o: ../include/petit/depend_filter.h ../include/petit/tree.h
+../src/hpp.o: ../../basic/include/basic/Bag.h ../../basic/include/basic/Bag.c
+../src/hpp.o: ../include/petit/dddir.h ../include/petit/classes.h op.typ
+../src/hpp.o: exprtype.typ symtype.typ ddtype.typ ../include/petit/browse.h
+../src/hpp.o: ../include/petit/print.h ../include/petit/lang-interf.h
+../src/hpp.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/hpp.o: ../include/petit/browsedd.h ../include/petit/evaluate.h
+../src/hpp.o: ../include/petit/ddodriver.h ../include/petit/debug.h
+../src/hpp.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/hpp.o: /usr/include/signal.h ../include/petit/Zima.h
+../src/hpp.o: ../include/petit/pres-interf.h ../include/petit/omega2flags.h
+../src/hpp.o: ../include/petit/hpp.h ../../code_gen/include/code_gen/spmd.h
+../src/hpp.o: ../../code_gen/include/code_gen/code_gen.h
+../src/hpp.o: ../../code_gen/include/code_gen/CG.h
+../src/hpp.o: ../../code_gen/include/code_gen/elim.h
+../src/hpp.o: ../../code_gen/include/code_gen/CG_outputRepr.h
+../src/hpp.o: ../../code_gen/include/code_gen/CG_outputBuilder.h
+../src/hpp.o: ../include/petit/motif.h
+../src/ivr-lang-interf.o: /usr/include/stdio.h /usr/include/_types.h
+../src/ivr-lang-interf.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ivr-lang-interf.o: /usr/include/machine/_types.h
+../src/ivr-lang-interf.o: /usr/include/i386/_types.h /usr/include/string.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/bool.h
+../src/ivr-lang-interf.o: ../include/petit/ivr-lang-interf.h
+../src/ivr-lang-interf.o: ../include/petit/vutil.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/assert.h
+../src/ivr-lang-interf.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/ivr-lang-interf.o: /usr/include/sys/signal.h
+../src/ivr-lang-interf.o: /usr/include/sys/appleapiopts.h
+../src/ivr-lang-interf.o: /usr/include/machine/signal.h
+../src/ivr-lang-interf.o: /usr/include/i386/signal.h
+../src/ivr-lang-interf.o: /usr/include/sys/resource.h
+../src/ivr-lang-interf.o: /usr/include/machine/endian.h
+../src/ivr-lang-interf.o: /usr/include/i386/endian.h
+../src/ivr-lang-interf.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/ivr-lang-interf.o: /usr/include/libkern/OSByteOrder.h
+../src/ivr-lang-interf.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/ivr-lang-interf.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/ivr-lang-interf.o: /usr/include/i386/types.h ../include/petit/Exit.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Exit.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/List.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Iterator.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Collection.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Link.h
+../src/ivr-lang-interf.o: /usr/include/stddef.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/List.c
+../src/ivr-lang-interf.o: ../../basic/include/basic/List.h
+../src/ivr-lang-interf.o: /usr/include/signal.h ../include/petit/tree.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/Relations.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/Relation.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/RelBody.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/pres_form.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/String.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/util.h
+../src/ivr-lang-interf.o: /usr/include/limits.h /usr/include/machine/limits.h
+../src/ivr-lang-interf.o: /usr/include/i386/limits.h
+../src/ivr-lang-interf.o: /usr/include/i386/_limits.h
+../src/ivr-lang-interf.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ivr-lang-interf.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/ConstString.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Tuple.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Tuple.c
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ivr-lang-interf.o: ../../omega_lib/include/omega/pres_var.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/NonCoercible.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Bag.h
+../src/ivr-lang-interf.o: ../../basic/include/basic/Bag.c
+../src/ivr-lang-interf.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/ivr-lang-interf.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/ivr-lang-interf.o: ../include/petit/make.h ../include/petit/compare.h
+../src/ivr-lang-interf.o: ../include/petit/definitions.h
+../src/ivr-lang-interf.o: ../include/petit/lang-interf.h
+../src/ivr-lang-interf.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ivr-lang-interf.o: ../include/petit/browsedd.h
+../src/ivr-lang-interf.o: ../include/petit/print.h
+../src/ivr-lang-interf.o: ../include/petit/evaluate.h
+../src/ivr-lang-interf.o: ../include/petit/ddodriver.h ../include/petit/ssa.h
+../src/ivr-lang-interf.o: ../include/petit/ivr.h
+../src/ivr.o: /usr/include/stdio.h /usr/include/_types.h
+../src/ivr.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/ivr.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/ivr.o: ../../basic/include/basic/bool.h
+../src/ivr.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/ivr.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/ivr.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/ivr.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/ivr.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/ivr.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/ivr.o: /usr/include/libkern/OSByteOrder.h
+../src/ivr.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/ivr.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/ivr.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ivr.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ivr.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ivr.o: /usr/include/float.h ../include/petit/lang-interf.h
+../src/ivr.o: ../../omega_lib/include/omega/Relations.h
+../src/ivr.o: ../../omega_lib/include/omega/Relation.h
+../src/ivr.o: ../../omega_lib/include/omega/RelBody.h
+../src/ivr.o: ../../omega_lib/include/omega/pres_form.h
+../src/ivr.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ivr.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ivr.o: ../../basic/include/basic/String.h /usr/include/string.h
+../src/ivr.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ivr.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ivr.o: ../../basic/include/basic/ConstString.h
+../src/ivr.o: ../../basic/include/basic/Iterator.h
+../src/ivr.o: ../../basic/include/basic/Collection.h
+../src/ivr.o: ../../basic/include/basic/List.h
+../src/ivr.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ivr.o: ../../basic/include/basic/List.c
+../src/ivr.o: ../../basic/include/basic/List.h
+../src/ivr.o: ../../basic/include/basic/Tuple.h
+../src/ivr.o: ../../basic/include/basic/Tuple.c
+../src/ivr.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ivr.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ivr.o: ../../omega_lib/include/omega/pres_var.h
+../src/ivr.o: ../../basic/include/basic/NonCoercible.h
+../src/ivr.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/ivr.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/ivr.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/ivr.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/ivr.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/ivr.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/ivr.o: ../include/petit/ivr.h ../include/petit/ivr-lang-interf.h
+../src/ivr.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/ivr.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/ivr.o: ../include/petit/make.h ../include/petit/compare.h
+../src/ivr.o: ../include/petit/definitions.h ../include/petit/debug.h
+../src/ivr.o: ../include/petit/petit_args.h
+../src/kill.o: /usr/include/stdio.h /usr/include/_types.h
+../src/kill.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/kill.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/kill.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/kill.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/kill.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/kill.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/kill.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/kill.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/kill.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/kill.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/kill.o: ../../basic/include/basic/bool.h
+../src/kill.o: ../../basic/include/basic/assert.h
+../src/kill.o: ../../omega_lib/include/omega/Relations.h
+../src/kill.o: ../../omega_lib/include/omega/Relation.h
+../src/kill.o: ../../omega_lib/include/omega/RelBody.h
+../src/kill.o: ../../omega_lib/include/omega/pres_form.h
+../src/kill.o: ../../omega_lib/include/omega/pres_gen.h
+../src/kill.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/kill.o: ../../basic/include/basic/String.h
+../src/kill.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/kill.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/kill.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/kill.o: /usr/include/float.h /usr/include/string.h
+../src/kill.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/kill.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/kill.o: ../../basic/include/basic/ConstString.h
+../src/kill.o: ../../basic/include/basic/Iterator.h
+../src/kill.o: ../../basic/include/basic/Collection.h
+../src/kill.o: ../../basic/include/basic/List.h
+../src/kill.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/kill.o: ../../basic/include/basic/List.c
+../src/kill.o: ../../basic/include/basic/List.h
+../src/kill.o: ../../basic/include/basic/Tuple.h
+../src/kill.o: ../../basic/include/basic/Tuple.c
+../src/kill.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/kill.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/kill.o: ../../omega_lib/include/omega/pres_var.h
+../src/kill.o: ../../basic/include/basic/NonCoercible.h
+../src/kill.o: ../../omega_lib/include/omega/pres_tree.h
+../src/kill.o: ../../omega_lib/include/omega/pres_logic.h
+../src/kill.o: ../../omega_lib/include/omega/pres_quant.h
+../src/kill.o: ../../omega_lib/include/omega/pres_decl.h
+../src/kill.o: ../../basic/include/basic/Section.h
+../src/kill.o: ../../basic/include/basic/Section.c
+../src/kill.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/kill.o: ../../basic/include/basic/Bag.h
+../src/kill.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/kill.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/kill.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/kill.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/kill.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/kill.o: ../include/petit/Zima.h ../include/petit/pres-interf.h
+../src/kill.o: ../include/petit/debug.h ../include/petit/kill.h
+../src/kill.o: ../include/petit/coverlist.h ../include/petit/timeTrials.h
+../src/kill.o: ../include/petit/omega2flags.h ../include/petit/petit_args.h
+../src/lang-interf.o: /usr/include/stdio.h /usr/include/_types.h
+../src/lang-interf.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/lang-interf.o: /usr/include/machine/_types.h
+../src/lang-interf.o: /usr/include/i386/_types.h /usr/include/stdlib.h
+../src/lang-interf.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/lang-interf.o: /usr/include/sys/appleapiopts.h
+../src/lang-interf.o: /usr/include/machine/signal.h
+../src/lang-interf.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/lang-interf.o: /usr/include/machine/endian.h
+../src/lang-interf.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/lang-interf.o: /usr/include/stdint.h
+../src/lang-interf.o: /usr/include/libkern/OSByteOrder.h
+../src/lang-interf.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/lang-interf.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/lang-interf.o: /usr/include/i386/types.h
+../src/lang-interf.o: ../../basic/include/basic/bool.h
+../src/lang-interf.o: ../../basic/include/basic/assert.h
+../src/lang-interf.o: ../../omega_lib/include/omega/Relations.h
+../src/lang-interf.o: ../../omega_lib/include/omega/Relation.h
+../src/lang-interf.o: ../../omega_lib/include/omega/RelBody.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_form.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_gen.h
+../src/lang-interf.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/lang-interf.o: ../../basic/include/basic/String.h
+../src/lang-interf.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/lang-interf.o: /usr/include/machine/limits.h
+../src/lang-interf.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+../src/lang-interf.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/lang-interf.o: /usr/include/string.h
+../src/lang-interf.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/lang-interf.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/lang-interf.o: ../../basic/include/basic/ConstString.h
+../src/lang-interf.o: ../../basic/include/basic/Iterator.h
+../src/lang-interf.o: ../../basic/include/basic/Collection.h
+../src/lang-interf.o: ../../basic/include/basic/List.h
+../src/lang-interf.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/lang-interf.o: ../../basic/include/basic/List.c
+../src/lang-interf.o: ../../basic/include/basic/List.h
+../src/lang-interf.o: ../../basic/include/basic/Tuple.h
+../src/lang-interf.o: ../../basic/include/basic/Tuple.c
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_var.h
+../src/lang-interf.o: ../../basic/include/basic/NonCoercible.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_tree.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_logic.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_quant.h
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_decl.h
+../src/lang-interf.o: ../../basic/include/basic/Section.h
+../src/lang-interf.o: ../../basic/include/basic/Section.c
+../src/lang-interf.o: ../../omega_lib/include/omega/pres_conj.h
+../src/lang-interf.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/lang-interf.o: ../../basic/include/basic/Bag.h
+../src/lang-interf.o: ../../basic/include/basic/Bag.c
+../src/lang-interf.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/lang-interf.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/lang-interf.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/lang-interf.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/lang-interf.o: ../include/petit/evaluate.h
+../src/lang-interf.o: ../include/petit/ddodriver.h
+../src/lang-interf.o: ../include/petit/ivr-lang-interf.h
+../src/lang-interf.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/lang-interf.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/lang-interf.o: ../include/petit/make.h ../include/petit/compare.h
+../src/lang-interf.o: ../include/petit/definitions.h
+../src/lang-interf.o: ../include/petit/timeTrials.h ../include/petit/debug.h
+../src/lang-interf.o: ../include/petit/affine.h
+../src/lang-interf.o: ../include/petit/pres-interf.h
+../src/langmenu.o: /usr/include/stdio.h /usr/include/_types.h
+../src/langmenu.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/langmenu.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/langmenu.o: ../include/petit/motif.h ../include/petit/tree.h
+../src/langmenu.o: ../../basic/include/basic/bool.h
+../src/langmenu.o: ../../omega_lib/include/omega/Relations.h
+../src/langmenu.o: ../../omega_lib/include/omega/Relation.h
+../src/langmenu.o: ../../omega_lib/include/omega/RelBody.h
+../src/langmenu.o: ../../omega_lib/include/omega/pres_form.h
+../src/langmenu.o: ../../omega_lib/include/omega/pres_gen.h
+../src/langmenu.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/langmenu.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/langmenu.o: /usr/include/sys/appleapiopts.h
+../src/langmenu.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/langmenu.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/langmenu.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/langmenu.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/langmenu.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/langmenu.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/langmenu.o: /usr/include/i386/types.h
+../src/langmenu.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/langmenu.o: ../../basic/include/basic/String.h
+../src/langmenu.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/langmenu.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/langmenu.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/langmenu.o: /usr/include/float.h /usr/include/string.h
+../src/langmenu.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/langmenu.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/langmenu.o: ../../basic/include/basic/ConstString.h
+../src/langmenu.o: ../../basic/include/basic/Iterator.h
+../src/langmenu.o: ../../basic/include/basic/Collection.h
+../src/langmenu.o: ../../basic/include/basic/List.h
+../src/langmenu.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/langmenu.o: ../../basic/include/basic/List.c
+../src/langmenu.o: ../../basic/include/basic/List.h
+../src/langmenu.o: ../../basic/include/basic/Tuple.h
+../src/langmenu.o: ../../basic/include/basic/Tuple.c
+../src/langmenu.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/langmenu.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/langmenu.o: ../../omega_lib/include/omega/pres_var.h
+../src/langmenu.o: ../../basic/include/basic/NonCoercible.h
+../src/langmenu.o: ../../basic/include/basic/Bag.h
+../src/langmenu.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/langmenu.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/langmenu.o: ddtype.typ ../include/petit/dddriver.h
+../src/langmenu.o: ../include/petit/ddutil.h ../include/petit/language.h
+../src/langmenu.o: ../include/petit/langmenu.h ../include/petit/message.h
+../src/langmenu.o: ../include/petit/print.h ../include/petit/Exit.h
+../src/langmenu.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/language.o: ../include/petit/language.h
+../src/link.o: ../include/petit/tree.h ../../basic/include/basic/bool.h
+../src/link.o: ../../omega_lib/include/omega/Relations.h
+../src/link.o: ../../omega_lib/include/omega/Relation.h
+../src/link.o: ../../omega_lib/include/omega/RelBody.h
+../src/link.o: ../../omega_lib/include/omega/pres_form.h
+../src/link.o: ../../omega_lib/include/omega/pres_gen.h
+../src/link.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/link.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/link.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/link.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/link.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/link.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/link.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/link.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/link.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/link.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/link.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/link.o: /usr/include/stdio.h
+../src/link.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/link.o: ../../basic/include/basic/String.h
+../src/link.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/link.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/link.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/link.o: /usr/include/float.h /usr/include/string.h
+../src/link.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/link.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/link.o: ../../basic/include/basic/ConstString.h
+../src/link.o: ../../basic/include/basic/Iterator.h
+../src/link.o: ../../basic/include/basic/Collection.h
+../src/link.o: ../../basic/include/basic/List.h
+../src/link.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/link.o: ../../basic/include/basic/List.c
+../src/link.o: ../../basic/include/basic/List.h
+../src/link.o: ../../basic/include/basic/Tuple.h
+../src/link.o: ../../basic/include/basic/Tuple.c
+../src/link.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/link.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/link.o: ../../omega_lib/include/omega/pres_var.h
+../src/link.o: ../../basic/include/basic/NonCoercible.h
+../src/link.o: ../../basic/include/basic/Bag.h
+../src/link.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/link.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/link.o: ddtype.typ ../include/petit/link.h
+../src/linkio.o: /usr/include/stdio.h /usr/include/_types.h
+../src/linkio.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/linkio.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/linkio.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/linkio.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/linkio.o: /usr/include/sys/appleapiopts.h
+../src/linkio.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/linkio.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/linkio.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/linkio.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/linkio.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/linkio.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/linkio.o: /usr/include/i386/types.h ../include/petit/tree.h
+../src/linkio.o: ../../basic/include/basic/bool.h
+../src/linkio.o: ../../omega_lib/include/omega/Relations.h
+../src/linkio.o: ../../omega_lib/include/omega/Relation.h
+../src/linkio.o: ../../omega_lib/include/omega/RelBody.h
+../src/linkio.o: ../../omega_lib/include/omega/pres_form.h
+../src/linkio.o: ../../omega_lib/include/omega/pres_gen.h
+../src/linkio.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/linkio.o: ../../basic/include/basic/String.h
+../src/linkio.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/linkio.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/linkio.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/linkio.o: /usr/include/float.h /usr/include/string.h
+../src/linkio.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/linkio.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/linkio.o: ../../basic/include/basic/ConstString.h
+../src/linkio.o: ../../basic/include/basic/Iterator.h
+../src/linkio.o: ../../basic/include/basic/Collection.h
+../src/linkio.o: ../../basic/include/basic/List.h
+../src/linkio.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/linkio.o: ../../basic/include/basic/List.c
+../src/linkio.o: ../../basic/include/basic/List.h
+../src/linkio.o: ../../basic/include/basic/Tuple.h
+../src/linkio.o: ../../basic/include/basic/Tuple.c
+../src/linkio.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/linkio.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/linkio.o: ../../omega_lib/include/omega/pres_var.h
+../src/linkio.o: ../../basic/include/basic/NonCoercible.h
+../src/linkio.o: ../../basic/include/basic/Bag.h
+../src/linkio.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/linkio.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/linkio.o: ddtype.typ ../include/petit/ops.h ../include/petit/linkio.h
+../src/make.o: /usr/include/stdio.h /usr/include/_types.h
+../src/make.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/make.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/make.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/make.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/make.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/make.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/make.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/make.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/make.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/make.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/make.o: ../../basic/include/basic/bool.h ../include/petit/Exit.h
+../src/make.o: ../../basic/include/basic/Exit.h
+../src/make.o: ../../basic/include/basic/List.h
+../src/make.o: ../../basic/include/basic/Iterator.h
+../src/make.o: ../../basic/include/basic/Collection.h
+../src/make.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/make.o: ../../basic/include/basic/List.c
+../src/make.o: ../../basic/include/basic/assert.h
+../src/make.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/make.o: ../include/petit/tree.h
+../src/make.o: ../../omega_lib/include/omega/Relations.h
+../src/make.o: ../../omega_lib/include/omega/Relation.h
+../src/make.o: ../../omega_lib/include/omega/RelBody.h
+../src/make.o: ../../omega_lib/include/omega/pres_form.h
+../src/make.o: ../../omega_lib/include/omega/pres_gen.h
+../src/make.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/make.o: ../../basic/include/basic/String.h
+../src/make.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/make.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/make.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/make.o: /usr/include/float.h /usr/include/string.h
+../src/make.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/make.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/make.o: ../../basic/include/basic/ConstString.h
+../src/make.o: ../../basic/include/basic/Tuple.h
+../src/make.o: ../../basic/include/basic/Tuple.c
+../src/make.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/make.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/make.o: ../../omega_lib/include/omega/pres_var.h
+../src/make.o: ../../basic/include/basic/NonCoercible.h
+../src/make.o: ../../basic/include/basic/Bag.h
+../src/make.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/make.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/make.o: ddtype.typ ../include/petit/ops.h ../include/petit/vutil.h
+../src/make.o: ../include/petit/make.h ../include/petit/affine.h
+../src/make.o: ../include/petit/lang-interf.h ../include/petit/ddutil.h
+../src/make.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/make.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/message.o: /usr/include/string.h /usr/include/_types.h
+../src/message.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/message.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/message.o: ../include/petit/message.h ../include/petit/print.h
+../src/message.o: /usr/include/stdio.h ../include/petit/tree.h
+../src/message.o: ../../basic/include/basic/bool.h
+../src/message.o: ../../omega_lib/include/omega/Relations.h
+../src/message.o: ../../omega_lib/include/omega/Relation.h
+../src/message.o: ../../omega_lib/include/omega/RelBody.h
+../src/message.o: ../../omega_lib/include/omega/pres_form.h
+../src/message.o: ../../omega_lib/include/omega/pres_gen.h
+../src/message.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/message.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/message.o: /usr/include/sys/appleapiopts.h
+../src/message.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/message.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/message.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/message.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/message.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/message.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/message.o: /usr/include/i386/types.h
+../src/message.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/message.o: ../../basic/include/basic/String.h
+../src/message.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/message.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/message.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/message.o: /usr/include/float.h
+../src/message.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/message.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/message.o: ../../basic/include/basic/ConstString.h
+../src/message.o: ../../basic/include/basic/Iterator.h
+../src/message.o: ../../basic/include/basic/Collection.h
+../src/message.o: ../../basic/include/basic/List.h
+../src/message.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/message.o: ../../basic/include/basic/List.c
+../src/message.o: ../../basic/include/basic/List.h
+../src/message.o: ../../basic/include/basic/Tuple.h
+../src/message.o: ../../basic/include/basic/Tuple.c
+../src/message.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/message.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/message.o: ../../omega_lib/include/omega/pres_var.h
+../src/message.o: ../../basic/include/basic/NonCoercible.h
+../src/message.o: ../../basic/include/basic/Bag.h
+../src/message.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/message.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/message.o: ddtype.typ ../include/petit/debug.h ../include/petit/Exit.h
+../src/message.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/message.o: ../include/petit/motif.h
+../src/motif.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/motif.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/motif.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/motif.o: /usr/include/i386/_types.h ../include/petit/ops.h
+../src/motif.o: ../include/petit/language.h ../include/petit/print.h
+../src/motif.o: /usr/include/stdio.h ../include/petit/tree.h
+../src/motif.o: ../../basic/include/basic/bool.h
+../src/motif.o: ../../omega_lib/include/omega/Relations.h
+../src/motif.o: ../../omega_lib/include/omega/Relation.h
+../src/motif.o: ../../omega_lib/include/omega/RelBody.h
+../src/motif.o: ../../omega_lib/include/omega/pres_form.h
+../src/motif.o: ../../omega_lib/include/omega/pres_gen.h
+../src/motif.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/motif.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/motif.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/motif.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/motif.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/motif.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/motif.o: /usr/include/libkern/OSByteOrder.h
+../src/motif.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/motif.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/motif.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/motif.o: ../../basic/include/basic/String.h
+../src/motif.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/motif.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/motif.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/motif.o: /usr/include/float.h /usr/include/string.h
+../src/motif.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/motif.o: ../../basic/include/basic/ConstString.h
+../src/motif.o: ../../basic/include/basic/Iterator.h
+../src/motif.o: ../../basic/include/basic/Collection.h
+../src/motif.o: ../../basic/include/basic/List.h
+../src/motif.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/motif.o: ../../basic/include/basic/List.c
+../src/motif.o: ../../basic/include/basic/List.h
+../src/motif.o: ../../basic/include/basic/Tuple.h
+../src/motif.o: ../../basic/include/basic/Tuple.c
+../src/motif.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/motif.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/motif.o: ../../omega_lib/include/omega/pres_var.h
+../src/motif.o: ../../basic/include/basic/NonCoercible.h
+../src/motif.o: ../../basic/include/basic/Bag.h
+../src/motif.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/motif.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/motif.o: ddtype.typ ../include/petit/browse.h
+../src/motif.o: ../include/petit/browsedd.h ../include/petit/message.h
+../src/motif.o: ../include/petit/motif.h ../include/petit/mouse.h
+../src/motif.o: ../include/petit/omega.xbm
+../src/mouse.o: ../../basic/include/basic/bool.h /usr/include/stdio.h
+../src/mouse.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/mouse.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+../src/mouse.o: /usr/include/i386/_types.h ../include/petit/mouse.h
+../src/mouse.o: ../include/petit/tree.h
+../src/mouse.o: ../../omega_lib/include/omega/Relations.h
+../src/mouse.o: ../../omega_lib/include/omega/Relation.h
+../src/mouse.o: ../../omega_lib/include/omega/RelBody.h
+../src/mouse.o: ../../omega_lib/include/omega/pres_form.h
+../src/mouse.o: ../../omega_lib/include/omega/pres_gen.h
+../src/mouse.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/mouse.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/mouse.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/mouse.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/mouse.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/mouse.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/mouse.o: /usr/include/libkern/OSByteOrder.h
+../src/mouse.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/mouse.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/mouse.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/mouse.o: ../../basic/include/basic/String.h
+../src/mouse.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/mouse.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/mouse.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/mouse.o: /usr/include/float.h /usr/include/string.h
+../src/mouse.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/mouse.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/mouse.o: ../../basic/include/basic/ConstString.h
+../src/mouse.o: ../../basic/include/basic/Iterator.h
+../src/mouse.o: ../../basic/include/basic/Collection.h
+../src/mouse.o: ../../basic/include/basic/List.h
+../src/mouse.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/mouse.o: ../../basic/include/basic/List.c
+../src/mouse.o: ../../basic/include/basic/List.h
+../src/mouse.o: ../../basic/include/basic/Tuple.h
+../src/mouse.o: ../../basic/include/basic/Tuple.c
+../src/mouse.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/mouse.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/mouse.o: ../../omega_lib/include/omega/pres_var.h
+../src/mouse.o: ../../basic/include/basic/NonCoercible.h
+../src/mouse.o: ../../basic/include/basic/Bag.h
+../src/mouse.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/mouse.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/mouse.o: ddtype.typ ../include/petit/depend_filter.h
+../src/mouse.o: ../include/petit/ops.h ../include/petit/browse.h
+../src/mouse.o: ../include/petit/browsedd.h ../include/petit/ddcheck.h
+../src/mouse.o: ../include/petit/motif.h ../include/petit/message.h
+../src/mouse.o: ../include/petit/add-assert.h ../include/petit/lang-interf.h
+../src/mouse.o: ../include/petit/ddutil.h ../include/petit/print.h
+../src/mouse.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/notedd.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/notedd.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/notedd.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/notedd.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/notedd.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/notedd.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/notedd.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/notedd.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/notedd.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/notedd.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/notedd.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/notedd.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/notedd.o: ../../omega_lib/include/omega/Relations.h
+../src/notedd.o: ../../basic/include/basic/bool.h
+../src/notedd.o: ../../omega_lib/include/omega/Relation.h
+../src/notedd.o: ../../omega_lib/include/omega/RelBody.h
+../src/notedd.o: ../../omega_lib/include/omega/pres_form.h
+../src/notedd.o: ../../omega_lib/include/omega/pres_gen.h
+../src/notedd.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/notedd.o: ../../basic/include/basic/String.h
+../src/notedd.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/notedd.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/notedd.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/notedd.o: /usr/include/float.h /usr/include/string.h
+../src/notedd.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/notedd.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/notedd.o: ../../basic/include/basic/ConstString.h
+../src/notedd.o: ../../basic/include/basic/Iterator.h
+../src/notedd.o: ../../basic/include/basic/Collection.h
+../src/notedd.o: ../../basic/include/basic/List.h
+../src/notedd.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/notedd.o: ../../basic/include/basic/List.c
+../src/notedd.o: ../../basic/include/basic/List.h
+../src/notedd.o: ../../basic/include/basic/Tuple.h
+../src/notedd.o: ../../basic/include/basic/Tuple.c
+../src/notedd.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/notedd.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/notedd.o: ../../omega_lib/include/omega/pres_var.h
+../src/notedd.o: ../../basic/include/basic/NonCoercible.h
+../src/notedd.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/notedd.o: ../../basic/include/basic/Bag.h
+../src/notedd.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/notedd.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/notedd.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/notedd.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/notedd.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/notedd.o: ../include/petit/notedd.h ../include/petit/debug.h
+../src/notedd.o: ../include/petit/petit_args.h
+../src/parse_and_analyse.o: ../../basic/include/basic/bool.h
+../src/parse_and_analyse.o: ../include/petit/petit_args.h
+../src/parse_and_analyse.o: ../include/petit/dddir.h
+../src/parse_and_analyse.o: ../include/petit/lang-interf.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/Relations.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/Relation.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/RelBody.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/pres_form.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/pres_gen.h
+../src/parse_and_analyse.o: ../../basic/include/basic/assert.h
+../src/parse_and_analyse.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/parse_and_analyse.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/parse_and_analyse.o: /usr/include/machine/_types.h
+../src/parse_and_analyse.o: /usr/include/i386/_types.h
+../src/parse_and_analyse.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/parse_and_analyse.o: /usr/include/sys/appleapiopts.h
+../src/parse_and_analyse.o: /usr/include/machine/signal.h
+../src/parse_and_analyse.o: /usr/include/i386/signal.h
+../src/parse_and_analyse.o: /usr/include/sys/resource.h
+../src/parse_and_analyse.o: /usr/include/machine/endian.h
+../src/parse_and_analyse.o: /usr/include/i386/endian.h
+../src/parse_and_analyse.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/parse_and_analyse.o: /usr/include/libkern/OSByteOrder.h
+../src/parse_and_analyse.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/parse_and_analyse.o: /usr/include/alloca.h
+../src/parse_and_analyse.o: /usr/include/machine/types.h
+../src/parse_and_analyse.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/parse_and_analyse.o: ../../basic/include/basic/String.h
+../src/parse_and_analyse.o: ../../basic/include/basic/util.h
+../src/parse_and_analyse.o: /usr/include/limits.h
+../src/parse_and_analyse.o: /usr/include/machine/limits.h
+../src/parse_and_analyse.o: /usr/include/i386/limits.h
+../src/parse_and_analyse.o: /usr/include/i386/_limits.h
+../src/parse_and_analyse.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/parse_and_analyse.o: /usr/include/string.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/parse_and_analyse.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/parse_and_analyse.o: ../../basic/include/basic/ConstString.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Iterator.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Collection.h
+../src/parse_and_analyse.o: ../../basic/include/basic/List.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Link.h
+../src/parse_and_analyse.o: /usr/include/stddef.h
+../src/parse_and_analyse.o: ../../basic/include/basic/List.c
+../src/parse_and_analyse.o: ../../basic/include/basic/List.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Tuple.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Tuple.c
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/parse_and_analyse.o: ../../omega_lib/include/omega/pres_var.h
+../src/parse_and_analyse.o: ../../basic/include/basic/NonCoercible.h
+../src/parse_and_analyse.o: ../include/petit/tree.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Bag.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Bag.c
+../src/parse_and_analyse.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/parse_and_analyse.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/parse_and_analyse.o: ../include/petit/ddutil.h
+../src/parse_and_analyse.o: ../include/petit/browsedd.h
+../src/parse_and_analyse.o: ../include/petit/print.h
+../src/parse_and_analyse.o: ../include/petit/evaluate.h
+../src/parse_and_analyse.o: ../include/petit/ddodriver.h
+../src/parse_and_analyse.o: ../include/petit/dd_misc.h
+../src/parse_and_analyse.o: ../include/petit/debug.h
+../src/parse_and_analyse.o: ../include/petit/parse_and_analyse.h
+../src/parse_and_analyse.o: ../include/petit/petity.h ../include/petit/ssa.h
+../src/parse_and_analyse.o: ../include/petit/linkio.h
+../src/parse_and_analyse.o: ../include/petit/affine.h
+../src/parse_and_analyse.o: ../include/petit/pres-interf.h
+../src/parse_and_analyse.o: ../include/petit/arrayExpand.h
+../src/parse_and_analyse.o: ../include/petit/find_affine.h
+../src/parse_and_analyse.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/parse_and_analyse.o: ../../basic/include/basic/Exit.h
+../src/parse_and_analyse.o: /usr/include/signal.h ../include/petit/dddriver.h
+../src/parse_and_analyse.o: ../include/petit/depcycles.h
+../src/parse_and_analyse.o: ../include/petit/message.h
+../src/parse_and_analyse.o: ../include/petit/motif.h ../include/petit/make.h
+../src/petit.o: /usr/include/stdio.h /usr/include/_types.h
+../src/petit.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/petit.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/petit.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/petit.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/petit.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/petit.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/petit.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/petit.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/petit.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/petit.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/petit.o: ../../uniform/include/uniform/uniform.h
+../src/petit.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/petit.o: ../../basic/include/basic/List.h
+../src/petit.o: ../../basic/include/basic/Iterator.h
+../src/petit.o: ../../basic/include/basic/bool.h
+../src/petit.o: ../../basic/include/basic/Collection.h
+../src/petit.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/petit.o: ../../basic/include/basic/List.c
+../src/petit.o: ../../basic/include/basic/assert.h
+../src/petit.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/petit.o: ../include/petit/petit_args.h ../include/petit/dddir.h
+../src/petit.o: ../include/petit/debug.h ../include/petit/f2p.h
+../src/petit.o: ../include/petit/depend_filter.h ../include/petit/tree.h
+../src/petit.o: ../../omega_lib/include/omega/Relations.h
+../src/petit.o: ../../omega_lib/include/omega/Relation.h
+../src/petit.o: ../../omega_lib/include/omega/RelBody.h
+../src/petit.o: ../../omega_lib/include/omega/pres_form.h
+../src/petit.o: ../../omega_lib/include/omega/pres_gen.h
+../src/petit.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/petit.o: ../../basic/include/basic/String.h
+../src/petit.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/petit.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/petit.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/petit.o: /usr/include/float.h /usr/include/string.h
+../src/petit.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/petit.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/petit.o: ../../basic/include/basic/ConstString.h
+../src/petit.o: ../../basic/include/basic/Tuple.h
+../src/petit.o: ../../basic/include/basic/Tuple.c
+../src/petit.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/petit.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/petit.o: ../../omega_lib/include/omega/pres_var.h
+../src/petit.o: ../../basic/include/basic/NonCoercible.h
+../src/petit.o: ../../basic/include/basic/Bag.h
+../src/petit.o: ../../basic/include/basic/Bag.c ../include/petit/classes.h
+../src/petit.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/petit.o: ../include/petit/parse_and_analyse.h
+../src/petit.o: ../include/petit/build_stmt_rel.h
+../src/petit.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/petit.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/petit.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/petit.o: ../include/petit/ddodriver.h ../include/petit/motif.h
+../src/petit.o: ../include/petit/message.h ../include/petit/browse.h
+../src/petit.o: ../include/petit/system.h ../include/petit/langmenu.h
+../src/petit.o: ../include/petit/timer.h ../include/petit/hpp.h
+../src/petit.o: ../include/petit/affine.h
+../src/petit_args.o: /usr/include/stdio.h /usr/include/_types.h
+../src/petit_args.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/petit_args.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/petit_args.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/petit_args.o: /usr/include/sys/signal.h
+../src/petit_args.o: /usr/include/sys/appleapiopts.h
+../src/petit_args.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/petit_args.o: /usr/include/sys/resource.h
+../src/petit_args.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/petit_args.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/petit_args.o: /usr/include/libkern/OSByteOrder.h
+../src/petit_args.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/petit_args.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/petit_args.o: /usr/include/i386/types.h
+../src/petit_args.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/petit_args.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/petit_args.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/petit_args.o: /usr/include/float.h ../../basic/include/basic/assert.h
+../src/petit_args.o: ../../basic/include/basic/bool.h
+../src/petit_args.o: ../../code_gen/include/code_gen/spmd.h
+../src/petit_args.o: ../../omega_lib/include/omega/Relations.h
+../src/petit_args.o: ../../omega_lib/include/omega/Relation.h
+../src/petit_args.o: ../../omega_lib/include/omega/RelBody.h
+../src/petit_args.o: ../../omega_lib/include/omega/pres_form.h
+../src/petit_args.o: ../../omega_lib/include/omega/pres_gen.h
+../src/petit_args.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/petit_args.o: ../../basic/include/basic/String.h /usr/include/string.h
+../src/petit_args.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/petit_args.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/petit_args.o: ../../basic/include/basic/ConstString.h
+../src/petit_args.o: ../../basic/include/basic/Iterator.h
+../src/petit_args.o: ../../basic/include/basic/Collection.h
+../src/petit_args.o: ../../basic/include/basic/List.h
+../src/petit_args.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/petit_args.o: ../../basic/include/basic/List.c
+../src/petit_args.o: ../../basic/include/basic/List.h
+../src/petit_args.o: ../../basic/include/basic/Tuple.h
+../src/petit_args.o: ../../basic/include/basic/Tuple.c
+../src/petit_args.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/petit_args.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/petit_args.o: ../../omega_lib/include/omega/pres_var.h
+../src/petit_args.o: ../../basic/include/basic/NonCoercible.h
+../src/petit_args.o: ../../code_gen/include/code_gen/code_gen.h
+../src/petit_args.o: ../../code_gen/include/code_gen/CG.h
+../src/petit_args.o: ../../code_gen/include/code_gen/elim.h
+../src/petit_args.o: ../../code_gen/include/code_gen/CG_outputRepr.h
+../src/petit_args.o: ../../code_gen/include/code_gen/CG_outputBuilder.h
+../src/petit_args.o: ../include/petit/dddriver.h ../include/petit/ddodriver.h
+../src/petit_args.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/petit_args.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/petit_args.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/petit_args.o: symtype.typ ddtype.typ ../include/petit/petit_args.h
+../src/petit_args.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/petit_args.o: /usr/include/signal.h ../include/petit/build_stmt_rel.h
+../src/petit_args.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/petit_args.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/petit_args.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/petit_args.o: ../include/petit/definitions.h ../include/petit/motif.h
+../src/petit_args.o: ../include/petit/browse.h
+../src/pres-interf.o: ../../basic/include/basic/String.h
+../src/pres-interf.o: ../../basic/include/basic/bool.h
+../src/pres-interf.o: ../../basic/include/basic/util.h /usr/include/stdio.h
+../src/pres-interf.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/pres-interf.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+../src/pres-interf.o: /usr/include/i386/_types.h /usr/include/limits.h
+../src/pres-interf.o: /usr/include/machine/limits.h
+../src/pres-interf.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+../src/pres-interf.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/pres-interf.o: ../../basic/include/basic/assert.h
+../src/pres-interf.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/pres-interf.o: /usr/include/sys/signal.h
+../src/pres-interf.o: /usr/include/sys/appleapiopts.h
+../src/pres-interf.o: /usr/include/machine/signal.h
+../src/pres-interf.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/pres-interf.o: /usr/include/machine/endian.h
+../src/pres-interf.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/pres-interf.o: /usr/include/stdint.h
+../src/pres-interf.o: /usr/include/libkern/OSByteOrder.h
+../src/pres-interf.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/pres-interf.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/pres-interf.o: /usr/include/i386/types.h /usr/include/string.h
+../src/pres-interf.o: ../include/petit/find_affine.h
+../src/pres-interf.o: ../include/petit/affine.h
+../src/pres-interf.o: ../include/petit/lang-interf.h
+../src/pres-interf.o: ../../omega_lib/include/omega/Relations.h
+../src/pres-interf.o: ../../omega_lib/include/omega/Relation.h
+../src/pres-interf.o: ../../omega_lib/include/omega/RelBody.h
+../src/pres-interf.o: ../../omega_lib/include/omega/pres_form.h
+../src/pres-interf.o: ../../omega_lib/include/omega/pres_gen.h
+../src/pres-interf.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/pres-interf.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/pres-interf.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/pres-interf.o: ../../basic/include/basic/ConstString.h
+../src/pres-interf.o: ../../basic/include/basic/Iterator.h
+../src/pres-interf.o: ../../basic/include/basic/Collection.h
+../src/pres-interf.o: ../../basic/include/basic/List.h
+../src/pres-interf.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/pres-interf.o: ../../basic/include/basic/List.c
+../src/pres-interf.o: ../../basic/include/basic/List.h
+../src/pres-interf.o: ../../basic/include/basic/Tuple.h
+../src/pres-interf.o: ../../basic/include/basic/Tuple.c
+../src/pres-interf.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/pres-interf.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/pres-interf.o: ../../omega_lib/include/omega/pres_var.h
+../src/pres-interf.o: ../../basic/include/basic/NonCoercible.h
+../src/pres-interf.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/pres-interf.o: ../../basic/include/basic/Bag.c
+../src/pres-interf.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/pres-interf.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/pres-interf.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/pres-interf.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/pres-interf.o: ../include/petit/evaluate.h
+../src/pres-interf.o: ../include/petit/ddodriver.h
+../src/pres-interf.o: ../include/petit/pres-interf.h
+../src/print.o: /usr/include/stdio.h /usr/include/_types.h
+../src/print.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/print.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/print.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/print.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/print.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/print.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/print.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/print.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/print.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/print.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/print.o: /usr/include/string.h ../../basic/include/basic/bool.h
+../src/print.o: ../../basic/include/basic/assert.h ../include/petit/Exit.h
+../src/print.o: ../../basic/include/basic/Exit.h
+../src/print.o: ../../basic/include/basic/List.h
+../src/print.o: ../../basic/include/basic/Iterator.h
+../src/print.o: ../../basic/include/basic/Collection.h
+../src/print.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/print.o: ../../basic/include/basic/List.c
+../src/print.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/print.o: ../include/petit/motif.h ../include/petit/tree.h
+../src/print.o: ../../omega_lib/include/omega/Relations.h
+../src/print.o: ../../omega_lib/include/omega/Relation.h
+../src/print.o: ../../omega_lib/include/omega/RelBody.h
+../src/print.o: ../../omega_lib/include/omega/pres_form.h
+../src/print.o: ../../omega_lib/include/omega/pres_gen.h
+../src/print.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/print.o: ../../basic/include/basic/String.h
+../src/print.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/print.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/print.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/print.o: /usr/include/float.h
+../src/print.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/print.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/print.o: ../../basic/include/basic/ConstString.h
+../src/print.o: ../../basic/include/basic/Tuple.h
+../src/print.o: ../../basic/include/basic/Tuple.c
+../src/print.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/print.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/print.o: ../../omega_lib/include/omega/pres_var.h
+../src/print.o: ../../basic/include/basic/NonCoercible.h
+../src/print.o: ../../basic/include/basic/Bag.h
+../src/print.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/print.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/print.o: ddtype.typ ../include/petit/ops.h ../include/petit/print.h
+../src/print.o: ../include/petit/debug.h ../include/petit/language.h
+../src/print.o: ../include/petit/makeint.h ../include/petit/affine.h
+../src/print.o: ../include/petit/lang-interf.h ../include/petit/ddutil.h
+../src/print.o: ../include/petit/browsedd.h ../include/petit/evaluate.h
+../src/print.o: ../include/petit/ddodriver.h ../include/petit/ssa.h
+../src/print.o: ../include/petit/petit_args.h ../include/petit/message.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/bool.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/petit_args.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/dddir.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/lang-interf.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/Relations.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/Relation.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/RelBody.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/pres_form.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/pres_gen.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/assert.h
+../src/rtrt-parse_and_analyze.o: /usr/include/stdlib.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/cdefs.h
+../src/rtrt-parse_and_analyze.o: /usr/include/_types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/_types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/machine/_types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/_types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/wait.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/signal.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/appleapiopts.h
+../src/rtrt-parse_and_analyze.o: /usr/include/machine/signal.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/signal.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/resource.h
+../src/rtrt-parse_and_analyze.o: /usr/include/machine/endian.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/endian.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/_endian.h
+../src/rtrt-parse_and_analyze.o: /usr/include/stdint.h
+../src/rtrt-parse_and_analyze.o: /usr/include/libkern/OSByteOrder.h
+../src/rtrt-parse_and_analyze.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/rtrt-parse_and_analyze.o: /usr/include/alloca.h
+../src/rtrt-parse_and_analyze.o: /usr/include/machine/types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/types.h
+../src/rtrt-parse_and_analyze.o: /usr/include/stdio.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/String.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/util.h
+../src/rtrt-parse_and_analyze.o: /usr/include/limits.h
+../src/rtrt-parse_and_analyze.o: /usr/include/machine/limits.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/limits.h
+../src/rtrt-parse_and_analyze.o: /usr/include/i386/_limits.h
+../src/rtrt-parse_and_analyze.o: /usr/include/sys/syslimits.h
+../src/rtrt-parse_and_analyze.o: /usr/include/float.h /usr/include/string.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/rtrt-parse_and_analyze.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/ConstString.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Iterator.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Collection.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/List.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Link.h
+../src/rtrt-parse_and_analyze.o: /usr/include/stddef.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/List.c
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/List.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Tuple.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Tuple.c
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/rtrt-parse_and_analyze.o: ../../omega_lib/include/omega/pres_var.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/NonCoercible.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/tree.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Bag.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Bag.c
+../src/rtrt-parse_and_analyze.o: ../include/petit/classes.h op.typ
+../src/rtrt-parse_and_analyze.o: exprtype.typ symtype.typ ddtype.typ
+../src/rtrt-parse_and_analyze.o: ../include/petit/ops.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/ddutil.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/browsedd.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/print.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/evaluate.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/ddodriver.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/dd_misc.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/debug.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/parse_and_analyse.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/petity.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/ssa.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/linkio.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/affine.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/pres-interf.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/arrayExpand.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/find_affine.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/vutil.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/Exit.h
+../src/rtrt-parse_and_analyze.o: ../../basic/include/basic/Exit.h
+../src/rtrt-parse_and_analyze.o: /usr/include/signal.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/dddriver.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/depcycles.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/message.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/motif.h
+../src/rtrt-parse_and_analyze.o: ../include/petit/make.h
+../src/rtrt-petit.o: /usr/include/stdio.h /usr/include/_types.h
+../src/rtrt-petit.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/rtrt-petit.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/rtrt-petit.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../src/rtrt-petit.o: /usr/include/sys/signal.h
+../src/rtrt-petit.o: /usr/include/sys/appleapiopts.h
+../src/rtrt-petit.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/rtrt-petit.o: /usr/include/sys/resource.h
+../src/rtrt-petit.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/rtrt-petit.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/rtrt-petit.o: /usr/include/libkern/OSByteOrder.h
+../src/rtrt-petit.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/rtrt-petit.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/rtrt-petit.o: /usr/include/i386/types.h
+../src/rtrt-petit.o: ../../uniform/include/uniform/uniform.h
+../src/rtrt-petit.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/rtrt-petit.o: ../../basic/include/basic/List.h
+../src/rtrt-petit.o: ../../basic/include/basic/Iterator.h
+../src/rtrt-petit.o: ../../basic/include/basic/bool.h
+../src/rtrt-petit.o: ../../basic/include/basic/Collection.h
+../src/rtrt-petit.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/rtrt-petit.o: ../../basic/include/basic/List.c
+../src/rtrt-petit.o: ../../basic/include/basic/assert.h
+../src/rtrt-petit.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/rtrt-petit.o: ../include/petit/petit_args.h ../include/petit/dddir.h
+../src/rtrt-petit.o: ../include/petit/debug.h ../include/petit/f2p.h
+../src/rtrt-petit.o: ../include/petit/depend_filter.h ../include/petit/tree.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/Relations.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/Relation.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/RelBody.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/pres_form.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/pres_gen.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/rtrt-petit.o: ../../basic/include/basic/String.h
+../src/rtrt-petit.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/rtrt-petit.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/rtrt-petit.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/rtrt-petit.o: /usr/include/float.h /usr/include/string.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/rtrt-petit.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/rtrt-petit.o: ../../basic/include/basic/ConstString.h
+../src/rtrt-petit.o: ../../basic/include/basic/Tuple.h
+../src/rtrt-petit.o: ../../basic/include/basic/Tuple.c
+../src/rtrt-petit.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/rtrt-petit.o: ../../omega_lib/include/omega/pres_var.h
+../src/rtrt-petit.o: ../../basic/include/basic/NonCoercible.h
+../src/rtrt-petit.o: ../../basic/include/basic/Bag.h
+../src/rtrt-petit.o: ../../basic/include/basic/Bag.c
+../src/rtrt-petit.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/rtrt-petit.o: symtype.typ ddtype.typ
+../src/rtrt-petit.o: ../include/petit/parse_and_analyse.h
+../src/rtrt-petit.o: ../include/petit/build_stmt_rel.h
+../src/rtrt-petit.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/rtrt-petit.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/rtrt-petit.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/rtrt-petit.o: ../include/petit/ddodriver.h ../include/petit/motif.h
+../src/rtrt-petit.o: ../include/petit/message.h ../include/petit/browse.h
+../src/rtrt-petit.o: ../include/petit/system.h ../include/petit/langmenu.h
+../src/rtrt-petit.o: ../include/petit/timer.h ../include/petit/hpp.h
+../src/rtrt-petit.o: ../include/petit/affine.h
+../src/ssa.o: ../../basic/include/basic/bool.h ../include/petit/ssa.h
+../src/ssa.o: ../include/petit/tree.h
+../src/ssa.o: ../../omega_lib/include/omega/Relations.h
+../src/ssa.o: ../../omega_lib/include/omega/Relation.h
+../src/ssa.o: ../../omega_lib/include/omega/RelBody.h
+../src/ssa.o: ../../omega_lib/include/omega/pres_form.h
+../src/ssa.o: ../../omega_lib/include/omega/pres_gen.h
+../src/ssa.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/ssa.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/ssa.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/ssa.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/ssa.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/ssa.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/ssa.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/ssa.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/ssa.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/ssa.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/ssa.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/ssa.o: /usr/include/stdio.h
+../src/ssa.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/ssa.o: ../../basic/include/basic/String.h
+../src/ssa.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/ssa.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/ssa.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/ssa.o: /usr/include/float.h /usr/include/string.h
+../src/ssa.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/ssa.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/ssa.o: ../../basic/include/basic/ConstString.h
+../src/ssa.o: ../../basic/include/basic/Iterator.h
+../src/ssa.o: ../../basic/include/basic/Collection.h
+../src/ssa.o: ../../basic/include/basic/List.h
+../src/ssa.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/ssa.o: ../../basic/include/basic/List.c
+../src/ssa.o: ../../basic/include/basic/List.h
+../src/ssa.o: ../../basic/include/basic/Tuple.h
+../src/ssa.o: ../../basic/include/basic/Tuple.c
+../src/ssa.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/ssa.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/ssa.o: ../../omega_lib/include/omega/pres_var.h
+../src/ssa.o: ../../basic/include/basic/NonCoercible.h
+../src/ssa.o: ../../basic/include/basic/Bag.h ../../basic/include/basic/Bag.c
+../src/ssa.o: ../include/petit/dddir.h ../include/petit/classes.h op.typ
+../src/ssa.o: exprtype.typ symtype.typ ddtype.typ ../include/petit/ivr.h
+../src/ssa.o: ../include/petit/ivr-lang-interf.h ../include/petit/vutil.h
+../src/ssa.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/ssa.o: /usr/include/signal.h ../include/petit/make.h
+../src/ssa.o: ../include/petit/compare.h ../include/petit/definitions.h
+../src/ssa.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/ssa.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/ssa.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/ssa.o: ../include/petit/ddodriver.h ../include/petit/debug.h
+../src/ssa.o: ../include/petit/petit_args.h
+../src/system.o: /usr/include/stdio.h /usr/include/_types.h
+../src/system.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/system.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/system.o: ../include/petit/dddriver.h ../../basic/include/basic/bool.h
+../src/system.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/system.o: ../../basic/include/basic/List.h
+../src/system.o: ../../basic/include/basic/Iterator.h
+../src/system.o: ../../basic/include/basic/Collection.h
+../src/system.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/system.o: ../../basic/include/basic/List.c
+../src/system.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/system.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/system.o: /usr/include/sys/appleapiopts.h
+../src/system.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/system.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/system.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/system.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/system.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/system.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/system.o: /usr/include/i386/types.h ../../basic/include/basic/List.h
+../src/system.o: /usr/include/signal.h ../include/petit/print.h
+../src/system.o: ../include/petit/tree.h
+../src/system.o: ../../omega_lib/include/omega/Relations.h
+../src/system.o: ../../omega_lib/include/omega/Relation.h
+../src/system.o: ../../omega_lib/include/omega/RelBody.h
+../src/system.o: ../../omega_lib/include/omega/pres_form.h
+../src/system.o: ../../omega_lib/include/omega/pres_gen.h
+../src/system.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/system.o: ../../basic/include/basic/String.h
+../src/system.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/system.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/system.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/system.o: /usr/include/float.h /usr/include/string.h
+../src/system.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/system.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/system.o: ../../basic/include/basic/ConstString.h
+../src/system.o: ../../basic/include/basic/Tuple.h
+../src/system.o: ../../basic/include/basic/Tuple.c
+../src/system.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/system.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/system.o: ../../omega_lib/include/omega/pres_var.h
+../src/system.o: ../../basic/include/basic/NonCoercible.h
+../src/system.o: ../../basic/include/basic/Bag.h
+../src/system.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/system.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/system.o: ddtype.typ ../include/petit/message.h
+../src/system.o: ../include/petit/debug.h ../include/petit/arrayExpand.h
+../src/system.o: ../include/petit/petit_args.h ../include/petit/motif.h
+../src/system.o: ../include/petit/system.h
+../src/timeTrials.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/timeTrials.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/timeTrials.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/timeTrials.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/timeTrials.o: /usr/include/sys/appleapiopts.h
+../src/timeTrials.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/timeTrials.o: /usr/include/sys/resource.h
+../src/timeTrials.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/timeTrials.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/timeTrials.o: /usr/include/libkern/OSByteOrder.h
+../src/timeTrials.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/timeTrials.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/timeTrials.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/timeTrials.o: /usr/include/string.h ../../basic/include/basic/bool.h
+../src/timeTrials.o: ../include/petit/Exit.h ../../basic/include/basic/Exit.h
+../src/timeTrials.o: ../../basic/include/basic/List.h
+../src/timeTrials.o: ../../basic/include/basic/Iterator.h
+../src/timeTrials.o: ../../basic/include/basic/Collection.h
+../src/timeTrials.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/timeTrials.o: ../../basic/include/basic/List.c
+../src/timeTrials.o: ../../basic/include/basic/assert.h
+../src/timeTrials.o: ../../basic/include/basic/List.h /usr/include/signal.h
+../src/timeTrials.o: ../include/petit/missing.h ../include/petit/timeTrials.h
+../src/timeTrials.o: ../include/petit/lang-interf.h
+../src/timeTrials.o: ../../omega_lib/include/omega/Relations.h
+../src/timeTrials.o: ../../omega_lib/include/omega/Relation.h
+../src/timeTrials.o: ../../omega_lib/include/omega/RelBody.h
+../src/timeTrials.o: ../../omega_lib/include/omega/pres_form.h
+../src/timeTrials.o: ../../omega_lib/include/omega/pres_gen.h
+../src/timeTrials.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/timeTrials.o: ../../basic/include/basic/String.h
+../src/timeTrials.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/timeTrials.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/timeTrials.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/timeTrials.o: /usr/include/float.h
+../src/timeTrials.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/timeTrials.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/timeTrials.o: ../../basic/include/basic/ConstString.h
+../src/timeTrials.o: ../../basic/include/basic/Tuple.h
+../src/timeTrials.o: ../../basic/include/basic/Tuple.c
+../src/timeTrials.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/timeTrials.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/timeTrials.o: ../../omega_lib/include/omega/pres_var.h
+../src/timeTrials.o: ../../basic/include/basic/NonCoercible.h
+../src/timeTrials.o: ../include/petit/tree.h ../../basic/include/basic/Bag.h
+../src/timeTrials.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/timeTrials.o: ../include/petit/classes.h op.typ exprtype.typ
+../src/timeTrials.o: symtype.typ ddtype.typ ../include/petit/ops.h
+../src/timeTrials.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/timeTrials.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/timeTrials.o: ../include/petit/ddodriver.h ../include/petit/debug.h
+../src/timeTrials.o: ../include/petit/petit_args.h
+../src/timer.o: /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+../src/timer.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+../src/timer.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+../src/timer.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/timer.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/timer.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/timer.o: /usr/include/libkern/OSByteOrder.h
+../src/timer.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/timer.o: /usr/include/sys/time.h /usr/include/time.h
+../src/timer.o: /usr/include/_types.h /usr/include/machine/_limits.h
+../src/timer.o: /usr/include/i386/_limits.h /usr/include/sys/resource.h
+../src/tree.o: ../include/petit/tree.h ../../basic/include/basic/bool.h
+../src/tree.o: ../../omega_lib/include/omega/Relations.h
+../src/tree.o: ../../omega_lib/include/omega/Relation.h
+../src/tree.o: ../../omega_lib/include/omega/RelBody.h
+../src/tree.o: ../../omega_lib/include/omega/pres_form.h
+../src/tree.o: ../../omega_lib/include/omega/pres_gen.h
+../src/tree.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/tree.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/tree.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/tree.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/tree.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/tree.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/tree.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/tree.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/tree.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/tree.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/tree.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/tree.o: /usr/include/stdio.h
+../src/tree.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/tree.o: ../../basic/include/basic/String.h
+../src/tree.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/tree.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/tree.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/tree.o: /usr/include/float.h /usr/include/string.h
+../src/tree.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/tree.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/tree.o: ../../basic/include/basic/ConstString.h
+../src/tree.o: ../../basic/include/basic/Iterator.h
+../src/tree.o: ../../basic/include/basic/Collection.h
+../src/tree.o: ../../basic/include/basic/List.h
+../src/tree.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/tree.o: ../../basic/include/basic/List.c
+../src/tree.o: ../../basic/include/basic/List.h
+../src/tree.o: ../../basic/include/basic/Tuple.h
+../src/tree.o: ../../basic/include/basic/Tuple.c
+../src/tree.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/tree.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/tree.o: ../../omega_lib/include/omega/pres_var.h
+../src/tree.o: ../../basic/include/basic/NonCoercible.h
+../src/tree.o: ../../basic/include/basic/Bag.h
+../src/tree.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/tree.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/tree.o: ddtype.typ ../include/petit/pres-interf.h
+../src/tree.o: ../include/petit/lang-interf.h ../include/petit/ops.h
+../src/tree.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+../src/tree.o: ../include/petit/print.h ../include/petit/evaluate.h
+../src/tree.o: ../include/petit/ddodriver.h op.val exprtype.val symtype.val
+../src/tree.o: ddtype.val
+../src/uniform-interf.o: ../include/petit/uniform-interf.h
+../src/uniform-interf.o: ../include/petit/tree.h
+../src/uniform-interf.o: ../../basic/include/basic/bool.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/Relations.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/Relation.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/RelBody.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/pres_form.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/pres_gen.h
+../src/uniform-interf.o: ../../basic/include/basic/assert.h
+../src/uniform-interf.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../src/uniform-interf.o: /usr/include/_types.h /usr/include/sys/_types.h
+../src/uniform-interf.o: /usr/include/machine/_types.h
+../src/uniform-interf.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/uniform-interf.o: /usr/include/sys/signal.h
+../src/uniform-interf.o: /usr/include/sys/appleapiopts.h
+../src/uniform-interf.o: /usr/include/machine/signal.h
+../src/uniform-interf.o: /usr/include/i386/signal.h
+../src/uniform-interf.o: /usr/include/sys/resource.h
+../src/uniform-interf.o: /usr/include/machine/endian.h
+../src/uniform-interf.o: /usr/include/i386/endian.h
+../src/uniform-interf.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/uniform-interf.o: /usr/include/libkern/OSByteOrder.h
+../src/uniform-interf.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/uniform-interf.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/uniform-interf.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/uniform-interf.o: ../../basic/include/basic/String.h
+../src/uniform-interf.o: ../../basic/include/basic/util.h
+../src/uniform-interf.o: /usr/include/limits.h /usr/include/machine/limits.h
+../src/uniform-interf.o: /usr/include/i386/limits.h
+../src/uniform-interf.o: /usr/include/i386/_limits.h
+../src/uniform-interf.o: /usr/include/sys/syslimits.h /usr/include/float.h
+../src/uniform-interf.o: /usr/include/string.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/uniform-interf.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/uniform-interf.o: ../../basic/include/basic/ConstString.h
+../src/uniform-interf.o: ../../basic/include/basic/Iterator.h
+../src/uniform-interf.o: ../../basic/include/basic/Collection.h
+../src/uniform-interf.o: ../../basic/include/basic/List.h
+../src/uniform-interf.o: ../../basic/include/basic/Link.h
+../src/uniform-interf.o: /usr/include/stddef.h
+../src/uniform-interf.o: ../../basic/include/basic/List.c
+../src/uniform-interf.o: ../../basic/include/basic/List.h
+../src/uniform-interf.o: ../../basic/include/basic/Tuple.h
+../src/uniform-interf.o: ../../basic/include/basic/Tuple.c
+../src/uniform-interf.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/uniform-interf.o: ../../omega_lib/include/omega/pres_var.h
+../src/uniform-interf.o: ../../basic/include/basic/NonCoercible.h
+../src/uniform-interf.o: ../../basic/include/basic/Bag.h
+../src/uniform-interf.o: ../../basic/include/basic/Bag.c
+../src/uniform-interf.o: ../include/petit/dddir.h ../include/petit/classes.h
+../src/uniform-interf.o: op.typ exprtype.typ symtype.typ ddtype.typ
+../src/uniform-interf.o: ../include/petit/affine.h
+../src/uniform-interf.o: ../include/petit/lang-interf.h
+../src/uniform-interf.o: ../include/petit/ops.h ../include/petit/ddutil.h
+../src/uniform-interf.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/uniform-interf.o: ../include/petit/evaluate.h
+../src/uniform-interf.o: ../include/petit/ddodriver.h
+../src/uniform-interf.o: ../include/petit/ddnest.h ../include/petit/Zima.h
+../src/uniform-interf.o: ../include/petit/pres-interf.h
+../src/vutil.o: /usr/include/stdio.h /usr/include/_types.h
+../src/vutil.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/vutil.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/vutil.o: /usr/include/string.h ../../basic/include/basic/bool.h
+../src/vutil.o: ../include/petit/pres-interf.h
+../src/vutil.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/vutil.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/vutil.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../src/vutil.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+../src/vutil.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../src/vutil.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+../src/vutil.o: /usr/include/libkern/OSByteOrder.h
+../src/vutil.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+../src/vutil.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../src/vutil.o: ../../basic/include/basic/String.h
+../src/vutil.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/vutil.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/vutil.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/vutil.o: /usr/include/float.h
+../src/vutil.o: ../../omega_lib/include/omega/Relations.h
+../src/vutil.o: ../../omega_lib/include/omega/Relation.h
+../src/vutil.o: ../../omega_lib/include/omega/RelBody.h
+../src/vutil.o: ../../omega_lib/include/omega/pres_form.h
+../src/vutil.o: ../../omega_lib/include/omega/pres_gen.h
+../src/vutil.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/vutil.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/vutil.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/vutil.o: ../../basic/include/basic/ConstString.h
+../src/vutil.o: ../../basic/include/basic/Iterator.h
+../src/vutil.o: ../../basic/include/basic/Collection.h
+../src/vutil.o: ../../basic/include/basic/List.h
+../src/vutil.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/vutil.o: ../../basic/include/basic/List.c
+../src/vutil.o: ../../basic/include/basic/List.h
+../src/vutil.o: ../../basic/include/basic/Tuple.h
+../src/vutil.o: ../../basic/include/basic/Tuple.c
+../src/vutil.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/vutil.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/vutil.o: ../../omega_lib/include/omega/pres_var.h
+../src/vutil.o: ../../basic/include/basic/NonCoercible.h
+../src/vutil.o: ../include/petit/lang-interf.h ../include/petit/tree.h
+../src/vutil.o: ../../basic/include/basic/Bag.h
+../src/vutil.o: ../../basic/include/basic/Bag.c ../include/petit/dddir.h
+../src/vutil.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ
+../src/vutil.o: ddtype.typ ../include/petit/ops.h ../include/petit/ddutil.h
+../src/vutil.o: ../include/petit/browsedd.h ../include/petit/print.h
+../src/vutil.o: ../include/petit/evaluate.h ../include/petit/ddodriver.h
+../src/vutil.o: ../include/petit/vutil.h ../include/petit/Exit.h
+../src/vutil.o: ../../basic/include/basic/Exit.h /usr/include/signal.h
+../src/vutil.o: ../include/petit/ssa.h ../include/petit/ivr.h
+../src/vutil.o: ../include/petit/ivr-lang-interf.h ../include/petit/make.h
+../src/vutil.o: ../include/petit/compare.h ../include/petit/definitions.h
+../src/vutil.o: ../include/petit/debug.h ../include/petit/copy.h
+../src/vutil.o: ../include/petit/affine.h ../include/petit/petit_args.h
+hppl.o: /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h
+hppl.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+hppl.o: /usr/include/i386/_types.h /usr/include/string.h
+hppl.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+hppl.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+hppl.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+hppl.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+hppl.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+hppl.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+hppl.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+hppl.o: /usr/include/machine/types.h /usr/include/i386/types.h
+hppy.o: ../../omega_lib/include/omega.h
+hppy.o: ../../omega_lib/include/omega/omega_core/debugging.h
+hppy.o: /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h
+hppy.o: /usr/include/sys/cdefs.h /usr/include/machine/_types.h
+hppy.o: /usr/include/i386/_types.h /usr/include/ctype.h
+hppy.o: /usr/include/runetype.h ../../omega_lib/include/omega/pres_var.h
+hppy.o: ../../basic/include/basic/bool.h
+hppy.o: ../../omega_lib/include/omega/pres_cnstr.h
+hppy.o: ../../omega_lib/include/omega/pres_subs.h
+hppy.o: ../../omega_lib/include/omega/pres_gen.h
+hppy.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+hppy.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+hppy.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+hppy.o: /usr/include/i386/signal.h /usr/include/sys/resource.h
+hppy.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+hppy.o: /usr/include/sys/_endian.h /usr/include/stdint.h
+hppy.o: /usr/include/libkern/OSByteOrder.h
+hppy.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+hppy.o: /usr/include/machine/types.h /usr/include/i386/types.h
+hppy.o: ../../omega_lib/include/omega/omega_core/oc.h
+hppy.o: ../../basic/include/basic/String.h ../../basic/include/basic/util.h
+hppy.o: /usr/include/limits.h /usr/include/machine/limits.h
+hppy.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+hppy.o: /usr/include/sys/syslimits.h /usr/include/float.h
+hppy.o: /usr/include/string.h ../../basic/include/basic/ConstString.h
+hppy.o: ../../basic/include/basic/Iterator.h
+hppy.o: ../../basic/include/basic/Collection.h
+hppy.o: ../../basic/include/basic/List.h ../../basic/include/basic/Link.h
+hppy.o: /usr/include/stddef.h ../../basic/include/basic/List.c
+hppy.o: ../../basic/include/basic/List.h ../../basic/include/basic/Tuple.h
+hppy.o: ../../basic/include/basic/Tuple.c
+hppy.o: ../../omega_lib/include/omega/Relation.h
+hppy.o: ../../omega_lib/include/omega/RelBody.h
+hppy.o: ../../omega_lib/include/omega/pres_form.h
+hppy.o: ../../omega_lib/include/omega/pres_dnf.h
+hppy.o: ../../basic/include/basic/NonCoercible.h
+hppy.o: ../../omega_lib/include/omega/pres_conj.h
+hppy.o: ../../omega_lib/include/omega/pres_logic.h
+hppy.o: ../../omega_lib/include/omega/pres_decl.h
+hppy.o: ../../basic/include/basic/Section.h
+hppy.o: ../../basic/include/basic/Section.c
+hppy.o: ../../omega_lib/include/omega/pres_quant.h
+hppy.o: ../../omega_lib/include/omega/pres_cmpr.h
+hppy.o: ../../omega_lib/include/omega/Rel_map.h
+hppy.o: ../../omega_lib/include/omega/farkas.h
+hppy.o: ../../omega_lib/include/omega/hull.h
+hppy.o: ../../omega_lib/include/omega/closure.h
+hppy.o: ../../omega_lib/include/omega/lib_hack.h
+hppy.o: ../../basic/include/basic/Map.h ../../basic/include/basic/Map.c
+hppy.o: ../../omega_lib/include/omega/AST.h
+hppy.o: ../../basic/include/basic/Collections.h
+hppy.o: ../../basic/include/basic/Bag.h ../../basic/include/basic/Bag.c
+hppy.o: ../../omega_lib/include/omega/enter_AST.h /usr/include/math.h
+hppy.o: /usr/include/architecture/i386/math.h ../include/petit/tree.h
+hppy.o: ../../omega_lib/include/omega/Relations.h ../include/petit/dddir.h
+hppy.o: ../include/petit/classes.h op.typ exprtype.typ symtype.typ ddtype.typ
+hppy.o: ../include/petit/hpp.h ../include/petit/petit_args.h hppl.c
+petitl.o: /usr/include/stdio.h /usr/include/_types.h
+petitl.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+petitl.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+petitl.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+petitl.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+petitl.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+petitl.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+petitl.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+petitl.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+petitl.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+petitl.o: /usr/include/machine/types.h /usr/include/i386/types.h
+petity.o: /usr/include/string.h /usr/include/_types.h
+petity.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+petity.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+petity.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+petity.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+petity.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+petity.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+petity.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+petity.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+petity.o: /usr/include/libkern/i386/OSByteOrder.h /usr/include/alloca.h
+petity.o: /usr/include/machine/types.h /usr/include/i386/types.h
+petity.o: ../../basic/include/basic/assert.h /usr/include/stdio.h
+petity.o: ../../basic/include/basic/Exit.h ../../basic/include/basic/List.h
+petity.o: ../../basic/include/basic/Iterator.h
+petity.o: ../../basic/include/basic/bool.h
+petity.o: ../../basic/include/basic/Collection.h
+petity.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+petity.o: ../../basic/include/basic/List.c ../../basic/include/basic/List.h
+petity.o: ../include/petit/lang-interf.h
+petity.o: ../../omega_lib/include/omega/Relations.h
+petity.o: ../../omega_lib/include/omega/Relation.h
+petity.o: ../../omega_lib/include/omega/RelBody.h
+petity.o: ../../omega_lib/include/omega/pres_form.h
+petity.o: ../../omega_lib/include/omega/pres_gen.h
+petity.o: ../../omega_lib/include/omega/omega_core/oc.h
+petity.o: ../../basic/include/basic/String.h ../../basic/include/basic/util.h
+petity.o: /usr/include/limits.h /usr/include/machine/limits.h
+petity.o: /usr/include/i386/limits.h /usr/include/i386/_limits.h
+petity.o: /usr/include/sys/syslimits.h /usr/include/float.h
+petity.o: ../../omega_lib/include/omega/omega_core/debugging.h
+petity.o: /usr/include/ctype.h /usr/include/runetype.h
+petity.o: ../../basic/include/basic/ConstString.h
+petity.o: ../../basic/include/basic/Tuple.h ../../basic/include/basic/Tuple.c
+petity.o: ../../omega_lib/include/omega/pres_dnf.h
+petity.o: ../../omega_lib/include/omega/pres_cnstr.h
+petity.o: ../../omega_lib/include/omega/pres_var.h
+petity.o: ../../basic/include/basic/NonCoercible.h ../include/petit/tree.h
+petity.o: ../../basic/include/basic/Bag.h ../../basic/include/basic/Bag.c
+petity.o: ../include/petit/dddir.h ../include/petit/classes.h op.typ
+petity.o: exprtype.typ symtype.typ ddtype.typ ../include/petit/ops.h
+petity.o: ../include/petit/ddutil.h ../include/petit/browsedd.h
+petity.o: ../include/petit/print.h ../include/petit/evaluate.h
+petity.o: ../include/petit/ddodriver.h ../include/petit/make.h
+petity.o: ../include/petit/vutil.h ../include/petit/Exit.h
+petity.o: /usr/include/signal.h ../include/petit/petity.h
+petity.o: ../include/petit/petitl.c

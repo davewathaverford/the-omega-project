@@ -1,4 +1,4 @@
-/* $Id: depcycles.c,v 1.2 2000/08/16 20:01:19 dwonnaco Exp $ */
+/* $Id: depcycles.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /*
  * Code to find cycles in dependence garph.
@@ -12,6 +12,8 @@
 #include <petit/omega2flags.h>
 #include <petit/debug.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 #define maxDepSccNo 500
 
@@ -276,3 +278,5 @@ void DDinvert(node *p) {
 void InvertDDdistances() {
     traverse_exprs(Entry, &DDinvert);
 }
+
+} // end of namespace omega

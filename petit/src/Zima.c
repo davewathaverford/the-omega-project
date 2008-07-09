@@ -1,4 +1,4 @@
-/* $Id: Zima.c,v 1.2 2000/08/16 20:01:18 dwonnaco Exp $ */
+/* $Id: Zima.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <basic/assert.h>
@@ -12,6 +12,8 @@
 #include <petit/dd_misc.h>
 #include <petit/Exit.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 #define Unknown_Tuple 0
 
@@ -226,22 +228,22 @@ const AccessIteration &BJ, dd_current dd)
 	if ((unsigned)dd_current_diff(dd)[i] == ddunknown &&
 	    ddextract1(dd_current_dir(dd), i) == ddfwd+ddbck)
 	    {
-	    F_Or *or = N->add_or();
+	    F_Or *disjunct = N->add_or();
 	    dddirreset(dd_current_dir(dd), ddfwd, i);
-	    do_connected_by_diff(or, AI, BJ, dd);
+	    do_connected_by_diff(disjunct, AI, BJ, dd);
 	    dddirset(dd_current_dir(dd), ddfwd, i);
 	    dddirreset(dd_current_dir(dd), ddbck, i);
-	    do_connected_by_diff(or, AI, BJ, dd);
+	    do_connected_by_diff(disjunct, AI, BJ, dd);
 	    return;
 	    }
 
-    F_And *and = N->add_and();
+    F_And *conjunct = N->add_and();
 
     for(i=1; i<=(int)dd_current_nest(dd); i++)
 	{
 	if ((unsigned)dd_current_diff(dd)[i] != ddunknown)
 	    {
-	    EQ_Handle current_eq = and->add_EQ();
+	    EQ_Handle current_eq = conjunct->add_EQ();
 	    current_eq.update_const(dd_current_diff(dd)[i]);
 	    current_eq.update_coef((*AI.indices)[i], 1);
 	    current_eq.update_coef((*BJ.indices)[i], -1);
@@ -262,7 +264,7 @@ const AccessIteration &BJ, dd_current dd)
 
 	    if (thisdd == ddfwd)
 	        {
-	        GEQ_Handle current_geq = and->add_GEQ();
+	        GEQ_Handle current_geq = conjunct->add_GEQ();
 		current_geq.update_const(-1);
 		current_geq.update_coef((*AI.indices)[i], -1);
 		current_geq.update_coef((*BJ.indices)[i], 1);
@@ -270,7 +272,7 @@ const AccessIteration &BJ, dd_current dd)
 	        }
 	    if (thisdd == ddbck)
 	        {
-	        GEQ_Handle current_geq = and->add_GEQ();
+	        GEQ_Handle current_geq = conjunct->add_GEQ();
 		current_geq.update_const(-1);
 		current_geq.update_coef((*AI.indices)[i], 1);
 		current_geq.update_coef((*BJ.indices)[i], -1);
@@ -278,21 +280,21 @@ const AccessIteration &BJ, dd_current dd)
 	        }
 	    if (thisdd == ddind)
 	        {
-	        EQ_Handle current_eq = and->add_EQ();
+	        EQ_Handle current_eq = conjunct->add_EQ();
 		current_eq.update_coef((*AI.indices)[i], 1);
 		current_eq.update_coef((*BJ.indices)[i], -1);
 		current_eq.finalize();
 	        }
 	    if (thisdd == ddind+ddfwd)
 	        {
-	        GEQ_Handle current_geq = and->add_GEQ();
+	        GEQ_Handle current_geq = conjunct->add_GEQ();
 		current_geq.update_coef((*AI.indices)[i], -1);
 		current_geq.update_coef((*BJ.indices)[i], 1);
 		current_geq.finalize();
 		}
 	    if (thisdd == ddind+ddbck)
 	        {
-	        GEQ_Handle current_geq = and->add_GEQ();
+	        GEQ_Handle current_geq = conjunct->add_GEQ();
 		current_geq.update_coef((*AI.indices)[i], 1);
 		current_geq.update_coef((*BJ.indices)[i], -1);
 		current_geq.finalize();
@@ -486,7 +488,7 @@ void context_in_bounds(F_And *N, const AccessIteration &AI,
 	    {
 	    return;
 	    }
-	assert(already_done == 0 || ::depth(c) >= ::depth(already_done));
+	assert(already_done == 0 || node_depth(c) >= node_depth(already_done));
 
 	if (cont_i_cur_is_loop(c))
 	    {
@@ -704,7 +706,7 @@ Argument_Tuple of)
     if_cond.finalize();
     }
 
-    else if (kind==not_eq) {
+    else if (kind==not_equal) {
     F_Or * ne=NA->add_or();
 
     GEQ_Handle if_cond=(ne->add_and())->add_GEQ();
@@ -1263,9 +1265,9 @@ static void add_direction_constraint(
 {
   if (dir == ddfwd+ddbck)
     {
-     F_Or * or = N->add_or();
-     add_direction_constraint(or->add_and(), v1,v2, ddfwd);
-     add_direction_constraint(or->add_and(), v1,v2, ddbck);
+     F_Or * disjunct = N->add_or();
+     add_direction_constraint(disjunct->add_and(), v1,v2, ddfwd);
+     add_direction_constraint(disjunct->add_and(), v1,v2, ddbck);
     }
   else
     {
@@ -1473,8 +1475,8 @@ void generateAllDDVectors(a_access access1,a_access access2,
     sit.access2 = access2;
     sit.oitype = oitype;
     sit.iotype = iotype;
-    sit.nest1 = depth(access1);
-    sit.nest2 = depth(access2);
+    sit.nest1 = node_depth(access1);
+    sit.nest2 = node_depth(access2);
     sit.commonNesting = bnest;
     
     d_info.direction = (unsigned) -1;
@@ -1489,3 +1491,5 @@ void generateAllDDVectors(a_access access1,a_access access2,
    
     fix_relations(access1, access2, bnest);    
     }
+
+} // end of namespace omega

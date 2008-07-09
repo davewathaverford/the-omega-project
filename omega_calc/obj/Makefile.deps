@@ -1,0 +1,180 @@
+# DO NOT DELETE
+
+../src/parser.o: /usr/include/stdio.h /usr/include/_types.h
+../src/parser.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../src/parser.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../src/parser.o: /usr/include/string.h ../../omega_lib/include/omega/AST.h
+../src/parser.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/parser.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+../src/parser.o: /usr/include/sys/appleapiopts.h
+../src/parser.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/parser.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/parser.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/parser.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/parser.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/parser.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/parser.o: /usr/include/i386/types.h
+../src/parser.o: ../../basic/include/basic/Collections.h
+../src/parser.o: ../../basic/include/basic/Collection.h
+../src/parser.o: ../../basic/include/basic/Iterator.h
+../src/parser.o: ../../basic/include/basic/bool.h
+../src/parser.o: ../../basic/include/basic/List.h
+../src/parser.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/parser.o: ../../basic/include/basic/List.c
+../src/parser.o: ../../basic/include/basic/List.h
+../src/parser.o: ../../basic/include/basic/Bag.h
+../src/parser.o: ../../basic/include/basic/Bag.c
+../src/parser.o: ../../basic/include/basic/Map.h
+../src/parser.o: ../../basic/include/basic/Map.c
+../src/parser.o: ../../omega_lib/include/omega.h
+../src/parser.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/parser.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/parser.o: ../../omega_lib/include/omega/pres_var.h
+../src/parser.o: ../../omega_lib/include/omega/pres_gen.h
+../src/parser.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/parser.o: ../../basic/include/basic/String.h
+../src/parser.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/parser.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/parser.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/parser.o: /usr/include/float.h ../../basic/include/basic/ConstString.h
+../src/parser.o: ../../basic/include/basic/Tuple.h
+../src/parser.o: ../../basic/include/basic/Tuple.c
+../src/parser.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/parser.o: ../../omega_lib/include/omega/pres_subs.h
+../src/parser.o: ../../omega_lib/include/omega/Relation.h
+../src/parser.o: ../../omega_lib/include/omega/RelBody.h
+../src/parser.o: ../../omega_lib/include/omega/pres_form.h
+../src/parser.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/parser.o: ../../basic/include/basic/NonCoercible.h
+../src/parser.o: ../../omega_lib/include/omega/Relations.h
+../src/parser.o: ../../omega_lib/include/omega/pres_conj.h
+../src/parser.o: ../../omega_lib/include/omega/pres_decl.h
+../src/parser.o: ../../basic/include/basic/Section.h
+../src/parser.o: ../../basic/include/basic/Section.c
+../src/parser.o: ../../omega_lib/include/omega/pres_logic.h
+../src/parser.o: ../../omega_lib/include/omega/pres_quant.h
+../src/parser.o: ../../omega_lib/include/omega/pres_cmpr.h
+../src/parser.o: ../../omega_lib/include/omega/Rel_map.h
+../src/parser.o: ../../omega_lib/include/omega/farkas.h
+../src/parser.o: ../../omega_lib/include/omega/hull.h
+../src/parser.o: ../../omega_lib/include/omega/closure.h
+../src/parser.o: ../../omega_lib/include/omega/lib_hack.h
+../src/parser.o: ../../omega_lib/include/omega/enter_AST.h
+../src/parser.o: ../../basic/include/basic/Dynamic_Array.h
+../src/parser.o: ../../basic/include/basic/Dynamic_Array.c
+../src/parser.o: ../../basic/include/basic/Exit.h
+../src/parser.o: ../../code_gen/include/code_gen/mmap-codegen.h
+../src/parser.o: ../../code_gen/include/code_gen/MMap.h
+../src/parser.o: ../../code_gen/include/code_gen/code_gen.h
+../src/parser.o: ../../code_gen/include/code_gen/CG.h
+../src/parser.o: ../../code_gen/include/code_gen/elim.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_outputRepr.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_outputBuilder.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_stringBuilder.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_stringRepr.h
+../src/parser.o: ../../omega_lib/include/omega/calc_debug.h y.tab.h
+../src/parser.o: ../../basic/include/basic/Dynamic_Array.h
+../src/parser.o: ../../basic/include/basic/Dynamic_Array.c
+../src/parser.o: ../../basic/include/basic/assert.h /usr/include/stdlib.h
+../src/parser.o: /usr/include/sys/cdefs.h /usr/include/_types.h
+../src/parser.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../src/parser.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../src/parser.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../src/parser.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../src/parser.o: /usr/include/sys/resource.h /usr/include/machine/endian.h
+../src/parser.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../src/parser.o: /usr/include/stdint.h /usr/include/libkern/OSByteOrder.h
+../src/parser.o: /usr/include/libkern/i386/OSByteOrder.h
+../src/parser.o: /usr/include/alloca.h /usr/include/machine/types.h
+../src/parser.o: /usr/include/i386/types.h /usr/include/stdio.h
+../src/parser.o: ../../code_gen/include/code_gen/code_gen.h
+../src/parser.o: ../../basic/include/basic/bool.h
+../src/parser.o: ../../basic/include/basic/Tuple.h
+../src/parser.o: ../../basic/include/basic/Collection.h
+../src/parser.o: ../../basic/include/basic/Iterator.h
+../src/parser.o: ../../basic/include/basic/util.h /usr/include/limits.h
+../src/parser.o: /usr/include/machine/limits.h /usr/include/i386/limits.h
+../src/parser.o: /usr/include/i386/_limits.h /usr/include/sys/syslimits.h
+../src/parser.o: /usr/include/float.h ../../basic/include/basic/Tuple.c
+../src/parser.o: ../../omega_lib/include/omega/Relation.h
+../src/parser.o: ../../omega_lib/include/omega/RelBody.h
+../src/parser.o: ../../omega_lib/include/omega/pres_form.h
+../src/parser.o: ../../omega_lib/include/omega/pres_dnf.h
+../src/parser.o: ../../basic/include/basic/NonCoercible.h
+../src/parser.o: ../../omega_lib/include/omega/Relations.h
+../src/parser.o: ../../code_gen/include/code_gen/CG.h
+../src/parser.o: ../../code_gen/include/code_gen/elim.h
+../src/parser.o: ../../basic/include/basic/String.h /usr/include/string.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_outputRepr.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_outputBuilder.h
+../src/parser.o: ../../code_gen/include/code_gen/spmd.h
+../src/parser.o: ../../omega_lib/include/omega/library_version.h
+../src/parser.o: ../../omega_lib/include/omega/AST.h
+../src/parser.o: ../../basic/include/basic/Collections.h
+../src/parser.o: ../../basic/include/basic/List.h
+../src/parser.o: ../../basic/include/basic/Link.h /usr/include/stddef.h
+../src/parser.o: ../../basic/include/basic/List.c
+../src/parser.o: ../../basic/include/basic/List.h
+../src/parser.o: ../../basic/include/basic/Bag.h
+../src/parser.o: ../../basic/include/basic/Bag.c
+../src/parser.o: ../../basic/include/basic/Map.h
+../src/parser.o: ../../basic/include/basic/Map.c
+../src/parser.o: ../../omega_lib/include/omega.h
+../src/parser.o: ../../omega_lib/include/omega/omega_core/debugging.h
+../src/parser.o: /usr/include/ctype.h /usr/include/runetype.h
+../src/parser.o: ../../omega_lib/include/omega/pres_var.h
+../src/parser.o: ../../omega_lib/include/omega/pres_gen.h
+../src/parser.o: ../../omega_lib/include/omega/omega_core/oc.h
+../src/parser.o: ../../basic/include/basic/ConstString.h
+../src/parser.o: ../../omega_lib/include/omega/pres_cnstr.h
+../src/parser.o: ../../omega_lib/include/omega/pres_subs.h
+../src/parser.o: ../../omega_lib/include/omega/pres_conj.h
+../src/parser.o: ../../omega_lib/include/omega/pres_decl.h
+../src/parser.o: ../../basic/include/basic/Section.h
+../src/parser.o: ../../basic/include/basic/Section.c
+../src/parser.o: ../../omega_lib/include/omega/pres_logic.h
+../src/parser.o: ../../omega_lib/include/omega/pres_quant.h
+../src/parser.o: ../../omega_lib/include/omega/pres_cmpr.h
+../src/parser.o: ../../omega_lib/include/omega/Rel_map.h
+../src/parser.o: ../../omega_lib/include/omega/farkas.h
+../src/parser.o: ../../omega_lib/include/omega/hull.h
+../src/parser.o: ../../omega_lib/include/omega/closure.h
+../src/parser.o: ../../omega_lib/include/omega/lib_hack.h
+../src/parser.o: ../../omega_lib/include/omega/enter_AST.h
+../src/parser.o: ../include/omega_calc/yylex.h
+../src/parser.o: ../../omega_lib/include/omega/calc_debug.h
+../src/parser.o: ../../basic/include/basic/Exit.h
+../src/parser.o: ../../omega_lib/include/omega/reach.h
+../src/parser.o: ../../code_gen/include/code_gen/mmap-codegen.h
+../src/parser.o: ../../code_gen/include/code_gen/MMap.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_stringBuilder.h
+../src/parser.o: ../../code_gen/include/code_gen/CG_stringRepr.h
+../src/parser.o: ../../code_gen/include/code_gen/mmap-util.h
+../src/parser.o: /usr/include/sys/time.h /usr/include/time.h
+../src/parser.o: /usr/include/machine/_limits.h /usr/include/sys/types.h
+../../basic/src/Exit.o: /usr/include/stdlib.h /usr/include/sys/cdefs.h
+../../basic/src/Exit.o: /usr/include/_types.h /usr/include/sys/_types.h
+../../basic/src/Exit.o: /usr/include/machine/_types.h
+../../basic/src/Exit.o: /usr/include/i386/_types.h /usr/include/sys/wait.h
+../../basic/src/Exit.o: /usr/include/sys/signal.h
+../../basic/src/Exit.o: /usr/include/sys/appleapiopts.h
+../../basic/src/Exit.o: /usr/include/machine/signal.h
+../../basic/src/Exit.o: /usr/include/i386/signal.h
+../../basic/src/Exit.o: /usr/include/sys/resource.h
+../../basic/src/Exit.o: /usr/include/machine/endian.h
+../../basic/src/Exit.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../../basic/src/Exit.o: /usr/include/stdint.h
+../../basic/src/Exit.o: /usr/include/libkern/OSByteOrder.h
+../../basic/src/Exit.o: /usr/include/libkern/i386/OSByteOrder.h
+../../basic/src/Exit.o: /usr/include/alloca.h /usr/include/machine/types.h
+../../basic/src/Exit.o: /usr/include/i386/types.h
+../../basic/src/Exit.o: ../../basic/include/basic/Exit.h
+../../basic/src/Exit.o: ../../basic/include/basic/List.h /usr/include/stdio.h
+../../basic/src/Exit.o: ../../basic/include/basic/Iterator.h
+../../basic/src/Exit.o: ../../basic/include/basic/bool.h
+../../basic/src/Exit.o: ../../basic/include/basic/Collection.h
+../../basic/src/Exit.o: ../../basic/include/basic/Link.h
+../../basic/src/Exit.o: /usr/include/stddef.h
+../../basic/src/Exit.o: ../../basic/include/basic/List.c
+../../basic/src/Exit.o: ../../basic/include/basic/assert.h
+../../basic/src/Exit.o: ../../basic/include/basic/List.h

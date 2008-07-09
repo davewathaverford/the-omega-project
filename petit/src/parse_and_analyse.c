@@ -1,4 +1,4 @@
-/* $Id: parse_and_analyse.c,v 1.3 2000/08/16 20:01:20 dwonnaco Exp $ */
+/* parse_and_analyse.c */
 #include <basic/bool.h>
 #include <petit/petit_args.h>
 #include <petit/lang-interf.h>
@@ -20,6 +20,8 @@
 #include <petit/ddodriver.h>
 #include <petit/motif.h>
 #include <petit/make.h>
+
+namespace omega {
 
 static void negate_node(node *n)
     {
@@ -102,16 +104,16 @@ static int parse(char *file)
     {
     Assertions = NULL;
     Entry = NULL;
-    yyin = fopen(file, "r");
+    ::yyin = fopen(file, "r");
 
-    if (yyin == 0)
+    if (::yyin == 0)
         return false;
     else
         {
 #if defined newTimeTrials || killTimeTrials || printKillRelations
         fprintf(debug, "\nParsing File \"%s\"\n", file);
 #endif
-        yyparse();
+        ::yyparse();
 
 	if (petit_args.normalize) 
 	    normalize_steps();
@@ -326,3 +328,5 @@ void write_depends(int found, char *fname)
         Exit(1);
         }
     } /* write_depends */
+
+} // end omega namespace

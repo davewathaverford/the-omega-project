@@ -1,10 +1,12 @@
-/* $Id: ddInf.h,v 1.1.1.1 2000/06/29 19:24:23 dwonnaco Exp $ */
+/* $Id: ddInf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* headers for ddInf.c */
 
 #ifndef Already_Included_DDInf
 #define Already_Included_DDInf
 
 #include <basic/bool.h>
+
+namespace omega {
 
 extern bool storeInf;
 
@@ -23,4 +25,7 @@ void class_inf_output(node * a1, node * a2);
 void setApplReason(int reason);
 void setEpsInf(int kind);
 int  getEpsInf(void);
+
+}
+
 #endif

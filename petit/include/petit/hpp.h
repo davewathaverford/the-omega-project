@@ -1,6 +1,7 @@
-
 #ifndef Already_included_hpp
 #define Already_included_hpp
+
+namespace omega {
 
 typedef enum {block, cyclic, star} dist_type;
 
@@ -29,7 +30,6 @@ public:
     String name, proc_name;
 };
 
-extern FILE *hpp_debug_file;
 
 void* build_hpp();
 int hpp_generate(int);
@@ -40,5 +40,9 @@ List<int> *lookup_proc(const String &name);
 List<int> *add_proc(const String &name, List<int> *l);
 template_info *lookup_template(const String &name);
 template_info *add_template(const String &name, List<int> *l);
+
+extern FILE *hpp_debug_file;
+}
+
 
 #endif

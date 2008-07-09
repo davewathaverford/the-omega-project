@@ -4,11 +4,13 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_logic.h,v 1.1.1.1 2000/06/29 19:24:03 dwonnaco Exp $ */
+/* $Id: pres_logic.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_form_h
 #include <omega/pres_form.h>
 #endif
+
+namespace omega {
 
 //
 // Presburger formula classes for logical operations: and, or not
@@ -90,5 +92,7 @@ private:
     void print(FILE *output_file);
     void prefix_print(FILE *output_file, int debug = 1);
 };
+
+} // end of namespace omega
 
 #endif

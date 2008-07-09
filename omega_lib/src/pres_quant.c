@@ -1,7 +1,9 @@
-/* $Id: pres_quant.c,v 1.1.1.1 2000/06/29 19:24:07 dwonnaco Exp $ */
+/* $Id: pres_quant.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega/pres_quant.h>
 #include <omega/omega_i.h>
+
+namespace omega {
 
 F_Forall::F_Forall(Formula *p, Rel_Body *r) : 
 F_Declaration(p,r){
@@ -96,3 +98,4 @@ F_Forall *Formula::add_forall() {
 }
 
 
+} // end of namespace omeganamespace omega {

@@ -2,8 +2,12 @@
 #ifndef Already_Included_Language
 #define Already_Included_Language
 
+namespace omega {
+
 typedef enum{ petitlang, fortran_alliant, clang } languagetype;
 
 extern languagetype language;
+
+}
 
 #endif

@@ -10,6 +10,8 @@
 #include <petit/ops.h>
 #include <petit/petit_args.h>
 
+namespace omega {
+
 bool DDdebug;
 
 /* dump routine */
@@ -383,3 +385,5 @@ int a0, a1, a2, b0, b1, b2;
 	if( b < 0 ) *y = -*y;
     }
 }/* dd_kirch */
+ 
+} // end namespace omega

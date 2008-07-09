@@ -6,12 +6,14 @@
 
 #include <petit/tree.h>
 
+// can't put these in namespace omega because parser generator won't
+extern int yyparse (void);
+extern FILE *yyin;
+
+namespace omega {
 
 extern char P_IDname[MAXIDLENGTH];
 extern char P_INTname[MAXIDLENGTH];
-
-extern int yyparse (void);
-extern FILE *yyin;
 
 
 extern nametabentry *parse_findsym();
@@ -25,5 +27,6 @@ extern symtabentry *add_symbol(const char *name,
                                exprtype exptype,
                                nametabentry *onam);
 
+}
 
 #endif

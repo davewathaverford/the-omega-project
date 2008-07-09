@@ -1,4 +1,4 @@
-/* $Id: pres_cnstr.c,v 1.1.1.1 2000/06/29 19:24:06 dwonnaco Exp $ */
+/* $Id: pres_cnstr.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/pres_cnstr.h>
@@ -6,6 +6,8 @@
 #include <omega/Relation.h>
 #include <omega/omega_i.h>
 
+
+namespace omega {
 
 Constraint_Handle::Constraint_Handle(Conjunct *_c, Eqn * _eqns, int _e) : 
 c(_c), eqns(_eqns), e(_e) {
@@ -425,3 +427,5 @@ void copy_constraint(Constraint_Handle H, const Constraint_Handle initial)
   }          /* end if      */
   skip_set_checks--;
 }            /* copy_constraint */
+
+} // end of namespace omega

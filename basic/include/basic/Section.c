@@ -1,5 +1,6 @@
 #include <basic/bool.h>
 
+using namespace omega;
 
 template <class T> Section<T>::Section(Sequence<T> *s, int start, int length)
     {
@@ -74,3 +75,5 @@ template <class T> Iterator<T> *Section_Iterator<T>::new_copy() const
     {
     return new Section_Iterator<T>(*this);
     }
+
+

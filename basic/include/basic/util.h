@@ -32,6 +32,8 @@
 
 #include <basic/assert.h>
 
+namespace omega {
+
 #ifdef __SUNPRO_CC
 template<class T,class S> inline T max(T x, S y) {
 	if (x >= y) return x; else return y;
@@ -163,7 +165,9 @@ T lcm(T b, T a) /* First argument is non-negative */
     return a*b/gcd(a,b);
     }
 
-
 #define implies(A,B) (A==(A&B))
+
+} // end of namespace omega
+
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: ivr-lang-interf.h,v 1.1.1.1 2000/06/29 19:24:25 dwonnaco Exp $ */
+/* $Id: ivr-lang-interf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /************************************************************
  *                                                          *
  * Language Interface for IVR and Forward Substitution (FS) *
@@ -10,6 +10,7 @@
 #define Already_Included_IvrLangInterf
 
 #include <basic/bool.h>
+
 
 
 #ifdef TEST_GENERIC_LANG_INTERF
@@ -25,6 +26,7 @@
 #include <petit/lang-interf.h>
 #include <petit/ops.h>
 
+namespace omega {
 /*
  * Here various properties of expression operations are described.
  */
@@ -222,6 +224,9 @@ Var_Id get_ssa_scalar_id(pEXPR);
  */
 void tag_var_as_changeable_or_constant(Var_Id, pEXPR, int);
 
+} // end of omega namespace
 
 #endif
+
+
 #endif

@@ -1,4 +1,4 @@
-/* $Id: communication.c,v 1.1.1.1 2000/06/29 19:24:42 dwonnaco Exp $ */
+/* $Id: communication.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <math.h>
@@ -6,6 +6,8 @@
 #include <uniform/uniform_args.h>
 #include <uniform/parallelism.h>
 #include <uniform/space_mappings.h>
+
+namespace omega {
 
 static search_cost comm_far(extended_dir_list *n)
     {
@@ -60,3 +62,5 @@ search_cost compute_edge_cost(int p, int q, int cp, int cq)
     assert(cost < MAX_COST);
     return cost;
     } /* compute_edge_cost */
+
+}

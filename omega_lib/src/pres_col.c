@@ -4,6 +4,8 @@
 #include <omega/omega_i.h>
 
 
+namespace omega {
+
 
 //
 // Copy column fr_col of problem fp
@@ -102,4 +104,5 @@ int Conjunct::map_to_column(Variable_ID D) {
   return col;
 }
 
+} // end of namespace omega
 

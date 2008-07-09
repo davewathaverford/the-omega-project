@@ -1,9 +1,11 @@
-/* $Id: timeTrials.h,v 1.1.1.1 2000/06/29 19:24:28 dwonnaco Exp $ */
+/* $Id: timeTrials.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_TimeTrials
 #define Already_Included_TimeTrials
 
 #include <basic/bool.h>
 #include <petit/lang-interf.h>
+
+namespace omega {
 
 #if defined miniTimeTrials
 #define timePeriod	100000
@@ -14,6 +16,7 @@
 #define timeMinReps	10
 #define timeMaxReps	8500
 #endif
+
 
 extern bool storeResult;
 extern unsigned int stores;
@@ -66,5 +69,8 @@ void timingKoutput(a_access a1, a_access a2,
 
 void eps_time_output(ddnature ddkind, a_access a1, a_access a2,
                    unsigned int  omegaCount, long  omegaTime);
+
+}
+
 #endif
 

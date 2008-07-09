@@ -14,6 +14,8 @@
 #define Simple_List Omega_Simple_List
 #define Simple_List_Iterator Omega_Simple_List_Iterator
 
+namespace omega {
+
 template<class T> class Simple_List_Iterator;
 
 // A TEMPORARY HACK - ERROR IF YOU TRY TO USE "INDEX" - FERD
@@ -75,18 +77,23 @@ public:
     Simple_List_Iterator(const Simple_List<T> &l);
     Simple_List_Iterator();
 private:
-    List_Element<T> &element() { return *i; } ;
+    List_Element<T> &element() { return *(this->i); } ;
     friend class Simple_List<T>;
 };
 
+} // end of namespace omega
 
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/SimpleList.c>
 #endif
 
+namespace omega {
 #define instantiate_Simple_List(T)	template class Simple_List<T>; \
 				template class Simple_List_Iterator<T>; \
 				instantiate_Only_List_Element(T) \
 				instantiate_Sequence(T)
+
+
+} // end of namespace omega
 
 #endif

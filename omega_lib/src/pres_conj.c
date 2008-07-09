@@ -1,4 +1,4 @@
-/* $Id: pres_conj.c,v 1.3 2000/08/16 20:01:16 dwonnaco Exp $ */
+/* $Id: pres_conj.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/omega_core/oc.h>
@@ -7,6 +7,9 @@
 #include <omega/Relation.h>
 #include <omega/omega_i.h>
 #include <basic/Bag.h>
+
+namespace omega {
+
 
 int NR_CONJUNCTS, MAX_CONJUNCTS;
 
@@ -847,7 +850,7 @@ Conjunct* merge_conjs(Conjunct* conj1, Conjunct* conj2,
 
 	int feasable = 1;
 
-        int redAndBlackGuarLeadingZeros = max(conj1->guaranteed_leading_0s,
+        int redAndBlackGuarLeadingZeros = omega::max(conj1->guaranteed_leading_0s,
 					 conj2->guaranteed_leading_0s);
 	if (action == MERGE_REGULAR) 
 	    conj3->guaranteed_leading_0s= redAndBlackGuarLeadingZeros;
@@ -1451,3 +1454,4 @@ void Conjunct::convertEQstoGEQs() {
 
 
 
+} // end of namespace omega

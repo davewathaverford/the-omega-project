@@ -1,4 +1,4 @@
-/* $Id: notedd.c,v 1.1.1.1 2000/06/29 19:24:38 dwonnaco Exp $ */
+/* $Id: notedd.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* notedd.c - all functions related to noting dependence into dependence
    graph
    created 05.11.94 by murka
@@ -11,6 +11,7 @@
 #include <petit/debug.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 
 /**************************************************
  *  Some things that used to be in ddomega-use.c  *
@@ -271,3 +272,5 @@ void noteDependence(situation *sit, dir_and_diff_info *d_info)
     
     }
 } /* noteDependence */
+
+} // end omega namespace

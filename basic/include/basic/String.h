@@ -4,11 +4,22 @@
 
 #include <basic/bool.h>
 #include <basic/util.h>
-#include <stdio.h>
-#include <string.h>
-#include <iostream.h>
 
-#include <basic/enter_String.h>
+#include <stdio.h>
+//#include <cstdio>
+
+#include <string.h>
+//#include <string>
+
+//#include <iostream.h>
+#include <iostream>
+using namespace std;
+
+
+//#include <basic/enter_String.h>
+
+namespace omega {
+
 
 class String {
 public:
@@ -92,5 +103,7 @@ static int	operator==(const String &x, const char *y)
 static int	operator!=(const String &x, const char *y)
 		    { return x != (String) y; }
 #endif
+
+} // end of namespace omega
 
 #endif

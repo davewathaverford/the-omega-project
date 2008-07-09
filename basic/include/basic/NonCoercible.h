@@ -12,6 +12,8 @@
 
 #define TEMPLATIZED 1
 
+namespace omega {
+
 #if defined NONCOERCIBLE_WONT_WORK_AT_ALL
 
 typedef int NonCoercibleInt;
@@ -34,4 +36,7 @@ template<class T> T value(const NonCoercible<T> &nc)
 				    template T value(const NonCoercible<T> &);
 
 #endif /* NONCOERCIBLE_WONT_WORK_AT_ALL */
+
+} // end of namespace omega
+
 #endif /* already included */

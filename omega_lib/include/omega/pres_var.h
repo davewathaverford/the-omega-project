@@ -4,11 +4,14 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_var.h,v 1.1.1.1 2000/06/29 19:24:03 dwonnaco Exp $ */
+/* $Id: pres_var.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_gen_h
 #include <omega/pres_gen.h>
 #endif
+
+
+namespace omega {
 
 //
 // Variable declaration.
@@ -115,7 +118,7 @@ void reset_remap_field(Variable_ID_Tuple &S, int var_no);
 class Global_Input_Output_Tuple: public Tuple<Variable_ID> {
 public:
     Global_Input_Output_Tuple(Var_Kind in_my_kind, int init=-1);
-    ~Global_Input_Output_Tuple();
+    virtual ~Global_Input_Output_Tuple();
     virtual Variable_ID &operator[](int index);
     virtual const Variable_ID &operator[](int index) const;
 private:
@@ -147,6 +150,7 @@ Variable_ID set_var(int nth);
 class Global_Var_Decl {
 public:
     Global_Var_Decl(Const_String baseName);
+    virtual ~Global_Var_Decl() {}
 
     virtual Const_String base_name() const
 	{
@@ -198,6 +202,7 @@ private:
 class Coef_Var_Decl : public Global_Var_Decl {
 public:
   Coef_Var_Decl(int id, int var);
+  virtual ~Coef_Var_Decl() {}
   int stmt() const;
   int var() const;
   virtual Global_Kind kind() const;
@@ -229,5 +234,7 @@ void copy_var_decls(Variable_ID_Tuple &new_vl, Variable_ID_Tuple &vl);
 void free_var_decls(Variable_ID_Tuple &vl);
 
 extern int wildCardInstanceNumber;
+
+} // end of namespace omega
 
 #endif

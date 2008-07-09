@@ -1,6 +1,8 @@
 
 #include <omega/pres_subs.h>
 
+namespace omega {
+
 Substitutions::Substitutions(Relation &input_R, Conjunct *input_c) {
     int i;
     r = new Relation(input_R,input_c);
@@ -125,3 +127,5 @@ String Sub_Handle::print_term_to_string() const {
     return c->print_term_to_string(&(*eqns[e]));
 }
 */
+
+} // end of namespace omeganamespace omega {

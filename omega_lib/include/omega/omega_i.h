@@ -6,6 +6,9 @@
 #endif
 
 #define Assert(c,t) if(!(c)) PresErrAssert(t)
+
+namespace omega {
+
 void PresErrAssert(char *t);
 
 extern Rel_Body null_rel;
@@ -18,6 +21,9 @@ extern int     skip_set_checks;
 extern Global_Input_Output_Tuple input_vars;
 extern Global_Input_Output_Tuple output_vars;
 extern Global_Input_Output_Tuple &set_vars;
+
+} // end of namespace omega
+
 
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 // with g++258, everything will need to make Tuple<Relation>, as a

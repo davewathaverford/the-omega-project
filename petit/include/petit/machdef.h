@@ -4,6 +4,7 @@
 
 /* This includes the various parameters to describe the target machine */
 
+namespace omega {
 #define ALLIANT
 
 /* ------------------------------------------------------------------------ */
@@ -29,5 +30,6 @@
 #endif
 
 /* ------------------------------------------------------------------------ */
+}
 
 #endif

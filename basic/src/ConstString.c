@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <basic/assert.h>
 
+namespace omega {
+
+
 
 static const int CS_hashTableSize = 1000;
 static ConstStringRep *hashTable[CS_hashTableSize] = {0};	
@@ -99,3 +102,7 @@ ConstStringRep:: ConstStringRep(const char *t) {
 	strcpy(s,t);
 	name = s;
 	};
+
+
+} // end of namespace omega
+

@@ -1,4 +1,4 @@
-/* $Id: RelBody.c,v 1.1.1.1 2000/06/29 19:24:04 dwonnaco Exp $ */
+/* $Id: RelBody.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <basic/assert.h>
@@ -8,6 +8,9 @@
 #include <omega/pres_tree.h>
 #include <omega/pres_conj.h>
 #include <omega/omega_i.h>
+
+namespace omega {
+
 
 Rel_Body null_rel;
 bool Rel_Body::is_null() const {
@@ -521,8 +524,8 @@ void Rel_Body::query_difference(Variable_ID v1, Variable_ID v2,
 	else
 	    {
 	    guaranteed = guaranteed && _g;
-	    lowerBound = min(lowerBound, _lb);
-	    upperBound = max(upperBound, _ub);
+	    lowerBound = omega::min(lowerBound, _lb);
+	    upperBound = omega::max(upperBound, _ub);
 	    }
 	}
     }
@@ -550,8 +553,8 @@ void Rel_Body::query_variable_bounds(Variable_ID v,
 	    }
 	else
 	    {
-	    lowerBound = min(lowerBound, _lb);
-	    upperBound = max(upperBound, _ub);
+	    lowerBound = omega::min(lowerBound, _lb);
+	    upperBound = omega::max(upperBound, _ub);
 	    }
 	}
     }
@@ -848,3 +851,4 @@ void Rel_Body::uncompress() {
 #endif
 }
 
+} // end of namespace omeganamespace omega {

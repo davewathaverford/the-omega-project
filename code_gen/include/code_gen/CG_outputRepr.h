@@ -1,4 +1,4 @@
-// $Id: CG_outputRepr.h,v 1.1.1.1 2000/06/29 19:23:28 dwonnaco Exp $
+// $Id: CG_outputRepr.h,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $
 
 //*****************************************************************************
 // File: CG_outputRepr.h
@@ -16,6 +16,8 @@
 #define CG_outputRepr_h
 
 #include <stdio.h>
+
+namespace omega {
 
 class CG_outputRepr;                    // forward declaration
 
@@ -42,5 +44,6 @@ public:
   virtual void DumpToFile(FILE *fp = stderr) const = 0;
 };
 
+} // end namespace omega
 
 #endif // CG_outputRepr_h

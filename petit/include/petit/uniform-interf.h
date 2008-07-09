@@ -1,10 +1,12 @@
-/* $Id: uniform-interf.h,v 1.1.1.1 2000/06/29 19:24:29 dwonnaco Exp $ */
+/* $Id: uniform-interf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #ifndef Already_Included_Uniform_Interf
 #define Already_Included_Uniform_Interf 1
 
 #include "petit/tree.h"
 #include "petit/affine.h"
+
+namespace omega {
 
 typedef node 		AssignStmt;
 typedef node 		LoopStmt;
@@ -124,5 +126,7 @@ extern Depend		*DependCurr(DependIterator i);
 extern void		 VarNext(VarIterator &i);
 extern bool		 VarLast(VarIterator i);
 extern Variable		*VarCurr(VarIterator i);
+
+}
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: petitl.l,v 1.3 2000/08/18 17:22:05 dwonnaco Exp $ */
+/* $Id: petitl.l,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 %{
 #define yywrap()	1
@@ -9,12 +9,16 @@ int hpp_yyparse(void);
 
 #define free(x)         free((char *)(x))
 
+namespace omega {
+    extern FILE *hpp_debug_file;
+};
+using namespace omega;
+
 %}
 %%
 
 
 "!"[hH][pP][pPFf]\$[^\n]*$      { YY_BUFFER_STATE hppbuf;
-				  extern FILE *hpp_debug_file;
 			  	  hpp_debug_file = DebugFile;
 			          hppbuf = hpp_yy_scan_string(yytext+5);
 				  hpp_yyparse();

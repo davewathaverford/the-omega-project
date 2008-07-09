@@ -6,6 +6,8 @@
 #include <code_gen/stmt_builder.h>
 #include <omega/pres_subs.h>
 
+namespace omega {
+
 
  //***********************************************************************
 // Methods added by D people, 
@@ -241,3 +243,4 @@ CG_outputRepr* print_sub_to_repr(CG_outputBuilder* ocg, const Sub_Handle &s)
   return cgRepr;
 }
 
+} // end namespace omega

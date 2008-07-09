@@ -2,6 +2,8 @@
 #ifndef Already_Included_Ops
 #define Already_Included_Ops
 
+namespace omega {
+
 /*
  * Expression operation properties -- used in ivr-lang-interf.h
  */
@@ -59,5 +61,6 @@
 
 #define integer_expr(E) ((E)==exprint || (E) == exprrefint || (E) == exprintarray || (E) == exprintfun)
 
+} // end of namespace omega
 
 #endif

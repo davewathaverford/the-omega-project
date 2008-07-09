@@ -1,4 +1,4 @@
-/* $Id: lang-interf.h,v 1.1.1.1 2000/06/29 19:24:25 dwonnaco Exp $ */
+/* $Id: lang-interf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Lang_Interf
 #define Already_Included_Lang_Interf 1
 
@@ -6,10 +6,12 @@
 
 
 #ifdef TEST_GENERIC_LANG_INTERF
+namespace omega {
 // make sure nothing with the petit-specific types "node" or "ddnode" gets thru
 #define node {
 #define ddnode {
 #include <petit/lang-interf.generic>
+}
 #else
 
 #include <omega/Relations.h>    // need definition of "Relation"
@@ -21,6 +23,8 @@
 #include <petit/evaluate.h>
 #include <petit/ddodriver.h>
 
+
+namespace omega {
 
 struct affine_expr;
 
@@ -52,10 +56,12 @@ typedef long int INT_CONST;
    two accesses must be equal in a self-dependence test */
 typedef node *a_access;
 
+extern int node_depth(node *n);
+
 #define access_as_string(A)        (print_to_buf(A,0,0),(const char *)printBuf)
 #define access_sym(A)              (get_nodevalue_node(A))
 #define access_lineno(A)           ((A)->nodesequence)
-#define access_depth(A)            (::depth(A))
+#define access_depth(A)            (node_depth(A))
 #define access_cover_depth(A)      ((A)->cover_depth)
 #define access_terminator_depth(A) ((A)->terminator_depth)
 
@@ -106,13 +112,13 @@ extern context_iterator cont_i_for_access(a_access a);
 
 #if ! defined NDEBUG
 #define cont_i_cur_depth(C)   ((cont_i_cur_is_loop(C)) ? \
-			       ((eassert((C)->nodeparent->nodevalue > 0)), \
+			       (((void)eassert((C)->nodeparent->nodevalue > 0)), \
 				(C)->nodeparent->nodevalue) : \
-			       (::depth(C)))
+			       (node_depth(C)))
 #else
 #define cont_i_cur_depth(C)   ((cont_i_cur_is_loop(C)) ? \
 			       ((C)->nodeparent->nodevalue) : \
-			       (::depth(C)))
+			       (node_depth(C)))
 #endif
 extern int access_is_in_then_or_else_of(a_access A, context_iterator C);
 #define cont_i_cur_lineno(C)  ((C)->nodesequence)
@@ -140,7 +146,7 @@ typedef enum { rel_and = 0, rel_or = 1, rel_not = 2} rel_operators;
 typedef node * term;
 typedef node * rel_expr;
 
-typedef enum { greater = 0, greater_eq = 1, equal = 2, not_eq =3,
+typedef enum { greater = 0, greater_eq = 1, equal = 2, not_equal =3,
                less = 4, less_eq = 5}
    if_compare_operators;
 
@@ -149,8 +155,8 @@ typedef enum { greater = 0, greater_eq = 1, equal = 2, not_eq =3,
 
 #define negate_compare_operator(CO) (((CO) == greater)    ? less_eq :\
 				    (((CO) == greater_eq) ? less :\
-				    (((CO) == equal)      ? not_eq :\
-				    (((CO) == not_eq)     ? equal :\
+				    (((CO) == equal)      ? not_equal :\
+				    (((CO) == not_equal)     ? equal :\
 				    (((CO) == less)       ? greater_eq :\
 						            greater)))))
 
@@ -160,7 +166,7 @@ extern rel_operators rel_expr_operator (rel_expr);
 
 #define    rel_expr_operand_1(RE)   ((RE)->nodechild)
 #define    rel_expr_operand_2(RE)   ((RE)->nodechild->nodenext)
-#define    rel_expr_term(RE)        (eassert(rel_expr_is_term(RE)), (RE))
+#define    rel_expr_term(RE)        ((void)eassert(rel_expr_is_term(RE)), (RE))
 
 extern bool                 rel_expr_term_is_ok(term);
 extern if_compare_operators term_compare_op(term);
@@ -182,7 +188,7 @@ typedef node * assert_iterator;
 #define assert_i_next(AI)  ((AI)->nodelink)
 #define assert_i_done(AI)  (!(AI))
 #define assert_i_cur(AI)   (AI)
-#define assert_depth(A)    (depth(A))
+#define assert_depth(A)    (node_depth(A))
 #define access_assert_shared_depth(AC,AS) (access_shared_depth((AC),(AS)))
 
 
@@ -364,6 +370,9 @@ extern node *petit_GEQ_expr_on_symconsts(Problem *p, Var_Id vars[], int geq);
 extern void add_assertion(node *expr);
 #endif
 
+} // end of omega namespace
 
 #endif
+
+
 #endif

@@ -1,7 +1,10 @@
-/* $Id: pres_gen.c,v 1.2 2000/08/02 18:43:09 dwonnaco Exp $ */
+/* $Id: pres_gen.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <omega/pres_gen.h>
 #include <basic/Exit.h>
+
+
+namespace omega {
 
 int     skip_finalization_check=0;
 int     skip_set_checks=0;
@@ -43,3 +46,6 @@ void operator delete (void* f) {
   if (f) free(f);
 }
 #endif
+
+
+} // end of namespace omega

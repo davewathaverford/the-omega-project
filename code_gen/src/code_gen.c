@@ -8,6 +8,7 @@
 #include <basic/Map.h>
 #include <basic/util.h>
 #include <math.h>
+#include <string>
 
 //*****************************************************************************
 // Omega code gen builder and internal representation
@@ -20,7 +21,10 @@
 
 #include <code_gen/stmt_builder.h>
 
+namespace omega {
+
 #if ! defined DONT_EVEN_TRY_TO_COMPILE_CODE_GEN_WITH_CFRONT
+
 
 static int last_level;// Should not be global, but it is.
 static int OMEGA_WHINGE = -1;
@@ -29,6 +33,7 @@ SetTuple function_guards;
 SetTuple new_IS;
 SetTupleTuple projected_nIS;
 Tuple<naming_info *> statementNameInfo;
+bool gen_python=false;
 
 
 // ******************************************
@@ -1038,7 +1043,7 @@ bool printBounds(CG_outputBuilder* ocg,
     b.prefix_print(DebugFile);
   }
 
-  ctrlRepr = ocg->CreateInductive(indexRepr, lbRepr, ubRepr, stRepr);
+  ctrlRepr = ocg->CreateInductive(indexRepr, lbRepr, ubRepr, stRepr,gen_python);
 
   return true;
 }
@@ -1312,9 +1317,13 @@ CG_outputRepr *
 default_stmt_info::place_holder(CG_outputBuilder *ocg, int indent, 
 				Relation *current_map)
 {
-  String stmtName = String("s") + itoS(stmt_num);
+  String stmtName;
+  if(gen_python)
+    stmtName=String("yield ");
+  else
+    stmtName = String("s") + itoS(stmt_num);
   CG_outputRepr* sList = print_outputs_with_subs_to_repr(*current_map,ocg);
-  CG_outputRepr* stmtRepr = ocg->CreatePlaceHolder(indent, stmtName, sList);
+  CG_outputRepr* stmtRepr = ocg->CreatePlaceHolder(indent, stmtName, sList,gen_python);
   return stmtRepr;  
 }
   
@@ -2233,7 +2242,7 @@ CG_outputRepr* CG_loop::printRepr(CG_outputBuilder* ocg, int indent)
   }
   else {
     bodyRepr = body->printRepr(ocg, indnt+1);
-    loopRepr = ocg->CreateLoop(indnt, ctrlRepr, bodyRepr);
+    loopRepr = ocg->CreateLoop(indnt, ctrlRepr, bodyRepr,gen_python);
   }
 
 
@@ -2509,6 +2518,21 @@ String MMGenerateCode(RelTuple &T, SetTuple &old_IS,
   return MMGenerateCode(T, old_IS, NameInfo, known, effort);
 }
 
+String MMGeneratePythonCode(RelTuple &T, SetTuple &old_IS, 
+		      Relation &known, int effort){
+  Tuple<naming_info *> NameInfo;
+  for (int stmt = 1; stmt <= T.size(); stmt++)
+  {
+    NameInfo.append(new default_stmt_info(stmt));
+  }
+  gen_python=true;
+  String s=MMGenerateCode(T, old_IS, NameInfo, known, effort);
+  std::string str=(const char*)s;
+  str=str.substr(0,str.length()-1);
+  gen_python=false;
+  return String(str.c_str());
+}
+
 
 //*****************************************************************************
 // MMGenerateCode implementation, added by D people. Lei Zhou, Apr. 24, 96
@@ -2714,7 +2738,11 @@ MMGenerateCode(CG_outputBuilder* ocg, RelTuple &T, SetTuple &old_IS,
   //--------------------------------------------------------------
   // really print out the loop
   //--------------------------------------------------------------
-  CG_outputRepr* sRepr = r->printRepr(ocg, 1);
+  CG_outputRepr* sRepr;
+  if(gen_python)
+    sRepr = r->printRepr(ocg, 2);
+  else
+    sRepr = r->printRepr(ocg, 1);
 
   print_in_code_gen_style--;
   delete r;
@@ -3052,3 +3080,4 @@ String MMGenerateCode(Tuple<Relation> &, Tuple<Relation> &, Tuple<char*> &,
 
 
 #endif
+} // using namespace omega

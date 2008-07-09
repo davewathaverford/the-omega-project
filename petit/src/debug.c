@@ -4,6 +4,8 @@
 #include <omega/pres_gen.h>
 #include <petit/debug.h>
 
+namespace omega {
+
 FILE *debug, *debug2, *statsfile;
 int n_strange_occurances = 0;
 
@@ -80,3 +82,5 @@ void debug_dump(char *filename)
         setOutputFile(debug);
         }
     } /* debug_dump */
+
+} // end namespace omega

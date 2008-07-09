@@ -4,11 +4,14 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_form.h,v 1.1.1.1 2000/06/29 19:24:02 dwonnaco Exp $ */
+/* $Id: pres_form.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_gen_h
 #include <omega/pres_gen.h>
 #endif
+
+
+namespace omega {
 
 typedef enum {Op_Relation, Op_Not, Op_And, Op_Or,
 	      Op_Conjunct, Op_Forall, Op_Exists}  Node_Type;
@@ -117,6 +120,8 @@ private:
     Rel_Body          *myRelation;
 
 };
+
+} // end of namespace omega
 
 
 #endif

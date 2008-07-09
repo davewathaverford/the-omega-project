@@ -1,4 +1,4 @@
-/* $Id: simple_codegen.c,v 1.3 2000/08/18 17:22:06 dwonnaco Exp $ */
+/* $Id: simple_codegen.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #define NEED_PARALLEL
 #define NEED_SYNC
@@ -15,6 +15,8 @@
 #include <uniform/simple_codegen.h>
 #include <uniform/wak_codegen.h>
 #include <uniform/depend_dir.h>
+
+namespace omega {
 
 int parallel_reduction[max_stmts];
 
@@ -1171,3 +1173,4 @@ void simple_codegen()
 
     fprintf(uniform_debug2, "%s", (const char *)s);
     } /* simple_codegen */
+}

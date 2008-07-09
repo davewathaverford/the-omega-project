@@ -1,5 +1,6 @@
-/* $Id: q_stubs.c,v 1.1.1.1 2000/06/29 19:24:39 dwonnaco Exp $ */
+/* $Id: q_stubs.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
+namespace omega {
 int quantify_record_data ()			    	  { return 0; }
 int quantify_start_recording_data ()			  { return 0; }
 int quantify_stop_recording_data ()			  { return 0; }
@@ -15,3 +16,4 @@ int quantify_save_data_to_file ()			  { return 0; }
 int quantify_add_annotation ()				  { return 0; }
 int quantify_help() 					  { return 0; }
 int quantify_print_recording_state()			  { return 0; }
+}

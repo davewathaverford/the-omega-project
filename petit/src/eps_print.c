@@ -1,4 +1,4 @@
-/* $Id: eps_print.c,v 1.1.1.1 2000/06/29 19:24:36 dwonnaco Exp $ */
+/* $Id: eps_print.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* printing routines for epsilon test */
 
 #include <memory.h>
@@ -9,6 +9,8 @@
 #include <petit/ddepsilon.h>
 #include <petit/classify.h>
 #include <petit/ddInf.h>
+
+namespace omega {
 
 void print_subscr(FILE *f, EpsSubscrType * s)
 {
@@ -85,3 +87,5 @@ void print_subscr_bounds(FILE * f, SubscrBoundType * s)
    fprintf(f, "maxval is yet unknown\n");
 
 } /* end print_subscr_bounds */
+
+} // end of namespace omega

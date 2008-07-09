@@ -1,9 +1,11 @@
-/* $Id: depend_dir.h,v 1.3 2000/08/18 17:22:05 dwonnaco Exp $ */
+/* $Id: depend_dir.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Depend_Dir
 #define Already_Included_Depend_Dir
 
 #include <omega.h>
 #include <basic/Dynamic_Array.h>
+
+namespace omega {
 
 #define maxnest 20
 #define maxVars 56
@@ -68,5 +70,7 @@ extern void print_extended_dir(extended_dir_list *start);
 extern void print_extended_dirs(extended_dir_list *start);
 extern dir_list *dir_list_union(dir_list *d1, dir_list *d2);
 extern void delete_dir_list(dir_list *tmp_list);
+
+}
 
 #endif

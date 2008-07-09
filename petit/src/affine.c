@@ -1,4 +1,4 @@
-/* $Id: affine.c,v 1.5 2000/08/16 20:01:18 dwonnaco Exp $ */
+/* $Id: affine.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -20,6 +20,7 @@
 #include <petit/lang-interf.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 
 #if ! defined dont_merge_uses_of_a_readonly_array
 #define dont_merge_uses_of_a_readonly_array 0
@@ -202,7 +203,7 @@ unsigned int expr_invariant_at_depth(node *expr)
 	     child = child->nodenext )
 	    {
 	    unsigned int d = expr_invariant_at_depth(child);
-	    assert((int)d <= depth(expr));
+	    assert((int)d <= node_depth(expr));
 	    if (d > max_operand_depth) max_operand_depth = d;
 	    }
 
@@ -211,7 +212,7 @@ unsigned int expr_invariant_at_depth(node *expr)
 
     case op_fetch_array :
 	{
-	return depth(expr);  // should check for const arrays here
+	return node_depth(expr);  // should check for const arrays here
 	}
 
     case op_if:  // nonlinear if functions point back to op_if
@@ -231,7 +232,7 @@ unsigned int expr_invariant_at_depth(node *expr)
 	// but that would require us knowing which functions
 	// are referentially transparent, which I'd rather
 	// not hard-code here.
-	return depth(expr);
+	return node_depth(expr);
 	}
 	}
     }
@@ -488,7 +489,8 @@ m_linearity(affine_expr *ae, Min_or_max min_or_max, node *expr)
 	    }
 	else 
 	    {
-	    assert(ae->terms[(int) sym->symtag].petit_var == sym);
+	    //assert(ae->terms[(int) sym->symtag].petit_var == sym);
+	    assert(ae->terms[ae->nterms].petit_var == sym);
 	    lin = 1;	    /* linear */
 	    }
 	break;
@@ -1382,3 +1384,5 @@ char *print_rep(const affine_expr *ae)
 
     return buf;
 }
+
+} // end of namespace omega

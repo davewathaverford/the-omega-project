@@ -3,7 +3,9 @@
 #include <code_gen/mmap-util.h>
 #include <code_gen/mmap-sub.h>
 #include <code_gen/mmap-checks.h>
+#include <basic/Exit.h>
 
+namespace omega {
 
 // converts an integer to a string
 static inline String itos(int i)
@@ -491,3 +493,5 @@ String tcodegen(int effort, Tuple<stm_info> &info, const Relation &known1, bool 
   result += MMGenerateCode(R,S,known,effort);
   return result;
 }
+
+} // end namespace omega

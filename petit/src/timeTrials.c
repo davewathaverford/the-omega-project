@@ -1,4 +1,4 @@
-/* $Id: timeTrials.c,v 1.2 2000/08/18 19:49:38 dwonnaco Exp $ */
+/* $Id: timeTrials.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #if !defined(OMIT_GETRUSAGE)
 
 #include <stdlib.h>
@@ -11,6 +11,8 @@
 #include <petit/print.h>
 #include <petit/debug.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 #define MaxTimingError 0.015
 
@@ -245,4 +247,5 @@ void eps_time_output(ddnature ddkind, node *a1, node *a2,
             (float)omegaTime/(float)omegaCount/1000.0);
   }
 
+} // end namespace omega
 #endif

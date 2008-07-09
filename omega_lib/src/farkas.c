@@ -1,4 +1,4 @@
-/* $Id: farkas.c,v 1.2 2000/08/16 19:27:19 dwonnaco Exp $ */
+/* $Id: farkas.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <basic/Bag.h>
@@ -11,6 +11,8 @@
 #else
 #define ONELONGLONG 1LL
 #endif
+
+namespace omega {
 
 static Global_Var_Decl constant_term("constantTerm");
 Global_Var_ID coefficient_of_constant_term = &constant_term;
@@ -432,3 +434,6 @@ Relation Farkas(NOT_CONST Relation &input_R, Farkas_Type op)
   }
   return partialResult;
 } /* farkas_lemma */
+
+
+} // end of namespace omega

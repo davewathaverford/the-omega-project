@@ -1,4 +1,4 @@
-/* $Id: Relation.c,v 1.1.1.1 2000/06/29 19:24:04 dwonnaco Exp $ */
+/* $Id: Relation.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/Relation.h>
@@ -9,6 +9,7 @@
 #include <omega/omega_i.h>
 #include <omega/omega_core/debugging.h>
 
+namespace omega {
 
 //
 // Create null relation.
@@ -257,3 +258,4 @@ Rel_Body *Relation::split() {
   return (rel_body);
 }
 
+} // end of namespace omeganamespace omega {

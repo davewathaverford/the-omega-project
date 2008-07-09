@@ -1,4 +1,4 @@
-/* $Id: pres-interf.h,v 1.1.1.1 2000/06/29 19:24:27 dwonnaco Exp $ */
+/* $Id: pres-interf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Pres_Interf
 #define Already_Included_Pres_Interf
 
@@ -6,6 +6,8 @@
 #include <basic/String.h>
 #include <omega/Relations.h>
 #include <petit/lang-interf.h>
+
+namespace omega {
 
 /* Var_Id should really be "Variable", as its just like
    a Program_Const_Var except that its not constant */
@@ -55,4 +57,7 @@ Omega_Var * get_omega_var(symtabentry *s, int a);
 
 typedef Omega_Var * Omega_Var_Id;
 
+}
+
 #endif
+

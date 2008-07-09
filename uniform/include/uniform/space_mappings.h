@@ -5,6 +5,8 @@
 #include <basic/Dynamic_Array.h>
 #include <uniform/uniform_misc.h>
 
+namespace omega {
+
 extern int Use_Cyclic;
 extern int Use_Cyclic;
 extern int best_space[max_stmts];
@@ -14,5 +16,7 @@ extern Dynamic_Array1<Relation> pos_space;
 extern Dynamic_Array1<int> neg_space;
 
 extern void minimize_communication();
+
+}
 
 #endif

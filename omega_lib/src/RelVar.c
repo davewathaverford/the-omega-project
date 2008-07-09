@@ -1,7 +1,9 @@
 #include <basic/bool.h>
 #include <omega/RelBody.h>
 #include <omega/omega_i.h>
+#include <stdlib.h>
 
+namespace omega {
 
 Variable_ID Rel_Body::get_local(const Variable_ID v)
     {
@@ -15,7 +17,7 @@ Variable_ID Rel_Body::get_local(const Variable_ID v)
     if (v->kind() == Input_Var) return input_var(v->get_position());
     if (v->kind() == Output_Var) return output_var(v->get_position());
     assert(0 && "Can only get local for variable with global scope");
-    Exit(1);
+    exit(1);
     return 0;
     }
 
@@ -69,3 +71,6 @@ bool Rel_Body::has_local(const Global_Var_ID G, Argument_Tuple of)
 	    return true;
     return false;
     }
+
+
+} // end of namespace omeganamespace omega {

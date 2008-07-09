@@ -1,10 +1,12 @@
-/* $Id: pres_var.c,v 1.2 2000/08/16 20:01:16 dwonnaco Exp $ */
+/* $Id: pres_var.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/pres_var.h>
 #include <omega/pres_tree.h>
 #include <omega/pres_conj.h>
 #include <omega/omega_i.h>
+
+namespace omega {
 
 int wildCardInstanceNumber;
 
@@ -424,7 +426,7 @@ Global_Input_Output_Tuple &set_vars = input_vars;
 // Allocate ten variables initially.  Most applications won't require more.
 Global_Input_Output_Tuple::Global_Input_Output_Tuple(Var_Kind in_my_kind, int init): my_kind(in_my_kind)
 {
-    for (int i=1; i<=(init == -1? initial_allocation: max(0,init)); i++) 
+    for (int i=1; i<=(init == -1? initial_allocation: omega::max(0,init)); i++) 
 	this->append(new Var_Decl(Const_String(), my_kind, i));
 }
 
@@ -472,4 +474,5 @@ void  Var_Decl::UF_union(Variable_ID b) {
 	}
 
 
+} // end of namespace omeganamespace omega {
 

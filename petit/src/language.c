@@ -2,5 +2,7 @@
 
 #include <petit/language.h>
 
+namespace omega {
 languagetype language = petitlang;
+}
 

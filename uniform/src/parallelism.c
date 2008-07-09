@@ -1,4 +1,4 @@
-/* $Id: parallelism.c,v 1.2 2000/08/18 17:22:06 dwonnaco Exp $ */
+/* $Id: parallelism.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <math.h>
@@ -11,6 +11,8 @@
 #include <uniform/depend_rel.h>
 #include <uniform/uniform_misc.h>
 #include <uniform/space_mappings.h>
+
+namespace omega {
 
 
 Dynamic_Array2<search_cost> stored_pipeline_cost("Stmt", "Nest");
@@ -774,3 +776,5 @@ int unbalanced(int stmt, int si)
 	}
     return 0;
     } /* unbalanced */
+
+}

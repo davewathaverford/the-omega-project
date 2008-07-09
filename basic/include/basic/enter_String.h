@@ -1,3 +1,5 @@
+namespace omega {
 #if ! defined enter_String_h
-#define String Omega_String
+#define String omega::String
 #endif
+}

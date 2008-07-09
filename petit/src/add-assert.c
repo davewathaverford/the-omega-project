@@ -1,4 +1,4 @@
-/* $Id: add-assert.c,v 1.1.1.1 2000/06/29 19:24:33 dwonnaco Exp $ */
+/* $Id: add-assert.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <basic/assert.h>
@@ -15,6 +15,7 @@
 #include <petit/timeTrials.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 
 #define afraid_of(rel) \
 	(petit_args.panicked_by_nonaffinity ? \
@@ -182,8 +183,8 @@ build_zap_problem(dd_current dd, Relation *r)
     dependence_exists = Project_On_Sym(dependence_exists,
 				       copy(loops_execute));
 
-    int num_inp = max(loops_execute.n_inp(),dependence_exists.n_inp());
-    int num_out = max(loops_execute.n_out(),dependence_exists.n_out());
+    int num_inp = omega::max(loops_execute.n_inp(),dependence_exists.n_inp());
+    int num_out = omega::max(loops_execute.n_out(),dependence_exists.n_out());
 
     if (petit_args.dep_analysis_debug >= 2) {
 	fprintf(debug,"dependence %d->%d,  interesting %d->%d,  result %d->%d\n",
@@ -325,3 +326,5 @@ dd_flags possible_to_eliminate(dd_current dd)
     Relation zap;
     return build_zap_problem(dd, &zap);
     }
+
+} // end namespace omega

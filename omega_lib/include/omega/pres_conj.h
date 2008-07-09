@@ -4,7 +4,7 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_conj.h,v 1.2 2000/08/16 20:01:15 dwonnaco Exp $ */
+/* $Id: pres_conj.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_decl_h
 #include <omega/pres_decl.h>
@@ -15,6 +15,12 @@
 #if ! defined _pres_cnstr_h
 #include <omega/pres_cnstr.h>
 #endif
+
+
+namespace omega {
+
+// friend function for Conjunct
+const char* get_var_name(unsigned int col, void * void_conj);
 
 //
 // Conjunct
@@ -301,5 +307,7 @@ void zero_column(Problem *tp,  int to_col,
 		 int start_EQ, int start_GEQ,
 	         int no_EQs,   int no_GEQs);
 
+
+} // end of namespace omega
 
 #endif

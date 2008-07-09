@@ -1,4 +1,4 @@
-/* $Id: arrayExpand.c,v 1.1.1.1 2000/06/29 19:24:33 dwonnaco Exp $ */
+/* $Id: arrayExpand.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /******************************************************
  *                                                    *
@@ -24,6 +24,8 @@
 #include <petit/petit_args.h>
 #include <petit/parse_and_analyse.h>
 #include <petit/debug.h>
+
+namespace omega {
 
 static int touched;
 
@@ -54,8 +56,10 @@ int ArrayExpansion(int print) {
     if(touched || petit_args.makeReductionOps) 
       re_analyse(print);
 
-  if(print)
-    print_petit(Entry, 1);
+  if(print) {
+      omega::print_petit(Entry, 1);
+  }
+    //print_petit(Entry, 1);
 
   return(0);
 }
@@ -562,3 +566,5 @@ int GoodIndexes(affine_expr *ae, Var_Id petit_var) {
   default: return(0);
   }
 }
+
+} // end of namespace omega

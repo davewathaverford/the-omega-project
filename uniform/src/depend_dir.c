@@ -1,4 +1,4 @@
-/* $Id: depend_dir.c,v 1.2 2000/08/18 17:22:05 dwonnaco Exp $ */
+/* $Id: depend_dir.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <basic/Dynamic_Array.h>
@@ -8,6 +8,8 @@
 #include <uniform/depend_dir.h>
 #include <uniform/uniform_misc.h>
 #include <uniform/select.h>
+
+namespace omega {
 
 static int reduction_vol[max_stmts];
 Tuple<Global_Var_ID> uniform_global_list(0);
@@ -889,3 +891,5 @@ void add_extended_dirs(Dynamic_Array2<extended_dir_list *>
             }
         }
     } /* add_extended_dirs */
+
+}

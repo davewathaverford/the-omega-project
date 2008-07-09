@@ -1,4 +1,4 @@
-/* $Id: pres_dnf.c,v 1.2 2000/08/16 20:01:16 dwonnaco Exp $ */
+/* $Id: pres_dnf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <basic/Bag.h>
@@ -8,6 +8,7 @@
 #include <omega/Relation.h>
 #include <omega/omega_i.h>
 
+namespace omega {
 
 void DNF::remap() {
   for(DNF_Iterator DI(this); DI.live(); DI.next()) {
@@ -1472,3 +1473,4 @@ void DNF::simplify() {
 }
   
 
+} // end of namespace omega

@@ -1,10 +1,12 @@
-/* $Id: spmd.h,v 1.1.1.1 2000/06/29 19:23:29 dwonnaco Exp $ */
+/* $Id: spmd.h,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $ */
 #if !defined(Already_Included_spmd)
 #define Already_Included_spmd
 
 #include <omega/Relations.h>
 #include <code_gen/code_gen.h>
 #include <basic/Tuple.h>
+
+namespace omega {
 
 extern int overheadEffort;
 
@@ -68,6 +70,7 @@ protected:
     Relation my_time;
     Relation my_space;
 
+public:
     void add_cyclic_level(int level){
         extern void move_just_input(int from, int to, Relation &R);
 
@@ -80,7 +83,7 @@ protected:
         my_time.compress(); my_space.compress();
     }
 
-    friend Omega_String SPMD_GenerateCode(String Decls,
+    friend String SPMD_GenerateCode(String Decls,
 				    SetTuple &Space, RelTuple &Time,
                                     SetTuple &IterationSpaces,
                                     Tuple<spmd_stmt_info *> &NameInfo,
@@ -151,5 +154,6 @@ private:
     char *my_stmt;
 };
 
+} // end namespace omega
 
 #endif

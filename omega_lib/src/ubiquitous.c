@@ -11,7 +11,7 @@
 // THIS ALLOWS ALSO TO USE THIS FILE TO GENERATE FILE ubiquitous.names
 // THAT CONTAINS LIST OF THE FUNCTIONS THAT ARE ALWAYS LINKED
 
-
+namespace omega {
 
 
 bool WANT_SEGM_FAULT = false;
@@ -45,3 +45,4 @@ return result;
 }
 
 
+} // end omega namespace

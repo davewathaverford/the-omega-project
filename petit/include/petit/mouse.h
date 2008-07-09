@@ -4,6 +4,8 @@
 
 #include <petit/tree.h>
 
+namespace omega {
+
 extern int mouse_in_out;
 
 extern void mouse_refresh_window();
@@ -27,5 +29,7 @@ extern ddnode *mouse_loop_dd( void );
 extern int mouse_find_loop_dd( node * );
 
 extern int mouse_toggle( int dummy );
+
+}
 
 #endif

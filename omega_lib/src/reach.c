@@ -3,6 +3,8 @@
 #include <basic/Dynamic_Array.h>
 #include <omega/reach.h>
 
+namespace omega {
+
 typedef Dynamic_Array1<Relation> Rel_Array1;
 typedef Dynamic_Array2<Relation> Rel_Array2;
 
@@ -217,3 +219,4 @@ I_Reachable_Nodes(reachable_information * reachable_info){
     fprintf(stdout,"[Iterations to convergence: %d]\n",iterations);
   return rp;
 }
+} // end of namespace omeganamespace omega {

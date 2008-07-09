@@ -1,4 +1,4 @@
-/* $Id: Relations.c,v 1.2 2000/08/16 19:27:19 dwonnaco Exp $ */
+/* $Id: Relations.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/Relation.h>
@@ -18,6 +18,8 @@
 #endif
 
 #define CHECK_MAYBE_SUBSET 1
+
+namespace omega {
 
 int relation_debug=0;
 
@@ -2619,3 +2621,4 @@ Relation Upper_Bound(NOT_CONST Relation &r) {
   s.interpret_unknown_as_true();
   return s;
 }
+} // end of namespace omeganamespace omega {

@@ -1,4 +1,4 @@
-/* $Id: petity.y,v 1.3 2000/08/18 17:22:05 dwonnaco Exp $ */
+/* $Id: petity.y,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /* declarations section */
 %{
@@ -19,6 +19,8 @@
 #endif
 
 #define AllowComments 1
+
+namespace omega {
 
 static void parse_die();
 static int parse_intval();
@@ -64,6 +66,7 @@ char P_IDname[MAXIDLENGTH], P_INTname[MAXIDLENGTH];
 
 /* line number of next token */
 unsigned long int P_Lines;
+} // end of namespace omega
 
 #ifdef WIN32
 #include <io.h>
@@ -71,6 +74,7 @@ unsigned long int P_Lines;
 #endif
 #include "petit/petitl.c"
 
+namespace omega {
 /* current nest level in loops */
 unsigned long int P_LoopNest;
 
@@ -100,8 +104,9 @@ int NoNewOldCheck = 0;
 /* to prohibit RETURN statements from appearing not at the end */
 int ShouldBeEnd;
 
+} // end of namespace omega
 
-
+using namespace omega;
 
 /* end of declarations section */
 %}
@@ -880,6 +885,7 @@ list :
 %%
 /* program section */
 
+namespace omega {
 
 static 
 void CheckEnd() {
@@ -1320,3 +1326,5 @@ void yyerror( char *s)
     fprintf(stderr, "%s\n", s );
     parse_die();
 }/* yyerror */
+
+} // end of namespace omega

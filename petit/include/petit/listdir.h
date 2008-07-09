@@ -2,8 +2,12 @@
 #ifndef Already_Included_Listdir
 #define Already_Included_Listdir
 
+namespace omega {
+
 /* list current directory */
 
 extern void listdir( void );
+
+}
 
 #endif

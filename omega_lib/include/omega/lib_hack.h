@@ -4,6 +4,8 @@
 #include <basic/bool.h>
 
 
+namespace omega {
+
 bool lib_hack(Conjunct *c, DNF *d, Rel_Body *rb);
 extern bool WANT_SEGM_FAULT;
 
@@ -15,4 +17,8 @@ class grab_lib_hack {
 };
 
 static grab_lib_hack hack_hack;
+
+} // end of namespace omega
+
 #endif
+

@@ -4,6 +4,8 @@
 
 #include <basic/bool.h>
 
+namespace omega {
+
 /* global DD algorithm to use */
 extern unsigned int DDalgorithm;
 
@@ -41,5 +43,6 @@ extern void build_dd_graph( bool debug );
 
 extern void zap_dd_graph();
 
+}
 
 #endif

@@ -5,6 +5,8 @@
 #include <petit/ops.h>
 #include <petit/compare.h>
 
+namespace omega {
+
 bool compare_trees( node *a, node *b, int nxt )
 {
     if( a == NULL && b == NULL ) return 1;
@@ -50,3 +52,5 @@ bool compare_equal( node *a, node *b )
 	return 0;
     }
 }/* compare_equal */
+
+} // end omega namespace

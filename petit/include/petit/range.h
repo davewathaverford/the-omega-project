@@ -2,6 +2,8 @@
 #ifndef Already_Included_Range
 #define Already_Included_Range
 
+namespace omega {
+
 typedef struct {
     unsigned int _first;
     unsigned int _length;
@@ -14,5 +16,7 @@ typedef struct {
 /* #define r_grow(r)    (++(r)->_length) 
    grow is no longer allowed, as variables after the last region are
    used for iteration number counts */
+
+}
 
 #endif

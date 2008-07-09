@@ -1,9 +1,11 @@
-/* $Id: uniform_args.h,v 1.1.1.1 2000/06/29 19:24:41 dwonnaco Exp $ */
+/* $Id: uniform_args.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Uniform_Args
 #define Already_Included_Uniform_Args
 
 #include <basic/String.h>
  
+namespace omega {
+
 typedef struct
     {
     bool gen_do_closure;
@@ -20,6 +22,8 @@ extern uniform_args_struct uniform_args;
 
 extern void process_uniform_args(char *arg);
  
+}
+
 #endif
 
 

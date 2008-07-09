@@ -1,4 +1,4 @@
-/* $Id: f2p.c,v 1.2 2000/08/16 19:27:21 dwonnaco Exp $ */
+/* $Id: f2p.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <unistd.h>
@@ -9,6 +9,7 @@
 #include <petit/petit_args.h>
 #include <petit/Exit.h>
 
+namespace omega {
 void convert_to_petit()
     {
 #ifndef WIN32
@@ -59,3 +60,5 @@ void convert_to_petit()
     assert(0 && "Convert to Petit not yet supported under Visual C++");
 #endif
     } /* convert_to_petit */
+
+} // end omega namespace

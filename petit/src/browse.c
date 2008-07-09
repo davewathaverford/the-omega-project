@@ -17,6 +17,8 @@
 #include <petit/Exit.h>
 #include <petit/petit_args.h>
 
+namespace omega {
+
 node* br_go_to_another( node *n )
 {
 node *nn;
@@ -446,3 +448,5 @@ static struct Menu_struc M1[] = {
 } /* build_br_browse */
 
 #endif
+
+} // end of namespace omega

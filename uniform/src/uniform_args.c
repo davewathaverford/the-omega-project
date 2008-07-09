@@ -1,7 +1,8 @@
-/* $Id: uniform_args.c,v 1.1.1.1 2000/06/29 19:24:45 dwonnaco Exp $ */
+/* $Id: uniform_args.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include "uniform/uniform_misc.h"
 #include "uniform/uniform_args.h"
+namespace omega {
 
 uniform_args_struct uniform_args;
 
@@ -114,3 +115,4 @@ void process_uniform_args(char *arg)
             }
         }
     } /* process_uniform_args */
+}

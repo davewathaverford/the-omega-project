@@ -1,4 +1,4 @@
-/* $Id: uniform_misc.c,v 1.1.1.1 2000/06/29 19:24:45 dwonnaco Exp $ */
+/* $Id: uniform_misc.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <basic/Dynamic_Array.h>
@@ -13,6 +13,9 @@
 #include <uniform/select.h>
 #include <uniform/time_mappings.h>
 #include <uniform/simple_codegen.h>
+#include <petit/Exit.h>
+
+namespace omega {
 
 
 int nr_statements;
@@ -25,7 +28,7 @@ Dynamic_Array1<Relation> time0("Stmt");
 Dynamic_Array2<Relation> T1("Level", "Stmt");
 Dynamic_Array2<Coef_Var_Decl *> coef_var("Stmt", "Nest");
 Dynamic_Array2<int> was_negative("Stmt","Nest");
-Dynamic_Array2<Omega_String> var_name_list("Stmt", "Nest");
+Dynamic_Array2<String> var_name_list("Stmt", "Nest");
 FILE *uniform_debug, *uniform_debug2;
 
 
@@ -176,3 +179,5 @@ void perform_time_search(int manual)
     {
     perform_search(manual);
     } /* perform_time_search */
+
+}

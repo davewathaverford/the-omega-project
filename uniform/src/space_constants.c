@@ -6,6 +6,8 @@
 #include <uniform/space_mappings.h>
 #include <uniform/communication.h>
 
+namespace omega {
+
 static Dynamic_Array1<int> parent("Stmts");
 static Dynamic_Array1<int> rank("Stmts");
 static Dynamic_Array3<int> diffs("Stmts", "Stmts", "Globals");
@@ -359,3 +361,4 @@ void select_constants()
     diff_exists.resize(0, 0);
     done.resize(0);
     } /* select_constants */
+}

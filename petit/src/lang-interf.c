@@ -1,4 +1,4 @@
- /* $Id: lang-interf.c,v 1.1.1.1 2000/06/29 19:24:37 dwonnaco Exp $ */
+ /* $Id: lang-interf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,9 @@
 #include <petit/make.h>
 #include <petit/affine.h>
 #include <petit/pres-interf.h>
+#include <petit/Exit.h>
 
+namespace omega {
 
 void write_ddnode_to_graph(ddnode * ddn)
 { 
@@ -229,7 +231,7 @@ if_compare_operators term_compare_op(term t)
 	case op_eq:
 	    return equal;
 	case op_ne:
-	    return not_eq; 
+	    return not_equal; 
 	default:
 	    assert(0 && "can't get here");
 	    return greater;  // make the compiler shut up
@@ -429,7 +431,7 @@ node *loop_containing(node *n)
 
 /* I'd think this would be somewhere already, but I don't see it... */
 
-int depth(node *n)    
+int node_depth(node *n)    
 {
     node *parent = loop_containing(n);
     if( parent != Entry ) {
@@ -493,8 +495,8 @@ context_iterator access_shared_context_at_depth(a_access a1, a_access a2, int d)
     assert( access_shared_depth(a1,a2) >= d );
 
 	node *ic;
-    for (ic = a1; ic != Entry && ::depth(ic) >= d; ic=ic->nodeparent)
-	if (::depth(ic) == d && it_contains(ic, a2))
+    for (ic = a1; ic != Entry && node_depth(ic) >= d; ic=ic->nodeparent)
+	if (node_depth(ic) == d && it_contains(ic, a2))
 	    if (if_branch_op(ic->nodeop))
 		return ic;
 
@@ -519,6 +521,8 @@ if_context access_inner_shared_context_at_depth(a_access a1, a_access a2, a_acce
 	return ic2;
 	}
     }
+
+} // end of namespace omega
 
 #if 0
 
@@ -642,5 +646,6 @@ void add_assertion(node *expr)
     new_assert->nodeparent = Entry;
     new_assert->nodeprev = last;
 }
+
 
 #endif

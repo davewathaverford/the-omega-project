@@ -1,4 +1,4 @@
-/* $Id: kill.c,v 1.4 2000/08/18 17:22:04 dwonnaco Exp $ */
+/* $Id: kill.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +13,8 @@
 #include <petit/timeTrials.h>
 #include <petit/omega2flags.h>
 #include <petit/petit_args.h>
+
+namespace omega {
 
 int dep_analysis_skip_inexact_kills = -1;
 
@@ -29,7 +31,7 @@ int dep_analysis_skip_inexact_kills = -1;
 #define keep_relations_compressed 0
 #endif
 #if ! defined dont_verify_kills
-#define dont_verify_kills 0
+#define dont_verify_kills 1
 #endif
 
 /* The following table shows the possible results
@@ -122,8 +124,8 @@ kill_possible(dd_current dd, dd_current f, dd_current o,
 
 bool kill_possible(dd_current dd, dd_current f, dd_current o)
 {
-  int common_nest=min(min(dd_current_nest(dd), 
-                          dd_current_nest(f)), dd_current_nest(o));
+  int common_nest=min(std::min(dd_current_nest(dd), 
+                               dd_current_nest(f)), dd_current_nest(o));
 
   return kill_possible (dd, f, o, common_nest,1);
 }
@@ -347,12 +349,13 @@ static change do_simple_kill(Relation &value_deps,
 		    if (petit_args.dep_analysis_debug >= 2)
 			fprintf(debug,
 				"This would be inexact and is being ignored.\n");
-
+/*
 		    if (!(known_to_be_inexact)) {
 		      known_to_be_inexact = true;
 		      value_deps =
 			Intersection(value_deps, Complement(Relation::Unknown(value_deps)));
 		      }
+                      */
 		    }
 		else
 		    {
@@ -720,17 +723,40 @@ void do_partial_covers_kill(a_access r)
 	    } 
 
 	assert(!dont_use_cover_analysis || g == 0);
+        
+        // copied from line 203
+        if (dep_analysis_skip_inexact_kills < 0)
+	{
+	        if (petit_args.dep_analysis_quick) 
+                    dep_analysis_skip_inexact_kills = 1;
+	        else {
+		        char * e = getenv("DEP_ANALYSIS_SKIP_INEXACT_KILLS");
+		        dep_analysis_skip_inexact_kills = e ? atoi(e) : 0;
+		}
+	}
+
 
 	/* restrict its range to the reads currently exposed */
 	if (g > 0)
 	    {
-	    known_to_be_inexact = 
-		(!exposed_read.is_exact());
+	    known_to_be_inexact = (!exposed_read.is_exact());
 	    // assert(!exposed_read.has_disjunction_with_unknown());
-	    value_deps=Restrict_Range(value_deps, copy(exposed_read));
-	    relation_has_changed=really_changed;
-	    value_deps.simplify(0,1);
 
+            // do not do the restrict range if the exposed reads
+            // are known to be inexact and we are supposed to 
+            // skip inexact kills
+            if (known_to_be_inexact && dep_analysis_skip_inexact_kills) {
+                if (petit_args.dep_analysis_debug >= 2)
+                        fprintf(debug,
+                            "This would be inexact and is being ignored.\n");
+                known_to_be_inexact = false;  // because we aren't using it
+                                              // to restrict range
+            } else {
+	        value_deps=Restrict_Range(value_deps, copy(exposed_read));
+	        relation_has_changed=really_changed;
+            }
+
+	    value_deps.simplify(0,1);
 	    is_dead = !value_deps.is_upper_bound_satisfiable();
 
 	    if (petit_args.dep_analysis_debug >= 2)
@@ -911,3 +937,4 @@ all_done:
 
     } /* end do_partial_covers_kill */
 
+} // end of omega namespace

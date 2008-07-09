@@ -1,4 +1,4 @@
-/* $Id: ivr-lang-interf.c,v 1.2 2000/08/16 20:01:19 dwonnaco Exp $ */
+/* $Id: ivr-lang-interf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 /************************************************************
  *                                                          *
@@ -15,6 +15,8 @@
 #include <petit/ssa.h>
 #include <petit/ivr.h>
 #include <petit/tree.h>
+
+namespace omega {
 
 /*
  * Go down at SSA graph using petit AST.
@@ -469,7 +471,7 @@ void tag_var_as_changeable_or_constant(Var_Id var, pEXPR e, int leading_0s) {
   }
 }
 
-
+} // end omega namespace
 
 /* go through the parse tree and call get_ssa_scalar_id for every use
    of the scalar

@@ -1,9 +1,0 @@
-exprint,
-exprreal,
-exprrefint,
-exprrefreal,
-exprintarray,
-exprrealarray,
-exprintfun,
-exprrealfun,
-exprunknown

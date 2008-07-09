@@ -1,4 +1,4 @@
-/* $Id: make.c,v 1.1.1.1 2000/06/29 19:24:37 dwonnaco Exp $ */
+/* $Id: make.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +9,8 @@
 #include <petit/vutil.h>
 #include <petit/make.h>
 #include <petit/affine.h>
+
+namespace omega {
 
 /* various utility functions for making data structures */
 
@@ -115,7 +117,8 @@ node *make_index( node *i )
 {
 node *n;
     n = make_node( op_index );
-    n->nodevalue = (unsigned int)i;
+    //n->nodevalue = (unsigned int)i;
+    n->nodevalue = (long unsigned int)i;
     n->exptype = exprrefint; /* all indexes are integer variables */
     return n;
 }/* make_index */
@@ -252,8 +255,8 @@ node *m;
 	if( m->nodechild != NULL ){
 	    replace_index( m->nodechild, 1, old, new_node );
 	}
-	if( m->nodeop == op_index && m->nodevalue == (unsigned int)old ){
-	    m->nodevalue = (unsigned int)new_node;
+	if( m->nodeop == op_index && m->nodevalue == (long unsigned int)old ){
+	    m->nodevalue = (long unsigned int)new_node;
 	}
     }
 }/* replace_index */
@@ -297,3 +300,5 @@ node *inter1, *inter2;
 
     return 1;
 }/* test_tightly_nested */
+
+} // end omega namespace

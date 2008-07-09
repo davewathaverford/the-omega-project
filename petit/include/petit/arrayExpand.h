@@ -1,4 +1,4 @@
-/* $Id: arrayExpand.h,v 1.1.1.1 2000/06/29 19:24:22 dwonnaco Exp $ */
+/* $Id: arrayExpand.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /******************************************************
  *                                                    *
  * Array expansion and privatization.                 *
@@ -11,8 +11,12 @@
 
 #include <petit/tree.h>
 
+namespace omega {
+
 int  ArrayExpansion(int);
 int  ZapExpand(ddnode *);
 int  Privatization(int);
+
+}
 
 #endif

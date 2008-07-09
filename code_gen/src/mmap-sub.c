@@ -1,5 +1,8 @@
 #include <code_gen/mmap-sub.h>
 #include <code_gen/mmap-util.h>
+#include <basic/Exit.h>
+
+namespace omega {
 
 #if ! defined DONT_QUIT_FOR_FAILED_SUBSTITUTION
 #define DONT_QUIT_FOR_FAILED_SUBSTITUTION (getenv("DONT_QUIT_FOR_FAILED_SUBSTITUTION") ? atoi(getenv("DONT_QUIT_FOR_FAILED_SUBSTITUTION")) : 0)
@@ -598,3 +601,5 @@ String get_sub(Relation &R, int o, Substitutions &subs)
 	}
     }
 }
+
+} // end namespace omega

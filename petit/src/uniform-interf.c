@@ -1,11 +1,13 @@
-/* $Id: uniform-interf.c,v 1.1.1.1 2000/06/29 19:24:40 dwonnaco Exp $ */
+/* $Id: uniform-interf.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include "petit/uniform-interf.h"
 #include "petit/ddnest.h"
 #include "petit/Zima.h"
 #include "petit/ddodriver.h"
+#include <petit/print.h>
 
-
+namespace omega
+{
 
 static void label_stmts(int i, node *n)
     {
@@ -580,3 +582,6 @@ Depend*DependCurr(DependIterator i)
     {
     return i.dd;
     }
+
+} // end namespace omega
+

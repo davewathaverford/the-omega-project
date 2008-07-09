@@ -1,7 +1,9 @@
-/* $Id: oc_query.c,v 1.2 2000/08/18 17:22:02 dwonnaco Exp $*/
+/* $Id: oc_query.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $*/
 
 #include <basic/bool.h>
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 void
 Problem::
@@ -526,7 +528,8 @@ queryCoupledVariable(int i, coef_t *l, coef_t *u, int *couldBeZero, coef_t lower
 	set_max(*l, b2);
 	set_min(*u, b1);
 	};
-    *couldBeZero = *l <= 0 && 0 <= *u && int_mod(eqn->coef[0], abs(eqn->coef[v])) == 0;
+    coef_t barb = abs(eqn->coef[v]);
+    *couldBeZero = *l <= 0 && 0 <= *u && int_mod(eqn->coef[0], barb) == 0;
     }
 
 
@@ -562,3 +565,5 @@ queryVariableSigns(int i, int dd_lt, int dd_eq, int dd_gt, coef_t lowerBound, co
 	};
     return (result);
     }
+
+} // end of namespace omega

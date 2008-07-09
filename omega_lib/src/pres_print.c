@@ -1,4 +1,4 @@
-/* $Id: pres_print.c,v 1.1.1.1 2000/06/29 19:24:07 dwonnaco Exp $ */
+/* $Id: pres_print.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/pres_gen.h>
@@ -11,6 +11,7 @@
 #include <basic/Exit.h>
 #include <omega/omega_core/oc.h>
 
+namespace omega {
 
 
 ////////////////////////////////////////
@@ -63,9 +64,9 @@ void Conjunct::reorder_for_print(bool reverseOrder,
 		if (input_used[i]) newpos.append(input_vars[i]);
 	    for(i=1; i<=min(myRelation->n_out(),first_pass_output);i++)
 		if (output_used[i]) newpos.append(output_vars[i]);
-	    for(i=max(1,first_pass_input+1); i<=myRelation->n_inp();i++)
+	    for(i=omega::max(1,first_pass_input+1); i<=myRelation->n_inp();i++)
 		if (input_used[i]) newpos.append(input_vars[i]);
-	    for(i=max(1,first_pass_output+1); i<=myRelation->n_out();i++)
+	    for(i=omega::max(1,first_pass_output+1); i<=myRelation->n_out();i++)
 		if (output_used[i]) newpos.append(output_vars[i]);
 	    }
     else {
@@ -73,9 +74,9 @@ void Conjunct::reorder_for_print(bool reverseOrder,
 		if (output_used[i]) newpos.append(output_vars[i]);
 	    for(i=1; i<=min(myRelation->n_inp(),first_pass_input);i++)
 		if (input_used[i]) newpos.append(input_vars[i]);
-	    for(i=max(1,first_pass_output+1); i<=myRelation->n_out();i++)
+	    for(i=omega::max(1,first_pass_output+1); i<=myRelation->n_out();i++)
 		if (output_used[i]) newpos.append(output_vars[i]);
-	    for(i=max(1,first_pass_input+1); i<=myRelation->n_inp();i++)
+	    for(i=omega::max(1,first_pass_input+1); i<=myRelation->n_inp();i++)
 		if (input_used[i]) newpos.append(input_vars[i]);
          }
 
@@ -929,4 +930,5 @@ String GEQ_Handle::print_term_to_string() const {
     return s;
 }
 
+} // end of namespace omeganamespace omega {
 

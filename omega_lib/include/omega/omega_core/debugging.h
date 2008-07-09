@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <ctype.h>
 
+
+namespace omega {
+
 extern FILE *DebugFile;
 
 extern int omega_core_debug;
@@ -79,5 +82,8 @@ inline int process_pres_debugging_flags(char *arg,int &j) {
 	    }
     return(1);
 }
+
+
+} // end of namespace omega
 
 #endif

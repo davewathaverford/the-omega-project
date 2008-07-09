@@ -1,8 +1,10 @@
-/* $Id: find_affine.h,v 1.1.1.1 2000/06/29 19:24:24 dwonnaco Exp $ */
+/* $Id: find_affine.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Find_Affine
 #define Already_Included_Find_Affine 1
 
 #include <petit/affine.h>
+
+namespace omega {
 
 /*
    Traverse the parse tree, trying to associate affine functions with
@@ -22,5 +24,7 @@ void r_zap_affine_exprs(node *n);  /* free space */
 
 /* for terms that are not affine, how do they change? */
 unsigned int expr_invariant_at_depth(node *expr);
+
+}
 
 #endif

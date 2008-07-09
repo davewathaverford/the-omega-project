@@ -1,4 +1,4 @@
-/* $Id: Exit.h,v 1.1.1.1 2000/06/29 19:24:21 dwonnaco Exp $ */
+/* $Id: Exit.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /**********************************************************
  *                                                        *
  * Error fighting and exit facilities, include file       *
@@ -10,6 +10,8 @@
 
 #include <basic/Exit.h>
 #include <signal.h>
+
+namespace omega {
 
 /* SunOS has ... after the int argument; who knows about others. */
 #if !defined(SIG_HANDLER_HAS_ONE_ARG)
@@ -53,5 +55,7 @@ int      Quit(int dummy );
 extern void out_of_memory();
 
 void      Write(char *);
+
+}
 
 #endif

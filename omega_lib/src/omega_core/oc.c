@@ -1,7 +1,9 @@
-/* $Id: oc.c,v 1.1.1.1 2000/06/29 19:24:08 dwonnaco Exp $*/
+/* $Id: oc.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $*/
 
 #include <basic/bool.h>
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 eqn SUBs[maxVars+1];
 Memory redMemory[maxVars+1];
@@ -582,3 +584,5 @@ void Problem::checkGistInvariant() const
 
 
 
+
+} // end of namespace omega

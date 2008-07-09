@@ -30,8 +30,14 @@ M   generation of communication statements
 #define alloca _alloca
 #endif
 
+using omega::min;
+using omega::negate;
+
 extern int hpp_yylex(void);
 extern int hpp_yyerror(char * );
+
+
+namespace omega {
 
 typedef List<int> IntList;
 List<template_info *> templates;
@@ -46,6 +52,9 @@ Map<String,String> tname_map("");
 Map<String,String> pname_map("");
 
 FILE *hpp_debug_file;
+extern FILE *DebugFile;
+}
+
 
 int pickles=0;
 
@@ -54,6 +63,7 @@ void hpp_error_callback(const String &s) {
     exit(1);
 }
 
+using namespace omega;
 
 %}
 
@@ -96,8 +106,7 @@ void hpp_error_callback(const String &s) {
 %%
 
 start: { current_Declaration_Site = 0;
-         extern FILE *DebugFile;
-         hpp_debug_file = DebugFile;
+         hpp_debug_file = omega::DebugFile;
          current_Declaration_Site = globalDecls = 
 	     new Global_Declaration_Site();
          petit_args.hpp_mode = true;
@@ -318,7 +327,7 @@ simpleExp :
 exp : INT 		{$$ = new Exp($1);}
 	| INT simpleExp  %prec '*' {$$ = multiply($1,$2);}
 	| simpleExp	{ $$ = $1; }
-	| '-' exp %prec '*'   { $$ = negate($2);}
+	| '-' exp %prec '*'   { $$ = ::negate($2);}
 	| exp '+' exp  { $$ = add($1,$3);}
 	| exp '-' exp  { $$ = subtract($1,$3);}
 	| exp '*' exp  { $$ = multiply($1,$3);}
@@ -330,6 +339,8 @@ exp : INT 		{$$ = new Exp($1);}
 
 
 #include <hppl.c>
+
+namespace omega {
 
 symtabentry *lookup_symbol(const String &name) {
 
@@ -458,3 +469,5 @@ Relation make_distribution_relation(List<int> &tl, List<int> &pl,
     d.finalize();
     return d;
 }
+
+} // end of namespace omega

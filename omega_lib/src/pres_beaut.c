@@ -1,10 +1,12 @@
-/* $Id: pres_beaut.c,v 1.1.1.1 2000/06/29 19:24:06 dwonnaco Exp $ */
+/* $Id: pres_beaut.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <basic/bool.h>
 #include <omega/pres_tree.h>
 #include <omega/pres_conj.h>
 #include <omega/Relation.h>
 #include <omega/omega_i.h>
+
+namespace omega {
 
 /////////////////////////
 //                     //
@@ -240,3 +242,5 @@ void Conjunct::beautify() {
     delete this;
   }
 }
+
+} // end of namespace omega

@@ -1,4 +1,4 @@
-/* $Id: Zima.h,v 1.1.1.1 2000/06/29 19:24:22 dwonnaco Exp $ */
+/* $Id: Zima.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /*
  * Interface that lets the user generate Presburger Formulae that
  *  represent dependences from program source.  Uses lang-interf.
@@ -19,6 +19,8 @@
 #include <basic/Iterator.h>
 #include <petit/pres-interf.h>
 #include <petit/lang-interf.h>
+
+namespace omega {
 
 
 
@@ -91,7 +93,7 @@ public:
     friend void add_one_local_assertion(pASSERT ASR, const AccessIteration &AI,
                             Formula *N, List<context_descr_for_assert *>L);
 
-private:
+// private:
 
     a_access acc;
     List<Var_Id> index_var_ids;
@@ -131,6 +133,7 @@ void generateAllDDVectors(a_access access1,a_access access2,
 /* assertion functions */
 void add_assertions(F_And *bound);
 
+}
 
 #endif
 

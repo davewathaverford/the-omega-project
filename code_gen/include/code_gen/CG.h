@@ -9,6 +9,8 @@
 #include <omega/Relation.h>
 #include <code_gen/elim.h>
 
+namespace omega {
+
 typedef Tuple<int> IntTuple;
 typedef Tuple<Relation> SetTuple;
 typedef Tuple<SetTuple> SetTupleTuple;
@@ -80,7 +82,7 @@ public:
     ~CG_split() { delete trueClause; delete falseClause; }
     CG_result *new_copy();
     virtual int depth() 
-      { return max(trueClause->depth(),falseClause->depth()); }
+      { return omega::max(trueClause->depth(),falseClause->depth()); }
     virtual String printStructure(int indent);
     virtual String print(int indent);
     // added by D people
@@ -155,4 +157,5 @@ public:
     CG_result *body;
 };
 
+} // end omega namespace
 #endif

@@ -1,8 +1,10 @@
-/* $Id: hull.h,v 1.1.1.1 2000/06/29 19:24:01 dwonnaco Exp $ */
+/* $Id: hull.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #ifndef Already_Included_Hull
 #define Already_Included_Hull
 #include <omega/farkas.h>
+
+namespace omega {
 
 // All of the following first call approximate on S to
 // eliminate any wildcards, strides the conjuncts of S
@@ -86,4 +88,7 @@ Relation VennDiagramForm(
 
 
 Relation CheckForConvexRepresentation(NOT_CONST Relation &R_In);
+
+} // end of namespace omega
+
 #endif

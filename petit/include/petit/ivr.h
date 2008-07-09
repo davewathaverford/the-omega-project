@@ -1,4 +1,4 @@
-/* $Id: ivr.h,v 1.1.1.1 2000/06/29 19:24:25 dwonnaco Exp $ */
+/* $Id: ivr.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /*********************************************************************
  *                                                                   *
  * Include file for induction variable recognition.                  *
@@ -12,6 +12,7 @@
 
 #include <petit/ivr-lang-interf.h>
 
+namespace omega {
 /*
  * Global data fot Tarjan algorithm
  */
@@ -44,5 +45,7 @@ void      NoOpListDelete(void);
 void      ElimDeadAssgmts(void);
 
 void      RecUpdate(pSTMT);
+
+} // end omega namespace
 
 #endif

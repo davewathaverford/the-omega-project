@@ -1,4 +1,4 @@
-/* $Id: petit.c,v 1.2 2000/08/16 19:27:22 dwonnaco Exp $ */
+/* $Id: petit.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #include <stdio.h>
 #include <stdlib.h>
 #if !defined(EXCLUDE_UNIFORM)
@@ -22,6 +22,8 @@
 
 #include <petit/affine.h>
 #include <petit/lang-interf.h>
+
+using namespace omega;
 
 static void grab_memory()
     {
@@ -133,3 +135,4 @@ int main(int argc, char *argv[])
     Exit(0);
     return 0; // shut the compiler up
     } /* main */
+

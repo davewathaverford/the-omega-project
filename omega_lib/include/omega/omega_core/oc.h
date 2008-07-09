@@ -1,15 +1,22 @@
-/* $Id: oc.h,v 1.5 2000/08/16 20:01:15 dwonnaco Exp $ */
+/* $Id: oc.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #ifndef Already_Included_OC
 #define Already_Included_OC 1
 
 #include <basic/bool.h>
+
 #include <stdio.h>
+//#include <cstdio>
+//using namespace std;
+
 #include <basic/String.h>
 #include <basic/util.h>
 #include <omega/omega_core/debugging.h>
 
 #define maxVars 56
+
+namespace omega {
+
 
 extern int maxGEQs;
 extern int maxEQs;
@@ -139,7 +146,7 @@ public:
     short     var[maxVars+2];
     short     forwardingAddress[maxVars+2];
     // int     variableColor[maxVars+2];
-    int  hashVersion;
+    int  mHashVersion;
     const char *(*get_var_name)(unsigned int var, void *args);
     void *getVarNameArgs;
     eqn *GEQs;
@@ -346,5 +353,8 @@ void setOutputFile(FILE *file);
 extern void check_number_EQs(int nEQs);
 extern void check_number_GEQs(int nGEQs);
 extern void checkVars(int nVars);
+
+
+} // end of namespace omega
 
 #endif

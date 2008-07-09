@@ -1,4 +1,4 @@
-/* $Id: system.c,v 1.1.1.1 2000/06/29 19:24:39 dwonnaco Exp $ */
+/* $Id: system.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined BATCH_ONLY_PETIT
 
@@ -14,8 +14,7 @@
 #include <petit/motif.h>
 #include <petit/system.h>
 
-
-
+namespace omega {
 
 void *build_do_auto_parallel()
     {
@@ -128,5 +127,7 @@ int do_system_epilog(int x)
         }
     return 0;
     }/* do_system_epilog */
+
+} // end namespace omega
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: coverlist.c,v 1.3 2000/08/16 20:01:18 dwonnaco Exp $ */
+/* $Id: coverlist.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <stdlib.h>
 #include <basic/bool.h>
@@ -11,7 +11,7 @@
 #include <petit/omega2flags.h>
 #include <petit/petit_args.h>
 
-
+namespace omega {
 
 #define abs(x) ((x)>=0?(x):-(x))
 
@@ -67,7 +67,7 @@ static int definite_lt_c_order(dd_current f1, dd_current f2)
 	fprintf(debug," is tighter than\n");
 	fprintf(debug," %s\n",dd_current_as_string(f2));
 	}
-    for(j=1; j <= (int)min(dd_current_nest(f1),dd_current_nest(f2)); j++) {
+    for(j=1; j <= (int)std::min(dd_current_nest(f1),dd_current_nest(f2)); j++) {
 	if (dd_current_diff_known(f1,j) && dd_current_diff_known(f2,j))
 	{ 
 	    if (dd_current_diff(f1)[j] < dd_current_diff(f2)[j])
@@ -187,8 +187,8 @@ int approx_leq_c(dd_current dd1, dd_current dd2)
 	if (dd_current_src(o) == dd_current_src(dd1)
 	     && (dd_current_is_output(o) || dd_current_is_reduction(o)))
 	{
-	    int commonDepth = min(dd_current_nest(dd2),
-				  min(dd_current_nest(dd1),
+	    int commonDepth = std::min(dd_current_nest(dd2),
+                std::min(dd_current_nest(dd1),
 				      dd_current_nest(dd_i_i_current(o))));
 	    assert(dd_current_is_output(o) || dd_current_is_reduction(o));
 	    if (kill_possible(dd1, dd2, o, commonDepth, 1))
@@ -232,7 +232,7 @@ static int cover_order(const void *bad, const void *brain)
       i = approx_leq_c(c2->dep, c1->dep) - approx_leq_c(c1->dep, c2->dep);
       if (i != 0) return i;
 
-      for(i=1;i<=(int)min(dd_current_nest(c1->dep),dd_current_nest(c2->dep)); i++) {
+      for(i=1;i<=(int)std::min(dd_current_nest(c1->dep),dd_current_nest(c2->dep)); i++) {
           d = max_dir(c1->dep,i) - max_dir(c2->dep,i);
           if (d != 0) return d;
 	  }
@@ -466,4 +466,4 @@ coverlist *build_coverlist(a_access r)
     return cl;
 }
 
-
+} // end of omega namespace

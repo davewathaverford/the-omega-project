@@ -1,9 +1,10 @@
-/* $Id: ddepsilon.c,v 1.1.1.1 2000/06/29 19:24:34 dwonnaco Exp $ */
+/* $Id: ddepsilon.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 /* Epsilon test */
 
 #include <memory.h>
 #include <stdlib.h>
 #include <basic/bool.h>
+#include <basic/Exit.h>
 #include <petit/lang-interf.h>
 #include <petit/affine.h>
 #include <petit/notedd.h>
@@ -15,7 +16,7 @@
 #include <petit/dddriver.h>
 #include <petit/petit_args.h>
 
-
+namespace omega {
 
 /* variables */
 
@@ -858,7 +859,7 @@ for (kSubscr=0; kSubscr<nSubscr;kSubscr++)
 		{
                  cv->sb[kSubscr].min_known[3]=0;
                  sb->min_known=0;
-                 s->lastcomvar_min=max(s->lastcomvar_min,kComvar);
+                 s->lastcomvar_min=omega::max(s->lastcomvar_min,kComvar);
                 }
               else
                  sb->minval+=lb;
@@ -867,7 +868,7 @@ for (kSubscr=0; kSubscr<nSubscr;kSubscr++)
 		{
                  cv->sb[kSubscr].max_known[3]=0;
                  sb->max_known=0;
-                 s->lastcomvar_max=max(s->lastcomvar_max,kComvar);
+                 s->lastcomvar_max=omega::max(s->lastcomvar_max,kComvar);
                 }
               else
                  sb->maxval+=ub;
@@ -1377,11 +1378,6 @@ if (check_simple(&d_info)==DD_NO)
 return 0;
 }
  
-
+}
  
-
-
-
-
-
 

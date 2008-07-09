@@ -4,7 +4,8 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_gen.h,v 1.2 2000/08/02 18:43:08 dwonnaco Exp $ */
+/* $Id: pres_gen.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
+
 
 //
 // general presburger stuff thats needed everywhere
@@ -28,8 +29,7 @@
 #define NOT_CONST 
 #endif
 
-
-#include <omega/enter_omega.h>
+//#include <omega/enter_omega.h>
 #include <basic/assert.h>
 #include <stdlib.h>
 #include <omega/omega_core/oc.h>
@@ -38,6 +38,8 @@
 #include <basic/Iterator.h>
 #include <basic/List.h>
 #include <basic/Tuple.h>
+
+namespace omega {
 
 //
 // I/O and error processing and control flags (also in omega_core/debugging.h)
@@ -191,5 +193,8 @@ friend Relation  Upper_Bound(NOT_CONST Relation &r)
 
 // REMEMBER - THE LAST LINE OF THE MACRO SHOULD NOT HAVE A ;
 /* TransitiveClosure doesn't need to be in friend_rel_ops */
+
+
+} // end of namespace omega
 
 #endif

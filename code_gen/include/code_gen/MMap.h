@@ -3,6 +3,8 @@
 
 #include <omega.h>
 
+namespace omega {
+
 struct PartialMMap {
   Relation mapping;
   Relation bounds;
@@ -59,5 +61,7 @@ static inline int operator==(const stm_info &, const stm_info &)
   assert(false);
   return 0;
 }
+
+} // end namespace omega
 
 #endif

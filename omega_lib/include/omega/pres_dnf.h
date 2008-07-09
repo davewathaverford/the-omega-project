@@ -4,11 +4,14 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_dnf.h,v 1.2 2000/08/16 20:01:15 dwonnaco Exp $ */
+/* $Id: pres_dnf.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_gen_h
 #include <omega/pres_gen.h>
 #endif
+
+
+namespace omega {
 
 //
 // Disjunctive Normal Form -- list of Conjuncts
@@ -86,5 +89,7 @@ public:
     DNF_Iterator() {}
     void curr_set(Conjunct *c) { *(*this) = c; }
 };
+
+} // end of namespace omega
 
 #endif

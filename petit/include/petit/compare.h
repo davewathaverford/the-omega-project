@@ -5,8 +5,11 @@
 
 #include <basic/bool.h>
 
+namespace omega {
 
 extern bool compare_equal( node *a, node *b );
 extern bool compare_trees( node *a, node *b , int);
+
+}
 
 #endif

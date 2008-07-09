@@ -8,7 +8,10 @@
 #include <basic/assert.h>
 #include <basic/Collection.h>
 
-#include <basic/enter_Section.h>
+//#include <basic/enter_Section.h>
+
+namespace omega {
+
 
 template<class T> class Section_Iterator;
 
@@ -51,8 +54,9 @@ private:
     int remaining;
 };
 
+} // end of namespace omega
 
-
+namespace omega {
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/Section.c>
 #endif
@@ -61,5 +65,8 @@ private:
 				template class Section_Iterator<T>; \
 				instantiate_Sequence(T)
 #define instantiate_Section_Iterator(T)	  instantiate_Section(T)
+
+} // end of namespace omega
+
 
 #endif

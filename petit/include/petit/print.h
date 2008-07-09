@@ -1,11 +1,13 @@
-/* $Id: print.h,v 1.1.1.1 2000/06/29 19:24:27 dwonnaco Exp $ */
+/* $Id: print.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Print
 #define Already_Included_Print
 
 #include <stdio.h>
 #include <petit/tree.h>
 
-extern void print_petit( node *Start, int follow );
+namespace omega {
+
+void print_petit( node *Start, int follow );
 
 extern void print_expr( node *n );
 
@@ -54,5 +56,7 @@ typedef enum{
     print_in_motif,
     print_in_printBuf} where;
 extern where print_where;
+
+} // end of namespace omega
 
 #endif

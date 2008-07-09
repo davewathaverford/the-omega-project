@@ -12,6 +12,8 @@
 // THAT CONTAINS LIST OF THE FUNCTIONS THAT ARE ALWAYS LINKED
 
 
+namespace omega {
+
 
 
 bool WANT_SEGM_FAULT =false;  
@@ -44,3 +46,5 @@ return result;
 }
 
 
+
+} // end of namespace omega

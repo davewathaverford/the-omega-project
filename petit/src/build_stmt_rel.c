@@ -1,4 +1,4 @@
-/* $Id: build_stmt_rel.c,v 1.2 2000/06/30 15:10:47 dwonnaco Exp $ */
+/* $Id: build_stmt_rel.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -16,6 +16,7 @@
 #include <petit/build_stmt_rel.h>
 #include <petit/petit_args.h>
 
+namespace omega {
 
 #define printClosure    (closureDebugLevel & 0x1)
 #define printBuildInfo  (closureDebugLevel & 0x2)
@@ -191,7 +192,7 @@ static Relation buildBoundsSet(int stmt)
 {
  assert(statements[stmt].access!=NULL);
  a_access a=statements[stmt].access;
- Relation it(depth(a));
+ Relation it(node_depth(a));
  AccessIteration a1(a, &it, Set_Tuple);
 
  F_And *f = it.add_and();
@@ -209,7 +210,7 @@ static Relation getBoundsRelation(int stmt1, int stmt2)
  assert(statements[stmt2].access!=NULL);
  a_access ac1=statements[stmt1].access;
  a_access ac2=statements[stmt2].access;
- Relation it(depth(ac1), depth(ac2));
+ Relation it(node_depth(ac1), node_depth(ac2));
  AccessIteration a1(ac1, &it, Input_Tuple);
  AccessIteration a2(ac2, &it, Output_Tuple);
 
@@ -554,3 +555,5 @@ void test_closure(int found)
         Exit(1);
         }
     } /* test_closure */
+
+} // end namespace omega

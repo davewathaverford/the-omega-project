@@ -4,7 +4,7 @@
 #include <basic/bool.h>
 
 
-/* $Id: pres_decl.h,v 1.1.1.1 2000/06/29 19:24:02 dwonnaco Exp $ */
+/* $Id: pres_decl.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if ! defined _pres_var_h
 #include <omega/pres_var.h>
@@ -13,6 +13,9 @@
 #include <omega/pres_form.h>
 #endif
 #include <basic/Section.h>
+
+
+namespace omega {
 
 //
 // Base class for presburger formula nodes with variables
@@ -57,5 +60,7 @@ private:
 		      Variable_ID_Tuple &seen_exists_ids);
 
 };
+
+} // end of namespace omega
 
 #endif

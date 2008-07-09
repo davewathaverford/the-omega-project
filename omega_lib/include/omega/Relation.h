@@ -1,7 +1,7 @@
 #if ! defined _Relation_h
 #define _Relation_h 1
 
-/* $Id: Relation.h,v 1.2 2000/08/02 20:04:42 dwonnaco Exp $ */
+/* $Id: Relation.h,v 1.2 2005/02/09 22:23:20 mstrout Exp $ */
 
 #include <basic/bool.h>
 
@@ -13,8 +13,11 @@
 #include <omega/pres_cnstr.h>
 #endif
 
-#include <iostream.h>
+//#include <iostream.h>
+#include <iostream>
 #include <basic/NonCoercible.h>
+
+namespace omega {
 
 //
 // Relation representative.
@@ -160,7 +163,7 @@ public:
       { return rel_body->is_satisfiable(); }
 
     inline bool is_tautology()
-      { return rel_body->is_obvious_tautology(); }  // for compatibility
+      { return rel_body->is_definite_tautology(); }  // for compatibility
     inline bool is_obvious_tautology()
       { return rel_body->is_obvious_tautology(); }
 
@@ -296,9 +299,13 @@ inline ostream & operator<<(ostream &o, Relation &R)
     return o << R.print_with_subs_to_string();
     }
 
+} // end of namespace omega
+
+
 
 #if ! defined _Relations_h
 #include <omega/Relations.h>
 #endif
+
 
 #endif

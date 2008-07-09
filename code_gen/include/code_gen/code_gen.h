@@ -8,6 +8,8 @@
 #include <code_gen/CG_outputRepr.h>
 #include <code_gen/CG_outputBuilder.h>
 
+namespace omega {
+
 typedef Tuple<int> IntTuple;
 typedef Tuple<Relation> SetTuple;
 typedef Tuple<SetTuple> SetTupleTuple;
@@ -32,6 +34,9 @@ MMGenerateCode(CG_outputBuilder* ocg,
 	       Relation &known, int effort=0);
 
 String MMGenerateCode(Tuple<Relation> &, Tuple<Relation> &, Relation &known,
+			int effort=0);
+
+String MMGeneratePythonCode(Tuple<Relation> &, Tuple<Relation> &, Relation &known,
 			int effort=0);
 
 String MMGenerateCode(Tuple<Relation> &, Tuple<Relation> &,
@@ -116,5 +121,6 @@ private:
   int stmt_num;
 };
 
+} // end of omega namespace
 
 #endif

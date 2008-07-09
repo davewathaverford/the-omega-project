@@ -1,7 +1,9 @@
-/* $Id: depend_filter.c,v 1.1.1.1 2000/06/29 19:24:35 dwonnaco Exp $ */
+/* $Id: depend_filter.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #include <petit/depend_filter.h>
 #include <petit/ops.h>
+
+namespace omega {
 
 int flow_filter;
 int output_filter;
@@ -51,3 +53,5 @@ int depend_filter( ddnode *dd)
            (carried                  || noncarried_filter) &&
            ((dd->ddflags  & ddisInFlowCycle)   || noncyclic_filter);
     } /* depend_filter */
+
+} // end namespace omega

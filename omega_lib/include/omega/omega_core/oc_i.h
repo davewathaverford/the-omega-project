@@ -1,4 +1,4 @@
-/* $Id: oc_i.h,v 1.1.1.1 2000/06/29 19:24:03 dwonnaco Exp $ */
+/* $Id: oc_i.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 #if !defined(Already_included_oc_i)
 #define Already_included_oc_i
@@ -20,6 +20,9 @@
 #define keyMult 31
 #define TRUE 1
 #define FALSE 0
+
+
+namespace omega {
 
 extern int findingImplicitEqualities;
 extern int firstCheckForRedundantEquations;
@@ -79,4 +82,7 @@ static inline void free(const Problem *p)
     } \
 }
 #endif
+
+} // end of namespace omega
+
 #endif

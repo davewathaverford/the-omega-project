@@ -1,5 +1,7 @@
-/* $Id: oc_global.c,v 1.1.1.1 2000/06/29 19:24:08 dwonnaco Exp $ */
+/* $Id: oc_global.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #include <omega/omega_core/oc_i.h>
+
+namespace omega {
 
 const int Problem::min_alloc = 10;
 const int Problem::first_alloc_pad = 5;
@@ -36,3 +38,5 @@ int omegaInitialized = 0;
 int mayBeRed = 0;
 
 
+
+} // end of namespace omega

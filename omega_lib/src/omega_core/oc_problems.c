@@ -1,5 +1,7 @@
 #include <omega/omega_core/oc_i.h> 
 
+namespace omega {
+
 Problem::~Problem()
     {
     delete EQs;
@@ -55,7 +57,7 @@ Problem::Problem(int in_eqs, int in_geqs)
     EQs = new eqn [allocEQs];
     GEQs = new eqn [allocGEQs];
     nVars = 0;
-    hashVersion = ::hashVersion;
+    mHashVersion = hashVersion;
     variablesInitialized = 0;
     variablesFreed = 0;
     varsOfInterest = 0;
@@ -74,7 +76,7 @@ Problem::Problem(const Problem & p2)
     GEQs = new eqn [allocGEQs];
     int e, i;
     nVars = p2.nVars;
-    hashVersion = p2.hashVersion;
+    mHashVersion = p2.mHashVersion;
     variablesInitialized = p2.variablesInitialized;
     variablesFreed = p2.variablesFreed;
     varsOfInterest = p2.varsOfInterest;
@@ -110,7 +112,7 @@ Problem & Problem::operator=(const Problem & p2)
       }
       int e, i;
       nVars = p2.nVars;
-      hashVersion = p2.hashVersion;
+      mHashVersion = p2.mHashVersion;
       variablesInitialized = p2.variablesInitialized;
       variablesFreed = p2.variablesFreed;
       varsOfInterest = p2.varsOfInterest;
@@ -177,3 +179,5 @@ int Problem::newEQ(){
 //    eqnnzero(&problem->EQs[nEQs-1],problem->nVars);
     return nEQs-1;
 }
+
+} // end of namespace omega

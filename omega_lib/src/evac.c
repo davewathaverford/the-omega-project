@@ -10,6 +10,8 @@ int evac_debug = 0;
 
 #include <omega/omega_core/oc_i.h>
 
+namespace omega {
+
 char *evac_names[] = { "trivial",
 		       "offset",
 		       "subseq",
@@ -366,4 +368,7 @@ Evac_info_printer::~Evac_info_printer()
 
 static Evac_info_printer print_stats_at_exit;
 
+} // end of namespace omega
+
 #endif
+

@@ -4,12 +4,14 @@
 #include <basic/bool.h>
 
 
-/* $Id: Relations.h,v 1.1.1.1 2000/06/29 19:24:00 dwonnaco Exp $ */
+/* $Id: Relations.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 // Relational operations
 
 #if ! defined _Relation_h
 #include <omega/Relation.h>
 #endif
+
+namespace omega {
 
 // UPDATE friend_rel_ops IN pres_gen.h WHEN ADDING TO THIS LIST
 // REMEMBER TO TAKE OUT DEFAULT ARGUMENTS IN THAT FILE
@@ -98,5 +100,8 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 	   Formula *f, const Mapping &mapping, bool &newrIsSet,
 	   List<int> &seen_exists,
 	   Variable_ID_Tuple &seen_exists_ids);
+
+
+} // end of namespace omega
 
 #endif

@@ -1,17 +1,19 @@
 #include <basic/bool.h>
 
+using namespace omega;
+
 /* class Tuple */
 
 
 
 // THESE FIRST TWO REALLY SHOULD BE INLINE BUT IT BREAKS CFRONT:
 
-template<class T>  T &Tuple<T>::operator[](int index)
+template<class T>  T& Tuple<T>::operator[](int index)
     {
     assert(1 <= index && index <= sz); return data[index-1];
     }
 
-template<class T>  const T &Tuple<T>::operator[](int index) const
+template<class T>  const T& Tuple<T>::operator[](int index) const
     {
     assert(1 <= index && index <= sz); return data[index-1];
     }
@@ -252,3 +254,4 @@ template<class T> bool Tuple_Iterator<T>::live() const
 template<class T> Iterator<T> *Tuple_Iterator<T>::new_copy() const {
     return new Tuple_Iterator<T>(current, firstptr, lastptr, sz); 
 }
+

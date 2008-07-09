@@ -8,7 +8,10 @@
 #include <basic/Collection.h>
 #include <basic/Link.h>
 
-#include <basic/enter_Bag.h>
+//#include <basic/enter_Bag.h>
+
+
+namespace omega {
 
 template<class T> class Bag : public Collection<T> { 
 public:
@@ -64,10 +67,15 @@ virtual	void operator |= (const Set<T> & b); // add elements in b
         bool operator & (const Set<T> &) const; // check for elements in common
 };
 
+} // end of namespace omega
+
+
 
 #if ! defined DONT_INCLUDE_TEMPLATE_CODE
 #include <basic/Bag.c>
 #endif
+
+namespace omega {
 
 #define instantiate_Bag(T)		template class Bag<T>; \
 					instantiate_List_Element(T);
@@ -75,5 +83,6 @@ virtual	void operator |= (const Set<T> & b); // add elements in b
 					instantiate_Bag(T)
 #define instantiate_Set(T)		template class Set<T>; \
 					instantiate_Ordered_Bag(T)
+}
 
 #endif

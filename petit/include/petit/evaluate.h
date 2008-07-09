@@ -4,10 +4,13 @@
 
 #include <basic/bool.h>
 
+namespace omega {
 
 extern void evaluate( node *n, int *val, bool *known );
 
 /* evaluate simple expression into variable/constant part */
 extern void evaluate_simple( node *n, int *val, node **rest );
+
+}
 
 #endif

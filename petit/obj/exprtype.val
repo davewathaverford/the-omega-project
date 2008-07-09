@@ -1,9 +1,0 @@
-{ "integer" },
-{ "real" },
-{ "refint" },
-{ "refreal" },
-{ "intarray" },
-{ "realarray" },
-{ "intfunction" },
-{ "realfunction" },
-{ "unknown" }

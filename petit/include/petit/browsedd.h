@@ -14,6 +14,7 @@
 #define GRAPH_OUTPUT_CLASS 3
 #define GRAPH_REDUCE_CLASS 4
 
+namespace omega {
 
 extern int BRDD_mode;
 extern int BRDD_show;
@@ -54,5 +55,7 @@ extern node *brdd_current( void );
 extern unsigned int brdd_line( void );
 
 extern void brdd_move(node* source, ddnode* dest);
+
+}
 
 #endif

@@ -1,4 +1,4 @@
-/* $Id: ddodriver.c,v 1.5 2000/08/18 17:22:04 dwonnaco Exp $ */
+/* $Id: ddodriver.c,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 
 
 /*
@@ -54,6 +54,7 @@
 #include <quantify.h>
 #endif
 
+namespace omega {
 
 #if ! defined EXTRAVAGANT
 int doing_all_accurate_kills;
@@ -351,7 +352,7 @@ static void o_dd_intersect_reads( node *list )
 	    (fetch_op(read->nodeop) || update_op(read->nodeop))))
 	{
 	    optype rdop = read->nodeop;
-	    for(cur_depth=depth(read); cur_depth >= ((petit_args.omitTopLevel || petit_args.dep_analysis_quick)?1:0); cur_depth--)
+	    for(cur_depth=node_depth(read); cur_depth >= ((petit_args.omitTopLevel || petit_args.dep_analysis_quick)?1:0); cur_depth--)
 	    {
 		for (write = Entry;
 		     write != NULL;
@@ -457,6 +458,19 @@ static void o_dd_do_exit_kill(a_access W)
         access_as_string(W));
    }
 
+ // copied this code from kill.c
+ int dep_analysis_skip_inexact_kills = -1;
+ if (dep_analysis_skip_inexact_kills < 0)
+     {
+        if (petit_args.dep_analysis_quick) dep_analysis_skip_inexact_kills = 1;
+        else {
+                char * e = getenv("DEP_ANALYSIS_SKIP_INEXACT_KILLS");
+                dep_analysis_skip_inexact_kills = e ? atoi(e) : 0;
+        }
+      }
+
+
+
  // find the dependence to exit
  for (flow_i=dd_o_i_for_access(W); ! dd_o_i_done(flow_i); 
       flow_i=dd_o_i_next(flow_i))
@@ -529,7 +543,12 @@ static void o_dd_do_exit_kill(a_access W)
          output_domain.print_with_subs(debug);
        }
 
-      downward_exposed_writes=Difference(downward_exposed_writes,output_domain);
+      if (dep_analysis_skip_inexact_kills && output_domain.is_inexact()) {
+        if (petit_args.dep_analysis_debug >= 2)
+          fprintf(debug, "This would be inexact and is being ignored.\n");
+      } else {
+        downward_exposed_writes=Difference(downward_exposed_writes,output_domain);
+      }
 
       if (petit_args.dep_analysis_debug >= 3)
 	{
@@ -790,7 +809,7 @@ static void o_dd_do_accurate_kills(node *list)
 #if defined STUDY_KILL_USE
     fprintf(debug, "\nKill statistics for kills involving %s(",
 	    get_nodevalue_sym(access_sym(list))->symname);
-    for (int dimento = 1;
+    for (unsigned int dimento = 1;
 	 dimento<=get_nodevalue_sym(access_sym(list))->symdims;
 	 dimento++)
 	fprintf(debug, "*%s",
@@ -967,7 +986,7 @@ void o_dd_merge(node *list, bool merge_levels, bool do_relations)
     for( l=list; l != NULL; l = l->nodelink )
 	{
         if(is_phi_access(l))  continue;
-	for(j=depth(l); j >= 1; j--) 
+	for(j=node_depth(l); j >= 1; j--) 
 	    for (f1 = l->nodeddin; f1 != NULL; f1 = f1->ddnextpred) 
                 if  (j <= (int)f1->ddnest)  {
 		    int f1_level;
@@ -1235,6 +1254,7 @@ static void fixReductions(a_access  list) {
 } // fixReductions
 #endif
 
+} // end omega namespace
 
 #if !defined(OMIT_GETRUSAGE)
 #include <sys/time.h>
@@ -1242,14 +1262,17 @@ static void fixReductions(a_access  list) {
 
 #include <petit/missing.h>
 
+namespace omega {
 static long user_millisecs(struct rusage *first, struct rusage *second)
 {
     return 
       (second->ru_utime.tv_sec -first->ru_utime.tv_sec)*1000 +
       ((second->ru_utime.tv_usec-first->ru_utime.tv_usec)+500)/1000;
 }
+}
 #endif
           
+namespace omega {
 void build_smaller_dd_graph(void)
     {
     nametabentry *n;
@@ -1600,3 +1623,5 @@ void calculate_depnum()
 
     printf("%4d %3d %3d \n", npairs, nmem, nval);
     } /* calculate_depnum */
+
+} // end of namespace omega

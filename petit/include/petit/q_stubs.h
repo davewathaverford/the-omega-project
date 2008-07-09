@@ -1,6 +1,8 @@
-/* $Id: q_stubs.h,v 1.1.1.1 2000/06/29 19:24:27 dwonnaco Exp $ */
+/* $Id: q_stubs.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Q_Stubs
 #define Already_Included_Q_Stubs
+
+namespace omega {
 
 extern int quantify_record_data ();
 extern int quantify_start_recording_data ();
@@ -17,5 +19,7 @@ extern int quantify_save_data_to_file ();
 extern int quantify_add_annotation ();
 extern int quantify_help();
 extern int quantify_print_recording_state();
+
+}
 
 #endif

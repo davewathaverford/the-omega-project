@@ -1,4 +1,4 @@
-// $Id: CG_outputBuilder.h,v 1.1.1.1 2000/06/29 19:23:28 dwonnaco Exp $
+// $Id: CG_outputBuilder.h,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $
 
 //*****************************************************************************
 // File: CG_outputBuilder.h
@@ -16,6 +16,8 @@
 
 #include <code_gen/CG_outputRepr.h>
 #include <basic/String.h>
+
+namespace omega {
 
 //*****************************************************************************
 // class: CG_outputBuilder
@@ -40,7 +42,7 @@ public:
   // place holder generation
   //---------------------------------------------------------------------------
   virtual CG_outputRepr* CreatePlaceHolder(int indent, const String &funcName,
-					   CG_outputRepr* funcList) const = 0;
+					   CG_outputRepr* funcList,bool gen_python) const = 0;
 
   //---------------------------------------------------------------------------
   // assignment generation
@@ -72,13 +74,14 @@ public:
   virtual CG_outputRepr* CreateInductive(CG_outputRepr* index,
 					 CG_outputRepr* lower,
 					 CG_outputRepr* upper,
-					 CG_outputRepr* step) const = 0;
+					 CG_outputRepr* step,
+					 bool gen_python) const = 0;
 
   //---------------------------------------------------------------------------
   // loop stmt generation
   //---------------------------------------------------------------------------
   virtual CG_outputRepr* CreateLoop(int indent, CG_outputRepr* control,
-				    CG_outputRepr* stmtList) const = 0;
+				    CG_outputRepr* stmtList,bool gen_python) const = 0;
 
   //---------------------------------------------------------------------------
   // basic parenthesis, interpretation operations
@@ -136,5 +139,6 @@ public:
   StmtListAppend(CG_outputRepr* list1, CG_outputRepr* list2) const = 0;
 };
 
+} // end of omega namespace
 
 #endif // CG_outputBuilder_h

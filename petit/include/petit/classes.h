@@ -1,3 +1,5 @@
+namespace omega {
+
 typedef
 enum classes {
 CLunknown,
@@ -8,5 +10,7 @@ CLBUILTIN,
 CLPRIVATE
 } var_class;
 
+
 #define DIMSFUN 200
 
+}

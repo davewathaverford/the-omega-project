@@ -1,5 +1,7 @@
 #include <code_gen/MMap.h>
 
+namespace omega {
+
 /*
  * Utility functions for dealing with stm_info arrays
  */
@@ -62,3 +64,5 @@ extern int code_gen_debug;
 #define tcodegen_debug code_gen_debug
 static const char *debug_mark_cp = "# tcodegen debug:\t";
 static const String debug_mark = debug_mark_cp;
+
+} // end namespace omega

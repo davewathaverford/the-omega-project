@@ -2,9 +2,12 @@
 #ifndef Already_Included_Lang_Menu
 #define Already_Included_Lang_Menu
 
+namespace omega {
 
 /* menu for petit -> fortran translation */
 void *build_do_translate( void );
 extern int do_translate_epilog( int dummy );
+
+}
 
 #endif

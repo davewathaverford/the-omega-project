@@ -5,6 +5,8 @@
 #include <petit/ddutil.h>
 #include <petit/ddnest.h>
 
+namespace omega {
+
 /* get nest level of common loops surrounding the two references. */
 
 void dd_get_nests( node *onode, node *inode, unsigned int *onest, unsigned int *inest, unsigned int *bnest )
@@ -105,3 +107,5 @@ node *iparent;
 	}
     }
 }/* dd_fix_nests */
+
+} // end omega namespace

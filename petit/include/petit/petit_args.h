@@ -1,4 +1,4 @@
-/* $Id: petit_args.h,v 1.3 2000/08/02 18:43:09 dwonnaco Exp $ */
+/* $Id: petit_args.h,v 1.1.1.1 2004/09/13 21:07:48 mstrout Exp $ */
 #ifndef Already_Included_Petit_Args
 #define Already_Included_Petit_Args
 
@@ -6,6 +6,8 @@
 
 
 #include <petit/dddir.h>
+
+namespace omega {
 
 #define PETITBUFSIZ 256
 #define DEPWRNAMELEN 256
@@ -77,5 +79,7 @@ extern void process_args(int argc, char *argv[]);
 extern int br_compile_options(int dummy);
 
 extern int br_options(int dummy);
+
+}
 
 #endif

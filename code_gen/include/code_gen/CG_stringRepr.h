@@ -1,4 +1,4 @@
-// $Id: CG_stringRepr.h,v 1.1.1.1 2000/06/29 19:23:29 dwonnaco Exp $
+// $Id: CG_stringRepr.h,v 1.1.1.1 2004/09/13 21:07:47 mstrout Exp $
 
 //*****************************************************************************
 // File: CG_stringRepr.h
@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include <basic/String.h>
 #include <code_gen/CG_outputRepr.h>
+
+namespace omega {
 
 //*****************************************************************************
 // class: CG_stringRepr
@@ -49,6 +51,6 @@ private:
   String s;
 };
 
-
+} // end of omega namespace
 
 #endif // CG_stringRepr_h
