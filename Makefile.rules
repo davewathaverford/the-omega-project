@@ -244,6 +244,6 @@ always:
 oldmake: always
 	ln -s ../src/*.[chly] .
 
-include Makefile.deps
+-include Makefile.deps
 
 
