@@ -1,4 +1,4 @@
-# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
 # { [i] -> [j] : 1 <= i,j <= 10 and i != j};
 
 {[i] -> [j] : 1 <= j < i <= 10} union

@@ -1,4 +1,4 @@
-# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
 # inverse { [i] -> [i+1] : 1 <= i <= 9 };
 
 {[In_1] -> [In_1-1] : 2 <= In_1 <= 10}

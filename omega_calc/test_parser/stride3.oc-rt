@@ -1,4 +1,4 @@
-# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
 # Sym n;
 # 
 # new_IS := {[t1,t2] : exists (alpha : t1 = 32alpha+3 && 

@@ -1,4 +1,4 @@
-# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
 # T1 := {[k,i,j] -> [k',i,j] : 1 <= k < k' < i <= 1024 && k'+1 <= j <= 1024};
 # 
 # T2 := {[k,i,j] -> [j,i,j'] : 1 <= k < j < i <= 1024 && j < j' <= 1024};

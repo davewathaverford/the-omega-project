@@ -1,4 +1,4 @@
-# Omega Calculator v1.2 (based on Omega Library 1.2, August, 2000):
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
 # R := {[1:10,1:10]} union {[-10:-1,-10:-1]} union
 # 	{[x,y] : -10 <= x,y <= 10 && -10 <= x-y <= 10};
 # 
