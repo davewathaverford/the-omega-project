@@ -19,7 +19,7 @@
 #include <sys/resource.h>
 #endif
 
-#define CALC_VERSION_STRING "Omega Calculator v1.2"
+#define CALC_VERSION_STRING "Omega Calculator v2.1"
 
 #define DEBUG_FILE_NAME "./oc.out"
 
