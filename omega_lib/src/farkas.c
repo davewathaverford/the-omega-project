@@ -241,8 +241,8 @@ Relation Farkas(NOT_CONST Relation &input_R, Farkas_Type op)
 
   bool firstGroup = true;
 
-  while (op == Decoupled_Farkas && varGroup.live()
-	 || op != Decoupled_Farkas && firstGroup) {
+  while ((op == Decoupled_Farkas && varGroup.live())
+	 || (op != Decoupled_Farkas && firstGroup)) {
 
     if (farkas_debug && op == Decoupled_Farkas) {
 	fprintf(DebugFile,"[Computing decoupled farkas for:");

@@ -78,13 +78,13 @@ Problem::
 printTerm(const eqn * e, int c) const
     {
     String s = print_term_to_string(e, c);
-    fprintf(outputFile, (const char *) s);
+    fprintf(outputFile, "%s", (const char *) s);
     }
 
 void Problem::printSub(int v) const
     {
     String s = print_sub_to_string(v);
-    fprintf(outputFile, (const char *) s);
+    fprintf(outputFile, "%s", (const char *) s);
     }
 
 String Problem::print_sub_to_string(int v) const 
@@ -429,7 +429,7 @@ int
 Problem::prettyPrintProblem() const 
     {
     String s = prettyPrintProblemToString();
-    fprintf(outputFile, (const char *) s);
+    fprintf(outputFile, "%s", (const char *) s);
     fflush(outputFile);
     return 0;
     }
@@ -744,7 +744,7 @@ prettyPrintRedEquations() const
 	if (EQs[e].color == _red)
 	    {
 	    if (stuffPrinted)
-		fprintf(outputFile, connector);
+		fprintf(outputFile, "%s", connector);
 	    stuffPrinted = 1;
 	    ((Problem *)this)->
 		EQs[e].color = black;
@@ -758,7 +758,7 @@ prettyPrintRedEquations() const
 	if (GEQs[e].color == _red)
 	    {
 	    if (stuffPrinted)
-		fprintf(outputFile, connector);
+		fprintf(outputFile, "%s", connector);
 	    stuffPrinted = 1;
 	    ((Problem *)this)->
 		GEQs[e].color = black;
@@ -772,7 +772,7 @@ prettyPrintRedEquations() const
 	if (SUBs[e].color) 
 	    {
 	    if (stuffPrinted)
-		fprintf(outputFile, connector);
+		fprintf(outputFile, "%s", connector);
 	    stuffPrinted = 1;
 	    printSubstitution(e);
 	    }

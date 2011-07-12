@@ -117,7 +117,7 @@ void Conjunct::reorder_for_print(bool reverseOrder,
 void Rel_Body::print_with_subs(FILE *output_file, bool printSym, bool newline) 
     {
 	String s = this->print_with_subs_to_string(printSym, newline);
-	fprintf(output_file, (const char *) s);
+	fprintf(output_file, "%s", (const char *) s);
     }
 
 void Rel_Body::print_with_subs() 
@@ -498,7 +498,7 @@ void Rel_Body::print(FILE *output_file, bool printSym) {
   fprintf(output_file, "{");
 
   String s = print_variables_to_string(printSym);
-  fprintf(output_file, (const char *) s);
+  fprintf(output_file, "%s", (const char *) s);
 
   fprintf(output_file, ": ");
 
@@ -527,7 +527,7 @@ void F_And::print_separator(FILE *output_file) {
 
 void Conjunct::print(FILE *output_file) {
   String s = print_to_string(true);
-  fprintf(output_file, (const char *) s);
+  fprintf(output_file, "%s", (const char *) s);
 }
 
 String Conjunct::print_to_string(int true_printed) {
@@ -760,7 +760,7 @@ void F_Declaration::prefix_print(FILE *output_file, int debug) {
     if(VI) s += ",";
   }
   s += "]\n";
-  fprintf(output_file, (const char *) s);
+  fprintf(output_file, "%s", (const char *) s);
   Formula::prefix_print(output_file, debug);
 }
 

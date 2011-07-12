@@ -21,7 +21,7 @@ var_kind(vkind),
 position(pos), 
 global_var(NULL),
 of((Argument_Tuple) 0) {
-  assert((vkind==Input_Var || vkind==Output_Var) && pos>0 || pos==0);
+  assert(((vkind==Input_Var || vkind==Output_Var) && pos>0) || pos==0);
 }
 
 // Declare unnamed variable
@@ -32,7 +32,7 @@ var_kind(vkind),
 position(pos), 
 global_var(NULL),
 of((Argument_Tuple) 0) {
-  assert((vkind==Input_Var || vkind==Output_Var) && pos>0 || pos==0);
+  assert(((vkind==Input_Var || vkind==Output_Var) && pos>0) || pos==0);
 }
 
 // Copy variable declaration

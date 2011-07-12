@@ -1166,7 +1166,7 @@ argumentList :
 		Variable_Ref * v = lookupScalar($3);
 		if (!v) YYERROR;
 		 free($3);
-		 if (v->pos != argCount || v->of != $1 || v->of != Input_Tuple && v->of != Output_Tuple) {
+		 if (v->pos != argCount || v->of != $1 || (v->of != Input_Tuple && v->of != Output_Tuple)) {
 			fprintf(stderr,"arguments to function must be prefix of input or output tuple\n");
 			YYERROR;
 			}
@@ -1176,7 +1176,7 @@ argumentList :
 	| VAR { Variable_Ref * v = lookupScalar($1);
 		if (!v) YYERROR;
 		 free($1);
-		 if (v->pos != argCount || v->of != Input_Tuple && v->of != Output_Tuple) {
+		 if (v->pos != argCount || (v->of != Input_Tuple && v->of != Output_Tuple)) {
 			fprintf(stderr,"arguments to function must be prefix of input or output tuple\n");
 			YYERROR;
 			}

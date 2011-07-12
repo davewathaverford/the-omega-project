@@ -1428,7 +1428,7 @@ Relation Gist(NOT_CONST Relation &input_R1,
        S2.print_with_subs(DebugFile);
        fprintf(DebugFile, "---->]\n");
       }
-     assert (!S1.is_exact() || !S2.is_exact() || Must_Be_Subset(copy(S1),copy(S2)) && Must_Be_Subset(copy(S2),copy(S1)));
+     assert (!S1.is_exact() || !S2.is_exact() || (Must_Be_Subset(copy(S1),copy(S2)) && Must_Be_Subset(copy(S2),copy(S1))));
 #endif   
     return G;
   }
@@ -1952,12 +1952,13 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 	      this_var->remap = new_var;
 	      };
 	    new_name = newr->In_Names[new_pos];
-	    if (!this_name.null())                 // should we name this?
+	    if (!this_name.null()) {                // should we name this?
 		if (!new_name.null()) {            // already named, anonymize
 	            if (new_name != this_name)
 		        newr->name_input_var(new_pos, Const_String());
 		} else
 		    newr->name_input_var(new_pos, this_name);
+	    }
 	    break;
 
 	case Output_Var:
@@ -1966,12 +1967,13 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 	    new_pos = mapping.get_map_in_pos(i);
 	    this_var->remap = new_var = newr->output_var(new_pos);
 	    new_name = newr->Out_Names[new_pos];
-	    if (!this_name.null()) 
+	    if (!this_name.null()) {
 		if (!new_name.null()) {             // already named, anonymize
 		    if (new_name != this_name)
 		        newr->name_output_var(new_pos, Const_String());
 		} else
 		    newr->name_output_var(new_pos, this_name);
+	    }
 	    break;
 
 	case Exists_Var:
@@ -1992,7 +1994,7 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 		    }
 	    } else {
 		this_var->remap = new_var = seen_exists_ids[cur_ex];
-		if (!this_name.null())  // Have we already assigned a name?
+		if (!this_name.null()) { // Have we already assigned a name?
 		    if (!new_var->base_name.null()) {
 			if (new_var->base_name != this_name)
 			    new_var->base_name = Const_String();
@@ -2000,6 +2002,7 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 			new_var->base_name = this_name;
 			assert(!this_name.null());
 		    }
+		}
 	    }
 	    break;
 	default:
@@ -2028,12 +2031,13 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 	    new_pos = mapping.get_map_out_pos(i);
 	    this_var->remap = new_var = newr->input_var(new_pos);
 	    new_name = newr->In_Names[new_pos];
-	    if (!this_name.null())
+	    if (!this_name.null()) {
 		if (!new_name.null()) {    // already named, anonymize
 		    if (new_name != this_name)
 			newr->name_input_var(new_pos, Const_String());
 		} else
 		    newr->name_input_var(new_pos, this_name);
+	    }
 	    break;
 
 	case Output_Var:
@@ -2045,12 +2049,13 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 	      this_var->remap = new_var;
 	      };
 	    new_name = newr->Out_Names[new_pos];
-	    if (!this_name.null())
+	    if (!this_name.null()) {
 		if (!new_name.null()) {    // already named, anonymize
 			if (new_name != this_name)
 			    newr->name_output_var(new_pos, Const_String());
 		    } else
 			newr->name_output_var(new_pos, this_name);
+	    }
 	    break;
 
 	case Exists_Var:
@@ -2068,13 +2073,14 @@ void align(Rel_Body *originalr, Rel_Body *newr, F_Exists *fe,
 		    }
 	    } else {
 		this_var->remap = new_var = seen_exists_ids[cur_ex];
-		if (!this_name.null())
+		if (!this_name.null()) {
 		    if (!new_var->base_name.null()) {
 			if (new_var->base_name != this_name)
 			    new_var->base_name = Const_String(); 
 		    } else {
 			new_var->base_name = this_name;
 		    }
+		}
 	    }
 	    break;
 	default:
@@ -2327,7 +2333,7 @@ void Relation::dimensions(int & ndim_all, int &ndim_domain) {
 void Relation::makeSet() {
   assert(!is_null());
   // Assert that it is a set...
-  assert((n_inp() == 0 && n_out() >= 0) || n_inp() >= 0 && n_out() == 0);
+  assert((n_inp() == 0 && n_out() >= 0) || (n_inp() >= 0 && n_out() == 0));
 
   if ((n_inp() == 0 && n_out() != 0) || !is_set()) split();  // split if we'll modify this
   if (n_inp() == 0 && n_out() != 0)  //Inverse the relation

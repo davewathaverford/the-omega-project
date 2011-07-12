@@ -1410,7 +1410,7 @@ Relation result;
 				    Rstar_C_Rplus.print_with_subs(DebugFile);
 				    }  
 				if (!Is_Obvious_Subset(copy(Rstar_C_Rplus),copy(R_plus))
-				    && !Is_Obvious_Subset(copy(Rstar_C_Rplus),copy(C)))
+				    && !Is_Obvious_Subset(copy(Rstar_C_Rplus),copy(C))) {
 				    if (expansion) 
 					N = Union(N,Rstar_C_Rplus);
 				    else {
@@ -1418,7 +1418,7 @@ Relation result;
 					resultInexact = true;
 					break;
 					}
-
+				    }
 				}
 			    else
 				{

@@ -368,7 +368,7 @@ static Relation QuickHull(Tuple<Relation> &Rs) {
 	if (!found_for_i) {
 	  if (hull_debug > 1) {
 	    fprintf(DebugFile,"No bound found in:\n");
-	    fprintf(DebugFile,Rs[i].print_with_subs_to_string());
+	    fprintf(DebugFile,"%s", (const char *) Rs[i].print_with_subs_to_string());
 	  }
 	  //if nothing found 
 	  found = 0;

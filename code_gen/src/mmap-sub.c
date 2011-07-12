@@ -153,11 +153,12 @@ static modinfo check_mod(Relation &R, int o, bool tightmod)
   {
   for (EQ_Iterator ei = (*di)->EQs(); ei; ei++)
     {
-      if ((*ei).get_coef(k))
+      if ((*ei).get_coef(k)) {
 	if (k_used_already)
 	  return badm;
 	else
 	  k_used_already = true;
+      }
     }
   }
 

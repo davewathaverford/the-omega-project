@@ -1187,7 +1187,7 @@ normalize()
 	    if (e2 < e && GEQs[e2].key == eKey) 
 		{
 		if (GEQs[e2].coef[0] > GEQs[e].coef[0] ||
-		    GEQs[e2].coef[0] == GEQs[e].coef[0] && GEQs[e2].color) 
+		    (GEQs[e2].coef[0] == GEQs[e].coef[0] && GEQs[e2].color))
 		    {
 		    /* e2 is redundant */
 		    if (DEBUG) 
