@@ -1188,7 +1188,7 @@ dir_and_diff_info *d_info, unknowns * /*u_info*/)
 			if(confirm_that.is_upper_bound_satisfiable()) {
 				fprintf(debug,"Oops.. level carried info incorrect\n");
 				fprintf(debug,"dependence should be carried at lvl %d\n",level);
-				fprintf(debug,"We have a report of bounds of %d <= Out_%d-In_%d <= %d\n",lb,l,l,ub);
+				fprintf(debug,"We have a report of bounds of " coef_fmt " <= Out_%d-In_%d <= " coef_fmt "\n",lb,l,l,ub);
 				if (guaranteed) fprintf(debug,"query_difference quanrantees this\n");
 				fprintf(debug,"Relation is:\n");
 				this_part.prefix_print(debug);

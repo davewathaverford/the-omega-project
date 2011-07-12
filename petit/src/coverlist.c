@@ -20,7 +20,9 @@ namespace omega {
 
 /* find the maximum possible distance - works only if loop step > 0 FERD */
 
-static int max_dir(dd_current dd, int j)
+// Use coef_t here because values include infinity...
+
+static coef_t max_dir(dd_current dd, int j)
 {
     if (dd_current_diff_known(dd,j))
     {
@@ -35,7 +37,7 @@ static int max_dir(dd_current dd, int j)
     assert(0); return negInfinity;
 }
 
-static int min_dir(dd_current dd, int j)
+static coef_t min_dir(dd_current dd, int j)
 {
     if (dd_current_diff_known(dd,j))
     {

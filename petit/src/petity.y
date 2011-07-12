@@ -11,6 +11,8 @@
 #include <petit/tree.h>
 #include <petit/vutil.h>
 #include <petit/petity.h>
+#include "../obj/petity.h"   /* Bison-generated file with tokens, *** NOT *** our unfortunately-named ../include/petit/petity.h */
+
 #ifdef WIN32
 #include <io.h>
 #define isatty _isatty
