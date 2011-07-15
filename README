@@ -30,4 +30,5 @@ but the source code is now on github.com:
 To obtain a read-only copy of the source code on linux or MacOS
 with a command-line git client, use the command
 
-	"git clone git://github.com/davewathaverford/the-omega-project"
+	git clone git://github.com/davewathaverford/the-omega-project
+
