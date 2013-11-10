@@ -21,7 +21,7 @@ calculator.html: ${CALCULATORSRC}
 	latex2html -address omega@cs.umd.edu -auto_navigation -t "The Omega Calculator" -reuse -show_section_numbers -split 2 calculator.tex
 
 
-calculator.bbl : para.bib calculator.cites.uptodate
+calculator.bbl : calculator.cites.uptodate
 	touch calculator.aux ; bibtex calculator
 
 calculator.uptodate :
@@ -31,6 +31,4 @@ calculator.cites.uptodate :
 	touch calculator.cites.uptodate
 
 
-para.bib :
-	ln -s /fs/savoir2/p/bib/para.bib .
 
