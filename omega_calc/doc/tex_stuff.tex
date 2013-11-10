@@ -1,0 +1,110 @@
+%
+% tex commands used in Omega test papers
+%
+\def\ft{\footnotesize}
+\def\lb{{\{$\ast$}}
+\def\rb{{$\ast$\}}}
+\def\subE{\stackrel{{\em sub}}{=}}
+\def\True{{\rm True}}
+\def\gist{{\rm gist\; }}
+\def\given{{\rm \;given\; }}
+\def\st{{\rm \ s.t.\ }}
+\def\t{\qquad}
+
+%
+% loop index vectors
+\def\i{{\cal I}}
+\def\j{{\cal I'}}
+\def\k{{\cal I''}}
+\def\h{{\cal I'''}}
+%
+% symbolic constants
+\def\Sym{{\tt Sym}}
+\def\l{{\tt l}}
+\def\u{{\tt u}}
+\def\n{{\tt n}}
+\def\m{{\tt m}}
+\def\p{{\tt p}}
+\def\q{{\tt q}}
+\def\x{{\tt x}}
+\def\y{{\tt y}}
+% dont use \c - it screws up \c in bibliography
+\def\const{{\rm c}}
+%
+% define values of loop variables i and j (and path)
+% as they appear as part of the vectors i, j, and k
+%
+% for historical reasons, the 1st, 2nd, 3rd occurances of i are
+% written \ii, \ji, \ki   :-P
+%
+\def\ii{{\rm i}}
+\def\ji{{\rm i'}}
+\def\ki{{\rm i''}}
+\def\hi{{\rm i'''}}
+\def\ij{{\rm j}}
+\def\jj{{\rm j'}}
+\def\kj{{\rm j''}}
+\def\hj{{\rm j'''}}
+\def\ik{{\rm k}}
+\def\jk{{\rm k'}}
+\def\kk{{\rm k''}}
+\def\hk{{\rm k'''}}
+\def\ipath{{\cal P}}
+\def\jpath{{\cal P'}}
+\def\kpath{{\cal P''}}
+%
+% wildcards
+\def\wilda{{\alpha}}
+\def\wildb{{\beta}}
+\def\wildc{{\gamma}}
+\def\wildd{{\delta}}
+%
+% floor and ceiling constraint wildcards
+\def\wildfloor{{\rm f}}
+\def\wildceil{{\rm c}}
+%
+% loop variables used in examples, not code
+\def\loopexa{{\tt r}}
+\def\loopexb{{\tt r'}}
+%
+% Boolean values used in text:
+\def\true{{\bf True}}
+\def\false{{\bf False}}
+%
+\def \overC #1 {\lfloor #1 \rfloor}
+\def \underC #1 {\lceil #1 \rceil}
+%
+% introduce a new term
+\newcommand{\newterm}[1]{{\em #1}}
+%
+% use a language keyword like ``for'' or ``if''
+\newcommand{\keyword}[1]{{\tt\bf #1}}
+%
+% refer to code in text
+\newcommand{\code}[1]{{\tt #1}}
+%
+% allow the definition of example numbers
+% e.g.  The first time, use ``\labelExample{foo}''
+% then later just use \ref{example:foo}
+%
+\newcounter{eXample}
+\newcommand{\labelExample}[1]{\refstepcounter{eXample} \label{eXample:#1} \theeXample}
+%
+% Make a note about something to be fixed
+%
+\def \fixMe #1 {{\large\bf #1 \marginpar{FIX}
+        \typeout{**********************************************}
+        \typeout{FIX ME: #1}
+        \typeout{**********************************************}
+        }}
+
+\newcommand{\blist}{\begin{list}{$\bullet$}{\setlength{\parsep}{0.1ex}\setlength{\itemsep}{0.2ex}\setlength{\topsep}{0.1ex}}}
+\newcommand{\blistA}{\begin{list}{$\bullet$}{\setlength{\itemsep}{0.5ex}\setlength{\topsep}{0.5ex}}}
+\newcommand{\blistB}{\begin{list}{$\bullet$}{\setlength{\parsep}{0.2ex}\setlength{\itemsep}{0.3ex}\setlength{\topsep}{0.3ex}}}
+%\newcommand{\blistC}{\begin{list}{--}{\setlength{\parsep}{0ex}\setlength{\itemsep}{0.1ex}\setlength{\topsep}{0.3ex}}}
+\newcommand{\elist}{\end{list}}
+
+\newcommand{\var}[1]{{\em #1}}
+\newcommand{\fun}[1]{{\sf #1}}
+\newcommand{\word}[1]{\verb"#1"}
+\newcommand{\comment}[1]{{\rm $(*$ #1 $*)$}}
