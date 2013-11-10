@@ -724,7 +724,7 @@ Problem::solveEQ()
 		}
 	    else if (inApproximateMode) {
 		    if (TRACE) {
-			fprintf(outputFile, "Dropping equation on the floor");
+			fprintf(outputFile, "Dropping equation on the floor: ");
 		        printEQ(eq);
 			fprintf(outputFile, "\n");
 			}
