@@ -8,6 +8,33 @@
 # 	&& -a-2e >= 1
 # 	&& b-2d-3f >= 1
 # 	&& 3a+b-e >= 1
-'time' requires getrusage, but the omega calclator was compiled with OMIT_GETRUSAGE set!
 # 	};
+
+Times (in microseconds): 
+    6 us to copy original set of constraints
+   71 us to do the default amount of simplification, obtaining: 
+	{[a,b,c,d,e,f]: 3c+1 <= a <= -2e-1 && 1 <= a+b+2c+2d+e+2f && 3b+2f < 2a && 2b < 3a && b+3c+2f < 2e && 2d+3f < b && e < 3a+b}
+
+ 4070 us to do the maximum (i.e., excessive) amount of simplification, obtaining: 
+	{[a,b,c,d,e,f]: 3c+1 <= a <= -2e-1 && 1 <= a+b+2c+2d+e+2f && 3b+2f < 2a && 2b < 3a && b+3c+2f < 2e && 2d+3f < b && e < 3a+b}
+
+WARNING: The Omega calculator was compiled with options that force
+it to perform additional consistency and error checks
+that may slow it down substantially
+
+NOTE: These times relect the time of the current _implementation_
+of our algorithms. Performance bugs do exist. If you intend to publish or 
+report on the performance on the Omega test, we respectfully but strongly 
+request that send your test cases to us to allow us to determine if the 
+times are appropriate, and if the way you are using the Omega library to 
+solve your problem is the most effective way.
+
+Also, please be aware that over the past two years, we have focused our 
+efforts on the expressive power of the Omega library, sometimes at the
+expensive of raw speed. Our original implementation of the Omega test
+was substantially faster on the limited domain it handled.
+
+	Thanks, 
+	   the Omega Team 
+# 
 # 		
