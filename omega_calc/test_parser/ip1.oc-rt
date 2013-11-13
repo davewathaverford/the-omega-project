@@ -14,10 +14,10 @@
 
 Times (in microseconds): 
     4 us to copy original set of constraints
-  137 us to do the default amount of simplification, obtaining: 
+  133 us to do the default amount of simplification, obtaining: 
 	{[a,b,c,d,e,f]: a <= -2e-1 && b <= 3a-1 && 1 <= a+b+2c+2d+e+2f && 3b+2f < a && c < a+e && b+3c+2f < 2e && 2d+f < b}
 
- 4709 us to do the maximum (i.e., excessive) amount of simplification, obtaining: 
+ 4780 us to do the maximum (i.e., excessive) amount of simplification, obtaining: 
 	{[a,b,c,d,e,f]: a <= -2e-1 && b <= 3a-1 && 1 <= a+b+2c+2d+e+2f && 3b+2f < a && c < a+e && b+3c+2f < 2e && 2d+f < b}
 
 WARNING: The Omega calculator was compiled with options that force
