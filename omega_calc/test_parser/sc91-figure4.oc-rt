@@ -1,0 +1,63 @@
+# Omega Calculator v2.1 (based on Omega Library 2.1, July, 2008):
+# 
+# # Example from Figure 4 of the original SC paper.
+# 
+# {[x,y] : 27 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+
+{[x,y]  : FALSE }
+
+# 
+# 
+# # Variants
+# 
+# {[x,y] : 25 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+
+{[x,y]  : FALSE }
+
+# 
+# 
+# S := {[x,y] : 24 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+# 
+# S;
+
+{[x,y]: 24 <= 11x+13y && 11x+13y <= 45 && 9y <= 10+7x && 7x <= 4+9y}
+
+# 
+# 
+# hull S;
+
+{[x,y]: 24 <= 11x+13y && 11x+13y <= 45 && 9y <= 10+7x && 7x <= 4+9y}
+
+# 
+# 
+# approximate S;
+
+{[x,y]: 24 <= 11x+13y && 11x+13y <= 45 && 9y <= 10+7x && 7x <= 4+9y}
+
+# 
+# 
+# S1 := {[x,y] -> [x]} (S);
+# 
+# 
+# S1;
+
+{[x]: Exists ( alpha : 24 <= 11x+13alpha && 11x+13alpha <= 45 && 9alpha <= 10+7x && 7x <= 4+9alpha)}
+
+# 
+# approximate S1;
+
+{[x]: 1 <= x <= 2}
+
+# 
+# 
+# S intersection {[1,y]};
+
+{[1,1]}
+
+# 
+# 
+# S intersection {[2,y]};
+
+{[x,y]  : FALSE }
+
+# 

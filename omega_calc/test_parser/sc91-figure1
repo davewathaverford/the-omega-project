@@ -1,0 +1,9 @@
+
+# Example from Figure 1 of the original SC paper.
+
+I := {[x,y,z] : 1 <= x <= 40 && -50 <= y <= 50 && 7x+12y+31z = 17 && 3x+5y+14z = 7};
+
+# version 2.1 of the Omega library would generate an assertion failure
+# when trying to generate code for this
+
+codegen I;
