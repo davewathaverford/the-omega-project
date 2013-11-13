@@ -14,6 +14,7 @@
 #ifndef CG_outputBuilder_h
 #define CG_outputBuilder_h
 
+#include <omega/omega_core/oc.h>
 #include <code_gen/CG_outputRepr.h>
 #include <basic/String.h>
 
@@ -102,6 +103,7 @@ public:
   //---------------------------------------------------------------------------
   // binary arithmetic operations
   //---------------------------------------------------------------------------
+  virtual CG_outputRepr* CreateSum(CG_outputRepr*, coef_t) const = 0;
   virtual CG_outputRepr* CreatePlus(CG_outputRepr*, CG_outputRepr*) const = 0;
   virtual CG_outputRepr* CreateMinus(CG_outputRepr*, CG_outputRepr*) const = 0;
   virtual CG_outputRepr* CreateTimes(CG_outputRepr*, CG_outputRepr*) const = 0;

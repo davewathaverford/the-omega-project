@@ -61,3 +61,12 @@
 {[x,y]  : FALSE }
 
 # 
+# 
+# codegen S;
+for(t1 = 1; t1 <= 2; t1++) {
+  for(t2 = intDiv(7*t1-4+8,9); t2 <= min(intDiv(-11*t1+45,13),intDiv(7*t1+10,9)); t2++) {
+    s1(t1,t2);
+  }
+}
+
+# 

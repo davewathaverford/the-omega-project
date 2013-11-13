@@ -645,12 +645,7 @@ CG_outputRepr* outputEasyBoundasRepr(CG_outputBuilder* ocg,
     coef_t cf = g.get_const()*sign_adj;
     terms++;
     assert(cf != 0);
-    if (cf > 0) {
-      easyBoundRepr = ocg->CreatePlus(easyBoundRepr, ocg->CreateInt(cf));
-    }
-    else {
-      easyBoundRepr = ocg->CreateMinus(easyBoundRepr, ocg->CreateInt(-cf));
-    }
+    easyBoundRepr = ocg->CreateSum(easyBoundRepr, cf);
   }
   else {
     if(easyBoundRepr == CG_REPR_NIL) {
@@ -661,7 +656,7 @@ CG_outputRepr* outputEasyBoundasRepr(CG_outputBuilder* ocg,
   if (v_coef > 1) {
     assert(ceiling >= 0);
     if (ceiling) {
-      easyBoundRepr= ocg->CreatePlus(easyBoundRepr, ocg->CreateInt(v_coef-1));
+      easyBoundRepr= ocg->CreateSum(easyBoundRepr, v_coef-1);
     }
     //-------------------------------------------------------------------------
     // extra parens if needed.
@@ -768,11 +763,10 @@ bool outputAssignment(CG_outputBuilder* ocg,
     }
 
     coef_t c_term = -((*I).get_const() * sign);
+    c_term += divider-1;
 
     if ( c_term ) {    // Not a zero
-      if ( c_term > 0) {
-        idLopRepr = ocg->CreatePlus(idLopRepr, ocg->CreateInt(c_term));
-      }
+      idLopRepr = ocg->CreateSum(idLopRepr, c_term);
     }
     else {
       if (idLopRepr == CG_REPR_NIL) {
@@ -782,8 +776,6 @@ bool outputAssignment(CG_outputBuilder* ocg,
     }
 
     if (divider != 1) { // divider might == 1 if !may_eliminate(v)
-      idLopRepr = ocg->CreatePlus(idLopRepr, ocg->CreateInt(divider-1));
-      idLopRepr = ocg->CreateParens(idLopRepr);
       ropRepr = ocg->CreateIntegerDivide(idLopRepr, ocg->CreateInt(divider));
     } else {
       ropRepr = idLopRepr;

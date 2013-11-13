@@ -22,3 +22,5 @@ approximate S1;
 S intersection {[1,y]};
 
 S intersection {[2,y]};
+
+codegen S;

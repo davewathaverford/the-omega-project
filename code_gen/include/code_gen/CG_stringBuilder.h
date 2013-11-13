@@ -20,6 +20,7 @@
 // class CG_outputRepr;            // minimal external declaration
 
 #include <basic/String.h>
+#include <omega/omega_core/oc.h>
 #include <code_gen/CG_outputBuilder.h>
 #include <code_gen/CG_outputRepr.h>
 
@@ -103,6 +104,7 @@ public:
   //---------------------------------------------------------------------------
   // binary arithmetic operations
   //---------------------------------------------------------------------------
+  virtual CG_outputRepr* CreateSum(CG_outputRepr*, coef_t) const;
   virtual CG_outputRepr* CreatePlus(CG_outputRepr*, CG_outputRepr*) const;
   virtual CG_outputRepr* CreateMinus(CG_outputRepr*, CG_outputRepr*) const;
   virtual CG_outputRepr* CreateTimes(CG_outputRepr*, CG_outputRepr*) const;
