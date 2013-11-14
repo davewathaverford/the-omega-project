@@ -1058,24 +1058,9 @@ for(t2 = 0; t2 <= intDiv(T-1,8); t2++) {
 # 		[1, TS_DF13ep1, 1, TS_DF13ep3,	2, TS_DF33e]
 # 	]
 # given	{ [a,b,c,d,e,f,g,h,i,j,k] : T, N, M > 3 };
-for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+1,1,xx-8xb'+8xb+2,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 2+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 5+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 3+xx+8xb <= N+8tb+tt && 8tb+tt < s && 2+s <= M+8tb+tt}
-  in statement 2, in read 1, in partial read 3
-  the memory map is invalid for the Array "tide".
-  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,6,1,6,1,5,1] -> [2,0,1,1,1,7,1,0,1,6,1] : N = 11 && M = 3 && T = 7}
-
   that address is written, via memory map 2, in iterations {[2,0,1,xb,1,6,1,6,1,5,1]: T = 7 && N = 11 && M = 3 && 0 <= xb <= 1}
 
-for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+2,1,xx-8xb'+8xb+1,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 1+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 6+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 2+xx+8xb <= N+8tb+tt && 8tb+tt < s && 3+s <= M+8tb+tt}
-  in statement 2, in read 2, in partial read 3
-  the memory map is invalid for the Array "tide".
-  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,7,1,7,1,6,1] -> [2,0,1,1,1,9,1,0,1,7,1] : N = 11 && M = 4 && T = 8}
-
   that address is written, via memory map 2, in iterations {[2,0,1,xb,1,7,1,7,1,6,1]: T = 8 && N = 11 && M = 4 && 0 <= xb <= 1}
-
-for dataFlow: {[2,tb,1,xb,1,s,1,xx,1,tt,1] -> [2,tb',1,xb',1,s+1,1,xx-8xb'+8xb+1,1,8tb+tt-8tb'+1,1] : -8tb, 0 <= tt <= 7 && 0 <= xx <= 7 && 8tb' <= 1+8tb+tt && 8xb' <= 1+xx+8xb && 8tb+tt <= 6+8tb' && xx+8xb <= 6+8xb' && 2+8tb+tt <= T && 8tb+tt < xx+8xb && 2+xx+8xb <= N+8tb+tt && 8tb+tt < s && 2+s <= M+8tb+tt}
-  in statement 2, in read 3, in partial read 2
-  the memory map is invalid for the Array "tide".
-  intersection(dataflow, AfterSameMem.mapping) includes {[2,0,1,0,1,7,1,7,1,6,1] -> [2,0,1,1,1,8,1,0,1,7,1] : N = 11 && M = 3 && T = 8}
 
   that address is written, via memory map 2, in iterations {[2,0,1,xb,1,7,1,7,1,6,1]: T = 8 && N = 11 && M = 3 && 0 <= xb <= 1}
 

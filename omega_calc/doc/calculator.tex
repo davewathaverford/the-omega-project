@@ -1,0 +1,674 @@
+\documentstyle[fullpage]{article}
+
+\input{tex_stuff.tex}
+
+
+\begin{document}
+\bibliographystyle{alpha}
+\title{{\bf The Omega Calculator and Library}, {\em version 1.1.0}}
+
+
+\author{
+Wayne Kelly, Vadim Maslov, William Pugh, \\
+Evan Rosser, Tatiana Shpeisman, Dave Wonnacott
+}
+
+\maketitle
+
+
+\section{Introduction}
+
+This document gives an overview of the Omega library and 
+describes the Omega Calculator, a text-based interface to
+the Omega library. A separate document describes the C++ interface 
+to the Omega library and we are still working on a third document that describes
+some of the algorithms used in implementing the Omega library.
+
+The Omega library 
+manipulates integer tuple relations and sets, such as
+$$\{[i,j] \rightarrow [j,j'] : 1 \leq i < j < j' \leq n\}
+{\rm\ and\ } \{ [ i ,j ] : 1 \leq i < j \leq n\}$$
+Tuple relations and
+sets are described using Presburger 
+formulas\cite{presburger1,Shostak77,presburger2,presburger2a} a class of logical
+formulas which can be built from affine constraints over integer
+variables, the logical connectives $\neg$, $\land$ and $\lor$, and the
+quantifiers $\forall$ and $\exists$.
+The best known upper bound on the performance of an algorithm for
+verifying Presburger formulas is $2^{2^{2^{n}}}$ \cite{presburger3},
+and we have no
+reason to believe that our method provides better worst-case
+performance. However,  we have found it
+to be reasonably efficient for our applications.
+
+The following relation, which maps 2-tuples to 1-tuples:
+$\{[i, j] \rightarrow [i] : 1 \le i,j \le 2\}$
+represents the following set of mappings: $\{[1,1]\rightarrow[1],\
+[1,2]\rightarrow[1],\ [2,1]\rightarrow[2],\ [2,2]\rightarrow[2]\}$.
+In addition to variables in the input and output tuples, the Presburger 
+formulas may also contain free variables. This allows parameterized relations to be described. 
+For example, $n$ and $m$ are free in 
+$\{ [i, j] \rightarrow [i] : 1 \le i \le n \land 1 \le j \le m \}$. 
+The language allows new relations to be defined in terms of existing relations 
+by providing a number of relational operators.  The relational operations 
+provided include intersection, union, composition, inverse, domain, range and complement.  
+For example, $\{[p] \rightarrow [2p, q]\}$ {\tt compose}
+$\{[i,j]\rightarrow[i]\}$ evaluates to
+$\{[i,j]\rightarrow[2i,q]\}$.
+
+Relations are simplified before being displayed to the user.  This
+involves transforming them into disjunctive normal form and removing
+redundant constraints and conjuncts.  During simplification, it may be determined
+that the relation contains no points or contains all points, in which
+case the simplified constraints will be False or True respectively.
+For example, $\{[i]\rightarrow[i]\}$ {\tt intersect}
+$\{[i]\rightarrow[i+1]\}$ evaluates to $\{[i]\rightarrow[i'] : {\tt
+False}\}$.
+
+The copyright notice and legal fine print for the Omega calculator and library are contained in
+the README and omega.h files. Basically, you can do anything you want with
+them (other than sue us); if you redistribute it
+you must include a copy of our copyright notice and legal fine print.
+
+\section{Omega Calculator invocation, syntax and semantics}
+
+The calculator reads from the file given as the first argument, or
+standard input, and prints results on standard output.  
+You can specify several command line flags. Using {\tt -D}{\em mk},
+where $m$ is a character and $k$ is a digit, sets the debugging level
+to $k$ for module $m$. Using {\tt -G}$g$ sets the maximum number
+of inequalities in a conjunct to $g$. Using {\tt -E}$e$ sets the maximum number
+of equalities in a conjunct to $E$. In version 1.1.0, we intend to 
+change our data structures so that these will not need to be specified.
+There is also a limit on the maximum number of variables in a conjunct,
+but this cannot be changed at run-time. It is given by
+{\tt maxVars} in {\tt oc.h}. We also intend to make this go away.
+
+
+The input is a
+series of statements terminated by semicolons. A \# indicates that
+the rest of the line is a comment.  
+The syntax {\tt <<}{\em filename}{\tt >>} can occur anywhere
+(and indicates that the text of the file is to be included here.
+The statements can have one of the
+forms listed in Figure~\ref{IPIstatements}.  {\em RelExpr} is a short
+form of {\em Relational Expression}.
+
+\begin{figure}[tbh]
+\begin{tabular}{l|p{4.5in}}
+Syntax & Semantics \\\hline
+
+{\tt symbolic} {\em varList} & 
+  Defines the variable names as symbolic
+  constants that can be used in all later
+  expressions. \\
+
+{\em var} := {\em RelExpr} & 
+  Computes the relational expression and binds the
+  variable name to the result. \\
+
+{\em RelExpr} & 
+  Computes and prints the relational expression. 	\\
+
+{\tt codegen} $\ldots$ &
+	This is described in Section \ref{section:codegen}.
+	\\
+
+{\em RelExpr} {\tt subset} {\em RelExpr} &
+  Prints True if the first relation is a subset of the second,
+  otherwise prints False. \\
+\end{tabular}
+\caption{Omega Calculator statements}
+\label{IPIstatements}
+\end{figure}
+
+
+Figures \ref{figure:example1} and \ref{figure:example2} show a sample
+session with the Omega
+Calculator. Lines starting with \# are input to the Omega
+calculator, the other lines are output from the calculator.
+
+\input{calculator-ex.tex}
+
+Some relational operations may not preserve
+the names of input and output variables.
+If this happens, the variables get default names:
+{\tt In\_}$n$ for input variables and
+{\tt Out\_}$n$ for output variables,
+where $n$ is a position of variables in its tuple.
+When printing, primes are added to variables to distinguish
+between multiple variables with the same name. 
+In input, primes may also be used to distinguish between multiple variables 
+with the same name: the primes are stripped before being passed
+to the Omega library.
+
+\section{Relations}
+
+\subsection{Building relations}
+
+A relation is an operand of a relational expression.
+Its syntax is:
+\begin{quote}
+{\tt \{ [} {\em InputList} {\tt ] -> [} {\em OutputList} {\tt ] :} 
+{\em formula} {\tt \}}
+\end{quote}
+
+{\em InputList} and {\em OutputList} are lists of tuple elements.
+A tuple element can be:
+
+\begin{tabular}{cp{5in}}
+{\em var} & The corresponding tuple variable is given this name.
+	If a variable with that name is already in scope,
+	an equality is added
+	forcing this tuple variable to be equal to the value
+	of the previous definition.
+\\
+{\em exp} & The tuple variable is unnamed and forced to be equal
+	to the expression.
+\\
+{\em exp}:{\em exp} & The tuple variable is unnamed and forced to be
+	greater than or equal to the first expression and less than
+	or equal to the second.
+\\
+{\em exp}:{\em exp}:{\em int} & The tuple variable is unnamed and forced to be
+	greater than or equal to the first expression and less than
+	or equal to the second, and the difference between the tuple
+variable and the first expression must be an integer multiple of the
+	integer.
+\\
+{\tt *} &The tuple variable is unnamed.
+\end{tabular}
+
+
+The {\em formula} is optional.  If it is omitted, no constraints other than
+those introduced by the input and output expressions are imposed upon
+the relation's variables.  Otherwise, the formula describes additional
+constraints on variables used in the relation.  
+
+\subsection{Sets}
+In addition to relations, the system can represent {\em sets}.
+
+When a relation is declared with only one tuple, as in:
+\begin{quote}
+{\tt \{ [} {\em SetList} {\tt ] :} {\em formula} {\tt \}}
+\end{quote}
+then the relation becomes a set.
+The variables that are used to describe a set ({\em SetList}) 
+are called {\em set variables} rather than input or output variables.
+
+\subsection{Presburger formula operations}
+As mentioned above, the tuples belonging to the relation are defined
+by a {\em Presburger formula}.  This formula is built from constraints
+using the operations described in Figure~\ref{FormulaOps}.
+
+\begin{figure}[tbh]
+\begin{tabular}{l|lll}
+Name & \multicolumn{3}{l}{Notation} \\\hline
+
+And & {\em formula} {\tt \&} {\em formula} & {\em formula} {\tt \&\&} {\em formula} & {\em formula} {\tt and} {\em formula} \\
+
+Or  & {\em formula} {\tt |} {\em formula}  & {\em formula} {\tt ||} {\em formula}   & {\em formula} {\tt or} {\em formula} \\
+
+Not & {\tt !} {\em formula}  &                    & {\tt not} {\em formula}\\
+
+Exists & \multicolumn{3}{l}{{\tt exists} ($v_1,...,v_n$: {\em formula})} \\
+
+Forall & \multicolumn{3}{l}{{\tt forall} ($v_1,...,v_n$: {\em formula})} \\
+
+Parentheses & ({\em formula}) \\
+Constraint & {\em constraint} \\
+\end{tabular}
+\caption{Presburger formula syntax}
+\label{FormulaOps}
+\end{figure}
+
+
+\subsection{Constraints and arithmetic and comparison operations}
+
+A Presburger formula is built from constraints using the operations
+described in the previous subsection.  In this subsection we describe
+the syntax of individual constraints.
+
+A constraint is a series of expression lists, connected with
+the arithmetic relational operators {\tt =, !=, >, >=, <, <=}.
+An example is {\tt 2i + 3j <= 5k,p <= 3x-z = t}.
+
+When an constraint contains a comma-separated list of expressions, it
+indicates that the same constraints should be introduced for each of
+the expressions.  The constraint {\tt a,b <= c,d > e,f} translates to
+the constraints
+$$a \leq c \land a \leq d \land b \leq c \land b \leq d \land 
+c > e \land c > f \land d > e \land d > f$$
+
+Expressions can be of the forms (where {\em var} is a variable, 
+{\em integer} is an integer constant, and $e$, $e_1$, and $e_2$ are 
+expressions):
+{\em var}, {\em integer}, $e$, {\em integer} $e$,
+$e_1 + e_2$, $e_1 - e_2$, 
+$e_1 \ast e_2$, $- e$, $(e)$.
+
+An important restriction is that all expressions in
+the constraints must be affine functions of the variables.
+For example, $2\ast x$ is legal, $x \ast 2$ is legal, but $x \ast x$ is
+illegal.
+
+\section{Relational and set operations}
+
+A relational expression is an expression over individual relations.
+The relational operations defined in the system are listed
+in Figures \ref{RelOps1} and \ref{RelOps2}. 
+Here $r, r_1, r_2$ are relations and $s, s_1,
+s_2$ are sets.
+
+
+\begin{figure}[tbp]
+\begin{tabular}{l|l|p{3.5in}}
+Name & Syntax & Explanation \\\hline
+
+Union & 
+$r = r_1$ {\tt union} $r_2$ 
+& $x \rightarrow y \in  r$ iff $x \rightarrow y \in  r_1$
+or $x \rightarrow y \in  r_1$
+\\
+
+& 
+$s = s_1$ {\tt union} $s_2$ 
+& $x \in  s$ iff $x \in  s_1$
+or $x \in  s_1$
+\\
+
+Intersection & 
+$r = r_1$ {\tt intersection} $r_2$
+& $x \rightarrow y \in  r$ iff $x \rightarrow y \in  r_1$
+and $x \rightarrow y \in  r_1$
+\\
+
+& 
+$s = s_1$ {\tt intersection} $s_2$
+& $x \in  s$ iff $x \in  s_1$
+and $x \in  s_1$
+\\
+
+Difference &
+$r = r_1 - r_2$ 
+& $x \rightarrow y \in  r$ iff $x \rightarrow y \in  r_1$
+and $x \rightarrow y \not\in  r_1$
+\\
+
+&
+$s = s_1 - s_2$ 
+& $x \in  s$ iff $x \in  s_1$
+and $x \not\in  s_1$
+\\
+
+Complement &
+$r =$ {\tt complement} $r_1$ 
+& $x \rightarrow y \in  r$ iff $x \rightarrow y \not\in  r_1$
+\\
+
+&
+$s =$ {\tt complement} $s_1$ 
+& $x \in  s$ iff $x \not\in  r_1$
+\\
+
+Composition &
+$r = r_1$ {\tt compose} $r_2$ &
+$x \rightarrow y \in r$ iff $\exists y \st x \rightarrow y \in r_2$
+and $ y \rightarrow z \in r_1$
+\\
+
+Application &
+$s = r_1 (s_2)$ &
+$x \in s$ iff $\exists y \st x \rightarrow y \in r_1$
+and $ y \in s_2$
+\\
+
+
+&
+$r = r_1 (r_2)$ &
+Equivalent to $r_1$ {\tt compose} $r_2$ \\
+
+Join &
+$ r = r_1 . r_2 $
+& Equivalent to $r_2$ {\tt compose} $r_1$\\
+& & $x \rightarrow y \in r$ iff $\exists y \st x \rightarrow y \in r_1$
+and $ y \rightarrow z \in r_2$
+\\
+
+
+
+Inverse &
+$r =$ {\tt inverse} $r_1$ &
+$x \rightarrow y \in r $ iff $y \rightarrow x \in r_1$\\
+
+Domain &
+$s =$ {\tt domain} $r_1$ 
+& $x \in s$ iff $\exists y \st x \rightarrow y \in r_1$\\
+
+Range &
+$s =$ {\tt range} $r_1$ 
+& $y \in s$ iff $\exists x \st x \rightarrow y \in r_1$\\
+
+Restrict Domain &
+$r = r_1 ~\verb+\+~ s_2$ 
+& $x \rightarrow y \in r$ iff $x \rightarrow y \in r_1$ and $x \in s_2$
+\\
+
+Restrict Range &
+$r = r_1 ~/~ s_2$ 
+& $x \rightarrow y \in r$ iff $x \rightarrow y \in r_1$ and $y \in s_2$
+\\
+
+Gist &
+$r=$ {\tt gist} $r_1$ {\tt given} $r_2$ &
+Computes gist of relation $r_1$ given relation $r_2$. \\
+
+
+\end{tabular}
+\caption{Relational operations, part 1}
+\label{RelOps1}
+\end{figure}
+
+
+\begin{figure}[tbp]
+\begin{tabular}{l|l|p{3.5in}}
+Name & Syntax & Explanation \\\hline
+
+Hull & $r=$ {\tt hull} $r_1$ & Computes an single convex region that
+contains all of $r_1$.  Not as tight as the convex hull, but intended
+to be fairly fast.  \\
+
+Convex Hull &
+$r=$ {\tt ConvexHull} $r_1$ &
+Computes the convex hull \cite{Schrijver86,Wilde93} of $r_1$.
+May be prohibitively expensive to compute
+and/or induce numeric overflow of coefficients (leading
+to a core dump)
+\\
+
+Affine Hull &
+$r=$ {\tt AffineHull} $r_1$ &
+Computes the affine hull \cite{Schrijver86,Wilde93} of $r_1$.
+May be prohibitively expensive to compute
+and/or induce numeric overflow of coefficients (leading
+to a core dump)
+\\
+
+Linear Hull &
+$r=$ {\tt LinearHull} $r_1$ &
+Computes the linear hull \cite{Schrijver86,Wilde93} of $r_1$.
+May be prohibitively expensive to compute
+and/or induce numeric overflow of coefficients (leading
+to a core dump)
+\\
+
+Conic Hull &
+$r=$ {\tt ConicHull} $r_1$ &
+Computes the conic or cone hull \cite{Schrijver86,Wilde93} of $r_1$.
+May be prohibitively expensive to compute
+and/or induce numeric overflow of coefficients (leading
+to a core dump)
+\\
+
+Farkas Lemma &
+$r=$ {\tt farkas} $r_1$ &
+Applies Farkas's lemma \cite{Schrijver86,Wilde93} to $r_1$.
+In the result, the values of the variables
+correspond to legal values for coefficients
+of equations implied by the convex hull of $r_1$.
+Also happens to represent the convex hull of $r_N$
+using a points and rays representation. 	 
+See \cite{Wilde93} for a more detailed explaination.
+\\
+
+Convex Check &
+$r=$ {\tt ConvexCheck} $r_1$ &
+Returns the convex hull of $r_1$ if we can easily determine
+that it is equal to $r_1$, otherwise returns $r_1$.
+\\
+
+Pairwise Convex Check &
+$r=$ {\tt PairwiseCheck} $r_1$ &
+Checks to see if any two conjuncts in $r_1$ can be replaced
+exactly by their convex hull (doing so if possible).
+\\
+
+Transitive Closure &
+$r = r_1 {\tt +}$ &
+Least fixed point of $r^+ \equiv r \cup (r \circ r^+)$
+\\
+
+&
+$r = r_1 {\tt +}$ {\tt within} $b$ &
+Least fixed point of $r^+$ for dependence relation $r$ within iteration space $b$
+\\
+
+Conic Closure &
+$r = r_1 {\tt @}$ &
+Gives a simple dependence relation $r$ such that
+any linear schedule for  all of the dependences in 
+$r$ is non-negative if and only
+if it is legal for all of the dependences in $r_1$.
+Note that $r_1 {\tt +} \subseteq r_1 {\tt @}$.
+We previously refered to this as affine closure \cite{uniform2.4}.
+\\
+
+
+Cross-product &
+$r = r_1$ {\tt *} $r_2$ &
+$x \rightarrow y \in r $ iff $x \in r_1$ and $y \in r_2$
+\\
+
+Create superset &
+$r= $ {\tt supersetof} $r_1$ &
+$r$ is inexact with lower bound $r_1$ 
+\\
+
+Create subset &
+$r= $ {\tt subsetof} $r_1$ &
+$r$ is inexact with upper bound $r_1$ 
+\\
+
+Create upper bound &
+$r= $ {\tt upper\_bound} $r_1$ &
+$r$ is an exact relation and is an upper bound on $r_1$ (all UNKNOWN
+constraints in $r_1$ are interpreted as TRUE)
+\\
+
+Create lower bound &
+$r= $ {\tt lower\_bound} $r_1$ &
+$r$ is an exact relation and a lower bound on $r_1$ (all UNKNOWN
+constraints in $r_1$ are interpreted as FALSE)
+\\
+
+
+Get an example &
+$r= $ {\tt example} $r_1$ &
+$r \subseteq r_1$ and all variables in $r$ are single-valued
+\\
+
+Symbolic example &
+$r= $ {\tt sym\_example} $r_1$ &
+$r \subseteq r_1$ and all non-symbolic variables in $r$ are single-valued
+
+\end{tabular}
+\caption{Relational operations, part 2}
+\label{RelOps2}
+\end{figure}
+
+\section{Code Generation}
+\label{section:codegen}
+The Omega Calculator incorporates an algorithm for generating code for
+multiple, overlapping iteration spaces \cite{Uniform4}.  Each
+iteration space has an associated statement or block of statements.
+The syntax is 
+\centerline{{\tt codegen} [{\em effort}] $IS_1, IS_2, \ldots ,IS_n$ [ {\tt given} {\em known}] }
+Each
+iteration space $IS_i$ can be specified either as a set representing
+the iteration space, or as an original iteration space and a
+transformation, {\em T}:{\em IS}, where {\em IS} is the original
+iteration space and {\em T} is a relation defining an affine, 1-1 mapping
+to a new iteration space. That is, given a point in the original
+iteration space, the mapping specifies the point in the new iteration
+space at which to execute that iteration.
+
+The effort value specifies the amount of effort to be used to
+eliiminate sources of overhead in the generated code. Sources of
+overhead include if statements an {\tt min} and {\tt max} functions
+in loop bounds. If not specified, the effort level is 0. The different effort
+levels are:
+\begin{description}
+\item{-2}	Minimal possible effort. Loop bounds may not be finite.
+\item{-1}	Forces finite bounds
+\item{0}	Forces finite bounds and tries to remove {\tt if}'s 
+		within most deeply nested loops (at a possible cost
+		of code duplication).
+\item{1}	removes {\tt if}'s within most deeply nested loops
+		and loops one short of being most deeply nested.
+\item{2}	$\ldots$ and loops two short of being most deeply nested.
+\item{$x$}	$\ldots$ and loops $x$ short of being most deeply nested.
+\end{description}
+
+The known information, if specified, is used to simplify the generated
+code. The generated code will not be correct if known is not true.
+Currently, the known relation needs to be a set with the same arity and the transformed
+iteration space.
+
+A discussion of program transformations using this framework is
+given in \cite{Uniform2.1,Uniform2.3,Uniform3}.
+
+The following is an example of code generation, given three original
+iteration spaces and mappings.  The transformed code requires the
+traditional transformations loop distribution and imperfectly nested
+triangular loop interchange.   Below, the program information has been
+extracted and presented to the Omega Calculator in relation form.
+
+\vspace{0.2in}
+
+{\bf Original code}
+\begin{verbatim}
+      do 30 i=2,n
+10      sum(i) = 0.
+        do 20 j=1,i-1
+20        sum(i) = sum(i) + a(j,i)*b(j)
+30      b(i) = b(i) - sum(i)
+\end{verbatim}
+
+{\bf Schedule} (for parallelism)
+$$T10:\{\ [\ i\ ] \rightarrow\   [\ 0,i,0,0\ ]\ \}$$
+$$T20:\{\ [\ i,j\ ] \rightarrow\ [\ 1,j,0,i\ ]\ \}$$
+$$T30:\{\ [\ i\ ] \rightarrow\   [\ 1,i-1,1,0\ ]\ \}$$
+
+{\bf Omega Calculator output:}
+\input{calculator-ex2.tex}
+
+\section{Inexact Relations}
+
+The special constraint UNKNOWN represents one or more additional
+constraints that are not known to the Omega Library.  Such constraints
+can arise from uses of uninterpreted function symbols or transitive
+closure (as described below), or when the user explicitly requests it.
+Such relations require conservative treatment from the library (e.g.,
+subtracting a conjunct containing UNKNOWN from a relation must
+return that relation, since the unknown constraints might make the
+conjunct unsatisfiable.)
+
+The {\tt upper\_bound} and {\tt lower\_bound} operations can be used to
+produce exact relations from inexact relations.  They are produced by
+treating UNKNOWN constraints as TRUE or FALSE, respectively.
+
+
+
+\section{Presburger Arithmetic with Uninterpreted Function Symbols}
+The Omega Calculator allows certain restricted uses of 
+{\em uninterpreted function symbols} in a Presburger formula.
+Functions may be declared in the {\tt symbolic} statement as
+\begin{quote}
+{\tt symbolic} {\em Function} ({\em Arity})
+\end{quote}
+where {\em Function} is the function name and 
+{\em Arity} is its number of arguments.
+Functions of arity 0 are symbolic constants.
+
+Functions may only be applied to a prefix of the input or output tuple
+of a relation, or a prefix of the tuple of a set.  The function
+application may list the names of the argument variables explicitly
+({\em not yet supported}), or use the abbreviations {\em Function({\tt
+In})}, {\em Function({\tt Out})}, and {\em Function({\tt Set})}, to
+describe the application of a function to the appropriate length
+prefix of the desired tuple.
+
+Our system relies on the following observation: Consider a formula $F$
+that contains references $f(i)$ and $f(j)$, where i and j are free in
+$F$.  Let $F'$ be $F$ with $f_{i}$ and $f_{j}$ substituted for $f(i)$
+and $f(j)$.  $F$ if satisfiable iff $((i = j) \Rightarrow (f_{i} =
+f_{j})) \land F'$ is satisfiable.  For more details, see \cite{Shostak79}.
+% Robert
+% Shostak's paper ``A Practical Decision Procedure for Arithmetic with
+% Function Symbols'' \cit(JACM, April 1979).
+
+Presburger Arithmetic with uninterpreted function symbols is in
+general undecidable, so in some circumstances we will have to produce
+approximate results (as we do with the transitive closure operation)
+\cite{transitiveClosure}. 
+
+The following examples show some legal uses of uninterpreted function
+symbols in the Omega Calculator:
+
+\input{calculator-ex3.tex}
+
+
+\section{Reachability}
+
+Consider a graph where each directed edge is specified as a tuple
+relation.  Given a tuple set for each node representing starting
+states at each node, the library can compute which nodes of the graph are
+reachable from those start states, and the values the tuples can take
+on.  
+
+The syntax is:
+\begin{verbatim}
+reachable ( [list of nodes] ) { [node:startstates] | node_i->node_j:transition] }
+\end{verbatim}
+
+For example,
+
+\begin{verbatim}
+reachable (a,b,c)
+	  { a->b:{[1]->[2]},
+	     b->c:{[2]->[3]},
+	     a:{[1]}};
+\end{verbatim}
+
+The transitions and start states may be any expression that evaluates
+to a relation.
+
+You can also compute a tuple set containing the reachable values a t
+given node; for example:
+
+\begin{verbatim}
+R := reachable of c in (a,b,c)
+	                { a->b:{[1]->[2]},
+	                  b->c:{[2]->[3]},
+	                  a:{[1]}};
+\end{verbatim}
+
+The current implementation is very straightforward and can be very slow.
+
+\section{Current limitations}
+
+The transitive closure operation will not work on a relation with
+uninterpreted function symbols of arity $> 0$.  Any operation that
+requires the projection of input or output variables (such as
+composition) may return inexact results if variables in the argument
+list of a function symbol are projected.
+
+
+
+
+
+\bibliography{para}
+
+\end{document}
+ 
+

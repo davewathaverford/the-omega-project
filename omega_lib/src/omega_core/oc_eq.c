@@ -722,9 +722,9 @@ Problem::solveEQ()
 		    fflush(outputFile);
 		    };
 		}
-	    else if (inApproximateMode) {
+	    else if (inApproximateMode && !inStridesAllowedMode) {
 		    if (TRACE) {
-			fprintf(outputFile, "Dropping equation on the floor");
+			fprintf(outputFile, "Dropping equation on the floor: ");
 		        printEQ(eq);
 			fprintf(outputFile, "\n");
 			}

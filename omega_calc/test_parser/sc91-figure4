@@ -1,0 +1,26 @@
+
+# Example from Figure 4 of the original SC paper.
+
+{[x,y] : 27 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+
+# Variants
+
+{[x,y] : 25 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+
+S := {[x,y] : 24 <= 11x+13y <= 45 && -10 <= 7x-9y <= 4 };
+S;
+
+hull S;
+
+approximate S;
+
+S1 := {[x,y] -> [x]} (S);
+
+S1;
+approximate S1;
+
+S intersection {[1,y]};
+
+S intersection {[2,y]};
+
+codegen S;

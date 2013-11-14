@@ -15,7 +15,7 @@ for(t1 = 0; t1 <= 99; t1++) {
 # codegen {[p,i,j] : 0 <= i,j <= 9 && p = i+10j};
 for(t1 = 0; t1 <= 99; t1++) {
   for(t2 = intMod(t1,10); t2 <= 9; t2 += 10) {
-    t3=intDiv((-t2+t1+9),10);
+    t3=intDiv(-t2+t1+9,10);
     s1(t2+10*t3,t2,t3);
   }
 }

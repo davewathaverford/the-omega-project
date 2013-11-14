@@ -91,7 +91,7 @@ CG_outputRepr* tryToPrintVarToReprWithDiv(CG_outputBuilder* ocg,
 
       coef_t the_const = (*e).get_const()* sign_adj;
       if (the_const != 0) {
-	lopRepr = ocg->CreatePlus(lopRepr, ocg->CreateInt(the_const));
+	lopRepr = ocg->CreateSum(lopRepr, the_const);
       }
 
       CG_outputRepr* divRepr 
@@ -220,12 +220,7 @@ CG_outputRepr* print_term_to_repr(CG_outputBuilder* ocg, const Sub_Handle &s, in
   }
 
   if (c * s.get_const() != 0 || !wentFirst) {
-    if ( c * s.get_const() >= 0) {
-      cgRepr = ocg->CreatePlus(cgRepr, ocg->CreateInt(c * s.get_const()));
-    }
-    else {
-      cgRepr = ocg->CreateMinus(cgRepr, ocg->CreateInt(- c * s.get_const()));
-    }
+    cgRepr = ocg->CreateSum(cgRepr, c * s.get_const());
   }
   
   return cgRepr;

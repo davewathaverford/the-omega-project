@@ -286,6 +286,18 @@ CG_outputRepr* CG_stringBuilder::CreateIdent(const String &_s) const
 // binary arithmetic operations
 //-----------------------------------------------------------------------------
 CG_outputRepr* 
+CG_stringBuilder::CreateSum(CG_outputRepr* lop, coef_t r) const {
+  if (r == 0) {
+    if (lop)
+      return lop;
+    return CreateInt(0);
+    }
+  if (r > 0)
+    return CreatePlus(lop, CreateInt(r));
+  return CreateMinus(lop, CreateInt(-r));
+}
+
+CG_outputRepr* 
 CG_stringBuilder::CreatePlus(CG_outputRepr* lop, CG_outputRepr* rop) const
 {
   if ( rop == CG_REPR_NIL ) {
