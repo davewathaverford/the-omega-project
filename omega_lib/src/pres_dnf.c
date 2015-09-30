@@ -97,7 +97,7 @@ void DNF::rm_redundant_conjs(int effort) {
 	     }
 	  else {
 		
-	  Conjunct *cgist = merge_conjs(cdel, c, MERGE_GIST);
+	  Conjunct *cgist = merge_conjs(cdel, c, MERGE_GIST, 0);
 
 	  if (!cgist->redSimplifyProblem(effort,0)) {
 	    if(pres_debug) {
@@ -314,7 +314,7 @@ void DNF::clear()
 DNF* DNF_and_conj(DNF* dnf, Conjunct* conj) {
   DNF* new_dnf = new DNF;
   for(DNF_Iterator p(dnf); p.live(); p.next()) {
-    Conjunct* new_conj = merge_conjs(p.curr(), conj, MERGE_REGULAR);
+    Conjunct* new_conj = merge_conjs(p.curr(), conj, MERGE_REGULAR, 0);
     new_dnf->add_conjunct(new_conj);
   }
   if(new_dnf->length() > 1) {
@@ -364,7 +364,7 @@ DNF* conj_and_not_dnf(Conjunct *positive_conjunct, DNF *neg_conjs, bool weak) {
 	p.curr_set(NULL);
 	continue;
 	}
-	  Conjunct *cgist = merge_conjs(positive_conjunct, neg_conj, MERGE_GIST);
+	  Conjunct *cgist = merge_conjs(positive_conjunct, neg_conj, MERGE_GIST, 0);
           if(simplify_conj(cgist, false, true, _red) == false) 
 	      {
 	      delete cgist;
@@ -389,7 +389,7 @@ DNF* conj_and_not_dnf(Conjunct *positive_conjunct, DNF *neg_conjs, bool weak) {
 	              delete cgist;
 	              Conjunct *conj =
 	              merge_conjs(positive_conjunct, neg_dnf->single_conjunct(), 
-				  MERGE_REGULAR);
+				  MERGE_REGULAR, 0);
 	              delete positive_conjunct;
 	              delete neg_dnf;
 	              positive_conjunct = conj;
@@ -795,7 +795,7 @@ DNF* F_And::DNFize()
 			}
 		    else 
 			{
-			Conjunct *new_conj = merge_conjs(positive_conjunct, conj, MERGE_REGULAR);
+			Conjunct *new_conj = merge_conjs(positive_conjunct, conj, MERGE_REGULAR, 0);
 			delete conj;
 			delete positive_conjunct;
 			positive_conjunct = new_conj;

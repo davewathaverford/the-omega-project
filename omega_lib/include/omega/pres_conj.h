@@ -263,7 +263,7 @@ private:
   friend int       simplify_conj(Conjunct* conj, int ver_sim, int elim_red, int color);
   friend DNF*      negate_conj(Conjunct* conj);
   friend Conjunct* merge_conjs(Conjunct* conj1, Conjunct* conj2,
-			      Merge_Action action, Rel_Body *body = 0);
+			      Merge_Action action, Rel_Body *body);
   friend void      copy_conj_header(Conjunct* to, Conjunct* fr);
 
 

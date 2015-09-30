@@ -168,7 +168,7 @@ void F_And::beautify()
 		{
 		Conjunct *conj1 = merge_conjs(conj,
 					     f->really_conjunct(),
-					     MERGE_REGULAR);
+					     MERGE_REGULAR,0);
 		delete f;
 		delete conj;
 		conj = conj1;
