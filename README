@@ -26,9 +26,13 @@ The web site of the Omega Project remains at
 but the source code is now on github.com:
 
 	http://github.com/davewathaverford/the-omega-project/
+	
+I fix some incompatiblities with the latest Xcode on Mac OS in my fork of the repository:
+
+	https://github.com/qsphan/the-omega-project
 
 To obtain a read-only copy of the source code on linux or MacOS
 with a command-line git client, use the command
 
-	git clone git://github.com/davewathaverford/the-omega-project
+	git clone git://github.com/qsphan/the-omega-project
 
