@@ -139,7 +139,7 @@ Relation get_is(node *n) {
     Relation R(node_depth(a));
     AccessIteration ai(a, &R, Input_Tuple);
     F_And *f = R.add_and();
-    access_in_bounds(f, ai);
+    access_in_bounds(f, ai, 0, true);
     R.finalize();
     return R;
 }

@@ -110,11 +110,11 @@ build_zap_problem(dd_current dd, Relation *r)
 
     context_iterator c = cont_i_for_access(src.access());
     while (!cont_i_done(c) && !cont_i_cur_is_loop(c)) cont_i_next(c);
-    if (!cont_i_done(c)) context_in_bounds(le, src, c);
+    if (!cont_i_done(c)) context_in_bounds(le, src, c, 0, true);
 
     c = cont_i_for_access(dest.access());
     while (!cont_i_done(c) && !cont_i_cur_is_loop(c)) cont_i_next(c);
-    if (!cont_i_done(c)) context_in_bounds(le, dest, c);
+    if (!cont_i_done(c)) context_in_bounds(le, dest, c, 0, true);
 
     assert(copy(loops_execute).is_upper_bound_satisfiable());
 

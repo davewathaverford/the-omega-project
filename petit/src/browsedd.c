@@ -637,8 +637,8 @@ void write_deps(char *filename , char *inputfile,
 					
 					F_And *f = it.add_and();
 					
-					access_in_bounds(f, a);
-					access_in_bounds(f, b);
+					access_in_bounds(f, a, 0, true);
+					access_in_bounds(f, b, 0, true);
 					it.finalize();
 
 					it = Intersection(it,
