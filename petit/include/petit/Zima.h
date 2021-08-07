@@ -67,13 +67,13 @@ public:
 // If already_done != NULL, stop adding constraints when we get there
 
     friend void access_in_bounds(F_And *N, const AccessIteration &AI,
-				 context_iterator already_done = 0,
-				 bool assertions = true);
+				 context_iterator already_done,
+				 bool assertions);
 
     friend void context_in_bounds(F_And *N, const AccessIteration &AI,
 				 context_iterator c,
-				 context_iterator already_done = 0,
-				 bool assertions = true);
+				 context_iterator already_done,
+				 bool assertions);
 
 //
 // For A[I] and B[J] to access the same memory location,
@@ -86,7 +86,7 @@ public:
 //
     friend void access_same_memory(F_And *N, const AccessIteration &AI,
 				   const AccessIteration &BJ);
-    
+
     friend void subscripts_equal_to_tuple (F_And *N, const AccessIteration &AI,
                                 const Variable_ID_Tuple *t);
 

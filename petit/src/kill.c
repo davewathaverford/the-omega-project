@@ -146,7 +146,7 @@ static Relation build_initial_exposed(a_access access1)
 
   F_And *f = it.add_and();
 
-  access_in_bounds(f,a);
+  access_in_bounds(f,a,0,true);
   it.finalize();
   return it;
 
@@ -298,7 +298,7 @@ static change do_simple_kill(Relation &value_deps,
 			already_done = access_inner_shared_context_at_depth(B, A, C, lzo);
 			}
 
-		    access_in_bounds(fkf, bj2, already_done);
+		    access_in_bounds(fkf, bj2, already_done, true);
 		    access_same_memory(fkf, bj2, ck);
 		    connected_by_diff(fkf, bj2, ck, killer_flow);
 		    kf.finalize();
