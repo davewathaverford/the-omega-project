@@ -109,8 +109,8 @@ static Relation memory_dependence_relation(a_access access1, a_access access2)
 
     F_And *f = it.add_and();
 
-    access_in_bounds(f, a);
-    access_in_bounds(f, b);
+    access_in_bounds(f, a, 0, true);
+    access_in_bounds(f, b, 0, true);
     access_same_memory(f, a, b);
     it.finalize();
 
@@ -181,7 +181,7 @@ void dd_omega_test(a_access access1, a_access access2,
         if (access1!=Entry) {
            assert (access2 == ExitNode);
   	   AccessIteration a(access1,simple_rel, Input_Tuple);
-           access_in_bounds(f,a);
+           access_in_bounds(f,a,0,true);
            subscripts_equal_to_tuple(f, a, &output_vars);
            } 
 
@@ -189,7 +189,7 @@ void dd_omega_test(a_access access1, a_access access2,
         if (access2!=ExitNode) {
            assert (access1 == Entry);
            AccessIteration b(access2,simple_rel, Output_Tuple);
-  	   access_in_bounds(f, b);
+  	   access_in_bounds(f, b, 0, true);
            subscripts_equal_to_tuple(f, b, &input_vars);
 	 }
 

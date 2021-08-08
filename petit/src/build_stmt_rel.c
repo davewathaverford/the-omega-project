@@ -197,7 +197,7 @@ static Relation buildBoundsSet(int stmt)
 
  F_And *f = it.add_and();
 
- access_in_bounds(f, a1);
+ access_in_bounds(f, a1, 0, true);
  it.finalize();
  it.simplify(1,1); 
  return it;
@@ -218,8 +218,8 @@ static Relation getBoundsRelation(int stmt1, int stmt2)
 
 // unify_symbolic_constants(f, a1, a2, 0);
        
- access_in_bounds(f, a1);
- access_in_bounds(f, a2);
+ access_in_bounds(f, a1, 0, true);
+ access_in_bounds(f, a2, 0, true);
  it.finalize();
  it.simplify(1,1); 
  return it;
